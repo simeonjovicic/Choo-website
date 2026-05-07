@@ -19,12 +19,12 @@
       mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
     },
     {
-      src: "images/gallery.png",
-      alt: "Regale im Choo Foodstore",
+      src: "images/create_a_different_variation_of_202605072011.jpeg",
+      alt: "Choo Foodstore Stillleben",
     },
     {
-      src: "images/gallery_2.png",
-      alt: "Sortiment und Ladenbereich im Choo Foodstore",
+      src: "images/create_a_different_variation_of_202605072021.jpeg",
+      alt: "Choo Foodstore Auswahl",
     },
   ];
 
