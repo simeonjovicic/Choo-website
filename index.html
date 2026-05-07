@@ -8,12 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="images/gallery.png" />
+  <link rel="preload" as="image" href="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg" />
+  <link rel="preload" as="image" href="images/create_the_mobile_optimized_version,_202605072005.jpeg" media="(max-width: 700px)" />
+  <link rel="preload" as="image" href="images/logo.png" />
   <link rel="stylesheet" href="homepage.css" />
   <script src="homepage.js" defer></script>
-  <noscript><style>.site-header{opacity:1;pointer-events:auto;transform:none}</style></noscript>
+  <noscript><style>.site-header{opacity:1;pointer-events:auto;transform:none}.loader{display:none}body{overflow:auto}</style></noscript>
 </head>
-<body>
+<body class="is-loading">
+  <div class="loader" role="status" aria-live="polite" aria-label="Seite wird geladen">
+    <img class="loader-logo" src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
+    <div class="loader-line" aria-hidden="true"></div>
+  </div>
+
   <header class="site-header">
     <div class="top-bar">
       <div class="top-bar-group">
@@ -37,9 +44,7 @@
 
       <div class="brand">
         <a href="#home" class="logo" aria-label="Choo Foodstore Startseite">
-          <span>ch</span>
-          <span class="logo-o">o<span class="logo-stamp" aria-hidden="true">福</span></span>
-          <span>o</span>
+          <img src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
         </a>
       </div>
 
@@ -53,15 +58,46 @@
   </header>
 
   <main>
-    <section class="hero" id="home" aria-label="Choo Foodstore Wien">
-      <img class="hero-image" src="images/gallery.png" alt="Regale im Choo Foodstore" width="1360" height="972" data-hero-image />
-      <div class="hero-overlay">
-        <div class="hero-content">
-          <p class="hero-eyebrow">Asia-Supermarkt · Wien 1060</p>
-          <h1>Mariahilfer&nbsp;48.<br />Seit 2009.</h1>
-          <a class="btn" href="#sortiment">Sortiment ansehen</a>
+    <section class="hero" id="home" aria-label="Choo Foodstore Wien" data-hero-mode="classic">
+      <div class="hero-mode-toggle" role="group" aria-label="Hero-Ansicht wechseln">
+        <button class="active" type="button" data-hero-mode-button="classic" aria-pressed="true">Classic</button>
+        <button type="button" data-hero-mode-button="split" aria-pressed="false">Split</button>
+      </div>
+
+      <div class="hero-panel hero-panel-classic">
+        <img class="hero-image hero-classic-image" src="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg" alt="Choo Foodstore Eingang" width="1600" height="895" data-hero-image />
+        <div class="hero-classic-overlay">
+          <div class="hero-classic-content">
+            <p class="hero-eyebrow">Asia-Supermarkt · Wien 1060</p>
+            <h1>Snacks, Saucen &amp; Basics.</h1>
+            <p class="hero-classic-text">Asia-Markt auf der Mariahilfer Straße. Vorrat, Nudeln, Snacks und Saucen aus ganz Asien.</p>
+            <div class="hero-actions">
+              <a class="btn" href="#visit">Besuchen ↗</a>
+              <span>Mariahilfer Straße 48 · 1060 Wien</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="hero-panel hero-panel-split" aria-hidden="true">
+        <div class="hero-content">
+          <p class="hero-eyebrow"><span aria-hidden="true"></span> Asia-Supermarkt · Wien 1060</p>
+          <h1>Snacks, Saucen &amp; Basics — <em>aus ganz Asien.</em></h1>
+          <p class="hero-text">Ein ruhiger Asia-Markt auf der Mariahilfer Straße. Vorratsprodukte, frische Nudeln, schwer zu findende Snacks und die Sauce, nach der du gesucht hast.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#visit">Besuchen ↗</a>
+            <span>Mariahilfer Straße 48 · 1060 Wien</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-photo-card">
+            <img class="hero-image" src="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg" alt="Choo Foodstore Eingang" width="1600" height="895" data-hero-image />
+          </div>
+          <div class="hero-status"><span aria-hidden="true"></span> Open now</div>
+        </div>
+      </div>
+
       <div class="hero-dots" aria-label="Hero-Bilder">
         <button class="active" type="button" aria-label="Bild 1 anzeigen" aria-pressed="true" data-hero-dot="0"></button>
         <button type="button" aria-label="Bild 2 anzeigen" aria-pressed="false" data-hero-dot="1"></button>
@@ -380,9 +416,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#home" class="logo" aria-label="Choo Foodstore Startseite">
-          <span>ch</span>
-          <span class="logo-o">o<span class="logo-stamp" aria-hidden="true">福</span></span>
-          <span>o</span>
+          <img src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
         </a>
         <p>Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.</p>
         <div class="cn-tag cn">时代超市</div>

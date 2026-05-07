@@ -2,14 +2,22 @@
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
   const hero = document.querySelector(".hero");
-  const heroImage = document.querySelector("[data-hero-image]");
+  const heroImages = Array.from(document.querySelectorAll("[data-hero-image]"));
   const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
+  const heroModeButtons = Array.from(document.querySelectorAll("[data-hero-mode-button]"));
   const productTrack = document.querySelector("[data-product-track]");
   const statusText = document.querySelector("[data-open-status]");
   const statusDot = document.querySelector(".dot");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mobileHeroQuery = window.matchMedia("(max-width: 700px)");
 
   const heroSlides = [
+    {
+      src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg",
+      mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.jpeg",
+      alt: "Choo Foodstore Eingang",
+      mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
+    },
     {
       src: "images/gallery.png",
       alt: "Regale im Choo Foodstore",
@@ -18,15 +26,24 @@
       src: "images/gallery_2.png",
       alt: "Sortiment und Ladenbereich im Choo Foodstore",
     },
-    {
-      src: "images/about.png",
-      alt: "Eingang des Choo Foodstore in Wien",
-    },
   ];
 
   let activeSlide = 0;
   let heroTimer = null;
   let ticking = false;
+  let loaderHidden = false;
+
+  function hideLoader() {
+    if (loaderHidden) return;
+    loaderHidden = true;
+
+    window.setTimeout(() => {
+      document.body.classList.add("is-loaded");
+      window.setTimeout(() => {
+        document.body.classList.remove("is-loading");
+      }, 450);
+    }, 350);
+  }
 
   function setMenu(open) {
     document.body.classList.toggle("menu-open", open);
@@ -35,16 +52,23 @@
   }
 
   function showSlide(index) {
-    if (!heroImage || !heroSlides[index]) return;
+    if (!heroImages.length || !heroSlides[index]) return;
 
     activeSlide = index;
     const slide = heroSlides[index];
-    heroImage.classList.add("is-fading");
+    const src = mobileHeroQuery.matches && slide.mobileSrc ? slide.mobileSrc : slide.src;
+    const alt = mobileHeroQuery.matches && slide.mobileAlt ? slide.mobileAlt : slide.alt;
+
+    heroImages.forEach((image) => {
+      image.classList.add("is-fading");
+    });
 
     window.setTimeout(() => {
-      heroImage.src = slide.src;
-      heroImage.alt = slide.alt;
-      heroImage.classList.remove("is-fading");
+      heroImages.forEach((image) => {
+        image.src = src;
+        image.alt = alt;
+        image.classList.remove("is-fading");
+      });
     }, 140);
 
     heroDots.forEach((dot, dotIndex) => {
@@ -104,10 +128,10 @@
     document.body.classList.toggle("has-scrolled", scrollY > 12);
 
     if (hero && !reduceMotion) {
-      hero.style.setProperty("--hero-y", `${progress * 72}px`);
-      hero.style.setProperty("--hero-scale", String(1.04 + progress * 0.07));
-      hero.style.setProperty("--hero-copy-y", `${progress * -34}px`);
-      hero.style.setProperty("--hero-copy-opacity", String(Math.max(1 - progress * 1.55, 0)));
+      hero.style.setProperty("--hero-y", `${progress * 34}px`);
+      hero.style.setProperty("--hero-scale", String(1.025 + progress * 0.035));
+      hero.style.setProperty("--hero-copy-y", `${progress * -18}px`);
+      hero.style.setProperty("--hero-copy-opacity", String(Math.max(1 - progress * 1.1, 0)));
     }
 
     ticking = false;
@@ -178,6 +202,20 @@
     updateProductCarouselDistance();
   }
 
+  function setHeroMode(mode) {
+    if (!hero || !["classic", "split"].includes(mode)) return;
+
+    hero.dataset.heroMode = mode;
+    hero.querySelector(".hero-panel-classic")?.setAttribute("aria-hidden", String(mode !== "classic"));
+    hero.querySelector(".hero-panel-split")?.setAttribute("aria-hidden", String(mode !== "split"));
+
+    heroModeButtons.forEach((button) => {
+      const active = button.dataset.heroModeButton === mode;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
   navToggle?.addEventListener("click", () => {
     setMenu(!document.body.classList.contains("menu-open"));
   });
@@ -192,6 +230,12 @@
     dot.addEventListener("click", () => {
       showSlide(Number(dot.dataset.heroDot));
       restartHeroTimer();
+    });
+  });
+
+  heroModeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setHeroMode(button.dataset.heroModeButton);
     });
   });
 
@@ -234,9 +278,18 @@
     requestScrollUpdate();
     updateProductCarouselDistance();
   });
+  mobileHeroQuery.addEventListener("change", () => {
+    showSlide(activeSlide);
+  });
+  window.addEventListener("load", hideLoader, { once: true });
+
+  if (document.readyState === "complete") {
+    hideLoader();
+  }
 
   setupProductCarousel();
   setupCinematicPanels();
+  showSlide(0);
   updateScrollEffects();
   updateOpeningStatus();
   startHeroTimer();
