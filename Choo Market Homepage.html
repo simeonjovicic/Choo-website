@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Choo Foodstore — Asia-Supermarkt Wien</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="homepage.css" />
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  window.__resources = {
+    interior: "assets/interior.png",
+    shelf: "assets/shelf.png",
+    storefront: "assets/storefront.png",
+  };
+</script>
+
+<script type="text/babel" data-presets="react">
+const Logo = ({ size = 28 }) => (
+  <a href="#" className="logo" style={{ fontSize: size }}>
+    <span>ch</span>
+    <span className="logo-o">o<span className="logo-stamp">福</span></span>
+    <span>o</span>
+  </a>
+);
+
+const ProductSVG = ({ variant = 0 }) => {
+  const colors = ["#d2502b", "#2b3a4a", "#8b6f4e", "#4a6b3e", "#7a4a4a", "#3e5a6b"];
+  const c = colors[variant % colors.length];
+  const shapes = [
+    <g key="b">
+      <rect x="80" y="50" width="40" height="20" rx="2" fill={c} />
+      <path d="M 75 70 L 75 160 Q 75 175 90 175 L 110 175 Q 125 175 125 160 L 125 70 Z" fill={c} opacity="0.85"/>
+      <rect x="82" y="100" width="36" height="40" fill="#faf7f1" opacity="0.9" />
+    </g>,
+    <g key="j">
+      <rect x="65" y="55" width="70" height="18" rx="3" fill={c} />
+      <rect x="62" y="73" width="76" height="105" rx="6" fill={c} opacity="0.85"/>
+      <rect x="72" y="100" width="56" height="50" fill="#faf7f1" opacity="0.9" />
+    </g>,
+    <g key="c">
+      <ellipse cx="100" cy="58" rx="32" ry="6" fill={c} />
+      <rect x="68" y="58" width="64" height="120" fill={c} opacity="0.85" />
+      <ellipse cx="100" cy="178" rx="32" ry="6" fill={c} />
+      <rect x="74" y="100" width="52" height="40" fill="#faf7f1" opacity="0.9" />
+    </g>,
+    <g key="p">
+      <path d="M 60 55 L 140 55 L 140 180 L 60 180 Z" fill={c} opacity="0.85" />
+      <path d="M 60 55 L 100 65 L 140 55" fill={c} />
+      <rect x="72" y="100" width="56" height="50" fill={c === "#faf7f1" ? "#fff" : "#faf7f1"} opacity="0.9" />
+    </g>,
+  ];
+  const shape = shapes[variant % shapes.length];
+  return (
+    <svg viewBox="0 0 200 220" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+      <rect width="200" height="220" fill="#f3ede2" />
+      {shape}
+    </svg>
+  );
+};
+
+const TopBar = () => (
+  <div className="top-bar">
+    <div className="left">
+      <span><span className="dot"></span>Jetzt geöffnet · bis 20:00</span>
+      <span>Mariahilfer Straße 48, 1060 Wien</span>
+    </div>
+    <div className="right">
+      <span>+43 1 234 56 78</span>
+      <span>DE / EN</span>
+    </div>
+  </div>
+);
+
+const Nav = () => (
+  <nav className="nav">
+    <div className="nav-links">
+      <a className="active" href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Sortiment <span className="badge">Neu</span></a>
+      <a href="#">Angebote</a>
+      <a href="#">Events</a>
+    </div>
+    <div className="brand"><Logo size={30} /></div>
+    <div className="nav-icons">
+      <span>⌕</span>
+      <span>♡</span>
+      <span className="cart">◧<span className="cart-count">2</span></span>
+    </div>
+  </nav>
+);
+
+const Hero = () => (
+  <section className="hero">
+    <img src={window.__resources.interior} alt="Choo Markt" />
+    <div className="hero-overlay">
+      <div className="hero-content">
+        <div className="hero-eyebrow">Asia-Supermarkt · Wien 1060</div>
+        <h1>Mariahilfer&nbsp;48.<br/>Seit 2009.</h1>
+        <a className="btn">Sortiment ansehen</a>
+      </div>
+    </div>
+    <div className="hero-dots">
+      <span className="active"></span>
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+);
+
+const Categories = () => {
+  const cats = [
+    { c: "中", name: "China", sub: "Hauptregal" },
+    { c: "日", name: "Japan", sub: "Ramen · Matcha" },
+    { c: "韩", name: "Korea", sub: "Gochujang · Kimchi" },
+    { c: "越", name: "Vietnam", sub: "Pho · Reispapier" },
+    { c: "泰", name: "Thailand", sub: "Curry · Kokos" },
+  ];
+  return (
+    <section className="cat-row">
+      {cats.map((x, i) => (
+        <div className="cat" key={i}>
+          <div className="cat-glyph">{x.c}</div>
+          <div className="cat-name">{x.name}</div>
+          <div className="cat-sub">{x.sub}</div>
+        </div>
+      ))}
+    </section>
+  );
+};
+
+const FeatureTiles = () => (
+  <section className="feature-row">
+    <div className="feature-tile">
+      <img src={window.__resources.shelf} alt="Saucen" />
+      <div className="feature-tile-label">Saucen & Pasten</div>
+    </div>
+    <div className="feature-tile">
+      <img src={window.__resources.interior} alt="Tee & Getränke" />
+      <div className="feature-tile-label">Tee & Getränke</div>
+    </div>
+  </section>
+);
+
+const Products = ({ title, eyebrow, products }) => (
+  <section className="products">
+    <div className="section-eyebrow">{eyebrow}</div>
+    <h2 className="section-title">{title}</h2>
+    <div className="product-grid">
+      {products.map((p, i) => (
+        <div className="product" key={i}>
+          <div className="product-img">
+            {p.tag && <span className={`product-tag ${p.tag === "Neu" ? "red" : ""}`}>{p.tag}</span>}
+            <span className="product-fav">♡</span>
+            <ProductSVG variant={p.v} />
+            <div className="product-cta">+ In den Warenkorb</div>
+          </div>
+          <div className="product-name">{p.name}</div>
+          <div className="product-meta">
+            <span className="stars">★★★★★</span>
+            <span className="price">
+              {p.old && <span className="price-old">€{p.old}</span>}
+              €{p.price}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const Story = () => (
+  <section className="story">
+    <div className="story-text">
+      <div className="section-eyebrow">Unser Markt</div>
+      <h2>Asien, sorgfältig sortiert.</h2>
+      <p>
+        Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien — von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.
+      </p>
+      <p>
+        Wir kuratieren das Sortiment selbst und beraten dich gerne — egal ob es um die richtige Sojasauce, eine bestimmte Paste oder ein Geschenk geht.
+      </p>
+      <a className="btn btn-dark" style={{ marginTop: 16 }}>Mehr erfahren</a>
+    </div>
+    <div className="story-img">
+      <img src={window.__resources.interior} alt="Im Markt" />
+      <div className="play"><div className="play-btn">▶</div></div>
+    </div>
+  </section>
+);
+
+const Events = () => (
+  <section className="events">
+    <div className="section-eyebrow">Kalender</div>
+    <h2 className="section-title">Was läuft</h2>
+    <p className="section-sub">Verkostungen, Workshops und Feste — direkt im Markt an der Mariahilfer Straße.</p>
+    <div className="event-grid">
+      {[
+        ["14","MAI","Mondfest-Verkostung","Mooncakes, Tee und Geschichten zum traditionellen Fest. Eintritt frei, Platzreservierung empfohlen."],
+        ["22","MAI","Tee-Workshop","Eine geführte Verkostung: Grüntee, Oolong, Pu-erh. 18:00, 90 Min, mit Anmeldung."],
+        ["05","JUN","Drachenbootfest","Zongzi-Verkostung und kleine Marktführung — komm vorbei, frag nach."],
+      ].map(([d,m,t,p],i) => (
+        <div className="event" key={i}>
+          <div className="event-date">
+            <span className="event-day">{d}</span>
+            <span className="event-month">{m}</span>
+          </div>
+          <h3>{t}</h3>
+          <p>{p}</p>
+          <a className="event-link">Mehr erfahren →</a>
+        </div>
+      ))}
+    </div>
+  </section>
+);
+
+const AboutBand = () => (
+  <section className="about-band">
+    <div className="about-band-inner">
+      <div className="section-eyebrow">Über Choo</div>
+      <h2>时代超市 — Asia in Wien, seit 2009.</h2>
+      <p>
+        Choo Foodstore steht im sechsten Wiener Bezirk, direkt an der Mariahilfer Straße. Wir führen eine kuratierte Auswahl an Lebensmitteln, Saucen, Tees und Küchenutensilien aus China, Japan, Korea und Südostasien.
+      </p>
+      <p>
+        Unser Anspruch: ein ruhiger, übersichtlicher Asia-Markt. Kein Großmarkt-Chaos, kein Suchen — nur Regale, die Sinn ergeben.
+      </p>
+    </div>
+  </section>
+);
+
+const InfoGrid = () => (
+  <section className="info-grid">
+    <div className="info-cell">
+      <div className="section-eyebrow">Besuchen</div>
+      <h3>Mariahilfer Straße 48<br/>1060 Wien</h3>
+      <p className="dim">U3 Neubaugasse · 2 Min Fußweg</p>
+    </div>
+    <div className="info-cell">
+      <div className="section-eyebrow">Öffnungszeiten</div>
+      <div className="hours-row"><span className="k">Mo – Fr</span><span>09:00 – 20:00</span></div>
+      <div className="hours-row"><span className="k">Samstag</span><span>09:00 – 18:00</span></div>
+      <div className="hours-row"><span className="k">Sonntag</span><span className="dim">geschlossen</span></div>
+    </div>
+    <div className="info-cell">
+      <div className="section-eyebrow">Kontakt</div>
+      <p>+43 1 234 56 78</p>
+      <p>hallo@choo.at</p>
+      <p className="dim">@choo.market</p>
+    </div>
+  </section>
+);
+
+const Newsletter = () => (
+  <section className="newsletter">
+    <div>
+      <h2>Bleib im Bilde.</h2>
+      <p>Neue Produkte, Verkostungen und Events — einmal im Monat, kein Spam.</p>
+    </div>
+    <form className="nl-form" onSubmit={(e) => e.preventDefault()}>
+      <input type="email" placeholder="Deine E-Mail-Adresse" />
+      <button>Anmelden</button>
+    </form>
+  </section>
+);
+
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-grid">
+      <div className="footer-brand">
+        <Logo size={30} />
+        <p>Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.</p>
+        <div className="cn-tag">时代超市</div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li>China</li><li>Japan</li><li>Korea</li><li>Vietnam</li><li>Thailand</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <ul>
+          <li>Über uns</li><li>Events</li><li>Angebote</li><li>FAQ</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Besuchen</h4>
+        <ul>
+          <li>Mariahilfer Str. 48</li><li>1060 Wien</li><li>Mo–Sa 09–20:00</li><li>+43 1 234 56 78</li>
+        </ul>
+      </div>
+    </div>
+    <div className="footer-bottom">
+      <span>© 2026 Choo Foodstore · Mariahilfer Straße 48, 1060 Wien</span>
+      <div className="socials">
+        <span>Instagram</span>
+        <span>Impressum</span>
+        <span>Datenschutz</span>
+      </div>
+    </div>
+  </footer>
+);
+
+const Home = () => (
+  <>
+    <TopBar />
+    <Nav />
+    <Hero />
+    <Categories />
+    <FeatureTiles />
+    <Products
+      eyebrow="Bestseller"
+      title="Diese Woche im Regal"
+      products={[
+        { name: "Lao Gan Ma Chili Crisp", price: "5,90", v: 1 },
+        { name: "Kikkoman Sojasauce 500ml", price: "6,40", old: "7,90", v: 0, tag: "−15%" },
+        { name: "Jasmin Reis 5kg", price: "12,90", v: 2 },
+        { name: "Matcha Premium 100g", price: "18,00", v: 3, tag: "Neu" },
+      ]}
+    />
+    <Story />
+    <Products
+      eyebrow="Neu eingetroffen"
+      title="Aus dem Regal"
+      products={[
+        { name: "Gochujang Paste 500g", price: "7,20", v: 0 },
+        { name: "Tom Yum Paste", price: "4,80", v: 1 },
+        { name: "Mochi-Eis 6er", price: "5,90", v: 3, tag: "Neu" },
+        { name: "Sriracha 740ml", price: "5,40", v: 2 },
+      ]}
+    />
+    <Events />
+    <AboutBand />
+    <InfoGrid />
+    <Newsletter />
+    <Footer />
+  </>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Home />);
+</script>
+</body>
+</html>
