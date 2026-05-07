@@ -10,15 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg" />
   <link rel="preload" as="image" href="images/create_the_mobile_optimized_version,_202605072005.jpeg" media="(max-width: 700px)" />
-  <link rel="preload" as="image" href="images/logo.png" />
+  <link rel="preload" as="image" href="fortnite.svg" />
   <link rel="stylesheet" href="homepage.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="homepage.js" defer></script>
   <noscript><style>.site-header{opacity:1;pointer-events:auto;transform:none}.loader{display:none}body{overflow:auto}</style></noscript>
 </head>
 <body class="is-loading">
   <div class="loader" role="status" aria-live="polite" aria-label="Seite wird geladen">
-    <img class="loader-logo" src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
-    <div class="loader-line" aria-hidden="true"></div>
+    <div class="loader-logo-shell" role="img" aria-label="Choo Foodstore Logo" data-logo-loader></div>
   </div>
 
   <header class="site-header">
@@ -36,15 +36,14 @@
     <nav class="nav" aria-label="Hauptnavigation">
       <div class="nav-links" id="site-menu" data-nav-menu>
         <a class="active" href="#home">Home</a>
-        <a href="#shop">Shop</a>
         <a href="#sortiment">Sortiment <span class="badge">Neu</span></a>
-        <a href="#reviews">Reviews</a>
         <a href="#events">Events</a>
+        <a href="#reviews">Reviews</a>
       </div>
 
       <div class="brand">
         <a href="#home" class="logo" aria-label="Choo Foodstore Startseite">
-          <img src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
+          <img src="fortnite.svg" alt="Choo Foodstore" width="1080" height="1080" />
         </a>
       </div>
 
@@ -94,7 +93,6 @@
           <div class="hero-photo-card">
             <img class="hero-image" src="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg" alt="Choo Foodstore Eingang" width="1600" height="895" data-hero-image />
           </div>
-          <div class="hero-status"><span aria-hidden="true"></span> Open now</div>
         </div>
       </div>
 
@@ -105,7 +103,7 @@
       </div>
     </section>
 
-    <section class="cat-row" id="shop" aria-label="Länder und Sortiment">
+    <section class="cat-row" id="laender" aria-label="Länder und Sortiment">
       <a class="cat" href="#sortiment">
         <span class="cat-glyph cn" aria-hidden="true">中</span>
         <span class="cat-name">China</span>
@@ -137,7 +135,7 @@
       <p class="section-eyebrow">Bestseller</p>
       <h2 class="section-title">Meist verkauft</h2>
       <p class="section-sub">Die Produkte, nach denen im Markt am häufigsten gefragt wird.</p>
-      <div class="product-carousel" aria-label="Meist verkaufte Produkte">
+      <div class="product-carousel" aria-label="Meist verkaufte Produkte" data-product-carousel>
         <div class="product-grid" data-product-track>
         <article class="product">
           <div class="product-media product-jar">
@@ -359,6 +357,36 @@
           <p>Freundlich, ruhig und gut kuratiert. Besonders die Tee-Auswahl und die kleinen Empfehlungen sind stark.</p>
           <cite>Mei S.</cite>
         </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Endlich ein Asia-Markt, in dem man nicht ewig suchen muss. Die Regale sind logisch und die Auswahl passt.</p>
+          <cite>Markus P.</cite>
+        </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Sehr gute Auswahl an Nudeln, Chili Crisp und Reissorten. Ich nehme fast jedes Mal etwas Neues mit.</p>
+          <cite>Sofia M.</cite>
+        </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Klein, übersichtlich und hochwertig sortiert. Für schnelle Einkäufe auf der Mariahilfer perfekt.</p>
+          <cite>Jonas R.</cite>
+        </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Die Mitarbeitenden kennen die Produkte wirklich. Ich habe genau die Sauce gefunden, die ich gebraucht habe.</p>
+          <cite>Linh T.</cite>
+        </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Schöne Tee-Auswahl, gute Snacks und faire Preise. Wir kommen regelmäßig nach der Arbeit vorbei.</p>
+          <cite>Eva B.</cite>
+        </article>
+        <article class="review">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p>Sehr angenehme Atmosphäre. Nicht überladen, trotzdem findet man die wichtigsten Basics und Spezialitäten.</p>
+          <cite>Kenji A.</cite>
+        </article>
       </div>
     </section>
 
@@ -414,13 +442,6 @@
 
   <footer class="footer">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#home" class="logo" aria-label="Choo Foodstore Startseite">
-          <img src="images/logo.png" alt="Choo Foodstore" width="1254" height="1254" />
-        </a>
-        <p>Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.</p>
-        <div class="cn-tag cn">时代超市</div>
-      </div>
       <div>
         <h4>Links</h4>
         <ul>
@@ -440,6 +461,13 @@
           <li>Sa 09–18:00</li>
           <li><a href="tel:+4312345678">+43 1 234 56 78</a></li>
         </ul>
+      </div>
+      <div class="footer-brand">
+        <a href="#home" class="logo" aria-label="Choo Foodstore Startseite">
+          <img src="fortnite.svg" alt="Choo Foodstore" width="1080" height="1080" />
+        </a>
+        <p>Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.</p>
+        <div class="cn-tag cn">时代超市</div>
       </div>
     </div>
     <div class="footer-bottom">

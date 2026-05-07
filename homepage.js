@@ -5,11 +5,23 @@
   const heroImages = Array.from(document.querySelectorAll("[data-hero-image]"));
   const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
   const heroModeButtons = Array.from(document.querySelectorAll("[data-hero-mode-button]"));
+  const productCarousel = document.querySelector("[data-product-carousel]");
   const productTrack = document.querySelector("[data-product-track]");
   const statusText = document.querySelector("[data-open-status]");
   const statusDot = document.querySelector(".dot");
+  const logoLoader = document.querySelector("[data-logo-loader]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const mobileHeroQuery = window.matchMedia("(max-width: 700px)");
+
+  const logoLoaderConfig = {
+    svgUrl: "./fortnite.svg",
+    strokeWidth: 2.4,
+    speed: 1,
+    stagger: 0.026,
+    detailPathMaxLength: 260,
+    repeat: false,
+    repeatDelay: 0.7,
+  };
 
   const heroSlides = [
     {
@@ -31,10 +43,15 @@
   let activeSlide = 0;
   let heroTimer = null;
   let ticking = false;
+  let productDragStartX = 0;
+  let productDragStartLeft = 0;
+  let productDragging = false;
+  let pageLoaded = false;
+  let logoAnimationDone = false;
   let loaderHidden = false;
 
-  function hideLoader() {
-    if (loaderHidden) return;
+  function requestHideLoader() {
+    if (loaderHidden || !pageLoaded || !logoAnimationDone) return;
     loaderHidden = true;
 
     window.setTimeout(() => {
@@ -43,6 +60,188 @@
         document.body.classList.remove("is-loading");
       }, 450);
     }, 350);
+  }
+
+  function markPageLoaded() {
+    pageLoaded = true;
+    requestHideLoader();
+  }
+
+  function markLogoAnimationDone() {
+    logoAnimationDone = true;
+    requestHideLoader();
+  }
+
+  function renderLogoFallback() {
+    if (!logoLoader) return;
+
+    const image = document.createElement("img");
+    image.src = "fortnite.svg";
+    image.alt = "";
+    image.width = 1080;
+    image.height = 1080;
+    logoLoader.replaceChildren(image);
+    logoLoader.classList.add("is-fallback");
+  }
+
+  function getPathX(path) {
+    try {
+      return path.getBBox().x;
+    } catch (error) {
+      return 0;
+    }
+  }
+
+  async function setupLogoLoader() {
+    if (!logoLoader) {
+      markLogoAnimationDone();
+      return;
+    }
+
+    if (reduceMotion || !window.gsap) {
+      renderLogoFallback();
+      window.setTimeout(markLogoAnimationDone, 450);
+      return;
+    }
+
+    try {
+      const response = await fetch(logoLoaderConfig.svgUrl);
+      if (!response.ok) throw new Error(`Logo SVG failed: ${response.status}`);
+
+      const svgMarkup = await response.text();
+      logoLoader.innerHTML = svgMarkup.replace(/<\?xml[^>]*>\s*/i, "");
+      const svg = logoLoader.querySelector("svg");
+      if (!svg) throw new Error("Logo SVG is empty");
+
+      if (!svg.getAttribute("viewBox")) {
+        const width = Number.parseFloat(svg.getAttribute("width")) || 1080;
+        const height = Number.parseFloat(svg.getAttribute("height")) || 1080;
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      }
+
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      svg.setAttribute("aria-hidden", "true");
+      svg.setAttribute("focusable", "false");
+
+      const paths = Array.from(svg.querySelectorAll("path"))
+        .filter((path) => typeof path.getTotalLength === "function")
+        .sort((a, b) => getPathX(a) - getPathX(b));
+
+      if (!paths.length) throw new Error("Logo SVG has no animatable paths");
+
+      const strokeWidth = Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--loader-stroke-width"),
+      ) || logoLoaderConfig.strokeWidth;
+
+      paths.forEach((path) => {
+        const length = path.getTotalLength();
+        const originalFill = path.getAttribute("fill") || getComputedStyle(path).fill || "#161616";
+        const strokeColor = originalFill === "none" || originalFill === "transparent" ? "#161616" : originalFill;
+        const isDetailPath = length < logoLoaderConfig.detailPathMaxLength;
+
+        path.dataset.logoFill = originalFill;
+        path.dataset.logoLength = String(length);
+        path.dataset.logoDetail = String(isDetailPath);
+        path.style.fill = "transparent";
+        path.style.stroke = strokeColor;
+        path.style.strokeWidth = isDetailPath ? "0" : String(strokeWidth);
+        path.style.strokeOpacity = isDetailPath ? "0" : "1";
+        path.style.strokeLinecap = "round";
+        path.style.strokeLinejoin = "round";
+        path.style.strokeDasharray = String(length);
+        path.style.strokeDashoffset = String(length);
+        path.style.vectorEffect = "non-scaling-stroke";
+      });
+
+      const drawPaths = paths.filter((path) => path.dataset.logoDetail !== "true");
+      const detailPaths = paths.filter((path) => path.dataset.logoDetail === "true");
+
+      const drawDuration = 1.45 * logoLoaderConfig.speed;
+      const fillStart = 0.14 + drawDuration * 0.76;
+      const timeline = gsap.timeline({
+        repeat: logoLoaderConfig.repeat ? -1 : 0,
+        repeatDelay: logoLoaderConfig.repeatDelay,
+        defaults: { overwrite: "auto" },
+      });
+
+      gsap.set(logoLoader, { autoAlpha: 1, scale: 0.985, filter: "blur(2px)" });
+      gsap.set(drawPaths, {
+        autoAlpha: 0,
+        scale: 0.985,
+        transformOrigin: "50% 50%",
+      });
+      gsap.set(detailPaths, {
+        autoAlpha: 0,
+        scale: 0.995,
+        transformOrigin: "50% 50%",
+      });
+      gsap.set(svg, { transformOrigin: "50% 50%" });
+
+      timeline
+        .to(drawPaths, {
+          autoAlpha: 1,
+          duration: 0.16,
+          ease: "power1.out",
+          stagger: logoLoaderConfig.stagger * 0.35,
+        }, 0)
+        .to(logoLoader, {
+          filter: "blur(0px)",
+          scale: 1,
+          duration: 0.85 * logoLoaderConfig.speed,
+          ease: "power3.out",
+        }, 0)
+        .to(drawPaths, {
+          strokeDashoffset: 0,
+          duration: drawDuration,
+          ease: "power3.inOut",
+          stagger: logoLoaderConfig.stagger,
+        }, 0.14)
+        .to(drawPaths, {
+          scale: 1,
+          duration: 0.92 * logoLoaderConfig.speed,
+          ease: "expo.out",
+          stagger: logoLoaderConfig.stagger * 0.45,
+        }, 0.16)
+        .to(paths, {
+          fill: (_index, path) => path.dataset.logoFill || "#161616",
+          duration: 0.48 * logoLoaderConfig.speed,
+          ease: "sine.out",
+          stagger: logoLoaderConfig.stagger * 0.55,
+        }, fillStart)
+        .to(drawPaths, {
+          strokeOpacity: 0,
+          duration: 0.34 * logoLoaderConfig.speed,
+          ease: "sine.out",
+          stagger: logoLoaderConfig.stagger * 0.25,
+        }, fillStart + 0.05)
+        .to(detailPaths, {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 0.38 * logoLoaderConfig.speed,
+          ease: "power2.out",
+          stagger: logoLoaderConfig.stagger * 0.4,
+        }, fillStart + 0.08)
+        .to(svg, {
+          scale: 1.018,
+          duration: 0.34 * logoLoaderConfig.speed,
+          ease: "power2.out",
+        }, ">-0.08")
+        .to(svg, {
+          scale: 1,
+          duration: 0.62 * logoLoaderConfig.speed,
+          ease: "power3.out",
+        });
+
+      if (logoLoaderConfig.repeat) {
+        window.setTimeout(markLogoAnimationDone, timeline.duration() * 1000);
+      } else {
+        timeline.eventCallback("onComplete", markLogoAnimationDone);
+      }
+    } catch (error) {
+      renderLogoFallback();
+      window.setTimeout(markLogoAnimationDone, 650);
+    }
   }
 
   function setMenu(open) {
@@ -184,22 +383,46 @@
   }
 
   function setupProductCarousel() {
-    if (!productTrack || reduceMotion) return;
+    if (!productTrack) return;
 
     const cards = Array.from(productTrack.children);
     productTrack.dataset.originalCount = String(cards.length);
+    updateProductCarouselDistance();
+  }
 
-    cards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.setAttribute("inert", "");
-      clone.querySelectorAll("a, button, input, select, textarea").forEach((element) => {
-        element.setAttribute("tabindex", "-1");
-      });
-      productTrack.appendChild(clone);
+  function setupProductScroller() {
+    if (!productCarousel) return;
+
+    productCarousel.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest("a, button, input, select, textarea")) return;
+
+      productDragging = true;
+      productDragStartX = event.clientX;
+      productDragStartLeft = productCarousel.scrollLeft;
+      productCarousel.classList.add("is-dragging");
+      productCarousel.setPointerCapture?.(event.pointerId);
     });
 
-    updateProductCarouselDistance();
+    productCarousel.addEventListener("pointermove", (event) => {
+      if (!productDragging) return;
+
+      event.preventDefault();
+      productCarousel.scrollLeft = productDragStartLeft - (event.clientX - productDragStartX);
+    });
+
+    const stopDragging = (event) => {
+      if (!productDragging) return;
+
+      productDragging = false;
+      productCarousel.classList.remove("is-dragging");
+      if (productCarousel.hasPointerCapture?.(event.pointerId)) {
+        productCarousel.releasePointerCapture(event.pointerId);
+      }
+    };
+
+    productCarousel.addEventListener("pointerup", stopDragging);
+    productCarousel.addEventListener("pointercancel", stopDragging);
+    productCarousel.addEventListener("lostpointercapture", stopDragging);
   }
 
   function setHeroMode(mode) {
@@ -281,13 +504,15 @@
   mobileHeroQuery.addEventListener("change", () => {
     showSlide(activeSlide);
   });
-  window.addEventListener("load", hideLoader, { once: true });
+  window.addEventListener("load", markPageLoaded, { once: true });
 
   if (document.readyState === "complete") {
-    hideLoader();
+    markPageLoaded();
   }
 
+  setupLogoLoader();
   setupProductCarousel();
+  setupProductScroller();
   setupCinematicPanels();
   showSlide(0);
   updateScrollEffects();
