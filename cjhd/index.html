@@ -707,6 +707,297 @@
   /* ── SCROLL REVEAL ── */
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── MINIMAL PALETTE REFRESH ── */
+  :root {
+    --cream: #f7f5f0;
+    --cream-dark: #ebe7de;
+    --ink: #171716;
+    --ink-light: #666158;
+    --red: #1b1b1a;
+    --red-dark: #050505;
+    --gold: #9b8a75;
+    --gold-light: #d9d0c3;
+    --hero-bg: #2f312d;
+    --about-bg: #fffdf9;
+    --gallery-bg: #f7f5f0;
+  }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .hero-title,
+  .about-title,
+  .section-title-light,
+  .section-title-dark,
+  .cat-name,
+  .hours-title,
+  .nav-logo-text,
+  .fav-name {
+    letter-spacing: 0;
+  }
+  nav.scrolled {
+    background: rgba(14, 14, 13, 0.94);
+    box-shadow: 0 1px 18px rgba(0,0,0,0.18);
+  }
+  .nav-logo-mark {
+    border-color: rgba(255,255,255,0.62);
+    color: #f3efe7;
+  }
+  .nav-logo-sub,
+  .footer-col h4,
+  .footer-cn {
+    color: var(--gold);
+  }
+  .nav-links a:hover,
+  .map-link {
+    color: #d6c8b6;
+  }
+  .nav-cta {
+    background: #f7f5f0;
+    color: #151514;
+  }
+  .nav-cta:hover {
+    background: #fff;
+  }
+  #hero {
+    background: var(--hero-bg);
+    min-height: 94vh;
+    align-items: stretch;
+    justify-content: center;
+    padding: clamp(112px, 13vh, 148px) 5vw 82px;
+  }
+  .hero-bg-gradient {
+    background:
+      radial-gradient(ellipse 70% 55% at 18% 0%, rgba(255,255,255,0.16), transparent 62%),
+      linear-gradient(90deg, #1d1f1d 0%, #3f433e 54%, #797970 100%);
+  }
+  .hero-bg-pattern {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+    opacity: 0.14;
+  }
+  .lanterns-static,
+  .lantern-row {
+    opacity: 0.18;
+    filter: grayscale(1) sepia(0.12) saturate(0.35) brightness(0.78);
+  }
+  .hero-layout {
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.74fr);
+    gap: clamp(42px, 7vw, 96px);
+    align-items: center;
+  }
+  .hero-content {
+    text-align: left;
+    max-width: 620px;
+    margin-top: 0;
+  }
+  .hero-title {
+    font-size: clamp(52px, 7.6vw, 94px);
+  }
+  .hero-eyebrow,
+  .hero-subtitle-cn {
+    color: rgba(244,240,229,0.62);
+  }
+  .hero-title span {
+    color: #d8d0c2;
+  }
+  .hero-tagline {
+    color: rgba(255,255,255,0.72);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .hero-de {
+    color: rgba(255,255,255,0.46);
+    margin-bottom: 38px;
+  }
+  .hero-ctas {
+    justify-content: flex-start;
+  }
+  .hero-store-shot {
+    position: relative;
+    width: min(430px, 36vw);
+    justify-self: end;
+    margin: 0;
+    transform: translate(30px, 26px);
+  }
+  .hero-store-shot::before {
+    content: '';
+    position: absolute;
+    inset: -18px 18px 18px -18px;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.035);
+  }
+  .hero-store-shot img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 2px;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+    filter: saturate(0.78) contrast(0.95);
+  }
+  .btn-primary {
+    background: #f7f5f0;
+    color: #151514;
+  }
+  .btn-primary:hover {
+    background: #fff;
+  }
+  .btn-outline {
+    border-color: rgba(255,255,255,0.38);
+    color: rgba(255,255,255,0.82);
+  }
+  .btn-outline:hover {
+    border-color: #f7f5f0;
+    color: #fff;
+  }
+  #about {
+    background: #fffdf9;
+  }
+  .about-img {
+    box-shadow: 0 18px 46px rgba(23,23,22,0.08);
+  }
+  .about-badge {
+    background: #171716;
+    box-shadow: 0 12px 30px rgba(23,23,22,0.16);
+  }
+  .about-eyebrow,
+  .about-cn,
+  .stat-num span,
+  .fav-origin {
+    color: #8f806e;
+  }
+  #categories {
+    background:
+      linear-gradient(180deg, #f2efe8 0%, #e9e5dc 100%);
+  }
+  .section-title-light {
+    color: var(--ink);
+  }
+  .cat-card {
+    background: rgba(255,255,255,0.74);
+    border-color: rgba(23,23,22,0.10);
+    box-shadow: 0 10px 30px rgba(23,23,22,0.045);
+  }
+  .cat-card:hover {
+    background: #fffdf9;
+    border-color: rgba(23,23,22,0.20);
+  }
+  .cat-cn {
+    color: rgba(155,138,117,0.82);
+  }
+  .cat-name {
+    color: var(--ink);
+  }
+  .cat-desc {
+    color: var(--ink-light);
+  }
+  .cat-icon,
+  .fav-img-wrap svg {
+    opacity: 0.72;
+    filter: grayscale(1) sepia(0.12) saturate(0.35) brightness(0.88);
+  }
+  #favourites {
+    background: var(--cream);
+  }
+  .fav-card {
+    border-color: rgba(23,23,22,0.10);
+    box-shadow: 0 10px 28px rgba(23,23,22,0.06);
+  }
+  .fav-stars,
+  .review-stars {
+    color: #b49352;
+  }
+  #reviews {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.08), transparent 65%),
+      linear-gradient(#2c2e2a, #171716);
+  }
+  .review-avatar {
+    background: #f7f5f0;
+    color: #171716;
+  }
+  #visit {
+    background: #171716;
+  }
+  .map-placeholder {
+    background: rgba(255,255,255,0.055);
+    border-color: rgba(255,255,255,0.14);
+  }
+  .map-pin {
+    background: #f7f5f0;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+  }
+  .map-pin-dot {
+    background: #171716;
+  }
+  footer {
+    background: #0f0f0e;
+  }
+  .social-link:hover {
+    border-color: var(--gold);
+  }
+
+  @media(max-width: 900px) {
+    #hero {
+      min-height: auto;
+      padding: 112px 24px 64px;
+    }
+    .hero-layout {
+      grid-template-columns: 1fr;
+      gap: 38px;
+    }
+    .hero-content {
+      max-width: 680px;
+    }
+    .hero-title {
+      font-size: clamp(44px, 11vw, 72px);
+    }
+    .hero-store-shot {
+      width: min(520px, 92%);
+      justify-self: start;
+      transform: translate(18px, 0);
+    }
+    .hero-store-shot img {
+      aspect-ratio: 16 / 10;
+    }
+    .hero-scroll {
+      display: none;
+    }
+  }
+
+  @media(max-width: 560px) {
+    #hero {
+      padding: 104px 20px 54px;
+    }
+    .hero-layout {
+      gap: 30px;
+    }
+    .hero-title {
+      font-size: clamp(40px, 15vw, 60px);
+    }
+    .hero-tagline {
+      max-width: 100%;
+    }
+    .hero-store-shot {
+      width: 100%;
+      transform: none;
+    }
+    .hero-store-shot::before {
+      inset: -10px 10px 10px -10px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -871,16 +1162,21 @@
   <!-- React-enhanced lanterns (bonus) -->
   <div class="lantern-row" id="lanternRow"></div>
 
-  <div class="hero-content">
-    <span class="hero-eyebrow">Wien · 时代超市 · Asia Supermarkt</span>
-    <h1 class="hero-title">CHOO<br/><span>Food</span>store</h1>
-    <p class="hero-subtitle-cn">探索亚洲美食的世界</p>
-    <p class="hero-tagline">Your gateway to the flavours of Asia — over 3,000 authentic products from China, Japan, Korea, Thailand and beyond.</p>
-    <p class="hero-de"><em>Authentische asiatische Lebensmittel mitten in Wien</em></p>
-    <div class="hero-ctas">
-      <a href="#categories" class="btn-primary">Entdecken / Discover</a>
-      <a href="#visit" class="btn-outline">Uns besuchen</a>
+  <div class="hero-layout">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Wien · 时代超市 · Asia Supermarkt</span>
+      <h1 class="hero-title">CHOO<br/><span>Food</span>store</h1>
+      <p class="hero-subtitle-cn">探索亚洲美食的世界</p>
+      <p class="hero-tagline">Your gateway to the flavours of Asia — over 3,000 authentic products from China, Japan, Korea, Thailand and beyond.</p>
+      <p class="hero-de"><em>Authentische asiatische Lebensmittel mitten in Wien</em></p>
+      <div class="hero-ctas">
+        <a href="#categories" class="btn-primary">Entdecken / Discover</a>
+        <a href="#visit" class="btn-outline">Uns besuchen</a>
+      </div>
     </div>
+    <figure class="hero-store-shot">
+      <img src="../images/about.png" alt="CHOO Foodstore entrance in Vienna"/>
+    </figure>
   </div>
 
   <div class="hero-scroll">
@@ -1217,7 +1513,7 @@ const categories = [
 ];
 
 // ── TWEAKS APP ──
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"heroVariant":"center","categoryLayout":"grid","accentColor":"#e0321e","fontStyle":"bodoni","moodStyle":"traditional"}/*EDITMODE-END*/;
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"heroVariant":"center","categoryLayout":"grid","accentColor":"#1b1b1a","fontStyle":"sansmodern","moodStyle":"minimal"}/*EDITMODE-END*/;
 
 function TweaksApp() {
   const { tweaks, setTweak } = useTweaks(TWEAK_DEFAULTS);
@@ -1356,11 +1652,12 @@ function TweaksApp() {
   const applyMood = (v) => {
     const sections = { categories: '', visit: '', footer: '' };
     const moods = {
+      minimal:     { categories: 'linear-gradient(180deg, #f2efe8 0%, #e9e5dc 100%)', visit: '#171716', footer: '#0f0f0e', hero: '#2f312d' },
       traditional: { categories: '#7a0d0d', visit: '#6b0a0a', footer: '#4a0606', hero: '#6b0a0a' },
       deep:        { categories: '#2a0e2e', visit: '#1e0828', footer: '#130518', hero: '#1a0828' },
       warm:        { categories: '#7a3a0d', visit: '#6b2e0a', footer: '#4a1e06', hero: '#6b2e0a' },
     };
-    const m = moods[v] || moods.traditional;
+    const m = moods[v] || moods.minimal;
     const catEl = document.getElementById('categories');
     const visitEl = document.getElementById('visit');
     const footerEl = document.querySelector('footer');
@@ -1371,9 +1668,13 @@ function TweaksApp() {
     if (footerEl) footerEl.style.background = m.footer;
     if (heroEl) heroEl.style.background = m.hero;
     if (heroBg) {
-      const tops = { traditional: '#9a1212', deep: '#4a1060', warm: '#9a5212' };
-      const mids = { traditional: '#6b0a0a', deep: '#2a0828', warm: '#6b2e0a' };
-      heroBg.style.background = `radial-gradient(ellipse 80% 60% at 50% 0%, ${tops[v]} 0%, ${mids[v]} 45%, rgba(0,0,0,0.9) 100%)`;
+      if (v === 'minimal') {
+        heroBg.style.background = 'radial-gradient(ellipse 70% 55% at 18% 0%, rgba(255,255,255,0.16), transparent 62%), linear-gradient(90deg, #1d1f1d 0%, #3f433e 54%, #797970 100%)';
+      } else {
+        const tops = { traditional: '#9a1212', deep: '#4a1060', warm: '#9a5212' };
+        const mids = { traditional: '#6b0a0a', deep: '#2a0828', warm: '#6b2e0a' };
+        heroBg.style.background = `radial-gradient(ellipse 80% 60% at 50% 0%, ${tops[v]} 0%, ${mids[v]} 45%, rgba(0,0,0,0.9) 100%)`;
+      }
     }
   };
 
@@ -1384,7 +1685,7 @@ function TweaksApp() {
     <TweaksPanel>
       <TweakSection label="Atmosphere">
         <TweakRadio id="moodStyle" label="Color Mood"
-          options={[{label:'Crimson', value:'traditional'},{label:'Deep Purple', value:'deep'},{label:'Warm Amber', value:'warm'}]}
+          options={[{label:'Minimal', value:'minimal'},{label:'Crimson', value:'traditional'},{label:'Warm Amber', value:'warm'}]}
           value={tweaks.moodStyle}
           onChange={v => { setTweak('moodStyle', v); applyMood(v); }}
         />
@@ -1402,7 +1703,7 @@ function TweaksApp() {
         />
       </TweakSection>
       <TweakSection label="Brand">
-        <TweakColor id="accentColor" label="Accent Red" value={tweaks.accentColor}
+        <TweakColor id="accentColor" label="Accent" value={tweaks.accentColor}
           onChange={v => {
             setTweak('accentColor', v);
             document.documentElement.style.setProperty('--red', v);
