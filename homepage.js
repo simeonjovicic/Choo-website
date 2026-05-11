@@ -1129,3 +1129,35 @@
     if (event.key === "Escape" && active) close();
   });
 })();
+
+/* ===== Student-band parallax ===== */
+(function () {
+  const band = document.querySelector(".student-band");
+  const bg = band?.querySelector("[data-parallax]");
+  if (!band || !bg) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const strength = 0.35;
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const rect = band.getBoundingClientRect();
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.bottom < -200 || rect.top > viewportH + 200) return;
+    const center = rect.top + rect.height / 2;
+    const delta = center - viewportH / 2;
+    const offset = -delta * strength;
+    bg.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  update();
+})();
