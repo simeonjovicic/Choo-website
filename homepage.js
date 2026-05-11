@@ -4,9 +4,6 @@
   const hero = document.querySelector(".hero");
   const heroImages = Array.from(document.querySelectorAll("[data-hero-image]"));
   const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
-  const heroModeButtons = Array.from(document.querySelectorAll("[data-hero-mode-button]"));
-  const productCarousel = document.querySelector("[data-product-carousel]");
-  const productTrack = document.querySelector("[data-product-track]");
   const statusText = document.querySelector("[data-open-status]");
   const statusDot = document.querySelector(".dot");
   const logoLoader = document.querySelector("[data-logo-loader]");
@@ -43,12 +40,17 @@
   let activeSlide = 0;
   let heroTimer = null;
   let ticking = false;
-  let productDragStartX = 0;
-  let productDragStartLeft = 0;
-  let productDragging = false;
   let pageLoaded = false;
   let logoAnimationDone = false;
   let loaderHidden = false;
+
+  const hotspots = [
+    { id: "h1", x: 28, y: 32, label: "Lanterns", aisle: "Seasonal - front window", note: "Stocked all year - bigger run for Lunar New Year." },
+    { id: "h2", x: 76, y: 28, label: "Premium soy & sauces", aisle: "Aisle 1 - top two shelves", note: "Kikkoman, Lee Kum Kee, Pearl River, plus small-batch Taiwanese." },
+    { id: "h3", x: 78, y: 62, label: "Curry pastes & jars", aisle: "Aisle 1 - lower shelves", note: "Thai red/green/yellow, Maesri, Mae Ploy, plus laksa." },
+    { id: "h4", x: 50, y: 68, label: "Noodles & rice", aisle: "Aisle 2", note: "Hand-pulled, instant, soba, glass, jasmine, sushi, sticky." },
+    { id: "h5", x: 17, y: 70, label: "Snacks & sweets", aisle: "Aisle 3", note: "Pocky, shrimp chips, mochi, haw flakes, lychee jelly." },
+  ];
 
   function requestHideLoader() {
     if (loaderHidden || !pageLoaded || !logoAnimationDone) return;
@@ -366,76 +368,74 @@
     panels.forEach((panel) => observer.observe(panel));
   }
 
-  function updateProductCarouselDistance() {
-    if (!productTrack || reduceMotion) return;
-
-    const originalCount = Number(productTrack.dataset.originalCount || "0");
-    if (!originalCount) return;
-
-    const cards = Array.from(productTrack.children).slice(0, originalCount);
-    const firstCard = cards[0];
-    const lastCard = cards[cards.length - 1];
-    if (!firstCard || !lastCard) return;
-
-    const gap = Number.parseFloat(window.getComputedStyle(productTrack).columnGap || "0") || 0;
-    const distance = lastCard.getBoundingClientRect().right - firstCard.getBoundingClientRect().left + gap;
-    productTrack.style.setProperty("--carousel-distance", `-${distance}px`);
+  function closeHotspots() {
+    document.querySelectorAll("[data-hotspot]").forEach((button) => {
+      button.classList.remove("hot--on");
+      button.setAttribute("aria-expanded", "false");
+      button.querySelector(".hot__card")?.remove();
+    });
   }
 
-  function setupProductCarousel() {
-    if (!productTrack) return;
+  function openHotspot(button) {
+    const hotspot = hotspots.find((item) => item.id === button.dataset.hotspot);
+    if (!hotspot) return;
 
-    const cards = Array.from(productTrack.children);
-    productTrack.dataset.originalCount = String(cards.length);
-    updateProductCarouselDistance();
+    button.classList.add("hot--on");
+    button.setAttribute("aria-expanded", "true");
+
+    const card = document.createElement("span");
+    card.className = "hot__card";
+
+    const title = document.createElement("strong");
+    title.textContent = hotspot.label;
+
+    const aisle = document.createElement("span");
+    aisle.className = "hot__aisle";
+    aisle.textContent = hotspot.aisle;
+
+    const note = document.createElement("span");
+    note.className = "hot__note";
+    note.textContent = hotspot.note;
+
+    card.append(title, aisle, note);
+    button.append(card);
   }
 
-  function setupProductScroller() {
-    if (!productCarousel) return;
+  function setupHotspots() {
+    const mount = document.querySelector("[data-hotspots]");
+    if (!mount) return;
 
-    productCarousel.addEventListener("pointerdown", (event) => {
-      if (event.button !== 0 || event.target.closest("a, button, input, select, textarea")) return;
+    hotspots.forEach((hotspot) => {
+      const button = document.createElement("button");
+      button.className = `hot${hotspot.x > 60 ? " hot--right" : ""}`;
+      button.type = "button";
+      button.style.left = `${hotspot.x}%`;
+      button.style.top = `${hotspot.y}%`;
+      button.dataset.hotspot = hotspot.id;
+      button.setAttribute("aria-label", hotspot.label);
+      button.setAttribute("aria-expanded", "false");
 
-      productDragging = true;
-      productDragStartX = event.clientX;
-      productDragStartLeft = productCarousel.scrollLeft;
-      productCarousel.classList.add("is-dragging");
-      productCarousel.setPointerCapture?.(event.pointerId);
+      const dot = document.createElement("span");
+      dot.className = "hot__dot";
+      const pulse = document.createElement("span");
+      pulse.className = "hot__pulse";
+
+      button.append(dot, pulse);
+      mount.append(button);
     });
 
-    productCarousel.addEventListener("pointermove", (event) => {
-      if (!productDragging) return;
+    mount.addEventListener("click", (event) => {
+      if (event.target.closest(".hot__card")) return;
+      const button = event.target.closest("[data-hotspot]");
+      if (!button) return;
 
-      event.preventDefault();
-      productCarousel.scrollLeft = productDragStartLeft - (event.clientX - productDragStartX);
+      const isOpen = button.classList.contains("hot--on");
+      closeHotspots();
+      if (!isOpen) openHotspot(button);
     });
 
-    const stopDragging = (event) => {
-      if (!productDragging) return;
-
-      productDragging = false;
-      productCarousel.classList.remove("is-dragging");
-      if (productCarousel.hasPointerCapture?.(event.pointerId)) {
-        productCarousel.releasePointerCapture(event.pointerId);
-      }
-    };
-
-    productCarousel.addEventListener("pointerup", stopDragging);
-    productCarousel.addEventListener("pointercancel", stopDragging);
-    productCarousel.addEventListener("lostpointercapture", stopDragging);
-  }
-
-  function setHeroMode(mode) {
-    if (!hero || !["classic", "split"].includes(mode)) return;
-
-    hero.dataset.heroMode = mode;
-    hero.querySelector(".hero-panel-classic")?.setAttribute("aria-hidden", String(mode !== "classic"));
-    hero.querySelector(".hero-panel-split")?.setAttribute("aria-hidden", String(mode !== "split"));
-
-    heroModeButtons.forEach((button) => {
-      const active = button.dataset.heroModeButton === mode;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".aisle__art")) closeHotspots();
     });
   }
 
@@ -454,22 +454,6 @@
       showSlide(Number(dot.dataset.heroDot));
       restartHeroTimer();
     });
-  });
-
-  heroModeButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setHeroMode(button.dataset.heroModeButton);
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    const favButton = event.target.closest(".product-fav");
-    if (favButton) {
-      const active = favButton.getAttribute("aria-pressed") === "true";
-      favButton.setAttribute("aria-pressed", String(!active));
-      favButton.classList.toggle("is-active", !active);
-      favButton.textContent = active ? "♡" : "♥";
-    }
   });
 
   document.querySelector("[data-newsletter-form]")?.addEventListener("submit", (event) => {
@@ -493,13 +477,13 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setMenu(false);
+      closeHotspots();
     }
   });
 
   window.addEventListener("scroll", requestScrollUpdate, { passive: true });
   window.addEventListener("resize", () => {
     requestScrollUpdate();
-    updateProductCarouselDistance();
   });
   mobileHeroQuery.addEventListener("change", () => {
     showSlide(activeSlide);
@@ -511,8 +495,7 @@
   }
 
   setupLogoLoader();
-  setupProductCarousel();
-  setupProductScroller();
+  setupHotspots();
   setupCinematicPanels();
   showSlide(0);
   updateScrollEffects();

@@ -8,47 +8,6 @@ const Logo = ({ size = 28 }) => (
   </a>
 );
 
-// Generic SVG product placeholder (since user has no product photos yet)
-// Renders a calm pantry-bottle silhouette on the brand paper bg
-const ProductSVG = ({ variant = 0 }) => {
-  const colors = ["#d2502b", "#2b3a4a", "#8b6f4e", "#4a6b3e", "#7a4a4a", "#3e5a6b"];
-  const c = colors[variant % colors.length];
-  const shapes = [
-    // bottle
-    <g key="b">
-      <rect x="80" y="50" width="40" height="20" rx="2" fill={c} />
-      <path d="M 75 70 L 75 160 Q 75 175 90 175 L 110 175 Q 125 175 125 160 L 125 70 Z" fill={c} opacity="0.85"/>
-      <rect x="82" y="100" width="36" height="40" fill="#faf7f1" opacity="0.9" />
-    </g>,
-    // jar
-    <g key="j">
-      <rect x="65" y="55" width="70" height="18" rx="3" fill={c} />
-      <rect x="62" y="73" width="76" height="105" rx="6" fill={c} opacity="0.85"/>
-      <rect x="72" y="100" width="56" height="50" fill="#faf7f1" opacity="0.9" />
-    </g>,
-    // can
-    <g key="c">
-      <ellipse cx="100" cy="58" rx="32" ry="6" fill={c} />
-      <rect x="68" y="58" width="64" height="120" fill={c} opacity="0.85" />
-      <ellipse cx="100" cy="178" rx="32" ry="6" fill={c} />
-      <rect x="74" y="100" width="52" height="40" fill="#faf7f1" opacity="0.9" />
-    </g>,
-    // packet
-    <g key="p">
-      <path d="M 60 55 L 140 55 L 140 180 L 60 180 Z" fill={c} opacity="0.85" />
-      <path d="M 60 55 L 100 65 L 140 55" fill={c} />
-      <rect x="72" y="100" width="56" height="50" fill="#faf7f1" opacity="0.9" />
-    </g>,
-  ];
-  const shape = shapes[variant % shapes.length];
-  return (
-    <svg viewBox="0 0 200 220" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
-      <rect width="200" height="220" fill="#f3ede2" />
-      {shape}
-    </svg>
-  );
-};
-
 const TopBar = () => (
   <div className="top-bar">
     <div className="left">
@@ -132,33 +91,6 @@ const FeatureTiles = () => (
   </section>
 );
 
-const Products = ({ title, eyebrow, products }) => (
-  <section className="products">
-    <div className="section-eyebrow">{eyebrow}</div>
-    <h2 className="section-title">{title}</h2>
-    <div className="product-grid">
-      {products.map((p, i) => (
-        <div className="product" key={i}>
-          <div className="product-img">
-            {p.tag && <span className={`product-tag ${p.tag === "Neu" ? "red" : ""}`}>{p.tag}</span>}
-            <span className="product-fav">♡</span>
-            <ProductSVG variant={p.v} />
-            <div className="product-cta">+ In den Warenkorb</div>
-          </div>
-          <div className="product-name">{p.name}</div>
-          <div className="product-meta">
-            <span className="stars">★★★★★</span>
-            <span className="price">
-              {p.old && <span className="price-old">€{p.old}</span>}
-              €{p.price}
-            </span>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-);
-
 const Story = () => (
   <section className="story">
     <div className="story-text">
@@ -178,6 +110,54 @@ const Story = () => (
     </div>
   </section>
 );
+
+const HOTSPOTS = [
+  { id: "h1", x: 28, y: 32, label: "Lanterns", aisle: "Seasonal - front window", note: "Stocked all year - bigger run for Lunar New Year." },
+  { id: "h2", x: 76, y: 28, label: "Premium soy & sauces", aisle: "Aisle 1 - top two shelves", note: "Kikkoman, Lee Kum Kee, Pearl River, plus small-batch Taiwanese." },
+  { id: "h3", x: 78, y: 62, label: "Curry pastes & jars", aisle: "Aisle 1 - lower shelves", note: "Thai red/green/yellow, Maesri, Mae Ploy, plus laksa." },
+  { id: "h4", x: 50, y: 68, label: "Noodles & rice", aisle: "Aisle 2", note: "Hand-pulled, instant, soba, glass, jasmine, sushi, sticky." },
+  { id: "h5", x: 17, y: 70, label: "Snacks & sweets", aisle: "Aisle 3", note: "Pocky, shrimp chips, mochi, haw flakes, lychee jelly." },
+];
+
+const AisleExplorer = () => {
+  const [open, setOpen] = React.useState(null);
+
+  return (
+    <section className="aisle" id="sortiment">
+      <div className="aisle__heading">
+        <div className="section-eyebrow">02 - Inside the shop</div>
+        <h2>Tap a shelf.<br /><em>It's stocked.</em></h2>
+        <p>
+          Three aisles, low ceiling, paper lanterns. We carry around 1,200 lines - pantry deep on sauces, noodles and rice, with a steady rotation of regional snacks. Tap the illustration to find a section.
+        </p>
+      </div>
+      <div className="aisle__art">
+        <img src="assets/aisle.png" alt="Illustration der Regale im Choo Foodstore" draggable="false" />
+        {HOTSPOTS.map((hotspot) => (
+          <button
+            key={hotspot.id}
+            className={`hot${hotspot.x > 60 ? " hot--right" : ""}${open === hotspot.id ? " hot--on" : ""}`}
+            type="button"
+            style={{ left: `${hotspot.x}%`, top: `${hotspot.y}%` }}
+            onClick={() => setOpen(open === hotspot.id ? null : hotspot.id)}
+            aria-label={hotspot.label}
+            aria-expanded={open === hotspot.id}
+          >
+            <span className="hot__dot" />
+            <span className="hot__pulse" />
+            {open === hotspot.id && (
+              <span className="hot__card" onClick={(event) => event.stopPropagation()}>
+                <strong>{hotspot.label}</strong>
+                <span className="hot__aisle">{hotspot.aisle}</span>
+                <span className="hot__note">{hotspot.note}</span>
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const Events = () => (
   <section className="events">
@@ -299,27 +279,8 @@ const Home = () => (
     <Hero />
     <Categories />
     <FeatureTiles />
-    <Products
-      eyebrow="Bestseller"
-      title="Diese Woche im Regal"
-      products={[
-        { name: "Lao Gan Ma Chili Crisp", price: "5,90", v: 1 },
-        { name: "Kikkoman Sojasauce 500ml", price: "6,40", old: "7,90", v: 0, tag: "−15%" },
-        { name: "Jasmin Reis 5kg", price: "12,90", v: 2 },
-        { name: "Matcha Premium 100g", price: "18,00", v: 3, tag: "Neu" },
-      ]}
-    />
     <Story />
-    <Products
-      eyebrow="Neu eingetroffen"
-      title="Aus dem Regal"
-      products={[
-        { name: "Gochujang Paste 500g", price: "7,20", v: 0 },
-        { name: "Tom Yum Paste", price: "4,80", v: 1 },
-        { name: "Mochi-Eis 6er", price: "5,90", v: 3, tag: "Neu" },
-        { name: "Sriracha 740ml", price: "5,40", v: 2 },
-      ]}
-    />
+    <AisleExplorer />
     <Events />
     <AboutBand />
     <InfoGrid />
