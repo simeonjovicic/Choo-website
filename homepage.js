@@ -624,6 +624,10 @@
         </button>
       `;
     }).join("");
+
+    if (window.matchMedia("(max-width: 820px)").matches) {
+      mount.scrollTo({ left: 0, behavior: "smooth" });
+    }
   }
 
   function openRecipe(id) {

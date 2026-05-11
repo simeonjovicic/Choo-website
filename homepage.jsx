@@ -12,10 +12,10 @@ const TopBar = () => (
   <div className="top-bar">
     <div className="left">
       <span><span className="dot"></span>Jetzt geöffnet · bis 20:00</span>
-      <span>Mariahilfer Straße 48, 1060 Wien</span>
+      <span>Address: Linke Wienzeile 54, 1060 Wien</span>
     </div>
     <div className="right">
-      <span>+43 1 234 56 78</span>
+      <span>Phone: 01 9605678</span>
       <span>DE / EN</span>
     </div>
   </div>
@@ -45,7 +45,7 @@ const Hero = () => (
     <div className="hero-overlay">
       <div className="hero-content">
         <div className="hero-eyebrow">Asia-Supermarkt · Wien 1060</div>
-        <h1>Mariahilfer&nbsp;48.<br/>Seit 2009.</h1>
+        <h1>Linke Wienzeile&nbsp;54.<br/>Seit 2009.</h1>
         <a className="btn">Sortiment ansehen</a>
       </div>
     </div>
@@ -66,14 +66,16 @@ const Categories = () => {
     { c: "泰", name: "Thailand", sub: "Curry · Kokos" },
   ];
   return (
-    <section className="cat-row">
-      {cats.map((x, i) => (
-        <div className="cat" key={i}>
-          <div className="cat-glyph">{x.c}</div>
-          <div className="cat-name">{x.name}</div>
-          <div className="cat-sub">{x.sub}</div>
-        </div>
-      ))}
+    <section className="cat-row" id="laender" aria-label="Länder und Sortiment">
+      <div className="cat-row-inner" role="tablist" aria-label="Herkunftsländer">
+        {cats.map((x, i) => (
+          <button className="cat" type="button" role="tab" aria-selected="false" key={i}>
+            <span className="cat-glyph cn" aria-hidden="true">{x.c}</span>
+            <span className="cat-name">{x.name}</span>
+            <span className="cat-sub">{x.sub}</span>
+          </button>
+        ))}
+      </div>
     </section>
   );
 };
@@ -106,7 +108,6 @@ const Story = () => (
     </div>
     <div className="story-img">
       <img src="store-foto-animated.png" alt="Innenansicht des Choo Foodstore in Wien" />
-      <div className="play"><div className="play-btn">▶</div></div>
     </div>
   </section>
 );
@@ -212,7 +213,7 @@ const Events = () => (
   <section className="events">
     <div className="section-eyebrow">Kalender</div>
     <h2 className="section-title">Was läuft</h2>
-    <p className="section-sub">Verkostungen, Workshops und Feste — direkt im Markt an der Mariahilfer Straße.</p>
+    <p className="section-sub">Verkostungen, Workshops und Feste — direkt im Markt an der Linken Wienzeile.</p>
     <div className="event-grid">
       {[
         ["14","MAI","Mondfest-Verkostung","Mooncakes, Tee und Geschichten zum traditionellen Fest. Eintritt frei, Platzreservierung empfohlen."],
@@ -239,7 +240,7 @@ const AboutBand = () => (
       <div className="section-eyebrow">Über Choo</div>
       <h2>时代超市 — Asia in Wien, seit 2009.</h2>
       <p>
-        Choo Foodstore steht im sechsten Wiener Bezirk, direkt an der Mariahilfer Straße. Wir führen eine kuratierte Auswahl an Lebensmitteln, Saucen, Tees und Küchenutensilien aus China, Japan, Korea und Südostasien.
+        Choo Foodstore steht im sechsten Wiener Bezirk, direkt an der Linken Wienzeile. Wir führen eine kuratierte Auswahl an Lebensmitteln, Saucen, Tees und Küchenutensilien aus China, Japan, Korea und Südostasien.
       </p>
       <p>
         Unser Anspruch: ein ruhiger, übersichtlicher Asia-Markt. Kein Großmarkt-Chaos, kein Suchen — nur Regale, die Sinn ergeben.
@@ -252,7 +253,7 @@ const InfoGrid = () => (
   <section className="info-grid">
     <div className="info-cell">
       <div className="section-eyebrow">Besuchen</div>
-      <h3>Mariahilfer Straße 48<br/>1060 Wien</h3>
+      <h3>Address:<br/>Linke Wienzeile 54, 1060 Wien</h3>
       <p className="dim">U3 Neubaugasse · 2 Min Fußweg</p>
     </div>
     <div className="info-cell">
@@ -263,7 +264,7 @@ const InfoGrid = () => (
     </div>
     <div className="info-cell">
       <div className="section-eyebrow">Kontakt</div>
-      <p>+43 1 234 56 78</p>
+      <p>Phone: 01 9605678</p>
       <p>hallo@choo.at</p>
       <p className="dim">@choo.market</p>
     </div>
@@ -293,12 +294,12 @@ const Footer = () => (
       <div>
         <h4>Besuchen</h4>
         <ul>
-          <li>Mariahilfer Str. 48</li><li>1060 Wien</li><li>Mo–Sa 09–20:00</li><li>+43 1 234 56 78</li>
+          <li>Address: Linke Wienzeile 54, 1060 Wien</li><li>Mo–Sa 09–20:00</li><li>Phone: 01 9605678</li>
         </ul>
       </div>
     </div>
     <div className="footer-bottom">
-      <span>© 2026 Choo Foodstore · Mariahilfer Straße 48, 1060 Wien</span>
+      <span>© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Wien</span>
       <div className="socials">
         <span>Instagram</span>
         <span>Impressum</span>

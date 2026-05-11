@@ -878,26 +878,6 @@ body.country-modal-open {
   object-fit: cover;
 }
 
-.play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.play-btn {
-  display: flex;
-  width: 56px;
-  height: 56px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(250, 247, 241, 0.9);
-  color: var(--ink);
-  font-size: 16px;
-}
-
 .aisle {
   display: grid;
   grid-template-columns: minmax(260px, 0.74fr) 1fr;
@@ -1914,15 +1894,10 @@ body.country-modal-open {
     scroll-snap-type: y proximity;
   }
 
-  .hero,
-  .story,
-  .aisle,
-  .recipes,
-  .events,
-  .reviews,
-  .about-band,
-  .visit {
+  main > section,
+  .footer {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 
@@ -2263,6 +2238,110 @@ body.country-modal-open {
   }
 }
 
+@media (max-width: 820px) {
+  .cat-row {
+    padding-top: 34px;
+    padding-bottom: 18px;
+    overflow: hidden;
+  }
+
+  .cat-row-inner {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-row-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cat {
+    flex: 0 0 clamp(132px, 39vw, 162px);
+    min-height: 166px;
+    padding: 16px 12px 14px;
+    border: 1px solid var(--line);
+    background: var(--paper-3);
+    box-shadow: 0 10px 24px rgba(22, 22, 22, 0.045);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .cat-glyph {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 14px;
+    font-size: 28px;
+  }
+
+  .cat-name {
+    font-size: 22px;
+    line-height: 1.05;
+  }
+
+  .cat-sub {
+    max-width: 12ch;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .recipes__head {
+    margin-bottom: 22px;
+  }
+
+  .filters {
+    width: 100%;
+    justify-self: stretch;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    flex: 0 0 auto;
+  }
+
+  .recipes__grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .recipes__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rc {
+    flex: 0 0 clamp(260px, 78vw, 340px);
+    min-height: 248px;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2314,6 +2393,10 @@ body.country-modal-open {
 }
 .visit__col h2 em { font-style: italic; color: var(--accent); font-weight: 520; }
 .visit__col p { margin: 14px 0 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.visit__col p strong,
+.visit__col p a {
+  color: var(--ink);
+}
 
 /* Events / calendar */
 .events {
