@@ -43,6 +43,7 @@
       <div class="nav-links" id="site-menu" data-nav-menu>
         <a class="active" href="#home">Home</a>
         <a href="#sortiment">Sortiment <span class="badge">Neu</span></a>
+        <a href="#recipes">Recipes</a>
         <a href="#events">Events</a>
         <a href="#reviews">Reviews</a>
       </div>
@@ -144,7 +145,7 @@
         <a class="btn btn-dark" href="#visit">Mehr erfahren</a>
       </div>
       <div class="story-img">
-        <img src="images/about.png" alt="Eingang des Choo Foodstore in Wien" width="1360" height="972" loading="lazy" decoding="async" />
+        <img src="store-foto-animated.png" alt="Innenansicht des Choo Foodstore in Wien" width="1448" height="1086" loading="lazy" decoding="async" />
         <div class="play" aria-hidden="true"><span class="play-btn">▶</span></div>
       </div>
     </section>
@@ -159,6 +160,21 @@
         <img src="assets/aisle.png" alt="Illustration der Regale im Choo Foodstore" width="1200" height="1200" loading="lazy" decoding="async" draggable="false" />
         <div data-hotspots></div>
       </div>
+    </section>
+
+    <section class="recipes" id="recipes">
+      <div class="recipes__head">
+        <p class="section-eyebrow">03 - From the kitchen</p>
+        <h2>Four recipes, four aisles.</h2>
+        <p>Traditional dishes you can finish on a Tuesday - most of the pantry is on our shelves.</p>
+        <div class="filters" aria-label="Recipe filters">
+          <button class="filter filter--on" type="button" data-filter="all">all</button>
+          <button class="filter" type="button" data-filter="vegetarian">vegetarian</button>
+          <button class="filter" type="button" data-filter="spicy">spicy</button>
+          <button class="filter" type="button" data-filter="quick">quick</button>
+        </div>
+      </div>
+      <div class="recipes__grid" data-recipes></div>
     </section>
 
     <section class="events" id="events">
@@ -260,20 +276,9 @@
         </iframe>
       </div>
     </section>
-
-    <section class="newsletter">
-      <div>
-        <h2>Bleib im Bilde.</h2>
-        <p>Neue Produkte, Verkostungen und Events, einmal im Monat, kein Spam.</p>
-      </div>
-      <form class="nl-form" data-newsletter-form>
-        <label class="visually-hidden" for="newsletter-email">E-Mail-Adresse</label>
-        <input id="newsletter-email" type="email" name="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required />
-        <button type="submit">Anmelden</button>
-        <p class="form-message" role="status" aria-live="polite" data-form-message></p>
-      </form>
-    </section>
   </main>
+
+  <div class="recipe-view" data-recipe-view aria-hidden="true"></div>
 
   <footer class="footer">
     <div class="footer-grid">
@@ -282,6 +287,7 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#sortiment">Sortiment</a></li>
+          <li><a href="#recipes">Recipes</a></li>
           <li><a href="#about">Über uns</a></li>
           <li><a href="#events">Events</a></li>
           <li><a href="#reviews">Reviews</a></li>

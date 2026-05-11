@@ -105,7 +105,7 @@ const Story = () => (
       <a className="btn btn-dark" style={{ marginTop: 16 }}>Mehr erfahren</a>
     </div>
     <div className="story-img">
-      <img src={window.__resources.interior} alt="Im Markt" />
+      <img src="store-foto-animated.png" alt="Innenansicht des Choo Foodstore in Wien" />
       <div className="play"><div className="play-btn">▶</div></div>
     </div>
   </section>
@@ -152,6 +152,55 @@ const AisleExplorer = () => {
                 <span className="hot__note">{hotspot.note}</span>
               </span>
             )}
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const RECIPES = [
+  { id: "mapo", name: "Mapo Tofu", tags: ["spicy"], time: "25 min", blurb: "Sichuan classic - silken tofu in a numbing chili-bean sauce.", inStore: "5/8" },
+  { id: "dandan", name: "Dan Dan Noodles", tags: ["spicy", "quick"], time: "15 min", blurb: "Chengdu street bowl - sesame, chili oil, vinegar, crisp pork.", inStore: "6/8" },
+  { id: "garlic-bok-choy", name: "Garlic Bok Choy & Shiitake", tags: ["vegetarian", "quick"], time: "10 min", blurb: "Two ingredients, big flavour. Glossy, garlicky, ready in minutes.", inStore: "4/7" },
+  { id: "fried-rice", name: "Egg & Scallion Fried Rice", tags: ["vegetarian", "quick"], time: "12 min", blurb: "Day-old jasmine rice, hot wok, three ingredients done right.", inStore: "4/7" },
+];
+
+const Recipes = () => {
+  const [filter, setFilter] = React.useState("all");
+  const visible = filter === "all" ? RECIPES : RECIPES.filter((recipe) => recipe.tags.includes(filter));
+
+  return (
+    <section className="recipes" id="recipes">
+      <div className="recipes__head">
+        <div className="section-eyebrow">03 - From the kitchen</div>
+        <h2>Four recipes, four aisles.</h2>
+        <p>Traditional dishes you can finish on a Tuesday - most of the pantry is on our shelves.</p>
+        <div className="filters" aria-label="Recipe filters">
+          {["all", "vegetarian", "spicy", "quick"].map((item) => (
+            <button key={item} className={`filter${filter === item ? " filter--on" : ""}`} type="button" onClick={() => setFilter(item)}>
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="recipes__grid">
+        {visible.map((recipe, index) => (
+          <button className="rc" type="button" key={recipe.id}>
+            <span className="rc__top">
+              <span className="rc__no">Recipe {String(index + 1).padStart(2, "0")}</span>
+              <span className="rc__time">{recipe.time}</span>
+            </span>
+            <span className="rc__body">
+              <span className="rc__name">{recipe.name}</span>
+              <span className="rc__blurb">{recipe.blurb}</span>
+            </span>
+            <span className="rc__meta">
+              <span className="rc__tags">
+                {recipe.tags.map((tag) => <span className={`tag tag--${tag}`} key={tag}>{tag}</span>)}
+              </span>
+              <span className="rc__availability">{recipe.inStore} in store</span>
+            </span>
           </button>
         ))}
       </div>
@@ -221,19 +270,6 @@ const InfoGrid = () => (
   </section>
 );
 
-const Newsletter = () => (
-  <section className="newsletter">
-    <div>
-      <h2>Bleib im Bilde.</h2>
-      <p>Neue Produkte, Verkostungen und Events — einmal im Monat, kein Spam.</p>
-    </div>
-    <form className="nl-form" onSubmit={(e) => e.preventDefault()}>
-      <input type="email" placeholder="Deine E-Mail-Adresse" />
-      <button>Anmelden</button>
-    </form>
-  </section>
-);
-
 const Footer = () => (
   <footer className="footer">
     <div className="footer-grid">
@@ -281,10 +317,10 @@ const Home = () => (
     <FeatureTiles />
     <Story />
     <AisleExplorer />
+    <Recipes />
     <Events />
     <AboutBand />
     <InfoGrid />
-    <Newsletter />
     <Footer />
   </>
 );

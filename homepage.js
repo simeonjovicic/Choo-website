@@ -456,24 +456,6 @@
     });
   });
 
-  document.querySelector("[data-newsletter-form]")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const emailInput = form.querySelector("input[type='email']");
-    const message = form.querySelector("[data-form-message]");
-
-    if (!emailInput?.checkValidity()) {
-      emailInput?.reportValidity();
-      return;
-    }
-
-    if (message) {
-      message.textContent = "Danke, wir haben deine Adresse vorgemerkt.";
-    }
-
-    form.reset();
-  });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setMenu(false);
@@ -501,6 +483,269 @@
   updateScrollEffects();
   updateOpeningStatus();
   startHeroTimer();
+})();
+
+/* ===== Recipes — from test34 ===== */
+(() => {
+  const recipes = [
+    {
+      id: "mapo",
+      name: "Mapo Tofu",
+      tags: ["spicy"],
+      time: "25 min",
+      serves: 2,
+      blurb: "Sichuan classic - silken tofu in a numbing chili-bean sauce.",
+      ingredients: [
+        { name: "Silken tofu, 400g", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Doubanjiang (broad-bean paste)", inStore: true, aisle: "Sauces" },
+        { name: "Sichuan peppercorns, 1 tsp", inStore: true, aisle: "Spices" },
+        { name: "Ground pork, 150g", inStore: false },
+        { name: "Scallions, 2", inStore: false },
+        { name: "Garlic + ginger", inStore: false },
+        { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
+        { name: "Cornstarch slurry", inStore: true, aisle: "Pantry" },
+      ],
+      steps: [
+        "Cube tofu, blanch 1 min in salted water, drain.",
+        "Toast Sichuan peppercorns, grind. Set aside.",
+        "Brown pork in oil. Add ginger, garlic, doubanjiang - cook until red oil separates.",
+        "Add stock, soy, tofu. Simmer gently 4 min - don't stir, swirl the pan.",
+        "Thicken with slurry. Off heat, fold in scallions, dust with peppercorn.",
+      ],
+    },
+    {
+      id: "dandan",
+      name: "Dan Dan Noodles",
+      tags: ["spicy", "quick"],
+      time: "15 min",
+      serves: 2,
+      blurb: "Chengdu street bowl - sesame, chili oil, vinegar, crisp pork.",
+      ingredients: [
+        { name: "Wheat noodles, 200g", inStore: true, aisle: "Noodles" },
+        { name: "Chinese sesame paste, 2 tbsp", inStore: true, aisle: "Sauces" },
+        { name: "Chili crisp / chili oil, 2 tbsp", inStore: true, aisle: "Sauces" },
+        { name: "Chinkiang black vinegar, 1 tbsp", inStore: true, aisle: "Sauces" },
+        { name: "Light soy sauce, 1 tbsp", inStore: true, aisle: "Sauces" },
+        { name: "Sui mi ya cai (preserved mustard)", inStore: true, aisle: "Pantry" },
+        { name: "Ground pork, 100g", inStore: false },
+        { name: "Scallions", inStore: false },
+      ],
+      steps: [
+        "Whisk sauce: sesame paste, chili oil, vinegar, soy, splash of noodle water.",
+        "Crisp pork in dry pan with ya cai until dark and fragrant.",
+        "Boil noodles to bite. Reserve a ladle of water.",
+        "Pile noodles over sauce. Crown with pork, scallions. Toss at the table.",
+      ],
+    },
+    {
+      id: "garlic-bok-choy",
+      name: "Garlic Bok Choy & Shiitake",
+      tags: ["vegetarian", "quick"],
+      time: "10 min",
+      serves: 2,
+      blurb: "Two ingredients, big flavour. Glossy, garlicky, ready in minutes.",
+      ingredients: [
+        { name: "Baby bok choy, 4 heads", inStore: false },
+        { name: "Dried shiitake, 6", inStore: true, aisle: "Pantry" },
+        { name: "Vegetarian oyster (mushroom) sauce", inStore: true, aisle: "Sauces" },
+        { name: "Shaoxing wine, 1 tbsp", inStore: true, aisle: "Pantry" },
+        { name: "Garlic, 4 cloves", inStore: false },
+        { name: "Cornstarch", inStore: true, aisle: "Pantry" },
+        { name: "Sesame oil", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Soak shiitake 20 min in warm water - keep the soaking liquid.",
+        "Halve bok choy, blanch 30s, shock in cold water.",
+        "Sizzle garlic in oil. Add shiitake, splash of wine.",
+        "Add bok choy, mushroom sauce, a few tbsp soaking liquid.",
+        "Tighten with cornstarch slurry. Finish with sesame oil.",
+      ],
+    },
+    {
+      id: "fried-rice",
+      name: "Egg & Scallion Fried Rice",
+      tags: ["vegetarian", "quick"],
+      time: "12 min",
+      serves: 2,
+      blurb: "Day-old jasmine rice, hot wok, three ingredients done right.",
+      ingredients: [
+        { name: "Day-old jasmine rice, 400g", inStore: true, aisle: "Pantry" },
+        { name: "Eggs, 3", inStore: false },
+        { name: "Scallions, 4", inStore: false },
+        { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
+        { name: "White pepper", inStore: true, aisle: "Spices" },
+        { name: "Sesame oil", inStore: true, aisle: "Sauces" },
+        { name: "Neutral oil", inStore: false },
+      ],
+      steps: [
+        "Beat eggs with a pinch of salt. Slice scallion whites + greens separately.",
+        "Smoking-hot wok, oil, scramble eggs to soft curds. Lift out.",
+        "More oil, scallion whites, then rice. Press, toss, repeat - break clumps.",
+        "Return eggs. Soy down the side of the wok. White pepper.",
+        "Off heat: scallion greens, sesame oil. Serve immediately.",
+      ],
+    },
+  ];
+
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  }[char]));
+
+  let activeFilter = "all";
+
+  function renderRecipes(filter = "all") {
+    const mount = document.querySelector("[data-recipes]");
+    if (!mount) return;
+
+    const visible = filter === "all" ? recipes : recipes.filter((recipe) => recipe.tags.includes(filter));
+    mount.innerHTML = visible.map((recipe) => {
+      const originalIndex = recipes.findIndex((item) => item.id === recipe.id) + 1;
+      const inStore = recipe.ingredients.filter((ingredient) => ingredient.inStore).length;
+      const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tag)}</span>`).join("");
+
+      return `
+        <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
+          <span class="rc__top">
+            <span class="rc__no">Recipe ${String(originalIndex).padStart(2, "0")}</span>
+            <span class="rc__time">${escapeHtml(recipe.time)}</span>
+          </span>
+          <span class="rc__body">
+            <span class="rc__name">${escapeHtml(recipe.name)}</span>
+            <span class="rc__blurb">${escapeHtml(recipe.blurb)}</span>
+          </span>
+          <span class="rc__meta">
+            <span class="rc__tags">${tags}</span>
+            <span class="rc__availability">${inStore}/${recipe.ingredients.length} in store</span>
+          </span>
+        </button>
+      `;
+    }).join("");
+  }
+
+  function openRecipe(id) {
+    const recipe = recipes.find((item) => item.id === id);
+    const view = document.querySelector("[data-recipe-view]");
+    if (!recipe || !view) return;
+
+    const inStore = recipe.ingredients.filter((ingredient) => ingredient.inStore).length;
+    const recipeIndex = recipes.findIndex((item) => item.id === id);
+    const nextRecipe = recipes[(recipeIndex + 1) % recipes.length];
+    const ingredients = recipe.ingredients.map((ingredient) => `
+      <li class="ing ${ingredient.inStore ? "ing--here" : ""}">
+        <span class="ing__mark" aria-hidden="true">${ingredient.inStore ? "●" : "○"}</span>
+        <span class="ing__name">${escapeHtml(ingredient.name)}</span>
+        ${ingredient.inStore ? `<span class="ing__aisle">${escapeHtml(ingredient.aisle)}</span>` : ""}
+      </li>
+    `).join("");
+    const steps = recipe.steps.map((step, index) => `
+      <li><span class="step__n">${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(step)}</span></li>
+    `).join("");
+    const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tag)}</span>`).join("");
+
+    view.innerHTML = `
+      <div class="recipe-view__bar">
+        <div class="recipe-view__actions">
+          <button class="recipe-view__back" type="button" data-close-recipe>
+            <span aria-hidden="true">←</span>
+            <span>Back to recipes</span>
+          </button>
+          <button class="recipe-view__next" type="button" data-next-recipe="${escapeHtml(nextRecipe.id)}">
+            <span>Next recipe</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <span class="recipe-view__small">${escapeHtml(recipe.time)} - serves ${recipe.serves} - ${inStore}/${recipe.ingredients.length} at Choo</span>
+      </div>
+      <article class="recipe-page" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
+        <div class="recipe-page__hero">
+          <div>
+            <span class="eyebrow">Recipe - Choo pantry</span>
+            <h3 class="recipe-page__title" id="recipe-title">${escapeHtml(recipe.name)}</h3>
+            <p class="recipe-page__blurb">${escapeHtml(recipe.blurb)}</p>
+          </div>
+          <div class="recipe-page__stats" aria-label="Recipe summary">
+            <div class="recipe-stat"><span>Time</span><strong>${escapeHtml(recipe.time)}</strong></div>
+            <div class="recipe-stat"><span>Serves</span><strong>${recipe.serves}</strong></div>
+            <div class="recipe-stat"><span>Tags</span><strong>${tags}</strong></div>
+          </div>
+        </div>
+        <div class="recipe-page__grid">
+          <div class="recipe-panel">
+            <div class="ings__head">
+              <h4>Ingredients</h4>
+              <span class="ings__legend"><span class="dot dot--accent"></span> ${inStore} of ${recipe.ingredients.length} at Choo</span>
+            </div>
+            <ul>${ingredients}</ul>
+          </div>
+          <div class="recipe-panel">
+            <h4>Method</h4>
+            <ol>${steps}</ol>
+          </div>
+        </div>
+      </article>
+    `;
+
+    view.setAttribute("aria-hidden", "false");
+    document.body.classList.add("recipe-open");
+    view.scrollTo({ top: 0, behavior: "auto" });
+    requestAnimationFrame(() => view.classList.add("recipe-view--open"));
+    view.querySelector("[data-close-recipe]")?.focus();
+  }
+
+  function closeRecipe() {
+    const view = document.querySelector("[data-recipe-view]");
+    if (!view || view.getAttribute("aria-hidden") === "true") return;
+
+    view.classList.remove("recipe-view--open");
+    view.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("recipe-open");
+
+    window.setTimeout(() => {
+      if (!view.classList.contains("recipe-view--open")) view.innerHTML = "";
+    }, 520);
+  }
+
+  function initRecipes() {
+    renderRecipes(activeFilter);
+
+    document.querySelector(".filters")?.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll("[data-filter]").forEach((item) => {
+        item.classList.toggle("filter--on", item === button);
+      });
+      renderRecipes(activeFilter);
+    });
+
+    document.querySelector("[data-recipes]")?.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-recipe]");
+      if (card) openRecipe(card.dataset.recipe);
+    });
+
+    const view = document.querySelector("[data-recipe-view]");
+    view?.addEventListener("click", (event) => {
+      if (event.target.closest("[data-close-recipe]")) closeRecipe();
+
+      const nextButton = event.target.closest("[data-next-recipe]");
+      if (nextButton) openRecipe(nextButton.dataset.nextRecipe);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeRecipe();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRecipes);
+  } else {
+    initRecipes();
+  }
 })();
 
 /* ===== Calendar (events) & Contact (visit) — ported from test34 ===== */
@@ -556,6 +801,7 @@
     timeZone: "Europe/Vienna",
     month: "numeric"
   }).format(new Date()));
+  const mobileMonthQuery = window.matchMedia("(max-width: 980px)");
 
   function eventsForMonth(month) {
     return CHINESE_EVENTS.filter((event) => event.month === month);
@@ -628,12 +874,15 @@
     if (!wheel) return;
     const activeIndex = MONTHS.findIndex((month) => month.n === activeEventMonth);
     const rowHeight = 38;
-    wheel.style.transform = `translateY(${-activeIndex * rowHeight}px)`;
+    wheel.style.transform = mobileMonthQuery.matches ? "none" : `translateY(${-activeIndex * rowHeight}px)`;
     wheel.querySelectorAll("[data-event-month]").forEach((button) => {
       const distance = Math.abs(Number(button.dataset.eventMonth) - activeEventMonth);
       button.classList.toggle("is-active", distance === 0);
       button.classList.toggle("is-near", distance === 1);
     });
+    if (mobileMonthQuery.matches) {
+      wheel.querySelector(".is-active")?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+    }
   }
 
   function setupEventTimeline() {
@@ -686,6 +935,7 @@
       requestRailUpdate();
     });
     const startDrag = (event) => {
+      if (mobileMonthQuery.matches) return;
       dragging = true;
       dragStartY = event.clientY;
       dragStartMonth = activeEventMonth;
@@ -733,6 +983,7 @@
     list.addEventListener("scroll", requestRailUpdate, { passive: true });
     window.addEventListener("scroll", requestRailUpdate, { passive: true });
     window.addEventListener("resize", requestRailUpdate);
+    mobileMonthQuery.addEventListener("change", updateEventWheel);
   }
 
   function updateVisitStatus() {
