@@ -304,37 +304,26 @@
     </section>
 
     <section class="events" id="events">
-      <p class="section-eyebrow">Kalender</p>
-      <h2 class="section-title">Was läuft</h2>
-      <p class="section-sub">Verkostungen, Workshops und Feste, direkt im Markt an der Mariahilfer Straße.</p>
-      <div class="event-grid">
-        <article class="event">
-          <div class="event-date">
-            <span class="event-day">14</span>
-            <span class="event-month">MAI</span>
+      <div class="events__layout">
+        <aside class="events__rail" aria-label="Chinese festival timeline">
+          <div class="events__rail-main">
+            <span class="eyebrow">04 - Chinese calendar</span>
+            <h2>Traditional festivals in 2026.</h2>
+            <p>The calendar rail stays fixed while the festival dates move through the page.</p>
           </div>
-          <h3>Mondfest-Verkostung</h3>
-          <p>Mooncakes, Tee und Geschichten zum traditionellen Fest. Eintritt frei, Platzreservierung empfohlen.</p>
-          <a class="event-link" href="#visit">Mehr erfahren →</a>
-        </article>
-        <article class="event">
-          <div class="event-date">
-            <span class="event-day">22</span>
-            <span class="event-month">MAI</span>
+          <div>
+            <span class="events__year">2026</span>
+            <div class="events__current" aria-live="polite">
+              <span class="events__current-date" data-event-current-date>FEB 17</span>
+              <span class="events__current-title" data-event-current-title>Spring Festival</span>
+            </div>
+            <div class="events__rail-track">
+              <i class="events__wheel-window" aria-hidden="true"></i>
+              <div class="events__wheel" data-event-wheel></div>
+            </div>
           </div>
-          <h3>Tee-Workshop</h3>
-          <p>Eine geführte Verkostung: Grüntee, Oolong, Pu-erh. 18:00, 90 Min, mit Anmeldung.</p>
-          <a class="event-link" href="#visit">Mehr erfahren →</a>
-        </article>
-        <article class="event">
-          <div class="event-date">
-            <span class="event-day">05</span>
-            <span class="event-month">JUN</span>
-          </div>
-          <h3>Drachenbootfest</h3>
-          <p>Zongzi-Verkostung und kleine Marktführung. Komm vorbei oder frag direkt im Markt nach.</p>
-          <a class="event-link" href="#visit">Mehr erfahren →</a>
-        </article>
+        </aside>
+        <ul class="events__list"></ul>
       </div>
     </section>
 
@@ -406,23 +395,28 @@
       <img src="images/gallery_4.png" alt="Regal mit Asia-Produkten" width="1360" height="1020" loading="lazy" decoding="async" />
     </section>
 
-    <section class="info-grid" id="visit">
-      <div class="info-cell">
-        <p class="section-eyebrow">Besuchen</p>
-        <h3>Mariahilfer Straße 48<br />1060 Wien</h3>
-        <p class="dim">U3 Neubaugasse · 2 Min Fußweg</p>
+    <section class="visit" id="visit">
+      <div class="visit__col">
+        <span class="eyebrow">05 - Find us</span>
+        <h2>Mariahilfer Straße 48<br /><em>1060 Wien.</em></h2>
+        <p>Two minutes from Museumsquartier U-Bahn. Look for the lanterns in the window.</p>
+        <div class="hours">
+          <div class="hours__row"><span>Mon - Fri</span><span>09:00 - 20:00</span></div>
+          <div class="hours__row"><span>Saturday</span><span>09:00 - 20:00</span></div>
+          <div class="hours__row"><span>Sunday</span><span>closed</span></div>
+        </div>
+        <div class="status" data-status>
+          <span class="status__dot"></span>
+          <span data-status-text>Checking hours</span>
+        </div>
       </div>
-      <div class="info-cell">
-        <p class="section-eyebrow">Öffnungszeiten</p>
-        <div class="hours-row"><span class="k">Mo – Fr</span><span>09:00 – 20:00</span></div>
-        <div class="hours-row"><span class="k">Samstag</span><span>09:00 – 18:00</span></div>
-        <div class="hours-row"><span class="k">Sonntag</span><span class="dim">geschlossen</span></div>
-      </div>
-      <div class="info-cell">
-        <p class="section-eyebrow">Kontakt</p>
-        <p><a href="tel:+4312345678">+43 1 234 56 78</a></p>
-        <p><a href="mailto:hallo@choo.at">hallo@choo.at</a></p>
-        <p class="dim">@choo.market</p>
+      <div class="visit__map" aria-label="Google Maps location">
+        <iframe
+          title="Google Maps - Choo, Mariahilfer Straße 48, 1060 Wien"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Mariahilfer%20Stra%C3%9Fe%2048%2C%201060%20Wien&output=embed">
+        </iframe>
       </div>
     </section>
 

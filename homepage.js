@@ -519,3 +519,265 @@
   updateOpeningStatus();
   startHeroTimer();
 })();
+
+/* ===== Calendar (events) & Contact (visit) — ported from test34 ===== */
+(function () {
+  const MONTHS = [
+    { n: 1, short: "Jan", label: "January" },
+    { n: 2, short: "Feb", label: "February" },
+    { n: 3, short: "Mar", label: "March" },
+    { n: 4, short: "Apr", label: "April" },
+    { n: 5, short: "May", label: "May" },
+    { n: 6, short: "Jun", label: "June" },
+    { n: 7, short: "Jul", label: "July" },
+    { n: 8, short: "Aug", label: "August" },
+    { n: 9, short: "Sep", label: "September" },
+    { n: 10, short: "Oct", label: "October" },
+    { n: 11, short: "Nov", label: "November" },
+    { n: 12, short: "Dec", label: "December" }
+  ];
+
+  const CHINESE_EVENTS = [
+    { month: 1, date: "JAN 01", title: "New Year's Day", cn: "元旦 - Yuandan", symbol: "元", tag: "Public holiday", summary: "China's Gregorian New Year public holiday and a short winter break.", meaning: "A modern national holiday for rest, travel and the start of the calendar year.", shelf: "Tea, snacks, gift boxes and quick pantry restocks." },
+    { month: 1, date: "JAN 26", title: "Laba Festival", cn: "腊八节 - Laba", symbol: "腊", tag: "Laba porridge", summary: "The eighth day of the twelfth lunar month, known for laba congee and winter blessings.", meaning: "A pre-New-Year marker tied to harvest, gratitude and preparation for Spring Festival.", shelf: "Glutinous rice, red beans, peanuts, lotus seeds, jujubes and grains." },
+    { month: 2, date: "FEB 16", title: "Spring Festival Eve", cn: "除夕 - Chuxi", symbol: "夕", tag: "Reunion dinner", summary: "The reunion dinner night before Lunar New Year begins.", meaning: "Family gathers for the year's most important meal before welcoming the new year.", shelf: "Hot pot bases, dumpling wrappers, noodles, sauces and festive sweets." },
+    { month: 2, date: "FEB 17", title: "Spring Festival", cn: "春节 - Year of the Fire Horse", symbol: "春", tag: "Lunar New Year", summary: "Family reunion dinners, red envelopes, door couplets and lion dances mark the first day of the lunar year.", meaning: "Fresh start, family reunion and good fortune for the year ahead.", shelf: "Long-life noodles, red envelopes, sweets, tea and hot pot pantry." },
+    { month: 3, date: "MAR 03", title: "Lantern Festival", cn: "元宵节 - Yuanxiao", symbol: "宵", tag: "Lantern night", summary: "The New Year period closes with lanterns, riddles and tangyuan.", meaning: "The fifteenth lunar day closes New Year celebrations with light and reunion.", shelf: "Tangyuan, black sesame, peanut fillings, ginger syrup and paper lanterns." },
+    { month: 3, date: "MAR 20", title: "Zhonghe Festival", cn: "中和节 - Blue Dragon", symbol: "龙", tag: "Blue Dragon", summary: "A second-lunar-month observance linked with spring, land and agricultural wishes.", meaning: "Traditionally connected to waking the dragon and asking for rain and good harvests.", shelf: "Rice cakes, spring snacks, tea and pantry gifts." },
+    { month: 4, date: "APR 05", title: "Qingming Festival", cn: "清明节 - Tomb Sweeping Day", symbol: "清", tag: "Ancestors", summary: "A spring day for ancestor remembrance, cemetery visits and walking outside.", meaning: "Remembering ancestors, tending graves and marking early spring.", shelf: "Green tea, rice flour, sesame, spring snacks and simple family pantry staples." },
+    { month: 5, date: "MAY 01", title: "Labour Day", cn: "劳动节 - Laodong Jie", symbol: "劳", tag: "Public holiday", summary: "A national public holiday period and one of China's major travel breaks.", meaning: "A modern public holiday for workers, rest and domestic travel.", shelf: "Instant noodles, bottled teas, travel snacks and picnic pantry." },
+    { month: 5, date: "MAY 04", title: "Youth Day", cn: "青年节 - Qingnian Jie", symbol: "青", tag: "Youth", summary: "A modern observance linked to youth, education and the May Fourth Movement.", meaning: "Recognizes young people and a major moment in modern Chinese cultural history.", shelf: "Milk tea kits, snacks, candies and easy weeknight noodles." },
+    { month: 6, date: "JUN 01", title: "Children's Day", cn: "儿童节 - Ertong Jie", symbol: "童", tag: "Children", summary: "A children's observance widely marked with school and family activities.", meaning: "A day centered on children, play, gifts and simple celebrations.", shelf: "Mochi, jelly cups, Pocky, shrimp chips and fruit drinks." },
+    { month: 6, date: "JUN 19", title: "Dragon Boat Festival", cn: "端午节 - Duanwu", symbol: "端", tag: "Zongzi season", summary: "Dragon boat racing, zongzi and customs connected with Qu Yuan.", meaning: "Commemoration of Qu Yuan, summer protection customs and racing traditions.", shelf: "Zongzi, sticky rice, bamboo leaves, red bean, mung bean and salted egg yolk." },
+    { month: 7, date: "JUL 01", title: "CPC Founding Day", cn: "建党节 - Jiandang Jie", symbol: "建", tag: "Observance", summary: "A modern political observance in China's official calendar.", meaning: "An official observance rather than a traditional family festival.", shelf: "Gift tea, boxed snacks and pantry staples for gatherings." },
+    { month: 8, date: "AUG 13", title: "Ghost Month Begins", cn: "鬼月 - Gui Yue", symbol: "鬼", tag: "Ghost Month", summary: "The seventh lunar month begins, associated with ancestor and spirit customs.", meaning: "A period of offerings, remembrance and careful ritual behavior in folk tradition.", shelf: "Incense-adjacent paper goods where available, tea, fruit snacks and rice." },
+    { month: 8, date: "AUG 19", title: "Qixi Festival", cn: "七夕节 - Double Seventh", symbol: "七", tag: "Qixi", summary: "Often called Chinese Valentine's Day, linked to the Cowherd and Weaver Girl story.", meaning: "A romantic festival about reunion, longing and skillful hands.", shelf: "Gift sweets, tea, mochi, candies and elegant snack boxes." },
+    { month: 8, date: "AUG 27", title: "Ghost Festival", cn: "中元节 - Zhongyuan", symbol: "中", tag: "Spirit Festival", summary: "The fifteenth day of Ghost Month, associated with offerings and remembrance.", meaning: "A folk observance for caring for ancestors and wandering spirits.", shelf: "Rice, tea, fruit, sweets and simple offering-style pantry items." },
+    { month: 9, date: "SEP 10", title: "Teachers' Day", cn: "教师节 - Jiaoshi Jie", symbol: "师", tag: "Teachers", summary: "A modern observance recognizing teachers and education.", meaning: "A day for respect, gratitude and small gifts for teachers.", shelf: "Gift teas, biscuits, candies and boxed snacks." },
+    { month: 9, date: "SEP 25", title: "Mid-Autumn Festival", cn: "中秋节 - Moon Festival", symbol: "月", tag: "Mooncakes", summary: "Mooncakes, lanterns and reunion meals under the full moon.", meaning: "Full moon, harvest, family reunion and wishes carried by lantern light.", shelf: "Mooncakes, lotus paste, red bean paste, jasmine tea, oolong and lanterns." },
+    { month: 10, date: "OCT 01", title: "National Day", cn: "国庆节 - Guoqing Jie", symbol: "国", tag: "Golden Week", summary: "China's National Day starts the Golden Week public holiday.", meaning: "A modern national holiday and one of the year's biggest travel periods.", shelf: "Travel snacks, bottled teas, instant noodles and family-size pantry items." },
+    { month: 10, date: "OCT 18", title: "Double Ninth Festival", cn: "重阳节 - Chongyang", symbol: "九", tag: "Longevity", summary: "A day associated with elders, mountain climbing and chrysanthemums.", meaning: "Respect for elders, longevity, autumn climbs and chrysanthemum traditions.", shelf: "Chrysanthemum tea, dried fruit, rice cakes, herbal drinks and gift snacks." },
+    { month: 11, date: "NOV 08", title: "Journalists' Day", cn: "记者节 - Jizhe Jie", symbol: "记", tag: "Observance", summary: "A modern professional observance in China's public calendar.", meaning: "Recognizes journalism and media workers.", shelf: "Desk snacks, tea, coffee sachets and quick noodle bowls." },
+    { month: 12, date: "DEC 22", title: "Winter Solstice", cn: "冬至 - Dongzhi", symbol: "冬", tag: "Tangyuan", summary: "The winter solstice is associated with reunion foods such as tangyuan.", meaning: "The longest night turns toward longer days; round foods symbolize reunion.", shelf: "Tangyuan, glutinous rice flour, ginger syrup, sesame paste and warming teas." }
+  ];
+
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[char]));
+
+  let activeEventMonth = Number(new Intl.DateTimeFormat("en-US", {
+    timeZone: "Europe/Vienna",
+    month: "numeric"
+  }).format(new Date()));
+
+  function eventsForMonth(month) {
+    return CHINESE_EVENTS.filter((event) => event.month === month);
+  }
+
+  function renderEventFilters() {
+    const wheel = document.querySelector("[data-event-wheel]");
+    if (!wheel) return;
+    wheel.innerHTML = MONTHS.map((month) => {
+      const count = eventsForMonth(month.n).length;
+      return `
+        <button type="button" data-event-month="${month.n}">
+          <b>${month.short}</b>
+          <small>${count} ${count === 1 ? "event" : "events"}</small>
+        </button>
+      `;
+    }).join("");
+    updateEventWheel();
+  }
+
+  function eventCard(event) {
+    return `
+      <li class="ev" data-event-month="${event.month}">
+        <span class="ev__symbol" aria-hidden="true">${escapeHtml(event.symbol)}</span>
+        <div class="ev__date"><span class="ev__d">${escapeHtml(event.date)}</span><span class="ev__y">2026</span></div>
+        <button class="ev__toggle" type="button" aria-expanded="false">
+          <span class="ev__body">
+            <span class="ev__title">${escapeHtml(event.title)}</span>
+            <span class="ev__cn">${escapeHtml(event.cn)}</span>
+            <span class="ev__summary">${escapeHtml(event.summary)}</span>
+          </span>
+          <span class="ev__rsvp">${escapeHtml(event.tag)} <span class="ev__chev" aria-hidden="true">+</span></span>
+        </button>
+        <div class="ev__details" aria-hidden="true">
+          <div class="ev__details-inner">
+            <div class="ev__detail"><strong>Meaning</strong><span>${escapeHtml(event.meaning)}</span></div>
+            <div class="ev__detail"><strong>Choo shelf</strong><span>${escapeHtml(event.shelf)}</span></div>
+          </div>
+        </div>
+      </li>
+    `;
+  }
+
+  function renderEventsForMonth(month, resetScroll = false) {
+    const list = document.querySelector(".events__list");
+    if (!list) return;
+    const events = eventsForMonth(month);
+    list.innerHTML = events.length
+      ? events.map(eventCard).join("")
+      : `<li class="events__empty">No Chinese calendar entries for ${escapeHtml(MONTHS.find((item) => item.n === month)?.label || "this month")}.</li>`;
+    if (resetScroll) {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      list.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    }
+    const first = events[0];
+    const currentDate = document.querySelector("[data-event-current-date]");
+    const currentTitle = document.querySelector("[data-event-current-title]");
+    if (currentDate) currentDate.textContent = first?.date || MONTHS.find((item) => item.n === month)?.short || "";
+    if (currentTitle) currentTitle.textContent = first?.title || "No events";
+  }
+
+  function setActiveEventMonth(month) {
+    activeEventMonth = month;
+    updateEventWheel();
+    renderEventsForMonth(month, true);
+  }
+
+  function updateEventWheel() {
+    const wheel = document.querySelector("[data-event-wheel]");
+    if (!wheel) return;
+    const activeIndex = MONTHS.findIndex((month) => month.n === activeEventMonth);
+    const rowHeight = 38;
+    wheel.style.transform = `translateY(${-activeIndex * rowHeight}px)`;
+    wheel.querySelectorAll("[data-event-month]").forEach((button) => {
+      const distance = Math.abs(Number(button.dataset.eventMonth) - activeEventMonth);
+      button.classList.toggle("is-active", distance === 0);
+      button.classList.toggle("is-near", distance === 1);
+    });
+  }
+
+  function setupEventTimeline() {
+    const list = document.querySelector(".events__list");
+    const wheel = document.querySelector("[data-event-wheel]");
+    if (!list || !wheel) return;
+    const picker = wheel.parentElement;
+    renderEventFilters();
+    renderEventsForMonth(activeEventMonth);
+    const section = document.querySelector(".events");
+    let ticking = false;
+    let dragStartY = 0;
+    let dragStartMonth = activeEventMonth;
+    let dragging = false;
+    const rowHeight = 38;
+
+    const updateRail = () => {
+      ticking = false;
+      const cards = [...list.querySelectorAll(".ev")];
+      const currentDate = document.querySelector("[data-event-current-date]");
+      const currentTitle = document.querySelector("[data-event-current-title]");
+      if (!cards.length || !section) return;
+      const targetY = window.innerHeight * 0.48;
+      let activeIndex = 0;
+      let bestDistance = Infinity;
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(cardCenter - targetY);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          activeIndex = index;
+        }
+      });
+      const activeCard = cards[activeIndex];
+      if (currentDate) currentDate.textContent = activeCard.querySelector(".ev__d")?.textContent || "";
+      if (currentTitle) currentTitle.textContent = activeCard.querySelector(".ev__title")?.textContent || "";
+    };
+
+    const requestRailUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateRail);
+    };
+
+    wheel.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-event-month]");
+      if (!button) return;
+      setActiveEventMonth(Number(button.dataset.eventMonth));
+      requestRailUpdate();
+    });
+    const startDrag = (event) => {
+      dragging = true;
+      dragStartY = event.clientY;
+      dragStartMonth = activeEventMonth;
+      picker.classList.add("is-dragging");
+      picker.setPointerCapture?.(event.pointerId);
+    };
+    const moveDrag = (event) => {
+      if (!dragging) return;
+      const deltaRows = Math.round((dragStartY - event.clientY) / rowHeight);
+      const next = Math.min(12, Math.max(1, dragStartMonth + deltaRows));
+      if (next !== activeEventMonth) {
+        setActiveEventMonth(next);
+        requestRailUpdate();
+      }
+    };
+    const endDrag = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      picker.classList.remove("is-dragging");
+      picker.releasePointerCapture?.(event.pointerId);
+    };
+    picker.addEventListener("pointerdown", startDrag);
+    picker.addEventListener("pointermove", moveDrag);
+    picker.addEventListener("pointerup", endDrag);
+    picker.addEventListener("pointercancel", endDrag);
+
+    list.addEventListener("click", (event) => {
+      const button = event.target.closest(".ev__toggle");
+      if (!button) return;
+      const item = button.closest(".ev");
+      const shouldOpen = !item.classList.contains("ev--open");
+      list.querySelectorAll(".ev--open").forEach((openItem) => {
+        openItem.classList.remove("ev--open");
+        openItem.querySelector(".ev__toggle")?.setAttribute("aria-expanded", "false");
+        openItem.querySelector(".ev__details")?.setAttribute("aria-hidden", "true");
+      });
+      if (shouldOpen) {
+        item.classList.add("ev--open");
+        button.setAttribute("aria-expanded", "true");
+        item.querySelector(".ev__details")?.setAttribute("aria-hidden", "false");
+      }
+      requestRailUpdate();
+    });
+    updateRail();
+    list.addEventListener("scroll", requestRailUpdate, { passive: true });
+    window.addEventListener("scroll", requestRailUpdate, { passive: true });
+    window.addEventListener("resize", requestRailUpdate);
+  }
+
+  function updateVisitStatus() {
+    const status = document.querySelector("[data-status]");
+    const text = document.querySelector("[data-status-text]");
+    if (!status || !text) return;
+    const parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Europe/Vienna",
+      weekday: "short",
+      hour: "numeric",
+      hourCycle: "h23"
+    }).formatToParts(new Date());
+    const weekday = parts.find((part) => part.type === "weekday")?.value;
+    const hour = Number(parts.find((part) => part.type === "hour")?.value);
+    const isOpen = weekday !== "Sun" && hour >= 9 && hour < 20;
+    status.classList.toggle("status--open", isOpen);
+    status.classList.toggle("status--closed", !isOpen);
+    text.textContent = isOpen ? "Open now" : "Closed now";
+  }
+
+  function init() {
+    setupEventTimeline();
+    updateVisitStatus();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
