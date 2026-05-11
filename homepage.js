@@ -801,10 +801,52 @@
     "'": "&#39;"
   }[char]));
 
-  let activeEventMonth = Number(new Intl.DateTimeFormat("en-US", {
+  const EVENT_YEAR = 2026;
+  const DAY_MS = 24 * 60 * 60 * 1000;
+
+  function viennaTodayTime() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Europe/Vienna",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).formatToParts(new Date());
+    const year = Number(parts.find((part) => part.type === "year")?.value);
+    const month = Number(parts.find((part) => part.type === "month")?.value);
+    const day = Number(parts.find((part) => part.type === "day")?.value);
+    return Date.UTC(year, month - 1, day);
+  }
+
+  function eventTime(event) {
+    const day = Number(event.date.match(/\d{2}$/)?.[0]);
+    return Date.UTC(EVENT_YEAR, event.month - 1, day);
+  }
+
+  function daysUntil(event) {
+    return Math.round((eventTime(event) - viennaTodayTime()) / DAY_MS);
+  }
+
+  function dayDistanceLabel(event) {
+    const days = daysUntil(event);
+    if (days === 0) return "Today";
+    if (days === 1) return "Tomorrow";
+    if (days > 1) return `In ${days} days`;
+    if (days === -1) return "Yesterday";
+    return `${Math.abs(days)} days ago`;
+  }
+
+  function upcomingEvents(minCount = 3) {
+    const today = viennaTodayTime();
+    const upcoming = CHINESE_EVENTS.filter((event) => eventTime(event) >= today);
+    const source = upcoming.length ? upcoming : CHINESE_EVENTS;
+    return source.slice(0, minCount);
+  }
+
+  let activeEventMonth = upcomingEvents(1)[0]?.month || Number(new Intl.DateTimeFormat("en-US", {
     timeZone: "Europe/Vienna",
     month: "numeric"
   }).format(new Date()));
+  let activeEventMode = "upcoming";
   const mobileMonthQuery = window.matchMedia("(max-width: 980px)");
 
   function eventsForMonth(month) {
@@ -830,7 +872,7 @@
     return `
       <li class="ev" data-event-month="${event.month}">
         <span class="ev__symbol" aria-hidden="true">${escapeHtml(event.symbol)}</span>
-        <div class="ev__date"><span class="ev__d">${escapeHtml(event.date)}</span><span class="ev__y">2026</span></div>
+        <div class="ev__date"><span class="ev__d">${escapeHtml(event.date)}</span><span class="ev__y">${EVENT_YEAR}</span><span class="ev__distance">${escapeHtml(dayDistanceLabel(event))}</span></div>
         <button class="ev__toggle" type="button" aria-expanded="false">
           <span class="ev__body">
             <span class="ev__title">${escapeHtml(event.title)}</span>
@@ -849,13 +891,13 @@
     `;
   }
 
-  function renderEventsForMonth(month, resetScroll = false) {
+  function renderEventList(events, emptyMessage, resetScroll = false) {
     const list = document.querySelector(".events__list");
     if (!list) return;
-    const events = eventsForMonth(month);
+    list.classList.toggle("events__list--upcoming", activeEventMode === "upcoming");
     list.innerHTML = events.length
       ? events.map(eventCard).join("")
-      : `<li class="events__empty">No Chinese calendar entries for ${escapeHtml(MONTHS.find((item) => item.n === month)?.label || "this month")}.</li>`;
+      : `<li class="events__empty">${escapeHtml(emptyMessage)}</li>`;
     if (resetScroll) {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       list.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
@@ -863,8 +905,19 @@
     const first = events[0];
     const currentDate = document.querySelector("[data-event-current-date]");
     const currentTitle = document.querySelector("[data-event-current-title]");
-    if (currentDate) currentDate.textContent = first?.date || MONTHS.find((item) => item.n === month)?.short || "";
+    if (currentDate) currentDate.textContent = first?.date || "";
     if (currentTitle) currentTitle.textContent = first?.title || "No events";
+  }
+
+  function renderEventsForMonth(month, resetScroll = false) {
+    activeEventMode = "month";
+    const monthName = MONTHS.find((item) => item.n === month)?.label || "this month";
+    renderEventList(eventsForMonth(month), `No Chinese calendar entries for ${monthName}.`, resetScroll);
+  }
+
+  function renderUpcomingEvents(resetScroll = false) {
+    activeEventMode = "upcoming";
+    renderEventList(upcomingEvents(3), "No upcoming Chinese calendar entries.", resetScroll);
   }
 
   function setActiveEventMonth(month) {
@@ -895,7 +948,7 @@
     if (!list || !wheel) return;
     const picker = wheel.parentElement;
     renderEventFilters();
-    renderEventsForMonth(activeEventMonth);
+    renderUpcomingEvents();
     const section = document.querySelector(".events");
     let ticking = false;
     let dragStartY = 0;
@@ -924,6 +977,13 @@
       const activeCard = cards[activeIndex];
       if (currentDate) currentDate.textContent = activeCard.querySelector(".ev__d")?.textContent || "";
       if (currentTitle) currentTitle.textContent = activeCard.querySelector(".ev__title")?.textContent || "";
+      if (activeEventMode === "upcoming") {
+        const cardMonth = Number(activeCard.dataset.eventMonth);
+        if (cardMonth && cardMonth !== activeEventMonth) {
+          activeEventMonth = cardMonth;
+          updateEventWheel();
+        }
+      }
     };
 
     const requestRailUpdate = () => {

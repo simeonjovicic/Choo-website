@@ -2750,6 +2750,20 @@ body.country-modal-open {
 .ev__date { display: flex; flex-direction: column; gap: 4px; padding: 24px 0 24px 24px; }
 .ev__d { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; }
 .ev__y { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.ev__distance {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  padding: 4px 7px;
+  border: 1px solid rgba(183, 72, 56, 0.2);
+  border-radius: 999px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 .ev__toggle {
   position: relative;
   z-index: 1;
@@ -3069,6 +3083,10 @@ body.country-modal-open {
     overflow: visible;
   }
 
+  .events__list--upcoming {
+    gap: 10px;
+  }
+
   .ev {
     grid-template-columns: 1fr;
     gap: 0;
@@ -3093,8 +3111,17 @@ body.country-modal-open {
   .ev__date {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: 12px;
     padding: 18px 18px 0;
+  }
+
+  .ev__y {
+    display: none;
+  }
+
+  .ev__distance {
+    margin-left: auto;
   }
 
   .ev__toggle {
@@ -3140,5 +3167,30 @@ body.country-modal-open {
   .ev__details-inner {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .events__list--upcoming .ev__symbol {
+    font-size: clamp(3.8rem, 17vw, 4.7rem);
+  }
+
+  .events__list--upcoming .ev__date {
+    padding-top: 14px;
+  }
+
+  .events__list--upcoming .ev__toggle {
+    gap: 10px;
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
+
+  .events__list--upcoming .ev__cn {
+    margin-bottom: 8px;
+  }
+
+  .events__list--upcoming .ev__summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }
