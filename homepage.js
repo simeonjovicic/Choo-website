@@ -764,3 +764,113 @@
     init();
   }
 })();
+
+/* ===== Country category buttons ===== */
+(function () {
+  const COUNTRIES = {
+    china: {
+      glyph: "中",
+      title: "China",
+      eyebrow: "01 — Hauptregal",
+      line: "Vom langsamen Schmoren in Sichuan bis zum klaren Reis aus dem Süden — das Herz unseres Marktes.",
+      image: "images/gallery.png",
+      alt: "Stillleben mit chinesischen Zutaten"
+    },
+    japan: {
+      glyph: "日",
+      title: "Japan",
+      eyebrow: "02 — Ramen · Matcha",
+      line: "Stille Präzision: Sojasaucen mit langer Reife, frische Udon und ein leuchtend grüner Matcha aus Uji.",
+      image: "images/gallery_2.png",
+      alt: "Japanische Pantry-Auswahl"
+    },
+    korea: {
+      glyph: "韩",
+      title: "Korea",
+      eyebrow: "03 — Gochujang · Kimchi",
+      line: "Fermentation als Handwerk — tiefe Schärfe, milde Süße und Kimchi aus dem Kühlregal.",
+      image: "images/gallery_3.png",
+      alt: "Koreanische Pasten und Kimchi"
+    },
+    vietnam: {
+      glyph: "越",
+      title: "Vietnam",
+      eyebrow: "04 — Pho · Reispapier",
+      line: "Klare Brühen, frische Kräuter und feines Reispapier — die leichte Seite der asiatischen Küche.",
+      image: "images/gallery_4.png",
+      alt: "Vietnamesische Zutaten"
+    },
+    thailand: {
+      glyph: "泰",
+      title: "Thailand",
+      eyebrow: "05 — Curry · Kokos",
+      line: "Currypasten, Kokosmilch und Limettenblätter — ein Wok-Gericht entfernt von einem ganzen Land.",
+      image: "images/gallery_5.png",
+      alt: "Thailändische Zutaten"
+    }
+  };
+
+  const buttons = document.querySelectorAll(".cat[data-country]");
+  const panel = document.getElementById("country-panel");
+  if (!buttons.length || !panel) return;
+
+  const glyphEl = panel.querySelector("[data-country-glyph]");
+  const eyebrowEl = panel.querySelector("[data-country-eyebrow]");
+  const titleEl = panel.querySelector("[data-country-title]");
+  const lineEl = panel.querySelector("[data-country-line]");
+  const imageEl = panel.querySelector("[data-country-image]");
+  const closeTargets = panel.querySelectorAll("[data-country-close]");
+
+  let active = null;
+
+  function render(key) {
+    const data = COUNTRIES[key];
+    if (!data) return;
+    glyphEl.textContent = data.glyph;
+    eyebrowEl.textContent = data.eyebrow;
+    titleEl.textContent = data.title;
+    lineEl.textContent = data.line;
+    if (imageEl) {
+      imageEl.style.opacity = "0";
+      const swap = () => {
+        imageEl.src = data.image;
+        imageEl.alt = data.alt || data.title;
+        imageEl.style.opacity = "1";
+      };
+      if (imageEl.src) {
+        setTimeout(swap, 120);
+      } else {
+        swap();
+      }
+    }
+  }
+
+  function open(key, sourceBtn) {
+    active = key;
+    render(key);
+    panel.hidden = false;
+    document.body.classList.add("country-modal-open");
+    buttons.forEach((btn) => {
+      btn.setAttribute("aria-selected", btn === sourceBtn ? "true" : "false");
+    });
+  }
+
+  function close() {
+    active = null;
+    panel.hidden = true;
+    document.body.classList.remove("country-modal-open");
+    buttons.forEach((btn) => btn.setAttribute("aria-selected", "false"));
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      open(btn.dataset.country, btn);
+    });
+  });
+
+  closeTargets.forEach((el) => el.addEventListener("click", close));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && active) close();
+  });
+})();
