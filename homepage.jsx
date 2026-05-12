@@ -11,12 +11,12 @@ const Logo = ({ size = 28 }) => (
 const TopBar = () => (
   <div className="top-bar">
     <div className="left">
-      <span><span className="dot"></span>Jetzt geöffnet · bis 20:00</span>
-      <span>Address: Linke Wienzeile 54, 1060 Wien</span>
+      <span><span className="dot"></span>Open now · until 20:00</span>
+      <span>Address: Linke Wienzeile 54, 1060 Vienna</span>
     </div>
     <div className="right">
       <span>Phone: 01 9605678</span>
-      <span>DE / EN</span>
+      <button className="language-toggle" type="button">EN</button>
     </div>
   </div>
 );
@@ -26,8 +26,8 @@ const Nav = () => (
     <div className="nav-links">
       <a className="active" href="#">Home</a>
       <a href="#">Shop</a>
-      <a href="#">Sortiment <span className="badge">Neu</span></a>
-      <a href="#">Angebote</a>
+      <a href="#">Selection <span className="badge">New</span></a>
+      <a href="#">Offers</a>
       <a href="#">Events</a>
     </div>
     <div className="brand"><Logo size={30} /></div>
@@ -41,12 +41,12 @@ const Nav = () => (
 
 const Hero = () => (
   <section className="hero">
-    <img src={window.__resources.interior} alt="Choo Markt" />
+    <img src={window.__resources.interior} alt="Choo market" />
     <div className="hero-overlay">
       <div className="hero-content">
-        <div className="hero-eyebrow">Asia-Supermarkt · Wien 1060</div>
-        <h1>Linke Wienzeile&nbsp;54.<br/>Seit 2009.</h1>
-        <a className="btn">Sortiment ansehen</a>
+        <div className="hero-eyebrow">Asian supermarket · Vienna 1060</div>
+        <h1>Linke Wienzeile&nbsp;54.<br/>Since 2009.</h1>
+        <a className="btn">View selection</a>
       </div>
     </div>
     <div className="hero-dots">
@@ -59,15 +59,15 @@ const Hero = () => (
 
 const Categories = () => {
   const cats = [
-    { c: "中", name: "China", sub: "Hauptregal" },
+    { c: "中", name: "China", sub: "Main aisle" },
     { c: "日", name: "Japan", sub: "Ramen · Matcha" },
     { c: "韩", name: "Korea", sub: "Gochujang · Kimchi" },
-    { c: "越", name: "Vietnam", sub: "Pho · Reispapier" },
-    { c: "泰", name: "Thailand", sub: "Curry · Kokos" },
+    { c: "越", name: "Vietnam", sub: "Pho · Rice paper" },
+    { c: "泰", name: "Thailand", sub: "Curry · Coconut" },
   ];
   return (
-    <section className="cat-row" id="laender" aria-label="Länder und Sortiment">
-      <div className="cat-row-inner" role="tablist" aria-label="Herkunftsländer">
+    <section className="cat-row" id="laender" aria-label="Countries and selection">
+      <div className="cat-row-inner" role="tablist" aria-label="Countries of origin">
         {cats.map((x, i) => (
           <button className="cat" type="button" role="tab" aria-selected="false" key={i}>
             <span className="cat-glyph cn" aria-hidden="true">{x.c}</span>
@@ -83,12 +83,12 @@ const Categories = () => {
 const FeatureTiles = () => (
   <section className="feature-row">
     <div className="feature-tile">
-      <img src={window.__resources.shelf} alt="Saucen" />
-      <div className="feature-tile-label">Saucen & Pasten</div>
+      <img src={window.__resources.shelf} alt="Sauces" />
+      <div className="feature-tile-label">Sauces & Pastes</div>
     </div>
     <div className="feature-tile">
-      <img src={window.__resources.interior} alt="Tee & Getränke" />
-      <div className="feature-tile-label">Tee & Getränke</div>
+      <img src={window.__resources.interior} alt="Tea and drinks" />
+      <div className="feature-tile-label">Tea & Drinks</div>
     </div>
   </section>
 );
@@ -96,18 +96,18 @@ const FeatureTiles = () => (
 const Story = () => (
   <section className="story">
     <div className="story-text">
-      <div className="section-eyebrow">Unser Markt</div>
-      <h2>Asien, sorgfältig sortiert.</h2>
+      <div className="section-eyebrow">Our market</div>
+      <h2>Asia, carefully sorted.</h2>
       <p>
-        Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien — von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.
+        More than 3,000 products from China, Japan, Korea, Vietnam and Southeast Asia, from soy sauce to rice cookers. Clear, clean and easy to shop.
       </p>
       <p>
-        Wir kuratieren das Sortiment selbst und beraten dich gerne — egal ob es um die richtige Sojasauce, eine bestimmte Paste oder ein Geschenk geht.
+        We curate the selection ourselves and are happy to help, whether you need the right soy sauce, a specific paste or a gift.
       </p>
-      <a className="btn btn-dark" style={{ marginTop: 16 }}>Mehr erfahren</a>
+      <a className="btn btn-dark" style={{ marginTop: 16 }}>Learn more</a>
     </div>
     <div className="story-img">
-      <img src="store-foto-animated.png" alt="Innenansicht des Choo Foodstore in Wien" />
+      <img src="store-foto-animated.png" alt="Inside Choo Foodstore in Vienna" />
     </div>
   </section>
 );
@@ -213,7 +213,7 @@ const Events = () => (
   <section className="events">
     <div className="section-eyebrow">Kalender</div>
     <h2 className="section-title">Was läuft</h2>
-    <p className="section-sub">Verkostungen, Workshops und Feste — direkt im Markt an der Linken Wienzeile.</p>
+    <p className="section-sub">Tastings, workshops and festivals - directly inside the market on Linke Wienzeile.</p>
     <div className="event-grid">
       {[
         ["14","MAI","Mondfest-Verkostung","Mooncakes, Tee und Geschichten zum traditionellen Fest. Eintritt frei, Platzreservierung empfohlen."],
@@ -227,7 +227,7 @@ const Events = () => (
           </div>
           <h3>{t}</h3>
           <p>{p}</p>
-          <a className="event-link">Mehr erfahren →</a>
+          <a className="event-link">Learn more →</a>
         </div>
       ))}
     </div>
@@ -237,13 +237,13 @@ const Events = () => (
 const AboutBand = () => (
   <section className="about-band">
     <div className="about-band-inner">
-      <div className="section-eyebrow">Über Choo</div>
-      <h2>时代超市 — Asia in Wien, seit 2009.</h2>
+      <div className="section-eyebrow">About Choo</div>
+      <h2>时代超市 — Asia in Vienna, since 2009.</h2>
       <p>
-        Choo Foodstore steht im sechsten Wiener Bezirk, direkt an der Linken Wienzeile. Wir führen eine kuratierte Auswahl an Lebensmitteln, Saucen, Tees und Küchenutensilien aus China, Japan, Korea und Südostasien.
+        Choo Foodstore is in Vienna's sixth district, directly on Linke Wienzeile. We carry a curated selection of groceries, sauces, teas and kitchen tools from China, Japan, Korea and Southeast Asia.
       </p>
       <p>
-        Unser Anspruch: ein ruhiger, übersichtlicher Asia-Markt. Kein Großmarkt-Chaos, kein Suchen — nur Regale, die Sinn ergeben.
+        Our aim: a calm, clearly arranged Asian market. No wholesale chaos, no endless searching, just shelves that make sense.
       </p>
     </div>
   </section>
@@ -252,18 +252,18 @@ const AboutBand = () => (
 const InfoGrid = () => (
   <section className="info-grid">
     <div className="info-cell">
-      <div className="section-eyebrow">Besuchen</div>
-      <h3>Address:<br/>Linke Wienzeile 54, 1060 Wien</h3>
-      <p className="dim">U3 Neubaugasse · 2 Min Fußweg</p>
+      <div className="section-eyebrow">Visit</div>
+      <h3>Address:<br/>Linke Wienzeile 54, 1060 Vienna</h3>
+      <p className="dim">U3 Neubaugasse · 2 min walk</p>
     </div>
     <div className="info-cell">
-      <div className="section-eyebrow">Öffnungszeiten</div>
-      <div className="hours-row"><span className="k">Mo – Fr</span><span>09:00 – 20:00</span></div>
-      <div className="hours-row"><span className="k">Samstag</span><span>09:00 – 18:00</span></div>
-      <div className="hours-row"><span className="k">Sonntag</span><span className="dim">geschlossen</span></div>
+      <div className="section-eyebrow">Opening hours</div>
+      <div className="hours-row"><span className="k">Mon – Fri</span><span>09:00 – 20:00</span></div>
+      <div className="hours-row"><span className="k">Saturday</span><span>09:00 – 18:00</span></div>
+      <div className="hours-row"><span className="k">Sunday</span><span className="dim">closed</span></div>
     </div>
     <div className="info-cell">
-      <div className="section-eyebrow">Kontakt</div>
+      <div className="section-eyebrow">Contact</div>
       <p>Phone: 01 9605678</p>
       <p>hallo@choo.at</p>
       <p className="dim">@choo.market</p>
@@ -276,7 +276,7 @@ const Footer = () => (
     <div className="footer-grid">
       <div className="footer-brand">
         <Logo size={30} />
-        <p>Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.</p>
+        <p>Asian supermarket in Vienna's sixth district. Carefully sorted, friendly advice.</p>
         <div className="cn-tag">时代超市</div>
       </div>
       <div>
@@ -288,22 +288,22 @@ const Footer = () => (
       <div>
         <h4>Information</h4>
         <ul>
-          <li>Über uns</li><li>Events</li><li>Angebote</li><li>FAQ</li>
+          <li>About us</li><li>Events</li><li>Offers</li><li>FAQ</li>
         </ul>
       </div>
       <div>
-        <h4>Besuchen</h4>
+        <h4>Visit</h4>
         <ul>
-          <li>Address: Linke Wienzeile 54, 1060 Wien</li><li>Mo–Sa 09–20:00</li><li>Phone: 01 9605678</li>
+          <li>Address: Linke Wienzeile 54, 1060 Vienna</li><li>Mon-Sat 09-20:00</li><li>Phone: 01 9605678</li>
         </ul>
       </div>
     </div>
     <div className="footer-bottom">
-      <span>© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Wien</span>
+      <span>© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Vienna</span>
       <div className="socials">
         <span>Instagram</span>
-        <span>Impressum</span>
-        <span>Datenschutz</span>
+        <span>Imprint</span>
+        <span>Privacy</span>
       </div>
     </div>
   </footer>

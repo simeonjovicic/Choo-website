@@ -277,6 +277,32 @@ body.menu-open .site-header {
   vertical-align: middle;
 }
 
+.language-toggle {
+  display: inline-flex;
+  min-width: 46px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper-3);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--mono, "Inter", sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.language-toggle:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .brand {
   display: flex;
   grid-column: 1;
@@ -1523,15 +1549,38 @@ body.country-modal-open {
 }
 
 .reviews {
-  padding: clamp(72px, 9vw, 120px) clamp(24px, 5vw, 80px);
-  background: var(--paper-3);
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  align-content: center;
+  padding: clamp(56px, 6vw, 84px) clamp(24px, 5vw, 80px);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(243, 237, 226, 0.84)),
+    var(--paper-3);
   border-top: 1px solid var(--line-2);
   border-bottom: 1px solid var(--line-2);
+  isolation: isolate;
+}
+
+.reviews::before {
+  content: "評";
+  position: absolute;
+  right: clamp(18px, 5vw, 72px);
+  top: clamp(28px, 7vw, 92px);
+  z-index: -1;
+  color: rgba(210, 80, 43, 0.055);
+  font-family: "Noto Serif SC", serif;
+  font-size: clamp(12rem, 24vw, 24rem);
+  line-height: 0.8;
+  pointer-events: none;
 }
 
 .reviews-head {
+  position: relative;
+  z-index: 1;
   max-width: 1180px;
-  margin: 0 auto 56px;
+  margin: 0 auto 34px;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px 48px;
@@ -1546,9 +1595,9 @@ body.country-modal-open {
 .reviews-head .section-title {
   grid-column: 1;
   margin: 0;
-  max-width: 16ch;
+  max-width: 18ch;
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-size: clamp(2rem, 3vw, 2.75rem);
   line-height: 1.05;
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -1561,7 +1610,12 @@ body.country-modal-open {
   flex-direction: column;
   align-items: flex-end;
   gap: 6px;
+  padding: 18px 20px;
+  border: 1px solid rgba(22, 22, 22, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.72);
   text-align: right;
+  box-shadow: 0 14px 30px rgba(22, 22, 22, 0.04);
 }
 
 .reviews-rating {
@@ -1593,15 +1647,13 @@ body.country-modal-open {
 }
 
 .review-grid {
+  position: relative;
+  z-index: 1;
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line-2);
-  border: 1px solid var(--line-2);
-  border-radius: 4px;
-  overflow: hidden;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .review {
@@ -1609,35 +1661,96 @@ body.country-modal-open {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
+  gap: 18px;
   margin: 0;
-  padding: 40px 36px;
-  background: var(--paper-3);
-  transition: background 0.3s ease;
+  min-height: 214px;
+  padding: 52px 26px 26px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 253, 248, 0.82);
+  box-shadow: 0 10px 24px rgba(22, 22, 22, 0.035);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .review:hover {
   background: var(--paper);
+  border-color: var(--line);
+  transform: translateY(-2px);
 }
 
 .review::before {
   content: "“";
   position: absolute;
-  top: 18px;
-  right: 28px;
+  top: 12px;
+  right: 20px;
   font-family: "Fraunces", Georgia, serif;
-  font-size: 64px;
+  font-size: 52px;
   line-height: 1;
   color: var(--line);
   pointer-events: none;
+}
+
+.review::after {
+  content: "★★★★★";
+  position: absolute;
+  top: 24px;
+  left: 26px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.review:first-child {
+  grid-column: span 2;
+  min-height: 292px;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 20px 44px rgba(22, 22, 22, 0.18);
+}
+
+.review:first-child:hover {
+  background: #22201d;
+  border-color: #22201d;
+}
+
+.review:first-child::before {
+  color: rgba(250, 247, 241, 0.16);
+  font-size: 82px;
+}
+
+.review:first-child blockquote {
+  max-width: 23ch;
+  color: var(--paper);
+  font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+  line-height: 1.18;
+}
+
+.review:first-child figcaption {
+  border-color: rgba(250, 247, 241, 0.18);
+}
+
+.review:first-child .review-name {
+  color: var(--paper);
+}
+
+.review:first-child .review-place {
+  color: rgba(250, 247, 241, 0.62);
+}
+
+.review:nth-child(3),
+.review:nth-child(6) {
+  background: rgba(243, 237, 226, 0.72);
 }
 
 .review blockquote {
   margin: 0;
   color: var(--ink);
   font-family: "Fraunces", Georgia, serif;
-  font-size: 19px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.42;
   font-weight: 400;
   letter-spacing: 0;
 }
@@ -1646,7 +1759,7 @@ body.country-modal-open {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding-top: 18px;
+  padding-top: 14px;
   border-top: 1px solid var(--line-2);
 }
 
@@ -1676,6 +1789,9 @@ body.country-modal-open {
   }
   .review-grid {
     grid-template-columns: 1fr;
+  }
+  .review:first-child {
+    grid-column: auto;
   }
 }
 
@@ -2056,6 +2172,19 @@ body.country-modal-open {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
+
+  .cat-row + .story {
+    min-height: calc(100svh - 207px);
+  }
+
+  .cat-row + .story .story-img {
+    min-height: calc(100svh - 207px);
+  }
+
+  .story {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -2405,10 +2534,10 @@ body.country-modal-open {
   .cat-row-inner {
     display: flex;
     grid-template-columns: none;
-    gap: 14px;
+    gap: 9px;
     margin-right: -20px;
     margin-left: -20px;
-    padding: 0 20px 14px;
+    padding: 0 20px 10px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
@@ -2422,9 +2551,9 @@ body.country-modal-open {
   }
 
   .cat {
-    flex: 0 0 clamp(132px, 39vw, 162px);
-    min-height: 166px;
-    padding: 16px 12px 14px;
+    flex: 0 0 clamp(85px, 25vw, 104px);
+    min-height: 106px;
+    padding: 10px 8px 9px;
     border: 1px solid var(--line);
     background: var(--paper-3);
     box-shadow: 0 10px 24px rgba(22, 22, 22, 0.045);
@@ -2433,21 +2562,21 @@ body.country-modal-open {
   }
 
   .cat-glyph {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 14px;
-    font-size: 28px;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 9px;
+    font-size: 18px;
   }
 
   .cat-name {
-    font-size: 22px;
+    font-size: 14px;
     line-height: 1.05;
   }
 
   .cat-sub {
     max-width: 12ch;
-    margin-top: 4px;
-    font-size: 12px;
+    margin-top: 3px;
+    font-size: 8px;
     line-height: 1.35;
   }
 
@@ -2496,6 +2625,53 @@ body.country-modal-open {
     min-height: 248px;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+  }
+
+  .reviews {
+    min-height: auto;
+    align-content: start;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    overflow: hidden;
+  }
+
+  .reviews-head {
+    margin-bottom: 26px;
+  }
+
+  .review-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding: 0 20px 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .review-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .review {
+    flex: 0 0 clamp(270px, 82vw, 360px);
+    min-height: 238px;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .review:first-child {
+    flex-basis: clamp(292px, 86vw, 380px);
+    min-height: 260px;
+  }
+
+  .review:first-child blockquote {
+    font-size: clamp(1.35rem, 7vw, 1.65rem);
   }
 }
 
@@ -2889,14 +3065,14 @@ body.country-modal-open {
     position: static;
     inset: auto;
     flex-direction: row;
-    gap: 18px;
+    gap: 16px;
     align-items: stretch;
     padding: 2px 0 10px;
     transform: none !important;
   }
   .events__wheel button {
-    flex: 0 0 clamp(168px, 46vw, 230px);
-    width: clamp(168px, 46vw, 230px);
+    flex: 0 0 calc((100vw - 48px) / 2);
+    width: calc((100vw - 48px) / 2);
     height: auto;
     min-height: 74px;
     align-items: center;
@@ -3038,15 +3214,15 @@ body.country-modal-open {
 
   .events__wheel button {
     display: flex;
-    flex: 0 0 calc(100vw - 64px);
-    width: calc(100vw - 64px);
+    flex: 0 0 calc((100vw - 48px) / 2);
+    width: calc((100vw - 48px) / 2);
     min-width: 0;
-    max-width: 360px;
+    max-width: none;
     height: 78px;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    padding: 0 8px 12px;
+    gap: 10px;
+    padding: 0 6px 12px;
     border: 0;
     border-bottom: 1.5px solid rgba(183, 72, 56, 0.34);
     border-radius: 0;
@@ -3066,14 +3242,14 @@ body.country-modal-open {
     flex: 0 1 auto;
     min-width: 0;
     font-family: "Fraunces", Georgia, serif;
-    font-size: clamp(2.25rem, 11vw, 3rem);
+    font-size: clamp(1.82rem, 8.5vw, 2.35rem);
     line-height: 1;
   }
 
   .events__wheel small {
     flex: 0 0 auto;
     padding-top: 8px;
-    font-size: 11px;
+    font-size: 10px;
     white-space: nowrap;
   }
 

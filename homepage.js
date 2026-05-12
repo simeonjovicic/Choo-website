@@ -1,4 +1,407 @@
 (() => {
+  const LANGS = ["en", "de", "zh"];
+  const LABELS = { en: "EN", de: "DE", zh: "中文" };
+  const HTML_LANG = { en: "en", de: "de", zh: "zh-Hans" };
+  const STRINGS = {
+    en: {
+      "meta.title": "Choo Foodstore | Asian Supermarket Vienna",
+      "meta.description": "Choo Foodstore is a curated Asian supermarket at Linke Wienzeile 54 in Vienna.",
+      "top.address": "Address: Linke Wienzeile 54, 1060 Vienna",
+      "top.phone": "Phone: 01 9605678",
+      "nav.home": "Home",
+      "nav.selection": "Selection",
+      "nav.new": "New",
+      "nav.recipes": "Recipes",
+      "nav.events": "Events",
+      "nav.reviews": "Reviews",
+      "hero.eyebrow": "Asian supermarket · Vienna 1060",
+      "hero.title": "Snacks, sauces & staples.",
+      "hero.text": "An Asian market on Linke Wienzeile. Pantry staples, noodles, snacks and sauces from across Asia.",
+      "hero.cta": "Visit ↗",
+      "hero.address": "Linke Wienzeile 54 · 1060 Vienna",
+      "cat.china": "Main aisle",
+      "cat.vietnam": "Pho · Rice paper",
+      "cat.thailand": "Curry · Coconut",
+      "story.eyebrow": "Our market",
+      "story.title": "Asia, carefully sorted.",
+      "story.p1": "More than 3,000 products from China, Japan, Korea, Vietnam and Southeast Asia, from soy sauce to rice cookers. Clear, clean and easy to shop.",
+      "story.p2": "We curate the selection ourselves and are happy to help, whether you need the right soy sauce, a specific paste or a gift.",
+      "story.cta": "Learn more",
+      "aisle.eyebrow": "02 - Inside the shop",
+      "aisle.title": "Tap a shelf.<br /><em>It's stocked.</em>",
+      "aisle.text": "Three aisles, low ceiling, paper lanterns. We carry around 1,200 lines - pantry deep on sauces, noodles and rice, with a steady rotation of regional snacks. Tap the illustration to find a section.",
+      "recipes.eyebrow": "03 - From the kitchen",
+      "recipes.title": "Four recipes, four aisles.",
+      "recipes.text": "Traditional dishes you can finish on a Tuesday - most of the pantry is on our shelves.",
+      "filter.all": "all",
+      "filter.vegetarian": "vegetarian",
+      "filter.spicy": "spicy",
+      "filter.quick": "quick",
+      "events.eyebrow": "04 - Chinese calendar",
+      "events.title": "Traditional festivals in 2026.",
+      "events.text": "Starts with the next three dates, then lets you jump month by month.",
+      "reviews.eyebrow": "Reviews",
+      "reviews.title": "What customers say.",
+      "reviews.sub": "Based on 312 Google reviews.",
+      "review.anna": "Very clean, well sorted, great advice and many products that are otherwise hard to find in Vienna.",
+      "review.daniel": "I come for sauces, rice and snacks. You quickly find what you need without market chaos.",
+      "review.mei": "Friendly, calm and well curated. The tea selection and small recommendations are especially strong.",
+      "review.markus": "Finally an Asian market where you do not have to search forever. The shelves make sense and the selection fits.",
+      "review.sofia": "Very good selection of noodles, chili crisp and rice. I take something new almost every time.",
+      "review.linh": "The staff really know the products. I found exactly the sauce I needed.",
+      "place.anna": "Vienna · 6th district",
+      "place.daniel": "Vienna · Neubau",
+      "place.mei": "Vienna · Mariahilf",
+      "place.markus": "Vienna · Innere Stadt",
+      "place.sofia": "Vienna · Wieden",
+      "place.linh": "Vienna · Margareten",
+      "student.eyebrow": "Exclusive for students",
+      "student.title": "Student discount",
+      "student.stamp": "Off",
+      "student.sub": "Upload your student ID and save",
+      "student.step1.title": "Upload student ID",
+      "student.step1.text": "Fast & simple",
+      "student.step2.title": "Get the discount automatically",
+      "student.step2.text": "Save 10%",
+      "student.step3.title": "Shop & benefit",
+      "student.step3.text": "Save right away",
+      "visit.eyebrow": "05 - Find us",
+      "visit.title": "Linke Wienzeile 54<br /><em>1060 Vienna.</em>",
+      "visit.contact": "<strong>Address:</strong> Linke Wienzeile 54, 1060 Vienna<br /><strong>Phone:</strong> <a href=\"tel:019605678\">01 9605678</a>",
+      "hours.weekdays": "Mon - Fri",
+      "hours.saturday": "Saturday",
+      "hours.sunday": "Sunday",
+      "hours.closed": "closed",
+      "footer.links": "Links",
+      "footer.about": "About us",
+      "footer.visit": "Visit",
+      "footer.hours1": "Mon-Fri 09-20:00",
+      "footer.hours2": "Sat 09-18:00",
+      "footer.phone": "Phone: <a href=\"tel:019605678\">01 9605678</a>",
+      "footer.text": "Asian supermarket in Vienna's sixth district. Carefully sorted, friendly advice.",
+      "footer.copy": "© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Vienna",
+      "footer.imprint": "Imprint",
+      "footer.privacy": "Privacy",
+      "lang.aria": "Switch language",
+      "menu.open": "Open menu",
+      "menu.close": "Close menu",
+      "status.openUntil": "Open now · until {time}",
+      "status.closedBefore": "Closed now · opens at 09:00",
+      "status.closedMonday": "Closed today · Monday from 09:00",
+      "status.closedTomorrow": "Closed now · tomorrow from 09:00",
+      "status.openNow": "Open now",
+      "status.closedNow": "Closed now",
+      "recipe.label": "Recipe",
+      "recipe.inStore": "{current}/{total} in store",
+      "recipe.back": "Back to recipes",
+      "recipe.next": "Next recipe",
+      "recipe.serves": "serves",
+      "recipe.atChoo": "at Choo",
+      "recipe.eyebrow": "Recipe - Choo pantry",
+      "recipe.time": "Time",
+      "recipe.servesLabel": "Serves",
+      "recipe.tags": "Tags",
+      "recipe.ingredients": "Ingredients",
+      "recipe.method": "Method",
+      "event.one": "event",
+      "event.many": "events",
+      "event.today": "Today",
+      "event.tomorrow": "Tomorrow",
+      "event.inDays": "In {days} days",
+      "event.yesterday": "Yesterday",
+      "event.daysAgo": "{days} days ago",
+      "event.meaning": "Meaning",
+      "event.shelf": "Choo shelf",
+      "event.noMonth": "No Chinese calendar entries for {month}.",
+      "event.noUpcoming": "No upcoming Chinese calendar entries."
+    },
+    de: {
+      "meta.title": "Choo Foodstore | Asia-Supermarkt Wien",
+      "meta.description": "Choo Foodstore ist ein kuratierter Asia-Supermarkt an der Linken Wienzeile 54 in Wien.",
+      "top.address": "Adresse: Linke Wienzeile 54, 1060 Wien",
+      "top.phone": "Telefon: 01 9605678",
+      "nav.home": "Home",
+      "nav.selection": "Sortiment",
+      "nav.new": "Neu",
+      "nav.recipes": "Rezepte",
+      "nav.events": "Events",
+      "nav.reviews": "Bewertungen",
+      "hero.eyebrow": "Asia-Supermarkt · Wien 1060",
+      "hero.title": "Snacks, Saucen & Basics.",
+      "hero.text": "Asia-Markt an der Linken Wienzeile. Vorrat, Nudeln, Snacks und Saucen aus ganz Asien.",
+      "hero.cta": "Besuchen ↗",
+      "hero.address": "Linke Wienzeile 54 · 1060 Wien",
+      "cat.china": "Hauptregal",
+      "cat.vietnam": "Pho · Reispapier",
+      "cat.thailand": "Curry · Kokos",
+      "story.eyebrow": "Unser Markt",
+      "story.title": "Asien, sorgfältig sortiert.",
+      "story.p1": "Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien, von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.",
+      "story.p2": "Wir kuratieren das Sortiment selbst und beraten dich gerne, egal ob es um die richtige Sojasauce, eine bestimmte Paste oder ein Geschenk geht.",
+      "story.cta": "Mehr erfahren",
+      "aisle.eyebrow": "02 - Im Markt",
+      "aisle.title": "Tippe ein Regal an.<br /><em>Es ist voll.</em>",
+      "aisle.text": "Drei Gänge, niedrige Decke, Papierlaternen. Wir führen rund 1.200 Artikel - tief sortiert bei Saucen, Nudeln und Reis, mit wechselnden regionalen Snacks. Tippe auf die Illustration, um einen Bereich zu entdecken.",
+      "recipes.eyebrow": "03 - Aus der Küche",
+      "recipes.title": "Vier Rezepte, vier Gänge.",
+      "recipes.text": "Traditionelle Gerichte, die du auch unter der Woche kochen kannst - fast alles dafür steht bei uns im Regal.",
+      "filter.all": "alle",
+      "filter.vegetarian": "vegetarisch",
+      "filter.spicy": "scharf",
+      "filter.quick": "schnell",
+      "events.eyebrow": "04 - Chinesischer Kalender",
+      "events.title": "Traditionelle Feste 2026.",
+      "events.text": "Startet mit den nächsten drei Terminen, danach kannst du Monat für Monat springen.",
+      "reviews.eyebrow": "Bewertungen",
+      "reviews.title": "Was Kundinnen und Kunden sagen.",
+      "reviews.sub": "Basierend auf 312 Google-Bewertungen.",
+      "review.anna": "Sehr sauber sortiert, super Beratung und viele Produkte, die man sonst in Wien lange suchen muss.",
+      "review.daniel": "Ich komme wegen Saucen, Reis und Snacks. Man findet schnell, was man braucht, ohne Markt-Chaos.",
+      "review.mei": "Freundlich, ruhig und gut kuratiert. Besonders die Tee-Auswahl und die kleinen Empfehlungen sind stark.",
+      "review.markus": "Endlich ein Asia-Markt, in dem man nicht ewig suchen muss. Die Regale sind logisch und die Auswahl passt.",
+      "review.sofia": "Sehr gute Auswahl an Nudeln, Chili Crisp und Reissorten. Ich nehme fast jedes Mal etwas Neues mit.",
+      "review.linh": "Die Mitarbeitenden kennen die Produkte wirklich. Ich habe genau die Sauce gefunden, die ich gebraucht habe.",
+      "place.anna": "Wien · 6. Bezirk",
+      "place.daniel": "Wien · Neubau",
+      "place.mei": "Wien · Mariahilf",
+      "place.markus": "Wien · Innere Stadt",
+      "place.sofia": "Wien · Wieden",
+      "place.linh": "Wien · Margareten",
+      "student.eyebrow": "Exklusiv für Studierende",
+      "student.title": "Studentenrabatt",
+      "student.stamp": "Rabatt",
+      "student.sub": "Studentenausweis hochladen und sparen",
+      "student.step1.title": "Studentenausweis hochladen",
+      "student.step1.text": "Schnell & einfach",
+      "student.step2.title": "Rabatt automatisch erhalten",
+      "student.step2.text": "10% sparen",
+      "student.step3.title": "Einkaufen & profitieren",
+      "student.step3.text": "Sofort sparen",
+      "visit.eyebrow": "05 - Find us",
+      "visit.title": "Linke Wienzeile 54<br /><em>1060 Wien.</em>",
+      "visit.contact": "<strong>Adresse:</strong> Linke Wienzeile 54, 1060 Wien<br /><strong>Telefon:</strong> <a href=\"tel:019605678\">01 9605678</a>",
+      "hours.weekdays": "Mo - Fr",
+      "hours.saturday": "Samstag",
+      "hours.sunday": "Sonntag",
+      "hours.closed": "geschlossen",
+      "footer.links": "Links",
+      "footer.about": "Über uns",
+      "footer.visit": "Besuchen",
+      "footer.hours1": "Mo-Fr 09-20:00",
+      "footer.hours2": "Sa 09-18:00",
+      "footer.phone": "Telefon: <a href=\"tel:019605678\">01 9605678</a>",
+      "footer.text": "Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.",
+      "footer.copy": "© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Wien",
+      "footer.imprint": "Impressum",
+      "footer.privacy": "Datenschutz",
+      "lang.aria": "Sprache wechseln",
+      "menu.open": "Menü öffnen",
+      "menu.close": "Menü schließen",
+      "status.openUntil": "Jetzt geöffnet · bis {time}",
+      "status.closedBefore": "Noch geschlossen · ab 09:00",
+      "status.closedMonday": "Heute geschlossen · Montag ab 09:00",
+      "status.closedTomorrow": "Heute geschlossen · morgen ab 09:00",
+      "status.openNow": "Geöffnet",
+      "status.closedNow": "Geschlossen",
+      "recipe.label": "Rezept",
+      "recipe.inStore": "{current}/{total} im Markt",
+      "recipe.back": "Zurück zu den Rezepten",
+      "recipe.next": "Nächstes Rezept",
+      "recipe.serves": "für",
+      "recipe.atChoo": "bei Choo",
+      "recipe.eyebrow": "Rezept - Choo Pantry",
+      "recipe.time": "Zeit",
+      "recipe.servesLabel": "Portionen",
+      "recipe.tags": "Tags",
+      "recipe.ingredients": "Zutaten",
+      "recipe.method": "Zubereitung",
+      "event.one": "Event",
+      "event.many": "Events",
+      "event.today": "Heute",
+      "event.tomorrow": "Morgen",
+      "event.inDays": "In {days} Tagen",
+      "event.yesterday": "Gestern",
+      "event.daysAgo": "Vor {days} Tagen",
+      "event.meaning": "Bedeutung",
+      "event.shelf": "Choo-Regal",
+      "event.noMonth": "Keine chinesischen Kalendereinträge für {month}.",
+      "event.noUpcoming": "Keine kommenden chinesischen Kalendereinträge."
+    },
+    zh: {
+      "meta.title": "Choo Foodstore | 维也纳亚洲超市",
+      "meta.description": "Choo Foodstore 是位于维也纳 Linke Wienzeile 54 的精选亚洲超市。",
+      "top.address": "地址：Linke Wienzeile 54, 1060 维也纳",
+      "top.phone": "电话：01 9605678",
+      "nav.home": "首页",
+      "nav.selection": "商品",
+      "nav.new": "新",
+      "nav.recipes": "食谱",
+      "nav.events": "活动",
+      "nav.reviews": "评价",
+      "hero.eyebrow": "亚洲超市 · 维也纳 1060",
+      "hero.title": "零食、酱料与日常食材。",
+      "hero.text": "位于 Linke Wienzeile 的亚洲市场。这里有来自亚洲各地的主食、面、零食和酱料。",
+      "hero.cta": "到店看看 ↗",
+      "hero.address": "Linke Wienzeile 54 · 1060 维也纳",
+      "cat.china": "主货架",
+      "cat.vietnam": "河粉 · 米纸",
+      "cat.thailand": "咖喱 · 椰奶",
+      "story.eyebrow": "我们的市场",
+      "story.title": "亚洲风味，精心陈列。",
+      "story.p1": "超过 3,000 种来自中国、日本、韩国、越南和东南亚的商品，从酱油到电饭煲，一目了然，干净好逛。",
+      "story.p2": "我们亲自挑选商品，也乐意为你推荐合适的酱油、调味酱或礼物。",
+      "story.cta": "了解更多",
+      "aisle.eyebrow": "02 - 店内",
+      "aisle.title": "点一下货架。<br /><em>货很足。</em>",
+      "aisle.text": "三条过道、低矮天花和纸灯笼。我们约有 1,200 种商品，酱料、面和米类很齐全，也会持续更换地区零食。点按插图探索不同区域。",
+      "recipes.eyebrow": "03 - 来自厨房",
+      "recipes.title": "四道食谱，四条过道。",
+      "recipes.text": "下班后也能完成的传统菜，大部分食材都能在我们的货架上找到。",
+      "filter.all": "全部",
+      "filter.vegetarian": "素食",
+      "filter.spicy": "辣",
+      "filter.quick": "快速",
+      "events.eyebrow": "04 - 中国日历",
+      "events.title": "2026 传统节日。",
+      "events.text": "默认显示接下来三个日期，也可以按月份浏览。",
+      "reviews.eyebrow": "评价",
+      "reviews.title": "顾客怎么说。",
+      "reviews.sub": "基于 312 条 Google 评价。",
+      "review.anna": "店里很干净，分类清楚，建议也很实用，很多在维也纳很难找的商品这里都有。",
+      "review.daniel": "我常来买酱料、米和零食。不用在混乱的市场里找很久，很快就能找到需要的东西。",
+      "review.mei": "友好、安静、选品好。茶的选择和小推荐尤其不错。",
+      "review.markus": "终于有一家不用找很久的亚洲市场。货架很有逻辑，选择也刚好。",
+      "review.sofia": "面、辣椒脆和米类选择很好。我几乎每次都会带点新东西回家。",
+      "review.linh": "店员真的了解商品。我找到了正好需要的那款酱。",
+      "place.anna": "维也纳 · 第六区",
+      "place.daniel": "维也纳 · Neubau",
+      "place.mei": "维也纳 · Mariahilf",
+      "place.markus": "维也纳 · 内城区",
+      "place.sofia": "维也纳 · Wieden",
+      "place.linh": "维也纳 · Margareten",
+      "student.eyebrow": "学生专属",
+      "student.title": "学生折扣",
+      "student.stamp": "优惠",
+      "student.sub": "上传学生证即可省钱",
+      "student.step1.title": "上传学生证",
+      "student.step1.text": "快速简单",
+      "student.step2.title": "自动获得折扣",
+      "student.step2.text": "节省 10%",
+      "student.step3.title": "购物并享受优惠",
+      "student.step3.text": "立即节省",
+      "visit.eyebrow": "05 - 找到我们",
+      "visit.title": "Linke Wienzeile 54<br /><em>1060 维也纳。</em>",
+      "visit.contact": "<strong>地址：</strong>Linke Wienzeile 54, 1060 维也纳<br /><strong>电话：</strong><a href=\"tel:019605678\">01 9605678</a>",
+      "hours.weekdays": "周一至周五",
+      "hours.saturday": "周六",
+      "hours.sunday": "周日",
+      "hours.closed": "休息",
+      "footer.links": "链接",
+      "footer.about": "关于我们",
+      "footer.visit": "到店",
+      "footer.hours1": "周一至周五 09-20:00",
+      "footer.hours2": "周六 09-18:00",
+      "footer.phone": "电话：<a href=\"tel:019605678\">01 9605678</a>",
+      "footer.text": "维也纳第六区的亚洲超市。精心陈列，友好建议。",
+      "footer.copy": "© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 维也纳",
+      "footer.imprint": "法律信息",
+      "footer.privacy": "隐私",
+      "lang.aria": "切换语言",
+      "menu.open": "打开菜单",
+      "menu.close": "关闭菜单",
+      "status.openUntil": "营业中 · 到 {time}",
+      "status.closedBefore": "暂未营业 · 09:00 开门",
+      "status.closedMonday": "今日休息 · 周一 09:00 开门",
+      "status.closedTomorrow": "已打烊 · 明天 09:00 开门",
+      "status.openNow": "营业中",
+      "status.closedNow": "已打烊",
+      "recipe.label": "食谱",
+      "recipe.inStore": "店内有 {current}/{total}",
+      "recipe.back": "返回食谱",
+      "recipe.next": "下一道食谱",
+      "recipe.serves": "份量",
+      "recipe.atChoo": "在 Choo",
+      "recipe.eyebrow": "食谱 - Choo 食材",
+      "recipe.time": "时间",
+      "recipe.servesLabel": "份量",
+      "recipe.tags": "标签",
+      "recipe.ingredients": "食材",
+      "recipe.method": "做法",
+      "event.one": "活动",
+      "event.many": "活动",
+      "event.today": "今天",
+      "event.tomorrow": "明天",
+      "event.inDays": "{days} 天后",
+      "event.yesterday": "昨天",
+      "event.daysAgo": "{days} 天前",
+      "event.meaning": "含义",
+      "event.shelf": "Choo 货架",
+      "event.noMonth": "{month} 没有中国日历条目。",
+      "event.noUpcoming": "暂无即将到来的中国日历条目。"
+    }
+  };
+
+  const interpolate = (value, params = {}) => String(value).replace(/\{(\w+)\}/g, (_match, key) => params[key] ?? "");
+  const getStoredLang = () => {
+    const stored = window.localStorage?.getItem("choo-language");
+    return LANGS.includes(stored) ? stored : "en";
+  };
+  let currentLang = getStoredLang();
+
+  function t(key, params) {
+    return interpolate(STRINGS[currentLang]?.[key] ?? STRINGS.en[key] ?? key, params);
+  }
+
+  function applyLanguage(lang = currentLang) {
+    currentLang = LANGS.includes(lang) ? lang : "en";
+    window.localStorage?.setItem("choo-language", currentLang);
+    document.documentElement.lang = HTML_LANG[currentLang];
+    document.title = t("meta.title");
+    document.querySelector("meta[name='description']")?.setAttribute("content", t("meta.description"));
+
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      node.textContent = t(node.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach((node) => {
+      node.innerHTML = t(node.dataset.i18nHtml);
+    });
+    document.querySelectorAll("[data-language-code]").forEach((node) => {
+      node.textContent = LABELS[currentLang];
+    });
+    document.querySelectorAll("[data-language-toggle]").forEach((button) => {
+      button.setAttribute("aria-label", t("lang.aria"));
+      button.setAttribute("title", t("lang.aria"));
+    });
+
+    window.dispatchEvent(new CustomEvent("choo:languagechange", { detail: { lang: currentLang } }));
+  }
+
+  function cycleLanguage() {
+    const next = LANGS[(LANGS.indexOf(currentLang) + 1) % LANGS.length];
+    applyLanguage(next);
+  }
+
+  window.ChooI18n = {
+    getLanguage: () => currentLang,
+    t,
+    applyLanguage,
+    onChange(callback) {
+      window.addEventListener("choo:languagechange", callback);
+    }
+  };
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-language-toggle]")) cycleLanguage();
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => applyLanguage(currentLang), { once: true });
+  } else {
+    applyLanguage(currentLang);
+  }
+})();
+
+(() => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
   const hero = document.querySelector(".hero");
@@ -45,11 +448,46 @@
   let loaderHidden = false;
 
   const hotspots = [
-    { id: "h1", x: 28, y: 32, label: "Lanterns", aisle: "Seasonal - front window", note: "Stocked all year - bigger run for Lunar New Year." },
-    { id: "h2", x: 76, y: 28, label: "Premium soy & sauces", aisle: "Aisle 1 - top two shelves", note: "Kikkoman, Lee Kum Kee, Pearl River, plus small-batch Taiwanese." },
-    { id: "h3", x: 78, y: 62, label: "Curry pastes & jars", aisle: "Aisle 1 - lower shelves", note: "Thai red/green/yellow, Maesri, Mae Ploy, plus laksa." },
-    { id: "h4", x: 50, y: 68, label: "Noodles & rice", aisle: "Aisle 2", note: "Hand-pulled, instant, soba, glass, jasmine, sushi, sticky." },
-    { id: "h5", x: 17, y: 70, label: "Snacks & sweets", aisle: "Aisle 3", note: "Pocky, shrimp chips, mochi, haw flakes, lychee jelly." },
+    {
+      id: "h1", x: 28, y: 32,
+      copy: {
+        en: { label: "Lanterns", aisle: "Seasonal - front window", note: "Stocked all year - bigger run for Lunar New Year." },
+        de: { label: "Laternen", aisle: "Saison - Schaufenster", note: "Ganzjährig auf Lager - größere Auswahl zum Lunar New Year." },
+        zh: { label: "灯笼", aisle: "季节区 - 橱窗", note: "全年都有，农历新年前选择更多。" }
+      }
+    },
+    {
+      id: "h2", x: 76, y: 28,
+      copy: {
+        en: { label: "Premium soy & sauces", aisle: "Aisle 1 - top two shelves", note: "Kikkoman, Lee Kum Kee, Pearl River, plus small-batch Taiwanese." },
+        de: { label: "Premium-Soja & Saucen", aisle: "Gang 1 - obere zwei Regale", note: "Kikkoman, Lee Kum Kee, Pearl River und kleine taiwanesische Chargen." },
+        zh: { label: "精选酱油与酱料", aisle: "第 1 过道 - 上方两层", note: "龟甲万、李锦记、珠江桥，还有小批量台湾酱料。" }
+      }
+    },
+    {
+      id: "h3", x: 78, y: 62,
+      copy: {
+        en: { label: "Curry pastes & jars", aisle: "Aisle 1 - lower shelves", note: "Thai red/green/yellow, Maesri, Mae Ploy, plus laksa." },
+        de: { label: "Currypasten & Gläser", aisle: "Gang 1 - untere Regale", note: "Thai rot/grün/gelb, Maesri, Mae Ploy und Laksa." },
+        zh: { label: "咖喱酱与瓶装调料", aisle: "第 1 过道 - 下方货架", note: "泰式红/绿/黄咖喱、Maesri、Mae Ploy 和叻沙。" }
+      }
+    },
+    {
+      id: "h4", x: 50, y: 68,
+      copy: {
+        en: { label: "Noodles & rice", aisle: "Aisle 2", note: "Hand-pulled, instant, soba, glass, jasmine, sushi, sticky." },
+        de: { label: "Nudeln & Reis", aisle: "Gang 2", note: "Handgezogen, Instant, Soba, Glasnudeln, Jasmin, Sushi und Klebreis." },
+        zh: { label: "面与米", aisle: "第 2 过道", note: "拉面、方便面、荞麦面、粉丝、茉莉香米、寿司米和糯米。" }
+      }
+    },
+    {
+      id: "h5", x: 17, y: 70,
+      copy: {
+        en: { label: "Snacks & sweets", aisle: "Aisle 3", note: "Pocky, shrimp chips, mochi, haw flakes, lychee jelly." },
+        de: { label: "Snacks & Süßes", aisle: "Gang 3", note: "Pocky, Krabbenchips, Mochi, Haw Flakes und Litschi-Gelee." },
+        zh: { label: "零食与甜点", aisle: "第 3 过道", note: "Pocky、虾片、麻糬、山楂片和荔枝果冻。" }
+      }
+    },
   ];
 
   function requestHideLoader() {
@@ -249,7 +687,7 @@
   function setMenu(open) {
     document.body.classList.toggle("menu-open", open);
     navToggle?.setAttribute("aria-expanded", String(open));
-    navToggle?.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+    navToggle?.setAttribute("aria-label", window.ChooI18n?.t(open ? "menu.close" : "menu.open") || (open ? "Close menu" : "Open menu"));
   }
 
   function showSlide(index) {
@@ -294,6 +732,7 @@
 
   function updateOpeningStatus() {
     if (!statusText) return;
+    const tr = (key, params) => window.ChooI18n?.t(key, params) || key;
 
     const now = new Date();
     const day = now.getDay();
@@ -305,17 +744,17 @@
     const isOpen = opensToday && currentHour >= 9 && currentHour < (isWeekday ? 20 : 18);
 
     if (isOpen) {
-      statusText.textContent = `Jetzt geöffnet · bis ${closesAt}`;
+      statusText.textContent = tr("status.openUntil", { time: closesAt });
       statusDot?.classList.remove("closed");
       return;
     }
 
     if (opensToday && currentHour < 9) {
-      statusText.textContent = "Heute geschlossen · ab 09:00";
+      statusText.textContent = tr("status.closedBefore");
     } else if (day === 6 || day === 0) {
-      statusText.textContent = "Heute geschlossen · Montag ab 09:00";
+      statusText.textContent = tr("status.closedMonday");
     } else {
-      statusText.textContent = "Heute geschlossen · morgen ab 09:00";
+      statusText.textContent = tr("status.closedTomorrow");
     }
 
     statusDot?.classList.add("closed");
@@ -376,9 +815,22 @@
     });
   }
 
+  function hotspotCopy(hotspot) {
+    const lang = window.ChooI18n?.getLanguage?.() || "en";
+    return hotspot.copy[lang] || hotspot.copy.en;
+  }
+
+  function updateHotspotLabels() {
+    document.querySelectorAll("[data-hotspot]").forEach((button) => {
+      const hotspot = hotspots.find((item) => item.id === button.dataset.hotspot);
+      if (hotspot) button.setAttribute("aria-label", hotspotCopy(hotspot).label);
+    });
+  }
+
   function openHotspot(button) {
     const hotspot = hotspots.find((item) => item.id === button.dataset.hotspot);
     if (!hotspot) return;
+    const copy = hotspotCopy(hotspot);
 
     button.classList.add("hot--on");
     button.setAttribute("aria-expanded", "true");
@@ -387,15 +839,15 @@
     card.className = "hot__card";
 
     const title = document.createElement("strong");
-    title.textContent = hotspot.label;
+    title.textContent = copy.label;
 
     const aisle = document.createElement("span");
     aisle.className = "hot__aisle";
-    aisle.textContent = hotspot.aisle;
+    aisle.textContent = copy.aisle;
 
     const note = document.createElement("span");
     note.className = "hot__note";
-    note.textContent = hotspot.note;
+    note.textContent = copy.note;
 
     card.append(title, aisle, note);
     button.append(card);
@@ -412,7 +864,7 @@
       button.style.left = `${hotspot.x}%`;
       button.style.top = `${hotspot.y}%`;
       button.dataset.hotspot = hotspot.id;
-      button.setAttribute("aria-label", hotspot.label);
+      button.setAttribute("aria-label", hotspotCopy(hotspot).label);
       button.setAttribute("aria-expanded", "false");
 
       const dot = document.createElement("span");
@@ -471,6 +923,12 @@
     showSlide(activeSlide);
   });
   window.addEventListener("load", markPageLoaded, { once: true });
+  window.ChooI18n?.onChange(() => {
+    updateOpeningStatus();
+    closeHotspots();
+    updateHotspotLabels();
+    setMenu(document.body.classList.contains("menu-open"));
+  });
 
   if (document.readyState === "complete") {
     markPageLoaded();
@@ -596,6 +1054,25 @@
   }[char]));
 
   let activeFilter = "all";
+  const recipeText = {
+    de: {
+      mapo: { blurb: "Sichuan-Klassiker - Seidentofu in einer betäubend scharfen Chili-Bohnen-Sauce." },
+      dandan: { blurb: "Chengdu-Streetfood - Sesam, Chiliöl, Essig und knuspriges Schwein." },
+      "garlic-bok-choy": { blurb: "Zwei Hauptzutaten, viel Geschmack. Glänzend, knoblauchig, in Minuten fertig." },
+      "fried-rice": { blurb: "Reis vom Vortag, heißer Wok, drei Zutaten richtig gemacht." }
+    },
+    zh: {
+      mapo: { blurb: "四川经典菜 - 嫩豆腐配麻辣豆瓣酱汁。" },
+      dandan: { blurb: "成都街头风味 - 芝麻、辣油、醋和香脆肉末。" },
+      "garlic-bok-choy": { blurb: "两种主角，大量风味。蒜香浓郁，几分钟就能上桌。" },
+      "fried-rice": { blurb: "隔夜茉莉香米、热锅和简单食材，做出经典炒饭。" }
+    }
+  };
+
+  const tr = (key, params) => window.ChooI18n?.t(key, params) || key;
+  const currentLang = () => window.ChooI18n?.getLanguage?.() || "en";
+  const recipeBlurb = (recipe) => recipeText[currentLang()]?.[recipe.id]?.blurb || recipe.blurb;
+  const tagLabel = (tag) => tr(`filter.${tag}`);
 
   function renderRecipes(filter = "all") {
     const mount = document.querySelector("[data-recipes]");
@@ -605,21 +1082,21 @@
     mount.innerHTML = visible.map((recipe) => {
       const originalIndex = recipes.findIndex((item) => item.id === recipe.id) + 1;
       const inStore = recipe.ingredients.filter((ingredient) => ingredient.inStore).length;
-      const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tag)}</span>`).join("");
+      const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
 
       return `
         <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
           <span class="rc__top">
-            <span class="rc__no">Recipe ${String(originalIndex).padStart(2, "0")}</span>
+            <span class="rc__no">${escapeHtml(tr("recipe.label"))} ${String(originalIndex).padStart(2, "0")}</span>
             <span class="rc__time">${escapeHtml(recipe.time)}</span>
           </span>
           <span class="rc__body">
             <span class="rc__name">${escapeHtml(recipe.name)}</span>
-            <span class="rc__blurb">${escapeHtml(recipe.blurb)}</span>
+            <span class="rc__blurb">${escapeHtml(recipeBlurb(recipe))}</span>
           </span>
           <span class="rc__meta">
             <span class="rc__tags">${tags}</span>
-            <span class="rc__availability">${inStore}/${recipe.ingredients.length} in store</span>
+            <span class="rc__availability">${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
           </span>
         </button>
       `;
@@ -648,51 +1125,52 @@
     const steps = recipe.steps.map((step, index) => `
       <li><span class="step__n">${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(step)}</span></li>
     `).join("");
-    const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tag)}</span>`).join("");
+    const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
 
     view.innerHTML = `
       <div class="recipe-view__bar">
         <div class="recipe-view__actions">
           <button class="recipe-view__back" type="button" data-close-recipe>
             <span aria-hidden="true">←</span>
-            <span>Back to recipes</span>
+            <span>${escapeHtml(tr("recipe.back"))}</span>
           </button>
           <button class="recipe-view__next" type="button" data-next-recipe="${escapeHtml(nextRecipe.id)}">
-            <span>Next recipe</span>
+            <span>${escapeHtml(tr("recipe.next"))}</span>
             <span aria-hidden="true">→</span>
           </button>
         </div>
-        <span class="recipe-view__small">${escapeHtml(recipe.time)} - serves ${recipe.serves} - ${inStore}/${recipe.ingredients.length} at Choo</span>
+        <span class="recipe-view__small">${escapeHtml(recipe.time)} - ${escapeHtml(tr("recipe.serves"))} ${recipe.serves} - ${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
       </div>
       <article class="recipe-page" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
         <div class="recipe-page__hero">
           <div>
-            <span class="eyebrow">Recipe - Choo pantry</span>
+            <span class="eyebrow">${escapeHtml(tr("recipe.eyebrow"))}</span>
             <h3 class="recipe-page__title" id="recipe-title">${escapeHtml(recipe.name)}</h3>
-            <p class="recipe-page__blurb">${escapeHtml(recipe.blurb)}</p>
+            <p class="recipe-page__blurb">${escapeHtml(recipeBlurb(recipe))}</p>
           </div>
           <div class="recipe-page__stats" aria-label="Recipe summary">
-            <div class="recipe-stat"><span>Time</span><strong>${escapeHtml(recipe.time)}</strong></div>
-            <div class="recipe-stat"><span>Serves</span><strong>${recipe.serves}</strong></div>
-            <div class="recipe-stat"><span>Tags</span><strong>${tags}</strong></div>
+            <div class="recipe-stat"><span>${escapeHtml(tr("recipe.time"))}</span><strong>${escapeHtml(recipe.time)}</strong></div>
+            <div class="recipe-stat"><span>${escapeHtml(tr("recipe.servesLabel"))}</span><strong>${recipe.serves}</strong></div>
+            <div class="recipe-stat"><span>${escapeHtml(tr("recipe.tags"))}</span><strong>${tags}</strong></div>
           </div>
         </div>
         <div class="recipe-page__grid">
           <div class="recipe-panel">
             <div class="ings__head">
-              <h4>Ingredients</h4>
-              <span class="ings__legend"><span class="dot dot--accent"></span> ${inStore} of ${recipe.ingredients.length} at Choo</span>
+              <h4>${escapeHtml(tr("recipe.ingredients"))}</h4>
+              <span class="ings__legend"><span class="dot dot--accent"></span> ${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
             </div>
             <ul>${ingredients}</ul>
           </div>
           <div class="recipe-panel">
-            <h4>Method</h4>
+            <h4>${escapeHtml(tr("recipe.method"))}</h4>
             <ol>${steps}</ol>
           </div>
         </div>
       </article>
     `;
 
+    view.dataset.activeRecipe = id;
     view.setAttribute("aria-hidden", "false");
     document.body.classList.add("recipe-open");
     view.scrollTo({ top: 0, behavior: "auto" });
@@ -707,6 +1185,7 @@
     view.classList.remove("recipe-view--open");
     view.setAttribute("aria-hidden", "true");
     document.body.classList.remove("recipe-open");
+    delete view.dataset.activeRecipe;
 
     window.setTimeout(() => {
       if (!view.classList.contains("recipe-view--open")) view.innerHTML = "";
@@ -742,6 +1221,12 @@
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeRecipe();
+    });
+
+    window.ChooI18n?.onChange(() => {
+      renderRecipes(activeFilter);
+      const activeRecipe = view?.dataset.activeRecipe;
+      if (activeRecipe) openRecipe(activeRecipe);
     });
   }
 
@@ -803,6 +1288,12 @@
 
   const EVENT_YEAR = 2026;
   const DAY_MS = 24 * 60 * 60 * 1000;
+  const tr = (key, params) => window.ChooI18n?.t(key, params) || key;
+  const currentLocale = () => ({
+    en: "en-US",
+    de: "de-DE",
+    zh: "zh-Hans-CN"
+  }[window.ChooI18n?.getLanguage?.() || "en"]);
 
   function viennaTodayTime() {
     const parts = new Intl.DateTimeFormat("en-CA", {
@@ -828,11 +1319,11 @@
 
   function dayDistanceLabel(event) {
     const days = daysUntil(event);
-    if (days === 0) return "Today";
-    if (days === 1) return "Tomorrow";
-    if (days > 1) return `In ${days} days`;
-    if (days === -1) return "Yesterday";
-    return `${Math.abs(days)} days ago`;
+    if (days === 0) return tr("event.today");
+    if (days === 1) return tr("event.tomorrow");
+    if (days > 1) return tr("event.inDays", { days });
+    if (days === -1) return tr("event.yesterday");
+    return tr("event.daysAgo", { days: Math.abs(days) });
   }
 
   function upcomingEvents(minCount = 3) {
@@ -853,6 +1344,11 @@
     return CHINESE_EVENTS.filter((event) => event.month === month);
   }
 
+  function monthName(month, style = "short") {
+    return new Intl.DateTimeFormat(currentLocale(), { month: style, timeZone: "UTC" })
+      .format(new Date(Date.UTC(EVENT_YEAR, month - 1, 1)));
+  }
+
   function renderEventFilters() {
     const wheel = document.querySelector("[data-event-wheel]");
     if (!wheel) return;
@@ -860,8 +1356,8 @@
       const count = eventsForMonth(month.n).length;
       return `
         <button type="button" data-event-month="${month.n}">
-          <b>${month.short}</b>
-          <small>${count} ${count === 1 ? "event" : "events"}</small>
+          <b>${escapeHtml(monthName(month.n))}</b>
+          <small>${count} ${escapeHtml(tr(count === 1 ? "event.one" : "event.many"))}</small>
         </button>
       `;
     }).join("");
@@ -883,8 +1379,8 @@
         </button>
         <div class="ev__details" aria-hidden="true">
           <div class="ev__details-inner">
-            <div class="ev__detail"><strong>Meaning</strong><span>${escapeHtml(event.meaning)}</span></div>
-            <div class="ev__detail"><strong>Choo shelf</strong><span>${escapeHtml(event.shelf)}</span></div>
+            <div class="ev__detail"><strong>${escapeHtml(tr("event.meaning"))}</strong><span>${escapeHtml(event.meaning)}</span></div>
+            <div class="ev__detail"><strong>${escapeHtml(tr("event.shelf"))}</strong><span>${escapeHtml(event.shelf)}</span></div>
           </div>
         </div>
       </li>
@@ -906,18 +1402,17 @@
     const currentDate = document.querySelector("[data-event-current-date]");
     const currentTitle = document.querySelector("[data-event-current-title]");
     if (currentDate) currentDate.textContent = first?.date || "";
-    if (currentTitle) currentTitle.textContent = first?.title || "No events";
+    if (currentTitle) currentTitle.textContent = first?.title || tr("event.noUpcoming");
   }
 
   function renderEventsForMonth(month, resetScroll = false) {
     activeEventMode = "month";
-    const monthName = MONTHS.find((item) => item.n === month)?.label || "this month";
-    renderEventList(eventsForMonth(month), `No Chinese calendar entries for ${monthName}.`, resetScroll);
+    renderEventList(eventsForMonth(month), tr("event.noMonth", { month: monthName(month, "long") }), resetScroll);
   }
 
   function renderUpcomingEvents(resetScroll = false) {
     activeEventMode = "upcoming";
-    renderEventList(upcomingEvents(3), "No upcoming Chinese calendar entries.", resetScroll);
+    renderEventList(upcomingEvents(3), tr("event.noUpcoming"), resetScroll);
   }
 
   function setActiveEventMonth(month) {
@@ -1065,12 +1560,21 @@
     const isOpen = weekday !== "Sun" && hour >= 9 && hour < 20;
     status.classList.toggle("status--open", isOpen);
     status.classList.toggle("status--closed", !isOpen);
-    text.textContent = isOpen ? "Open now" : "Closed now";
+    text.textContent = isOpen ? tr("status.openNow") : tr("status.closedNow");
   }
 
   function init() {
     setupEventTimeline();
     updateVisitStatus();
+    window.ChooI18n?.onChange(() => {
+      renderEventFilters();
+      if (activeEventMode === "upcoming") {
+        renderUpcomingEvents(false);
+      } else {
+        renderEventsForMonth(activeEventMonth, false);
+      }
+      updateVisitStatus();
+    });
   }
 
   if (document.readyState === "loading") {
@@ -1085,43 +1589,48 @@
   const COUNTRIES = {
     china: {
       glyph: "中",
-      title: "China",
-      eyebrow: "01 — Hauptregal",
-      line: "Vom langsamen Schmoren in Sichuan bis zum klaren Reis aus dem Süden — das Herz unseres Marktes.",
       image: "images/gallery.png",
-      alt: "Stillleben mit chinesischen Zutaten"
+      copy: {
+        en: { title: "China", eyebrow: "01 - Main aisle", line: "From slow Sichuan braises to clean southern rice - the heart of our market.", alt: "Still life with Chinese ingredients" },
+        de: { title: "China", eyebrow: "01 - Hauptregal", line: "Vom langsamen Schmoren in Sichuan bis zum klaren Reis aus dem Süden - das Herz unseres Marktes.", alt: "Stillleben mit chinesischen Zutaten" },
+        zh: { title: "中国", eyebrow: "01 - 主货架", line: "从川味慢炖到南方清香米，这里是我们市场的核心。", alt: "中式食材静物" }
+      }
     },
     japan: {
       glyph: "日",
-      title: "Japan",
-      eyebrow: "02 — Ramen · Matcha",
-      line: "Stille Präzision: Sojasaucen mit langer Reife, frische Udon und ein leuchtend grüner Matcha aus Uji.",
       image: "images/gallery_2.png",
-      alt: "Japanische Pantry-Auswahl"
+      copy: {
+        en: { title: "Japan", eyebrow: "02 - Ramen · Matcha", line: "Quiet precision: long-aged soy sauces, fresh udon and bright green matcha from Uji.", alt: "Japanese pantry selection" },
+        de: { title: "Japan", eyebrow: "02 - Ramen · Matcha", line: "Stille Präzision: Sojasaucen mit langer Reife, frische Udon und ein leuchtend grüner Matcha aus Uji.", alt: "Japanische Pantry-Auswahl" },
+        zh: { title: "日本", eyebrow: "02 - 拉面 · 抹茶", line: "安静而精准：熟成酱油、新鲜乌冬和来自宇治的清亮抹茶。", alt: "日式食材选择" }
+      }
     },
     korea: {
       glyph: "韩",
-      title: "Korea",
-      eyebrow: "03 — Gochujang · Kimchi",
-      line: "Fermentation als Handwerk — tiefe Schärfe, milde Süße und Kimchi aus dem Kühlregal.",
       image: "images/gallery_3.png",
-      alt: "Koreanische Pasten und Kimchi"
+      copy: {
+        en: { title: "Korea", eyebrow: "03 - Gochujang · Kimchi", line: "Fermentation as craft - deep heat, gentle sweetness and kimchi from the fridge.", alt: "Korean pastes and kimchi" },
+        de: { title: "Korea", eyebrow: "03 - Gochujang · Kimchi", line: "Fermentation als Handwerk - tiefe Schärfe, milde Süße und Kimchi aus dem Kühlregal.", alt: "Koreanische Pasten und Kimchi" },
+        zh: { title: "韩国", eyebrow: "03 - 辣椒酱 · 泡菜", line: "发酵是一门手艺：深层辣味、柔和甜感和冷藏泡菜。", alt: "韩国酱料和泡菜" }
+      }
     },
     vietnam: {
       glyph: "越",
-      title: "Vietnam",
-      eyebrow: "04 — Pho · Reispapier",
-      line: "Klare Brühen, frische Kräuter und feines Reispapier — die leichte Seite der asiatischen Küche.",
       image: "images/gallery_4.png",
-      alt: "Vietnamesische Zutaten"
+      copy: {
+        en: { title: "Vietnam", eyebrow: "04 - Pho · Rice paper", line: "Clear broths, fresh herbs and fine rice paper - the lighter side of Asian cooking.", alt: "Vietnamese ingredients" },
+        de: { title: "Vietnam", eyebrow: "04 - Pho · Reispapier", line: "Klare Brühen, frische Kräuter und feines Reispapier - die leichte Seite der asiatischen Küche.", alt: "Vietnamesische Zutaten" },
+        zh: { title: "越南", eyebrow: "04 - 河粉 · 米纸", line: "清澈汤底、新鲜香草和细腻米纸，是亚洲料理轻盈的一面。", alt: "越南食材" }
+      }
     },
     thailand: {
       glyph: "泰",
-      title: "Thailand",
-      eyebrow: "05 — Curry · Kokos",
-      line: "Currypasten, Kokosmilch und Limettenblätter — ein Wok-Gericht entfernt von einem ganzen Land.",
       image: "images/gallery_5.png",
-      alt: "Thailändische Zutaten"
+      copy: {
+        en: { title: "Thailand", eyebrow: "05 - Curry · Coconut", line: "Curry pastes, coconut milk and lime leaves - a whole country one wok dish away.", alt: "Thai ingredients" },
+        de: { title: "Thailand", eyebrow: "05 - Curry · Kokos", line: "Currypasten, Kokosmilch und Limettenblätter - ein Wok-Gericht entfernt von einem ganzen Land.", alt: "Thailändische Zutaten" },
+        zh: { title: "泰国", eyebrow: "05 - 咖喱 · 椰奶", line: "咖喱酱、椰奶和青柠叶，一口炒锅就能带你接近整个泰国。", alt: "泰国食材" }
+      }
     }
   };
 
@@ -1141,15 +1650,17 @@
   function render(key) {
     const data = COUNTRIES[key];
     if (!data) return;
+    const lang = window.ChooI18n?.getLanguage?.() || "en";
+    const copy = data.copy[lang] || data.copy.en;
     glyphEl.textContent = data.glyph;
-    eyebrowEl.textContent = data.eyebrow;
-    titleEl.textContent = data.title;
-    lineEl.textContent = data.line;
+    eyebrowEl.textContent = copy.eyebrow;
+    titleEl.textContent = copy.title;
+    lineEl.textContent = copy.line;
     if (imageEl) {
       imageEl.style.opacity = "0";
       const swap = () => {
         imageEl.src = data.image;
-        imageEl.alt = data.alt || data.title;
+        imageEl.alt = copy.alt || copy.title;
         imageEl.style.opacity = "1";
       };
       if (imageEl.src) {
@@ -1187,6 +1698,10 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && active) close();
+  });
+
+  window.ChooI18n?.onChange(() => {
+    if (active) render(active);
   });
 })();
 
