@@ -62,7 +62,7 @@
       "student.step1.title": "Upload student ID",
       "student.step1.text": "Fast & simple",
       "student.step2.title": "Get the discount automatically",
-      "student.step2.text": "Save 10%",
+      "student.step2.text": "Save 5%",
       "student.step3.title": "Shop & benefit",
       "student.step3.text": "Save right away",
       "visit.eyebrow": "05 - Find us",
@@ -174,7 +174,7 @@
       "student.step1.title": "Studentenausweis hochladen",
       "student.step1.text": "Schnell & einfach",
       "student.step2.title": "Rabatt automatisch erhalten",
-      "student.step2.text": "10% sparen",
+      "student.step2.text": "5% sparen",
       "student.step3.title": "Einkaufen & profitieren",
       "student.step3.text": "Sofort sparen",
       "visit.eyebrow": "05 - Find us",
@@ -286,7 +286,7 @@
       "student.step1.title": "上传学生证",
       "student.step1.text": "快速简单",
       "student.step2.title": "自动获得折扣",
-      "student.step2.text": "节省 10%",
+      "student.step2.text": "节省 5%",
       "student.step3.title": "购物并享受优惠",
       "student.step3.text": "立即节省",
       "visit.eyebrow": "05 - 找到我们",
@@ -406,7 +406,6 @@
   const navMenu = document.querySelector("[data-nav-menu]");
   const hero = document.querySelector(".hero");
   const heroImages = Array.from(document.querySelectorAll("[data-hero-image]"));
-  const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
   const statusText = document.querySelector("[data-open-status]");
   const statusDot = document.querySelector(".dot");
   const logoLoader = document.querySelector("[data-logo-loader]");
@@ -423,25 +422,13 @@
     repeatDelay: 0.7,
   };
 
-  const heroSlides = [
-    {
-      src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg",
-      mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.jpeg",
-      alt: "Choo Foodstore Eingang",
-      mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
-    },
-    {
-      src: "images/create_a_different_variation_of_202605072011.jpeg",
-      alt: "Choo Foodstore Stillleben",
-    },
-    {
-      src: "images/create_a_different_variation_of_202605072021.jpeg",
-      alt: "Choo Foodstore Auswahl",
-    },
-  ];
+  const heroSlide = {
+    src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg",
+    mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.jpeg",
+    alt: "Choo Foodstore Eingang",
+    mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
+  };
 
-  let activeSlide = 0;
-  let heroTimer = null;
   let ticking = false;
   let pageLoaded = false;
   let logoAnimationDone = false;
@@ -690,44 +677,15 @@
     navToggle?.setAttribute("aria-label", window.ChooI18n?.t(open ? "menu.close" : "menu.open") || (open ? "Close menu" : "Open menu"));
   }
 
-  function showSlide(index) {
-    if (!heroImages.length || !heroSlides[index]) return;
-
-    activeSlide = index;
-    const slide = heroSlides[index];
-    const src = mobileHeroQuery.matches && slide.mobileSrc ? slide.mobileSrc : slide.src;
-    const alt = mobileHeroQuery.matches && slide.mobileAlt ? slide.mobileAlt : slide.alt;
-
+  function applyHeroImage() {
+    if (!heroImages.length) return;
+    const useMobile = mobileHeroQuery.matches && heroSlide.mobileSrc;
+    const src = useMobile ? heroSlide.mobileSrc : heroSlide.src;
+    const alt = useMobile ? heroSlide.mobileAlt : heroSlide.alt;
     heroImages.forEach((image) => {
-      image.classList.add("is-fading");
+      image.src = src;
+      image.alt = alt;
     });
-
-    window.setTimeout(() => {
-      heroImages.forEach((image) => {
-        image.src = src;
-        image.alt = alt;
-        image.classList.remove("is-fading");
-      });
-    }, 140);
-
-    heroDots.forEach((dot, dotIndex) => {
-      const selected = dotIndex === index;
-      dot.classList.toggle("active", selected);
-      dot.setAttribute("aria-pressed", String(selected));
-    });
-  }
-
-  function startHeroTimer() {
-    if (heroTimer || heroSlides.length <= 1) return;
-    heroTimer = window.setInterval(() => {
-      showSlide((activeSlide + 1) % heroSlides.length);
-    }, 6500);
-  }
-
-  function restartHeroTimer() {
-    window.clearInterval(heroTimer);
-    heroTimer = null;
-    startHeroTimer();
   }
 
   function updateOpeningStatus() {
@@ -901,13 +859,6 @@
     }
   });
 
-  heroDots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      showSlide(Number(dot.dataset.heroDot));
-      restartHeroTimer();
-    });
-  });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setMenu(false);
@@ -920,7 +871,7 @@
     requestScrollUpdate();
   });
   mobileHeroQuery.addEventListener("change", () => {
-    showSlide(activeSlide);
+    applyHeroImage();
   });
   window.addEventListener("load", markPageLoaded, { once: true });
   window.ChooI18n?.onChange(() => {
@@ -937,10 +888,9 @@
   setupLogoLoader();
   setupHotspots();
   setupCinematicPanels();
-  showSlide(0);
+  applyHeroImage();
   updateScrollEffects();
   updateOpeningStatus();
-  startHeroTimer();
 })();
 
 /* ===== Recipes — from test34 ===== */
@@ -1433,7 +1383,12 @@
       button.classList.toggle("is-near", distance === 1);
     });
     if (mobileMonthQuery.matches) {
-      wheel.querySelector(".is-active")?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" });
+      const activeBtn = wheel.querySelector(".is-active");
+      const track = activeBtn?.closest(".events__rail-track");
+      if (activeBtn && track) {
+        const left = activeBtn.offsetLeft - track.clientWidth / 2 + activeBtn.clientWidth / 2;
+        track.scrollTo({ left, behavior: "smooth" });
+      }
     }
   }
 

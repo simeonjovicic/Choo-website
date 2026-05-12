@@ -205,41 +205,6 @@ body.menu-open .site-header {
   letter-spacing: 0.3px;
 }
 
-.cart-button {
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--paper-3);
-  color: var(--ink);
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.cart-button:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
-
-.cart-count {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 16px;
-  height: 16px;
-  padding: 0 4px;
-  border-radius: 999px;
-  background: var(--red);
-  color: var(--paper);
-  font-family: "Inter", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 1;
-}
-
 .nav-links a {
   position: relative;
   padding: 4px 0;
@@ -1610,12 +1575,12 @@ body.country-modal-open {
   flex-direction: column;
   align-items: flex-end;
   gap: 6px;
-  padding: 18px 20px;
-  border: 1px solid rgba(22, 22, 22, 0.1);
-  border-radius: 8px;
-  background: rgba(255, 253, 248, 0.72);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
   text-align: right;
-  box-shadow: 0 14px 30px rgba(22, 22, 22, 0.04);
+  box-shadow: none;
 }
 
 .reviews-rating {
@@ -1626,16 +1591,17 @@ body.country-modal-open {
 
 .reviews-score {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 2rem;
+  font-size: 2.75rem;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--ink);
+  line-height: 1;
 }
 
 .reviews-stars {
   color: var(--gold);
-  font-size: 14px;
-  letter-spacing: 2px;
+  font-size: 18px;
+  letter-spacing: 3px;
 }
 
 .reviews-sub {
@@ -1816,7 +1782,7 @@ body.country-modal-open {
   left: 0;
   right: 0;
   height: 150%;
-  background: url("images/lotus_BG.png") center / cover no-repeat;
+  background: url("images/lotus_BG.png") right center / cover no-repeat;
   transform: translate3d(0, 0, 0);
   will-change: transform;
   z-index: 0;
@@ -3050,7 +3016,9 @@ body.country-modal-open {
     overflow-x: auto;
     overflow-y: hidden;
     cursor: default;
-    touch-action: pan-x;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: auto;
     scroll-snap-type: x mandatory;
     scroll-padding: 0;
     scrollbar-width: none;
@@ -3105,7 +3073,12 @@ body.country-modal-open {
     white-space: nowrap;
   }
   .visit { grid-template-columns: 1fr; padding: 64px var(--pad); }
-  .events__list { max-height: none; overflow: visible; }
+  .events__list {
+    max-height: none;
+    overflow: visible;
+    overscroll-behavior: auto;
+    scroll-snap-type: none;
+  }
 }
 @media (max-width: 640px) {
   .events, .visit { padding-top: 64px; padding-bottom: 64px; }
@@ -3197,6 +3170,8 @@ body.country-modal-open {
     margin: 0;
     overflow-x: auto;
     overflow-y: hidden;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-y: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
