@@ -1691,3 +1691,59 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
+/* ===== Reviews carousel ===== */
+(function () {
+  const grid = document.querySelector(".review-grid");
+  const dotsHost = document.querySelector("[data-review-dots]");
+  if (!grid || !dotsHost) return;
+  const reviews = Array.from(grid.querySelectorAll(".review"));
+  if (reviews.length <= 1) return;
+
+  let activeIndex = 0;
+  let timer = null;
+  const interval = 5000;
+
+  const dots = reviews.map((_, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-label", `Show review ${i + 1}`);
+    btn.addEventListener("click", () => {
+      show(i);
+      restart();
+    });
+    dotsHost.appendChild(btn);
+    return btn;
+  });
+
+  function show(index) {
+    activeIndex = (index + reviews.length) % reviews.length;
+    reviews.forEach((review, i) => review.classList.toggle("is-active", i === activeIndex));
+    dots.forEach((dot, i) => {
+      const selected = i === activeIndex;
+      dot.classList.toggle("is-active", selected);
+      dot.setAttribute("aria-selected", String(selected));
+    });
+  }
+
+  function start() {
+    if (timer) return;
+    timer = window.setInterval(() => show(activeIndex + 1), interval);
+  }
+
+  function restart() {
+    window.clearInterval(timer);
+    timer = null;
+    start();
+  }
+
+  grid.addEventListener("mouseenter", () => {
+    window.clearInterval(timer);
+    timer = null;
+  });
+  grid.addEventListener("mouseleave", start);
+
+  show(0);
+  start();
+})();
