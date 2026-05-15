@@ -40,11 +40,10 @@
       </div>
 
       <div class="nav-links" id="site-menu" data-nav-menu>
-        <a class="active" href="#home" data-i18n="nav.home">Home</a>
-        <a href="#sortiment"><span data-i18n="nav.selection">Selection</span> <span class="badge" data-i18n="nav.new">New</span></a>
+        <a class="active" href="#about" data-i18n="story.eyebrow">Our market</a>
         <a href="#recipes" data-i18n="nav.recipes">Recipes</a>
-        <a href="#events" data-i18n="nav.events">Events</a>
-        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="#events" data-i18n="nav.events">Calendar</a>
+        <a href="#visit" data-i18n="nav.visit">Find us</a>
       </div>
 
       <div class="nav-actions">
@@ -145,9 +144,9 @@
     <section class="recipes" id="recipes">
       <div class="recipes__head">
         <p class="section-eyebrow" data-i18n="recipes.eyebrow">03 - From the kitchen</p>
-        <h2 data-i18n="recipes.title">Four recipes, four aisles.</h2>
-        <p data-i18n="recipes.text">Traditional dishes you can finish on a Tuesday - most of the pantry is on our shelves.</p>
-        <div class="filters" aria-label="Recipe filters">
+        <h2 data-i18n="recipes.title">Recipes from our shelves.</h2>
+        <p data-i18n="recipes.text">Dishes you can finish on a weekday - most of the pantry is on our shelves.</p>
+        <div class="filters" aria-label="Recipe filters" data-i18n-aria-label="recipes.filters">
           <button class="filter filter--on" type="button" data-filter="all" data-i18n="filter.all">all</button>
           <button class="filter" type="button" data-filter="vegetarian" data-i18n="filter.vegetarian">vegetarian</button>
           <button class="filter" type="button" data-filter="spicy" data-i18n="filter.spicy">spicy</button>
@@ -179,48 +178,6 @@
         </aside>
         <ul class="events__list"></ul>
       </div>
-    </section>
-
-    <section class="reviews" id="reviews">
-      <header class="reviews-head">
-        <p class="section-eyebrow" data-i18n="reviews.eyebrow">Reviews</p>
-        <h2 class="section-title" data-i18n="reviews.title">What customers say.</h2>
-        <div class="reviews-meta">
-          <div class="reviews-rating">
-            <span class="reviews-score">4.9</span>
-            <div class="reviews-stars" aria-label="4.9 out of 5 stars">★★★★★</div>
-          </div>
-          <p class="reviews-sub" data-i18n="reviews.sub">Based on 312 Google reviews.</p>
-        </div>
-      </header>
-
-      <div class="review-grid">
-        <figure class="review">
-          <blockquote data-i18n="review.anna">Very clean, well sorted, great advice and many products that are otherwise hard to find in Vienna.</blockquote>
-          <figcaption><span class="review-name">Anna K.</span><span class="review-place" data-i18n="place.anna">Vienna · 6th district</span></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote data-i18n="review.daniel">I come for sauces, rice and snacks. You quickly find what you need without market chaos.</blockquote>
-          <figcaption><span class="review-name">Daniel L.</span><span class="review-place" data-i18n="place.daniel">Vienna · Neubau</span></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote data-i18n="review.mei">Friendly, calm and well curated. The tea selection and small recommendations are especially strong.</blockquote>
-          <figcaption><span class="review-name">Mei S.</span><span class="review-place" data-i18n="place.mei">Vienna · Mariahilf</span></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote data-i18n="review.markus">Finally an Asian market where you do not have to search forever. The shelves make sense and the selection fits.</blockquote>
-          <figcaption><span class="review-name">Markus P.</span><span class="review-place" data-i18n="place.markus">Vienna · Innere Stadt</span></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote data-i18n="review.sofia">Very good selection of noodles, chili crisp and rice. I take something new almost every time.</blockquote>
-          <figcaption><span class="review-name">Sofia M.</span><span class="review-place" data-i18n="place.sofia">Vienna · Wieden</span></figcaption>
-        </figure>
-        <figure class="review">
-          <blockquote data-i18n="review.linh">The staff really know the products. I found exactly the sauce I needed.</blockquote>
-          <figcaption><span class="review-name">Linh T.</span><span class="review-place" data-i18n="place.linh">Vienna · Margareten</span></figcaption>
-        </figure>
-      </div>
-      <div class="review-dots" role="tablist" aria-label="Review pagination" data-review-dots></div>
     </section>
 
     <section class="student-band" aria-labelledby="student-band-title">
@@ -296,6 +253,21 @@
           <span class="status__dot"></span>
           <span data-status-text>Checking hours</span>
         </div>
+        <nav class="visit-socials socials" aria-label="Social and delivery links">
+          <a class="social-icon" href="https://www.instagram.com/choo.asiamarket/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/>
+            </svg>
+          </a>
+          <a class="social-icon social-icon--wolt" href="https://wolt.com/en/aut/vienna/venue/choo-foodstore" target="_blank" rel="noopener" aria-label="Wolt">
+            <span class="brand-mark" aria-hidden="true">W</span>
+          </a>
+          <a class="social-icon social-icon--foodora" href="https://www.foodora.at/en/shop/axa9/choo-asia-foodstore/category/7a3f1dd1-6577-413a-8c28-1b4f69385221" target="_blank" rel="noopener" aria-label="foodora">
+            <span class="brand-mark" aria-hidden="true">f</span>
+          </a>
+        </nav>
       </div>
       <div class="visit__map" aria-label="Google Maps location">
         <iframe
@@ -311,42 +283,33 @@
   <div class="recipe-view" data-recipe-view aria-hidden="true"></div>
 
   <footer class="footer">
-    <div class="footer-grid">
-      <div>
-        <h4 data-i18n="footer.links">Links</h4>
-        <ul>
-          <li><a href="#home" data-i18n="nav.home">Home</a></li>
-          <li><a href="#sortiment" data-i18n="nav.selection">Selection</a></li>
-          <li><a href="#recipes" data-i18n="nav.recipes">Recipes</a></li>
-          <li><a href="#about" data-i18n="footer.about">About us</a></li>
-          <li><a href="#events" data-i18n="nav.events">Events</a></li>
-          <li><a href="#reviews" data-i18n="nav.reviews">Reviews</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-i18n="footer.visit">Visit</h4>
-        <ul>
-          <li data-i18n="top.address">Address: Linke Wienzeile 54, 1060 Vienna</li>
-          <li data-i18n="footer.hours1">Mon-Fri 09-20:00</li>
-          <li data-i18n="footer.hours2">Sat 09-18:00</li>
-          <li data-i18n-html="footer.phone">Phone: <a href="tel:019605678">01 9605678</a></li>
-        </ul>
-      </div>
-      <div class="footer-brand">
-        <a href="#home" class="logo" aria-label="Choo Foodstore home">
-          <img src="fortnite.svg" alt="Choo Foodstore" width="1080" height="1080" />
-        </a>
-        <p data-i18n="footer.text">Asian supermarket in Vienna's sixth district. Carefully sorted, friendly advice.</p>
-        <div class="cn-tag cn">时代超市</div>
+    <div class="footer-compact">
+      <a href="#home" class="footer-logo" aria-label="Choo Foodstore home">
+        <img src="fortnite.svg" alt="Choo Foodstore" width="1080" height="1080" />
+      </a>
+      <div class="footer-contact">
+        <span data-i18n="footer.hours1">Mon-Fri 09-20:00</span>
+        <span data-i18n="footer.hours2">Sat 09-18:00</span>
       </div>
     </div>
     <div class="footer-bottom">
       <span data-i18n="footer.copy">© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Vienna</span>
-      <div class="socials">
-        <a href="#home">Instagram</a>
-        <a href="#home" data-i18n="footer.imprint">Imprint</a>
-        <a href="#home" data-i18n="footer.privacy">Privacy</a>
-      </div>
+      <nav class="socials" aria-label="Social and delivery links">
+        <a class="social-icon" href="https://www.instagram.com/choo.asiamarket/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="social-icon social-icon--wolt" href="https://wolt.com/en/aut/vienna/venue/choo-foodstore" target="_blank" rel="noopener" aria-label="Wolt">
+          <span class="brand-mark" aria-hidden="true">W</span>
+        </a>
+        <a class="social-icon social-icon--foodora" href="https://www.foodora.at/en/shop/axa9/choo-asia-foodstore/category/7a3f1dd1-6577-413a-8c28-1b4f69385221" target="_blank" rel="noopener" aria-label="foodora">
+          <span class="brand-mark" aria-hidden="true">f</span>
+        </a>
+      </nav>
+      <a class="made-by" href="https://hango.at/" target="_blank" rel="noopener">made by hango.at</a>
     </div>
   </footer>
 </body>

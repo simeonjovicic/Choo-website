@@ -12,8 +12,8 @@
       "nav.selection": "Selection",
       "nav.new": "New",
       "nav.recipes": "Recipes",
-      "nav.events": "Events",
-      "nav.reviews": "Reviews",
+      "nav.events": "Calendar",
+      "nav.visit": "Find us",
       "hero.eyebrow": "Asian supermarket · Vienna 1060",
       "hero.title": "Snacks, sauces & staples.",
       "hero.text": "An Asian market on Linke Wienzeile. Pantry staples, noodles, snacks and sauces from across Asia.",
@@ -31,8 +31,9 @@
       "aisle.title": "Tap a shelf.<br /><em>It's stocked.</em>",
       "aisle.text": "Three aisles, low ceiling, paper lanterns. We carry around 1,200 lines - pantry deep on sauces, noodles and rice, with a steady rotation of regional snacks. Tap the illustration to find a section.",
       "recipes.eyebrow": "03 - From the kitchen",
-      "recipes.title": "Four recipes, four aisles.",
-      "recipes.text": "Traditional dishes you can finish on a Tuesday - most of the pantry is on our shelves.",
+      "recipes.title": "Recipes from our shelves.",
+      "recipes.text": "Dishes you can finish on a weekday - most of the pantry is on our shelves.",
+      "recipes.filters": "Recipe filters",
       "filter.all": "all",
       "filter.vegetarian": "vegetarian",
       "filter.spicy": "spicy",
@@ -40,21 +41,6 @@
       "events.eyebrow": "04 - Chinese calendar",
       "events.title": "Traditional festivals in 2026.",
       "events.text": "Starts with the next three dates, then lets you jump month by month.",
-      "reviews.eyebrow": "Reviews",
-      "reviews.title": "What customers say.",
-      "reviews.sub": "Based on 312 Google reviews.",
-      "review.anna": "Very clean, well sorted, great advice and many products that are otherwise hard to find in Vienna.",
-      "review.daniel": "I come for sauces, rice and snacks. You quickly find what you need without market chaos.",
-      "review.mei": "Friendly, calm and well curated. The tea selection and small recommendations are especially strong.",
-      "review.markus": "Finally an Asian market where you do not have to search forever. The shelves make sense and the selection fits.",
-      "review.sofia": "Very good selection of noodles, chili crisp and rice. I take something new almost every time.",
-      "review.linh": "The staff really know the products. I found exactly the sauce I needed.",
-      "place.anna": "Vienna · 6th district",
-      "place.daniel": "Vienna · Neubau",
-      "place.mei": "Vienna · Mariahilf",
-      "place.markus": "Vienna · Innere Stadt",
-      "place.sofia": "Vienna · Wieden",
-      "place.linh": "Vienna · Margareten",
       "student.eyebrow": "Exclusive for students",
       "student.title": "Student discount",
       "student.stamp": "Off",
@@ -73,7 +59,6 @@
       "hours.sunday": "Sunday",
       "hours.closed": "closed",
       "footer.links": "Links",
-      "footer.about": "About us",
       "footer.visit": "Visit",
       "footer.hours1": "Mon-Fri 09-20:00",
       "footer.hours2": "Sat 09-18:00",
@@ -103,6 +88,17 @@
       "recipe.tags": "Tags",
       "recipe.ingredients": "Ingredients",
       "recipe.method": "Method",
+      "recipe.summary": "Recipe summary",
+      "recipe.showIngredients": "Show ingredients",
+      "recipe.hideIngredients": "Hide ingredients",
+      "timer.start": "Start",
+      "timer.pause": "Pause",
+      "timer.keepAwake": "Keep screen on",
+      "timer.off": "Off",
+      "timer.on": "On",
+      "timer.paused": "Paused",
+      "timer.blocked": "Blocked",
+      "timer.unsupported": "Not supported",
       "event.one": "event",
       "event.many": "events",
       "event.today": "Today",
@@ -124,8 +120,8 @@
       "nav.selection": "Sortiment",
       "nav.new": "Neu",
       "nav.recipes": "Rezepte",
-      "nav.events": "Events",
-      "nav.reviews": "Bewertungen",
+      "nav.events": "Kalender",
+      "nav.visit": "Finde uns",
       "hero.eyebrow": "Asia-Supermarkt · Wien 1060",
       "hero.title": "Snacks, Saucen & Basics.",
       "hero.text": "Asia-Markt an der Linken Wienzeile. Vorrat, Nudeln, Snacks und Saucen aus ganz Asien.",
@@ -143,8 +139,9 @@
       "aisle.title": "Tippe ein Regal an.<br /><em>Es ist voll.</em>",
       "aisle.text": "Drei Gänge, niedrige Decke, Papierlaternen. Wir führen rund 1.200 Artikel - tief sortiert bei Saucen, Nudeln und Reis, mit wechselnden regionalen Snacks. Tippe auf die Illustration, um einen Bereich zu entdecken.",
       "recipes.eyebrow": "03 - Aus der Küche",
-      "recipes.title": "Vier Rezepte, vier Gänge.",
-      "recipes.text": "Traditionelle Gerichte, die du auch unter der Woche kochen kannst - fast alles dafür steht bei uns im Regal.",
+      "recipes.title": "Rezepte aus unseren Regalen.",
+      "recipes.text": "Gerichte, die du auch unter der Woche kochen kannst - fast alles dafür steht bei uns im Regal.",
+      "recipes.filters": "Rezeptfilter",
       "filter.all": "alle",
       "filter.vegetarian": "vegetarisch",
       "filter.spicy": "scharf",
@@ -152,21 +149,6 @@
       "events.eyebrow": "04 - Chinesischer Kalender",
       "events.title": "Traditionelle Feste 2026.",
       "events.text": "Startet mit den nächsten drei Terminen, danach kannst du Monat für Monat springen.",
-      "reviews.eyebrow": "Bewertungen",
-      "reviews.title": "Was Kundinnen und Kunden sagen.",
-      "reviews.sub": "Basierend auf 312 Google-Bewertungen.",
-      "review.anna": "Sehr sauber sortiert, super Beratung und viele Produkte, die man sonst in Wien lange suchen muss.",
-      "review.daniel": "Ich komme wegen Saucen, Reis und Snacks. Man findet schnell, was man braucht, ohne Markt-Chaos.",
-      "review.mei": "Freundlich, ruhig und gut kuratiert. Besonders die Tee-Auswahl und die kleinen Empfehlungen sind stark.",
-      "review.markus": "Endlich ein Asia-Markt, in dem man nicht ewig suchen muss. Die Regale sind logisch und die Auswahl passt.",
-      "review.sofia": "Sehr gute Auswahl an Nudeln, Chili Crisp und Reissorten. Ich nehme fast jedes Mal etwas Neues mit.",
-      "review.linh": "Die Mitarbeitenden kennen die Produkte wirklich. Ich habe genau die Sauce gefunden, die ich gebraucht habe.",
-      "place.anna": "Wien · 6. Bezirk",
-      "place.daniel": "Wien · Neubau",
-      "place.mei": "Wien · Mariahilf",
-      "place.markus": "Wien · Innere Stadt",
-      "place.sofia": "Wien · Wieden",
-      "place.linh": "Wien · Margareten",
       "student.eyebrow": "Exklusiv für Studierende",
       "student.title": "Studentenrabatt",
       "student.stamp": "Rabatt",
@@ -185,7 +167,6 @@
       "hours.sunday": "Sonntag",
       "hours.closed": "geschlossen",
       "footer.links": "Links",
-      "footer.about": "Über uns",
       "footer.visit": "Besuchen",
       "footer.hours1": "Mo-Fr 09-20:00",
       "footer.hours2": "Sa 09-18:00",
@@ -215,6 +196,17 @@
       "recipe.tags": "Tags",
       "recipe.ingredients": "Zutaten",
       "recipe.method": "Zubereitung",
+      "recipe.summary": "Rezeptübersicht",
+      "recipe.showIngredients": "Zutaten anzeigen",
+      "recipe.hideIngredients": "Zutaten ausblenden",
+      "timer.start": "Start",
+      "timer.pause": "Pause",
+      "timer.keepAwake": "Bildschirm anlassen",
+      "timer.off": "Aus",
+      "timer.on": "An",
+      "timer.paused": "Pausiert",
+      "timer.blocked": "Blockiert",
+      "timer.unsupported": "Nicht unterstützt",
       "event.one": "Event",
       "event.many": "Events",
       "event.today": "Heute",
@@ -236,8 +228,8 @@
       "nav.selection": "商品",
       "nav.new": "新",
       "nav.recipes": "食谱",
-      "nav.events": "活动",
-      "nav.reviews": "评价",
+      "nav.events": "日历",
+      "nav.visit": "找到我们",
       "hero.eyebrow": "亚洲超市 · 维也纳 1060",
       "hero.title": "零食、酱料与日常食材。",
       "hero.text": "位于 Linke Wienzeile 的亚洲市场。这里有来自亚洲各地的主食、面、零食和酱料。",
@@ -255,8 +247,9 @@
       "aisle.title": "点一下货架。<br /><em>货很足。</em>",
       "aisle.text": "三条过道、低矮天花和纸灯笼。我们约有 1,200 种商品，酱料、面和米类很齐全，也会持续更换地区零食。点按插图探索不同区域。",
       "recipes.eyebrow": "03 - 来自厨房",
-      "recipes.title": "四道食谱，四条过道。",
-      "recipes.text": "下班后也能完成的传统菜，大部分食材都能在我们的货架上找到。",
+      "recipes.title": "来自货架的食谱。",
+      "recipes.text": "工作日也能完成的菜，大部分食材都能在我们的货架上找到。",
+      "recipes.filters": "食谱筛选",
       "filter.all": "全部",
       "filter.vegetarian": "素食",
       "filter.spicy": "辣",
@@ -264,21 +257,6 @@
       "events.eyebrow": "04 - 中国日历",
       "events.title": "2026 传统节日。",
       "events.text": "默认显示接下来三个日期，也可以按月份浏览。",
-      "reviews.eyebrow": "评价",
-      "reviews.title": "顾客怎么说。",
-      "reviews.sub": "基于 312 条 Google 评价。",
-      "review.anna": "店里很干净，分类清楚，建议也很实用，很多在维也纳很难找的商品这里都有。",
-      "review.daniel": "我常来买酱料、米和零食。不用在混乱的市场里找很久，很快就能找到需要的东西。",
-      "review.mei": "友好、安静、选品好。茶的选择和小推荐尤其不错。",
-      "review.markus": "终于有一家不用找很久的亚洲市场。货架很有逻辑，选择也刚好。",
-      "review.sofia": "面、辣椒脆和米类选择很好。我几乎每次都会带点新东西回家。",
-      "review.linh": "店员真的了解商品。我找到了正好需要的那款酱。",
-      "place.anna": "维也纳 · 第六区",
-      "place.daniel": "维也纳 · Neubau",
-      "place.mei": "维也纳 · Mariahilf",
-      "place.markus": "维也纳 · 内城区",
-      "place.sofia": "维也纳 · Wieden",
-      "place.linh": "维也纳 · Margareten",
       "student.eyebrow": "学生专属",
       "student.title": "学生折扣",
       "student.stamp": "优惠",
@@ -297,7 +275,6 @@
       "hours.sunday": "周日",
       "hours.closed": "休息",
       "footer.links": "链接",
-      "footer.about": "关于我们",
       "footer.visit": "到店",
       "footer.hours1": "周一至周五 09-20:00",
       "footer.hours2": "周六 09-18:00",
@@ -327,6 +304,17 @@
       "recipe.tags": "标签",
       "recipe.ingredients": "食材",
       "recipe.method": "做法",
+      "recipe.summary": "食谱概要",
+      "recipe.showIngredients": "显示食材",
+      "recipe.hideIngredients": "隐藏食材",
+      "timer.start": "开始",
+      "timer.pause": "暂停",
+      "timer.keepAwake": "保持屏幕常亮",
+      "timer.off": "关闭",
+      "timer.on": "开启",
+      "timer.paused": "已暂停",
+      "timer.blocked": "被阻止",
+      "timer.unsupported": "不支持",
       "event.one": "活动",
       "event.many": "活动",
       "event.today": "今天",
@@ -364,6 +352,9 @@
     });
     document.querySelectorAll("[data-i18n-html]").forEach((node) => {
       node.innerHTML = t(node.dataset.i18nHtml);
+    });
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
+      node.setAttribute("aria-label", t(node.dataset.i18nAriaLabel));
     });
     document.querySelectorAll("[data-language-code]").forEach((node) => {
       node.textContent = LABELS[currentLang];
@@ -904,11 +895,11 @@
       serves: 2,
       blurb: "Sichuan classic - silken tofu in a numbing chili-bean sauce.",
       ingredients: [
-        { name: "Silken tofu, 400g", inStore: true, aisle: "Fresh / fridge" },
+        { name: "400g silken tofu", inStore: true, aisle: "Fresh / fridge" },
         { name: "Doubanjiang (broad-bean paste)", inStore: true, aisle: "Sauces" },
-        { name: "Sichuan peppercorns, 1 tsp", inStore: true, aisle: "Spices" },
-        { name: "Ground pork, 150g", inStore: false },
-        { name: "Scallions, 2", inStore: false },
+        { name: "1 tsp Sichuan peppercorns", inStore: true, aisle: "Spices" },
+        { name: "150g ground pork", inStore: false },
+        { name: "2 scallions", inStore: false },
         { name: "Garlic + ginger", inStore: false },
         { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "Cornstarch slurry", inStore: true, aisle: "Pantry" },
@@ -929,13 +920,13 @@
       serves: 2,
       blurb: "Chengdu street bowl - sesame, chili oil, vinegar, crisp pork.",
       ingredients: [
-        { name: "Wheat noodles, 200g", inStore: true, aisle: "Noodles" },
-        { name: "Chinese sesame paste, 2 tbsp", inStore: true, aisle: "Sauces" },
-        { name: "Chili crisp / chili oil, 2 tbsp", inStore: true, aisle: "Sauces" },
-        { name: "Chinkiang black vinegar, 1 tbsp", inStore: true, aisle: "Sauces" },
-        { name: "Light soy sauce, 1 tbsp", inStore: true, aisle: "Sauces" },
+        { name: "200g wheat noodles", inStore: true, aisle: "Noodles" },
+        { name: "2 tbsp Chinese sesame paste", inStore: true, aisle: "Sauces" },
+        { name: "2 tbsp chili crisp / chili oil", inStore: true, aisle: "Sauces" },
+        { name: "1 tbsp Chinkiang black vinegar", inStore: true, aisle: "Sauces" },
+        { name: "1 tbsp light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "Sui mi ya cai (preserved mustard)", inStore: true, aisle: "Pantry" },
-        { name: "Ground pork, 100g", inStore: false },
+        { name: "100g ground pork", inStore: false },
         { name: "Scallions", inStore: false },
       ],
       steps: [
@@ -953,11 +944,11 @@
       serves: 2,
       blurb: "Two ingredients, big flavour. Glossy, garlicky, ready in minutes.",
       ingredients: [
-        { name: "Baby bok choy, 4 heads", inStore: false },
-        { name: "Dried shiitake, 6", inStore: true, aisle: "Pantry" },
+        { name: "4 heads baby bok choy", inStore: false },
+        { name: "6 dried shiitake", inStore: true, aisle: "Pantry" },
         { name: "Vegetarian oyster (mushroom) sauce", inStore: true, aisle: "Sauces" },
-        { name: "Shaoxing wine, 1 tbsp", inStore: true, aisle: "Pantry" },
-        { name: "Garlic, 4 cloves", inStore: false },
+        { name: "1 tbsp Shaoxing wine", inStore: true, aisle: "Pantry" },
+        { name: "4 cloves garlic", inStore: false },
         { name: "Cornstarch", inStore: true, aisle: "Pantry" },
         { name: "Sesame oil", inStore: true, aisle: "Sauces" },
       ],
@@ -977,9 +968,9 @@
       serves: 2,
       blurb: "Day-old jasmine rice, hot wok, three ingredients done right.",
       ingredients: [
-        { name: "Day-old jasmine rice, 400g", inStore: true, aisle: "Pantry" },
-        { name: "Eggs, 3", inStore: false },
-        { name: "Scallions, 4", inStore: false },
+        { name: "400g day-old jasmine rice", inStore: true, aisle: "Pantry" },
+        { name: "3 eggs", inStore: false },
+        { name: "4 scallions", inStore: false },
         { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "White pepper", inStore: true, aisle: "Spices" },
         { name: "Sesame oil", inStore: true, aisle: "Sauces" },
@@ -993,6 +984,620 @@
         "Off heat: scallion greens, sesame oil. Serve immediately.",
       ],
     },
+    {
+      id: "crispy-chili-beef",
+      name: "Crispy Chili Beef Fillet",
+      tags: ["spicy"],
+      time: "30 min",
+      serves: 2,
+      blurb: "Thin beef strips fried crisp, tossed in a tangy chili-soy glaze.",
+      ingredients: [
+        { name: "400g beef fillet", inStore: false },
+        { name: "2 1/2 tbsp corn starch", inStore: true, aisle: "Pantry" },
+        { name: "2 tbsp cooking oil", inStore: false },
+        { name: "1 tsp sesame seeds", inStore: true, aisle: "Pantry" },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 2 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 2 tbsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Chiu Chow Chili Oil", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 5 tbsp water", inStore: false },
+        { name: "Sauce: 1/2 tbsp sugar", inStore: false },
+        { name: "Sauce: 1/2 tbsp cooking wine", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 1 tbsp corn starch", inStore: true, aisle: "Pantry" },
+      ],
+      steps: [
+        "Cut the beef into thin strips and marinate with oyster sauce for 15-20 minutes.",
+        "Coat the beef strips in corn starch.",
+        "Heat oil in a pan over medium heat and fry the beef until browned. Remove and set aside.",
+        "Add the sauce mixture to the pan and cook for about 5 minutes until slightly thickened.",
+        "Return the beef to the pan and toss until evenly coated.",
+        "Sprinkle with sesame seeds before serving.",
+      ],
+    },
+    {
+      id: "golden-wonton-pockets",
+      name: "Golden Wonton Pockets / Gyoza",
+      tags: ["quick"],
+      time: "10 min",
+      serves: 2,
+      blurb: "Crisp wonton pockets or gyoza served with bright Lee Kum Kee chili sauces.",
+      ingredients: [
+        { name: "Fried wonton pockets or gyoza", inStore: true, aisle: "Freezer" },
+        { name: "Seaweed salad for garnish", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Lee Kum Kee Chili Sauce with Yuzu Aroma", inStore: true, aisle: "Sauces" },
+        { name: "Lee Kum Kee Sweet Chili Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Lee Kum Kee Chili Sauce with Kaffir Lime Leaf Aroma", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Fry the wontons or gyoza until golden brown.",
+        "Arrange three pieces on each plate.",
+        "Place the seaweed salad in the center as garnish.",
+        "Serve with the sauces.",
+      ],
+    },
+    {
+      id: "spicy-eggplant-salad",
+      name: "Spicy Eggplant Salad",
+      tags: ["spicy", "vegetarian"],
+      time: "45 min",
+      serves: 2,
+      blurb: "Steamed eggplant with garlic, spring onion, sesame and a spicy Ma-La sauce.",
+      ingredients: [
+        { name: "2 eggplants, trimmed and cut into 5 cm strips", inStore: false },
+        { name: "1 tbsp sesame seeds", inStore: true, aisle: "Pantry" },
+        { name: "2 tbsp oil", inStore: false },
+        { name: "3 garlic cloves, crushed", inStore: false },
+        { name: "1 spring onion, finely chopped", inStore: false },
+        { name: "Sauce: 2 tbsp Lee Kum Kee soy sauce with shallot aroma", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: Lee Kum Kee Red Ma-La Chili Sauce", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Soak the eggplant in water and vinegar for 30 minutes to keep its purple color. Drain and set aside.",
+        "Bring water to a boil, place eggplant in a steamer basket and steam for 10 minutes.",
+        "Put garlic, spring onion and sesame seeds in a bowl. Heat about 2 tbsp oil and pour it over the mixture.",
+        "Stir in the remaining sauce ingredients.",
+        "Arrange the cooled eggplant on a plate, pour the sauce over it and serve.",
+      ],
+    },
+    {
+      id: "garlic-prawns-glass-noodles",
+      name: "Garlic Prawns with Glass Noodles",
+      tags: ["quick"],
+      time: "20 min",
+      serves: 2,
+      blurb: "Tiger prawns steamed over glass noodles with a glossy garlic soy-oyster sauce.",
+      ingredients: [
+        { name: "12-15 tiger prawns with shell", inStore: false },
+        { name: "1 nest vermicelli glass noodles", inStore: true, aisle: "Noodles" },
+        { name: "2 tbsp vegetable oil", inStore: false },
+        { name: "2 garlic cloves, finely chopped", inStore: false },
+        { name: "1 spring onion, finely chopped", inStore: false },
+        { name: "Sauce: 1/2 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1/2 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Soak the glass noodles in warm water until soft. Drain and place on a plate.",
+        "Rinse the prawns and pat dry. Peel them, leaving the tail section on.",
+        "Gently fry the garlic in sesame oil until lightly golden. Add oyster sauce and light soy sauce.",
+        "Place the prawns on the glass noodles and pour the garlic sauce over them.",
+        "Steam over boiling water for 5-7 minutes.",
+        "Sprinkle with spring onion. Heat oil and pour it over the prawns before serving.",
+      ],
+    },
+    {
+      id: "honey-lime-soy-chicken",
+      name: "Honey-Lime Soy Chicken",
+      tags: [],
+      time: "45 min + marinating",
+      serves: 3,
+      blurb: "Chicken thigh fillets baked with honey, lime, garlic and light soy sauce.",
+      ingredients: [
+        { name: "500g chicken thigh fillets", inStore: false },
+        { name: "1 handful coriander or spring onions, chopped", inStore: false },
+        { name: "Marinade: 2 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Marinade: 2 tbsp honey", inStore: false },
+        { name: "Marinade: 2 tbsp fresh lime juice", inStore: false },
+        { name: "Marinade: 2 garlic cloves, crushed", inStore: false },
+        { name: "Marinade: 1/2 tsp ground black pepper", inStore: true, aisle: "Spices" },
+      ],
+      steps: [
+        "Marinate the chicken for at least 2 hours.",
+        "Preheat oven to 180 degrees C.",
+        "Place the chicken on a baking tray and reserve the marinade.",
+        "Bake for 25 minutes. Halfway through, brush the chicken with the reserved marinade.",
+        "Garnish with coriander or spring onions and serve.",
+      ],
+    },
+    {
+      id: "lucky-cabbage-parcels",
+      name: "Lucky Cabbage Parcels",
+      tags: [],
+      time: "35 min",
+      serves: 3,
+      blurb: "Soft Chinese cabbage leaves wrapped around pork, carrot and water chestnut filling.",
+      ingredients: [
+        { name: "300g minced pork", inStore: false },
+        { name: "Chinese cabbage leaves", inStore: false },
+        { name: "40g water chestnuts, finely diced", inStore: true, aisle: "Pantry" },
+        { name: "1 carrot, finely diced", inStore: false },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "Marinade: 1 tsp sugar", inStore: false },
+        { name: "Marinade: 1 tsp corn starch", inStore: true, aisle: "Pantry" },
+        { name: "Marinade: 1 tsp water", inStore: false },
+        { name: "Marinade: 1 tsp ground white pepper", inStore: true, aisle: "Spices" },
+        { name: "Sauce: 2 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 2 tbsp water", inStore: false },
+        { name: "Sauce: 1 tsp corn starch", inStore: true, aisle: "Pantry" },
+      ],
+      steps: [
+        "Boil the Chinese cabbage leaves in hot water until soft. Drain and set aside.",
+        "Mix minced pork, diced carrot, water chestnuts and all marinade ingredients thoroughly.",
+        "Fill the soft cabbage leaves with the pork mixture.",
+        "Steam over high heat for 10 minutes until fully cooked.",
+        "Cook the sauce mixture over low heat until thickened.",
+        "Pour the sauce over the parcels and serve.",
+      ],
+    },
+    {
+      id: "steamed-fish-slices",
+      name: "Steamed Fish Slices",
+      tags: ["quick"],
+      time: "30 min",
+      serves: 2,
+      blurb: "Sea bass slices steamed over tofu with black bean garlic oyster sauce.",
+      ingredients: [
+        { name: "250g sea bass fillet", inStore: false },
+        { name: "10 soft tofu cubes", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1/2 pinch salt", inStore: false },
+        { name: "1 tsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
+        { name: "1 pinch ground white pepper", inStore: true, aisle: "Spices" },
+        { name: "1 tsp water", inStore: false },
+        { name: "1 bunch pak choi, thinly sliced", inStore: false },
+        { name: "2 spring onions, finely chopped", inStore: false },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Black Bean Garlic Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp sugar", inStore: false },
+        { name: "Sauce: 1 tsp corn starch", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 1 tbsp water", inStore: false },
+      ],
+      steps: [
+        "Cut the sea bass fillet into 5 thin slices. Marinate for 15 minutes with mushroom seasoning powder, white pepper and water.",
+        "Cut the soft tofu into 10 cubes.",
+        "Spread the tofu cubes on a serving plate and place the marinated fish slices on top.",
+        "Steam over high heat for 8 minutes.",
+        "Meanwhile, mix all sauce ingredients in a small pot and cook over low heat until slightly thickened.",
+        "When the fish is cooked, pour the sauce over the fish and tofu.",
+        "Garnish with chili and spring onions and serve immediately.",
+      ],
+    },
+    {
+      id: "harvest-vegetable-pan",
+      name: "Harvest Vegetable Pan",
+      tags: ["vegetarian", "quick"],
+      time: "15 min",
+      serves: 2,
+      blurb: "Sweet corn, carrot, peas and pine nuts with mushroom seasoning and sesame oil.",
+      ingredients: [
+        { name: "1 small can sweet corn, drained", inStore: true, aisle: "Pantry" },
+        { name: "Carrots, diced", inStore: false },
+        { name: "Frozen peas", inStore: false },
+        { name: "Pine nuts", inStore: false },
+        { name: "1 tsp cooking oil", inStore: false },
+        { name: "Seasoning: 1 tbsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
+        { name: "Seasoning: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "Salt, optional", inStore: false },
+      ],
+      steps: [
+        "Toast the pine nuts in a dry pan over low heat until golden and fragrant. Remove and set aside.",
+        "Heat 1 tsp oil in the same pan. Add diced carrots and fry for 2-3 minutes until slightly soft.",
+        "Add peas and corn. Stir-fry for another 2-3 minutes.",
+        "Add 2-3 tbsp water, cover the pan and steam briefly until the carrots are soft.",
+        "Stir in the mushroom seasoning powder and season with salt if needed.",
+        "Drizzle with sesame oil and mix well.",
+        "Add the toasted pine nuts before serving.",
+      ],
+    },
+    {
+      id: "tofu-salad",
+      name: "Tofu Salad",
+      tags: ["vegetarian", "quick"],
+      time: "10 min",
+      serves: 2,
+      blurb: "Firm tofu, cucumber, lettuce and tomatoes with roasted sesame dressing.",
+      ingredients: [
+        { name: "200g firm tofu, drained and diced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1 cucumber, sliced", inStore: false },
+        { name: "4-6 lettuce leaves, torn into bite-sized pieces", inStore: false },
+        { name: "200g cherry tomatoes, halved", inStore: false },
+        { name: "Dressing: 3 tbsp Lee Kum Kee Roasted Sesame Dressing", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Prepare the tofu according to the package instructions.",
+        "Mix all ingredients and the dressing in a large salad bowl.",
+        "Toss well and serve.",
+      ],
+    },
+    {
+      id: "vietnamese-prawn-mango-rolls",
+      name: "Vietnamese Prawn-Mango Summer Rolls",
+      tags: ["quick"],
+      time: "25 min",
+      serves: 4,
+      blurb: "Fresh rice paper rolls with prawns, mango, cucumber, lettuce and mint.",
+      ingredients: [
+        { name: "8 pieces Vietnamese rice paper", inStore: true, aisle: "Pantry" },
+        { name: "16 cooked king prawns", inStore: false },
+        { name: "100g ripe mango, sliced", inStore: false },
+        { name: "80g cucumber, julienned", inStore: false },
+        { name: "80g mild lettuce", inStore: false },
+        { name: "16 mint leaves", inStore: false },
+        { name: "1 red chili, julienned, optional", inStore: false },
+        { name: "Dip: 2 tbsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
+        { name: "Dip: 1 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Dip: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "Dip: 1 tsp honey", inStore: false },
+      ],
+      steps: [
+        "Prepare a shallow bowl with water and a clean kitchen towel.",
+        "Soak one rice paper sheet at a time in cold water for 20-30 seconds until soft. Place it on the towel to drain.",
+        "Place the filling ingredients at one end of the rice paper. Roll tightly, fold in the sides and finish rolling.",
+        "Cut the summer rolls in half and serve with the dip sauce.",
+      ],
+    },
+    {
+      id: "poke-bowl",
+      name: "Poke Bowl",
+      tags: ["quick", "spicy"],
+      time: "20 min",
+      serves: 2,
+      blurb: "Rice, salmon, vegetables, kimchi and a chili-garlic oyster sauce.",
+      ingredients: [
+        { name: "250g cooked rice", inStore: true, aisle: "Rice" },
+        { name: "200g raw salmon, sashimi quality, diced", inStore: false },
+        { name: "2 tbsp edamame, blanched", inStore: true, aisle: "Freezer" },
+        { name: "1 small cucumber, cut into sticks", inStore: false },
+        { name: "1/2 carrot, grated", inStore: false },
+        { name: "1/2 avocado, diced", inStore: false },
+        { name: "2 tbsp kimchi, optional", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Sauce: 1 spring onion, finely sliced", inStore: false },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Chilli Garlic Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp Lee Kum Kee Dumpling Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp honey", inStore: false },
+        { name: "Garnish: 1 tsp toasted sesame seeds", inStore: true, aisle: "Pantry" },
+        { name: "Garnish: 2 pieces toasted nori", inStore: true, aisle: "Pantry" },
+      ],
+      steps: [
+        "Cook the rice according to the package instructions.",
+        "Mix the sauce ingredients in a bowl and add the salmon cubes.",
+        "Put the rice in a large bowl. Arrange the vegetables around the rice, leaving space in the middle.",
+        "Place the salmon in the center.",
+        "Sprinkle with sesame seeds and place the nori on the side. Serve.",
+      ],
+    },
+    {
+      id: "noodle-salad-chicken",
+      name: "Noodle Salad with Chicken",
+      tags: ["quick"],
+      time: "15 min",
+      serves: 2,
+      blurb: "Egg noodles topped with chicken, vegetables and Lee Kum Kee peanut sauce.",
+      ingredients: [
+        { name: "300g cooked egg noodles", inStore: true, aisle: "Noodles" },
+        { name: "1 medium carrot, julienned", inStore: false },
+        { name: "100g bean sprouts, blanched", inStore: false },
+        { name: "1 cucumber, sliced", inStore: false },
+        { name: "400g cooked chicken, shredded", inStore: false },
+        { name: "4 tbsp Lee Kum Kee Peanut Sauce", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Divide the noodles between two bowls.",
+        "Arrange the remaining ingredients on top of the noodles.",
+        "Toss with peanut sauce.",
+        "Serve and enjoy.",
+      ],
+    },
+    {
+      id: "wasabi-prawns-asparagus",
+      name: "Fried Wasabi King Prawns with Green Asparagus",
+      tags: ["quick"],
+      time: "15 min",
+      serves: 2,
+      blurb: "King prawns and asparagus finished with sesame dressing with wasabi aroma.",
+      ingredients: [
+        { name: "180g raw peeled king prawns", inStore: false },
+        { name: "110g thin green asparagus, cut into 4 cm pieces", inStore: false },
+        { name: "1 tbsp light olive oil", inStore: false },
+        { name: "1 tbsp Lee Kum Kee Sesame Dressing with Wasabi Aroma", inStore: true, aisle: "Sauces" },
+        { name: "Garnish: lime wedges", inStore: false },
+      ],
+      steps: [
+        "Devein the prawns and optionally butterfly them. Blanch the asparagus and drain.",
+        "Blanch asparagus pieces for about 2 minutes in simmering water, then drain.",
+        "Heat oil in a pan. Add prawns and cook until pink.",
+        "Add asparagus and toss everything together.",
+        "Remove from heat and mix with the sesame-wasabi dressing.",
+        "Garnish with lime wedges and serve.",
+      ],
+    },
+    {
+      id: "cold-mixed-vegetables",
+      name: "Cold Mixed Vegetables",
+      tags: ["vegetarian", "quick"],
+      time: "15 min",
+      serves: 2,
+      blurb: "Lotus root, onion, pepper and carrot in a light mushroom-soy dressing.",
+      ingredients: [
+        { name: "200g lotus root, thinly sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "20g red onion, thinly sliced", inStore: false },
+        { name: "20g yellow or red bell pepper, sliced", inStore: false },
+        { name: "20g carrot, julienned", inStore: false },
+        { name: "Sauce: 1 tbsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 2 tsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Sauce: 1 tsp lemon juice", inStore: false },
+      ],
+      steps: [
+        "Bring water to a boil and blanch the lotus root until almost cooked.",
+        "Cool in cold water and drain.",
+        "Mix the sauce with onion, bell pepper, carrot and lotus root.",
+        "Serve cold.",
+      ],
+    },
+    {
+      id: "tom-yum-chicken-spaghetti",
+      name: "Chicken Basil Spaghetti with Tom Yum Sauce",
+      tags: ["spicy"],
+      time: "25 min",
+      serves: 3,
+      blurb: "Spaghetti with chicken, basil and a coconut Tom Yum sauce.",
+      ingredients: [
+        { name: "350g chicken breast, cut into small pieces", inStore: false },
+        { name: "400g spaghetti", inStore: false },
+        { name: "1 onion, grated", inStore: false },
+        { name: "15 fresh basil leaves, torn", inStore: false },
+        { name: "1 pinch ground black pepper", inStore: true, aisle: "Spices" },
+        { name: "1 tbsp oil", inStore: false },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Tom Yum Bouillon", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 2 tbsp Lee Kum Kee Tom Yum Bouillon", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 2 tbsp coconut milk or water", inStore: true, aisle: "Pantry" },
+        { name: "Sauce: 4 tbsp spaghetti cooking water", inStore: false },
+      ],
+      steps: [
+        "Marinate the chicken for 10 minutes.",
+        "Cook the spaghetti 1 minute less than the package instructions. Drain and set aside.",
+        "Heat oil in a pan over medium heat. Saute the onion, then add chicken and stir-fry for about 3 minutes until almost cooked.",
+        "Add sauce mixture and spaghetti. Toss well.",
+        "Sprinkle with basil and black pepper and serve.",
+      ],
+    },
+    {
+      id: "mushroom-asparagus-risotto",
+      name: "Mushroom and Asparagus Risotto",
+      tags: ["vegetarian"],
+      time: "35 min",
+      serves: 3,
+      blurb: "Creamy risotto with mushrooms, asparagus and umami mushroom bouillon.",
+      ingredients: [
+        { name: "300g risotto rice", inStore: false },
+        { name: "200g mushrooms, sliced", inStore: false },
+        { name: "120g asparagus, peeled and halved", inStore: false },
+        { name: "1 onion, chopped", inStore: false },
+        { name: "50g vegan parmesan, grated", inStore: false },
+        { name: "1 tbsp mixed herbs", inStore: true, aisle: "Spices" },
+        { name: "2 tbsp olive oil", inStore: false },
+        { name: "1 pinch freshly ground black pepper", inStore: true, aisle: "Spices" },
+        { name: "Broth: 1 packet Lee Kum Kee Umami Mushroom Bouillon", inStore: true, aisle: "Pantry" },
+        { name: "Broth: 1.2 liters hot water", inStore: false },
+      ],
+      steps: [
+        "Mix the bouillon with hot water and keep warm.",
+        "Blanch asparagus, cool in cold water, drain and set aside.",
+        "Heat oil in a pan over medium heat. Saute onion, mushrooms and rice.",
+        "Gradually add the broth. Each time the rice absorbs the liquid, add more broth and stir.",
+        "Continue until the rice is al dente.",
+        "Add asparagus and parmesan. Stir well.",
+        "Serve with black pepper.",
+      ],
+    },
+    {
+      id: "seafood-rice-soup",
+      name: "Rice Soup with Assorted Seafood",
+      tags: ["quick"],
+      time: "25 min",
+      serves: 2,
+      blurb: "Comforting rice soup with mixed seafood and Lee Kum Kee seafood bouillon.",
+      ingredients: [
+        { name: "250g mixed seafood, for example prawns, clams, squid or scallops", inStore: false },
+        { name: "2 bowls cooked rice", inStore: true, aisle: "Rice" },
+        { name: "1 packet Lee Kum Kee Seafood Bouillon", inStore: true, aisle: "Pantry" },
+        { name: "1 liter hot water", inStore: false },
+        { name: "Chopped spring onion and coriander, optional", inStore: false },
+        { name: "Optional dip: 2 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Optional dip: 1 tsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
+        { name: "Optional dip: 1 tsp Lee Kum Kee Chiu Chow Chili Oil", inStore: true, aisle: "Sauces" },
+      ],
+      steps: [
+        "Add the bouillon to the hot water, mix well and bring to a boil.",
+        "Add cooked rice and cook for at least 15 minutes until the rice has swollen.",
+        "Add the seafood and cook until done.",
+        "Add spring onion and coriander.",
+        "Serve with the optional dip sauce if desired.",
+      ],
+    },
+    {
+      id: "spicy-fish-soup",
+      name: "Spicy Fish Soup with Fish Fillet",
+      tags: ["spicy"],
+      time: "25 min",
+      serves: 3,
+      blurb: "Sichuan-style fish fillet soup with tomatoes, enoki and spicy bouillon.",
+      ingredients: [
+        { name: "400g sea bass or cod fillet", inStore: false },
+        { name: "100g enoki mushrooms", inStore: true, aisle: "Fresh / fridge" },
+        { name: "3 tomatoes", inStore: false },
+        { name: "Coriander for garnish, optional", inStore: false },
+        { name: "Marinade: 1 egg", inStore: false },
+        { name: "Marinade: 2 tbsp corn starch", inStore: true, aisle: "Pantry" },
+        { name: "Marinade: 1 tsp salt", inStore: false },
+        { name: "Marinade: 1 tsp cooking wine", inStore: true, aisle: "Pantry" },
+        { name: "Marinade: 1/2 tsp ground white pepper", inStore: true, aisle: "Spices" },
+        { name: "Bouillon: 1 packet Lee Kum Kee Spicy Bouillon Sichuan Style", inStore: true, aisle: "Pantry" },
+        { name: "Bouillon: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Bouillon: 1 tsp sugar", inStore: false },
+        { name: "Bouillon: 1.2 liters hot water", inStore: false },
+      ],
+      steps: [
+        "Clean the fish fillets, pat dry and cut into thick slices. Marinate for 15 minutes.",
+        "Bring the bouillon mixture to a boil. Add enoki mushrooms and tomatoes and cook for 2 minutes.",
+        "Add the marinated fish and cook for about 3 minutes or until done.",
+        "Serve immediately.",
+      ],
+    },
+    {
+      id: "satay-rice-noodle-soup",
+      name: "Satay Soup with Rice Noodles, Chicken and Vegetables",
+      tags: [],
+      time: "25 min",
+      serves: 3,
+      blurb: "Rice noodles in satay bouillon with chicken, carrot, onion and baby corn.",
+      ingredients: [
+        { name: "400g cooked rice noodles or 200g raw rice noodles", inStore: true, aisle: "Noodles" },
+        { name: "200g chicken breast, cut into pieces", inStore: false },
+        { name: "60g carrot, grated", inStore: false },
+        { name: "40g onion, grated", inStore: false },
+        { name: "60g baby corn, halved", inStore: true, aisle: "Pantry" },
+        { name: "1 tbsp oil", inStore: false },
+        { name: "Marinade: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "Bouillon: 1 packet Lee Kum Kee Satay Bouillon", inStore: true, aisle: "Pantry" },
+        { name: "Bouillon: 1.2 liters hot water", inStore: false },
+      ],
+      steps: [
+        "Marinate the chicken for 10 minutes.",
+        "Heat oil in a pan over medium heat and fry the chicken until cooked.",
+        "Add the vegetables and stir-fry for 2 minutes.",
+        "Bring 1.2 liters water and the bouillon to a boil. Add rice noodles and cook for 2 minutes or according to the package instructions.",
+        "Divide the noodles into bowls, add chicken and vegetables, pour the boiling soup over them and serve.",
+      ],
+    },
+    {
+      id: "spicy-oyster-dip",
+      name: "Spicy Oyster Dip Sauce",
+      tags: ["quick", "spicy"],
+      time: "2 min",
+      serves: 2,
+      blurb: "A two-ingredient hot pot dip with oyster sauce and Chiu Chow chili oil.",
+      ingredients: [
+        { name: "1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tbsp Lee Kum Kee Chiu Chow Chili Oil", inStore: true, aisle: "Sauces" },
+      ],
+      steps: ["Mix everything together."],
+    },
+    {
+      id: "spicy-sweet-dip",
+      name: "Spicy-Sweet Dip Sauce",
+      tags: ["quick", "spicy"],
+      time: "2 min",
+      serves: 2,
+      blurb: "Hoisin sauce with chili bean sauce for a fast sweet-spicy dip.",
+      ingredients: [
+        { name: "2 tbsp Lee Kum Kee Hoisin Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp Lee Kum Kee Chili Bean Sauce", inStore: true, aisle: "Sauces" },
+      ],
+      steps: ["Mix everything together."],
+    },
+    {
+      id: "garlic-sesame-oil-dip",
+      name: "Garlic Sesame Oil Dip Sauce",
+      tags: ["quick", "vegetarian"],
+      time: "2 min",
+      serves: 2,
+      blurb: "Pure sesame oil and minced garlic, built for hot pot dipping.",
+      ingredients: [
+        { name: "3 tbsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "2 tbsp Lee Kum Kee Minced Garlic", inStore: true, aisle: "Sauces" },
+      ],
+      steps: ["Mix everything together."],
+    },
+    {
+      id: "savory-dip-sauce",
+      name: "Savory Dip Sauce",
+      tags: ["quick", "spicy"],
+      time: "3 min",
+      serves: 2,
+      blurb: "Soy, chili bean sauce, vinegar, peanut butter and sugar stirred smooth.",
+      ingredients: [
+        { name: "1 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp Lee Kum Kee Chili Bean Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp peanut butter", inStore: false },
+        { name: "1 tsp sugar", inStore: false },
+      ],
+      steps: ["Mix everything together until smooth."],
+    },
+    {
+      id: "fresh-herb-dip",
+      name: "Fresh Herb Dip Sauce",
+      tags: ["quick"],
+      time: "3 min",
+      serves: 2,
+      blurb: "Oyster sauce, ketchup, fresh tomato and herbs for hot pot.",
+      ingredients: [
+        { name: "2 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
+        { name: "2 tbsp ketchup", inStore: false },
+        { name: "1 tbsp fresh tomato, finely chopped", inStore: false },
+        { name: "Fresh herbs, for example coriander, spring onion or basil", inStore: false },
+      ],
+      steps: ["Mix everything together."],
+    },
+    {
+      id: "sesame-peanut-sauce",
+      name: "Sesame Peanut Sauce",
+      tags: ["quick", "spicy"],
+      time: "3 min",
+      serves: 2,
+      blurb: "Sweet soy, chili oil, peanut oil, sesame and herbs mixed creamy.",
+      ingredients: [
+        { name: "2 tbsp Lee Kum Kee Sweet Soy Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp Lee Kum Kee Chiu Chow Chili Oil", inStore: true, aisle: "Sauces" },
+        { name: "1 tbsp peanut oil", inStore: false },
+        { name: "1 tsp sesame seeds", inStore: true, aisle: "Pantry" },
+        { name: "3 tbsp soup or hot water", inStore: false },
+        { name: "2 tbsp spring onion and coriander, finely chopped", inStore: false },
+      ],
+      steps: ["Mix everything together until creamy."],
+    },
+    {
+      id: "fermented-tofu-sauce",
+      name: "Fermented Tofu Sauce",
+      tags: ["quick", "vegetarian"],
+      time: "3 min",
+      serves: 2,
+      blurb: "Fermented tofu mashed with sesame oil, hot water and sugar.",
+      ingredients: [
+        { name: "2 pieces fermented tofu", inStore: true, aisle: "Pantry" },
+        { name: "1 tbsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
+        { name: "2 tbsp soup or hot water", inStore: false },
+        { name: "1 tsp sugar", inStore: false },
+      ],
+      steps: ["Mash and mix everything together."],
+    },
+    {
+      id: "spicy-ma-la-sauce",
+      name: "Spicy Ma-La Sauce",
+      tags: ["quick", "spicy"],
+      time: "2 min",
+      serves: 2,
+      blurb: "Dumpling sauce stirred with spicy Sichuan-style bouillon.",
+      ingredients: [
+        { name: "4 tbsp Lee Kum Kee Dumpling Sauce", inStore: true, aisle: "Sauces" },
+        { name: "1 tsp spicy Sichuan-style bouillon", inStore: true, aisle: "Pantry" },
+      ],
+      steps: ["Mix everything together."],
+    },
   ];
 
   const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
@@ -1004,25 +1609,347 @@
   }[char]));
 
   let activeFilter = "all";
+  const recipeTimer = {
+    activeId: null,
+    total: 0,
+    remaining: 0,
+    running: false,
+    interval: null,
+    wakeWanted: false,
+    wakeLock: null,
+  };
   const recipeText = {
     de: {
-      mapo: { blurb: "Sichuan-Klassiker - Seidentofu in einer betäubend scharfen Chili-Bohnen-Sauce." },
-      dandan: { blurb: "Chengdu-Streetfood - Sesam, Chiliöl, Essig und knuspriges Schwein." },
-      "garlic-bok-choy": { blurb: "Zwei Hauptzutaten, viel Geschmack. Glänzend, knoblauchig, in Minuten fertig." },
-      "fried-rice": { blurb: "Reis vom Vortag, heißer Wok, drei Zutaten richtig gemacht." }
+      mapo: {
+        name: "Mapo-Tofu",
+        time: "25 Min.",
+        blurb: "Sichuan-Klassiker - Seidentofu in einer betäubend scharfen Chili-Bohnen-Sauce.",
+        ingredients: [
+          { name: "400 g Seidentofu", aisle: "Frische / Kühlung" },
+          { name: "Doubanjiang (fermentierte Bohnenpaste)", aisle: "Saucen" },
+          { name: "1 TL Sichuanpfeffer", aisle: "Gewürze" },
+          { name: "150 g Schweinefaschiertes" },
+          { name: "2 Frühlingszwiebeln" },
+          { name: "Knoblauch + Ingwer" },
+          { name: "Helle Sojasauce", aisle: "Saucen" },
+          { name: "Speisestärke-Wasser", aisle: "Vorrat" },
+        ],
+        steps: [
+          "Tofu würfeln, 1 Min. in Salzwasser blanchieren und abgießen.",
+          "Sichuanpfeffer rösten, mahlen und beiseitestellen.",
+          "Schweinefaschiertes in Öl anbraten. Ingwer, Knoblauch und Doubanjiang dazugeben und garen, bis sich rotes Öl absetzt.",
+          "Fond, Sojasauce und Tofu zugeben. 4 Min. sanft köcheln; nicht rühren, nur die Pfanne schwenken.",
+          "Mit Stärke-Wasser binden. Vom Herd nehmen, Frühlingszwiebeln unterheben und mit Sichuanpfeffer bestreuen.",
+        ],
+      },
+      dandan: {
+        name: "Dan-Dan-Nudeln",
+        time: "15 Min.",
+        blurb: "Chengdu-Streetfood - Sesam, Chiliöl, Essig und knuspriges Schweinefleisch.",
+        ingredients: [
+          { name: "200 g Weizennudeln", aisle: "Nudelregal" },
+          { name: "2 EL chinesische Sesampaste", aisle: "Saucen" },
+          { name: "2 EL Chili Crisp / Chiliöl", aisle: "Saucen" },
+          { name: "1 EL Chinkiang-Schwarzessig", aisle: "Saucen" },
+          { name: "1 EL helle Sojasauce", aisle: "Saucen" },
+          { name: "Sui Mi Ya Cai (eingelegter Senfkohl)", aisle: "Vorrat" },
+          { name: "100 g Schweinefaschiertes" },
+          { name: "Frühlingszwiebeln" },
+        ],
+        steps: [
+          "Sauce verrühren: Sesampaste, Chiliöl, Essig, Sojasauce und etwas Nudelwasser.",
+          "Schweinefaschiertes in einer trockenen Pfanne mit Ya Cai knusprig braten, bis es dunkel und duftend ist.",
+          "Nudeln bissfest kochen. Eine Kelle Kochwasser aufheben.",
+          "Nudeln auf die Sauce geben. Mit Fleisch und Frühlingszwiebeln toppen und am Tisch vermengen.",
+        ],
+      },
+      "garlic-bok-choy": {
+        name: "Pak Choi mit Knoblauch & Shiitake",
+        time: "10 Min.",
+        blurb: "Zwei Hauptzutaten, viel Geschmack. Glänzend, knoblauchig und in Minuten fertig.",
+        ingredients: [
+          { name: "4 Köpfe Baby-Pak-Choi" },
+          { name: "6 getrocknete Shiitake", aisle: "Vorrat" },
+          { name: "Vegetarische Austernsauce (Pilzsauce)", aisle: "Saucen" },
+          { name: "1 EL Shaoxing-Reiswein", aisle: "Vorrat" },
+          { name: "4 Knoblauchzehen" },
+          { name: "Speisestärke", aisle: "Vorrat" },
+          { name: "Sesamöl", aisle: "Saucen" },
+        ],
+        steps: [
+          "Shiitake 20 Min. in warmem Wasser einweichen; Einweichwasser aufheben.",
+          "Pak Choi halbieren, 30 Sek. blanchieren und kalt abschrecken.",
+          "Knoblauch in Öl anschwitzen. Shiitake zugeben und mit einem Schuss Shaoxing ablöschen.",
+          "Pak Choi, Pilzsauce und ein paar EL Einweichwasser zugeben.",
+          "Mit Stärke-Wasser binden und mit Sesamöl abschließen.",
+        ],
+      },
+      "fried-rice": {
+        name: "Gebratener Reis mit Ei & Frühlingszwiebel",
+        time: "12 Min.",
+        blurb: "Jasminreis vom Vortag, heißer Wok und wenige Zutaten, richtig gemacht.",
+        ingredients: [
+          { name: "400 g Jasminreis vom Vortag", aisle: "Vorrat" },
+          { name: "3 Eier" },
+          { name: "4 Frühlingszwiebeln" },
+          { name: "Helle Sojasauce", aisle: "Saucen" },
+          { name: "Weißer Pfeffer", aisle: "Gewürze" },
+          { name: "Sesamöl", aisle: "Saucen" },
+          { name: "Neutrales Öl" },
+        ],
+        steps: [
+          "Eier mit einer Prise Salz verquirlen. Weiße und grüne Teile der Frühlingszwiebeln getrennt schneiden.",
+          "Wok sehr heiß werden lassen, Öl hinein, Eier weich stocken lassen und herausnehmen.",
+          "Mehr Öl, weiße Frühlingszwiebeln, dann Reis. Andrücken, wenden, wiederholen; Klumpen lösen.",
+          "Eier zurück in den Wok. Sojasauce am Wokrand entlang zugeben und mit weißem Pfeffer würzen.",
+          "Vom Herd nehmen: Frühlingszwiebelgrün und Sesamöl unterheben. Sofort servieren.",
+        ],
+      }
     },
     zh: {
-      mapo: { blurb: "四川经典菜 - 嫩豆腐配麻辣豆瓣酱汁。" },
-      dandan: { blurb: "成都街头风味 - 芝麻、辣油、醋和香脆肉末。" },
-      "garlic-bok-choy": { blurb: "两种主角，大量风味。蒜香浓郁，几分钟就能上桌。" },
-      "fried-rice": { blurb: "隔夜茉莉香米、热锅和简单食材，做出经典炒饭。" }
+      mapo: {
+        name: "麻婆豆腐",
+        time: "25 分钟",
+        blurb: "四川经典菜：嫩豆腐裹上麻辣豆瓣酱汁。",
+        ingredients: [
+          { name: "400克 嫩豆腐", aisle: "鲜货 / 冷藏" },
+          { name: "豆瓣酱（蚕豆辣酱）", aisle: "酱料区" },
+          { name: "1茶匙 花椒", aisle: "香料区" },
+          { name: "150克 猪肉末" },
+          { name: "2根 葱" },
+          { name: "蒜 + 姜" },
+          { name: "生抽", aisle: "酱料区" },
+          { name: "水淀粉", aisle: "干货区" },
+        ],
+        steps: [
+          "豆腐切块，在盐水中焯1分钟，沥干。",
+          "花椒小火炒香后碾碎，备用。",
+          "锅中加油炒香猪肉末。加入姜、蒜和豆瓣酱，炒到红油析出。",
+          "加入高汤、生抽和豆腐。小火煮4分钟；不要用力搅拌，只轻轻晃锅。",
+          "用水淀粉勾芡。离火后拌入葱花，撒上花椒粉。",
+        ],
+      },
+      dandan: {
+        name: "担担面",
+        time: "15 分钟",
+        blurb: "成都街头风味：芝麻、辣油、香醋和酥香肉末。",
+        ingredients: [
+          { name: "200克 小麦面条", aisle: "面食区" },
+          { name: "2汤匙 芝麻酱", aisle: "酱料区" },
+          { name: "2汤匙 辣椒脆 / 辣椒油", aisle: "酱料区" },
+          { name: "1汤匙 镇江香醋", aisle: "酱料区" },
+          { name: "1汤匙 生抽", aisle: "酱料区" },
+          { name: "碎米芽菜", aisle: "干货区" },
+          { name: "100克 猪肉末" },
+          { name: "葱" },
+        ],
+        steps: [
+          "调酱：芝麻酱、辣椒油、醋、生抽和少量面汤拌匀。",
+          "干锅把猪肉末和芽菜炒到酥香、颜色变深。",
+          "面条煮到有嚼劲，留一勺面汤。",
+          "把面条放在酱汁上，铺上肉末和葱花，上桌后拌匀。",
+        ],
+      },
+      "garlic-bok-choy": {
+        name: "蒜香小白菜与香菇",
+        time: "10 分钟",
+        blurb: "两种主料，味道很足。油亮蒜香，几分钟就能完成。",
+        ingredients: [
+          { name: "4棵 小白菜" },
+          { name: "6朵 干香菇", aisle: "干货区" },
+          { name: "素蚝油（蘑菇酱）", aisle: "酱料区" },
+          { name: "1汤匙 绍兴酒", aisle: "干货区" },
+          { name: "4瓣 蒜" },
+          { name: "玉米淀粉", aisle: "干货区" },
+          { name: "芝麻油", aisle: "酱料区" },
+        ],
+        steps: [
+          "干香菇用温水泡20分钟，保留泡香菇的水。",
+          "小白菜对半切，焯30秒后过冷水。",
+          "锅中热油爆香蒜。加入香菇，再淋一点绍兴酒。",
+          "加入小白菜、素蚝油和几汤匙泡香菇的水。",
+          "用水淀粉收汁，最后淋芝麻油。",
+        ],
+      },
+      "fried-rice": {
+        name: "鸡蛋葱花炒饭",
+        time: "12 分钟",
+        blurb: "隔夜茉莉香米、热锅和简单食材，做出地道炒饭。",
+        ingredients: [
+          { name: "400克 隔夜茉莉香米", aisle: "干货区" },
+          { name: "3个 鸡蛋" },
+          { name: "4根 葱" },
+          { name: "生抽", aisle: "酱料区" },
+          { name: "白胡椒", aisle: "香料区" },
+          { name: "芝麻油", aisle: "酱料区" },
+          { name: "中性食用油" },
+        ],
+        steps: [
+          "鸡蛋加一小撮盐打散。葱白和葱绿分开切。",
+          "锅烧到很热，倒油，把鸡蛋炒成嫩蛋块后盛出。",
+          "再加油，先下葱白，再下米饭。按压、翻炒、重复，炒散饭团。",
+          "鸡蛋回锅。沿锅边淋入生抽，撒白胡椒。",
+          "关火后加入葱绿和芝麻油，马上上桌。",
+        ],
+      }
     }
   };
 
   const tr = (key, params) => window.ChooI18n?.t(key, params) || key;
   const currentLang = () => window.ChooI18n?.getLanguage?.() || "en";
-  const recipeBlurb = (recipe) => recipeText[currentLang()]?.[recipe.id]?.blurb || recipe.blurb;
+  const recipeCopy = (recipe, key) => recipeText[currentLang()]?.[recipe.id]?.[key] || recipe[key];
+  const recipeName = (recipe) => recipeCopy(recipe, "name");
+  const recipeTime = (recipe) => recipeCopy(recipe, "time");
+  const recipeBlurb = (recipe) => recipeCopy(recipe, "blurb");
+  const recipeSteps = (recipe) => recipeText[currentLang()]?.[recipe.id]?.steps || recipe.steps;
+  const recipeIngredients = (recipe) => {
+    const translated = recipeText[currentLang()]?.[recipe.id]?.ingredients || [];
+    return recipe.ingredients.map((ingredient, index) => ({
+      ...ingredient,
+      name: translated[index]?.name || ingredient.name,
+      aisle: translated[index]?.aisle || ingredient.aisle,
+    }));
+  };
   const tagLabel = (tag) => tr(`filter.${tag}`);
+
+  function stepTimerSeconds(step) {
+    const text = String(step);
+    const minuteMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:min\.?|minutes?|分钟|分鐘)/i);
+    if (minuteMatch) return Math.round(Number(minuteMatch[1].replace(",", ".")) * 60);
+
+    const secondMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:s|sec\.?|seconds?|sek\.?|sekunden|秒)/i);
+    if (secondMatch) return Math.round(Number(secondMatch[1].replace(",", ".")));
+
+    return 0;
+  }
+
+  function formatTimer(seconds) {
+    const safeSeconds = Math.max(0, seconds);
+    const hours = Math.floor(safeSeconds / 3600);
+    const minutes = Math.floor((safeSeconds % 3600) / 60);
+    const rest = safeSeconds % 60;
+
+    if (hours > 0) {
+      return `${hours}:${String(minutes).padStart(2, "0")}:${String(rest).padStart(2, "0")}`;
+    }
+    return `${String(minutes).padStart(2, "0")}:${String(rest).padStart(2, "0")}`;
+  }
+
+  function updateTimerDisplay() {
+    document.querySelectorAll("[data-step-timer]").forEach((button) => {
+      const isActive = button.dataset.stepTimer === recipeTimer.activeId;
+      const seconds = isActive ? recipeTimer.remaining : Number(button.dataset.stepTimerSeconds || 0);
+      const display = button.querySelector("[data-step-timer-display]");
+
+      if (display) display.textContent = formatTimer(seconds);
+      button.classList.toggle("step-timer--active", isActive);
+      button.classList.toggle("step-timer--running", isActive && recipeTimer.running);
+      button.classList.toggle("step-timer--done", isActive && recipeTimer.remaining === 0);
+      button.setAttribute("aria-label", `${tr(isActive && recipeTimer.running ? "timer.pause" : "timer.start")} ${formatTimer(seconds)}`);
+    });
+  }
+
+  function setWakeStatus(key) {
+    const status = document.querySelector("[data-wake-status]");
+    if (status) status.textContent = tr(key);
+  }
+
+  function pauseRecipeTimer() {
+    if (recipeTimer.interval) window.clearInterval(recipeTimer.interval);
+    recipeTimer.interval = null;
+    recipeTimer.running = false;
+    updateTimerDisplay();
+  }
+
+  async function releaseWakeLock() {
+    if (recipeTimer.wakeLock) {
+      try {
+        await recipeTimer.wakeLock.release();
+      } catch (error) {
+        // The browser may already have released the lock.
+      }
+    }
+    recipeTimer.wakeLock = null;
+    setWakeStatus("timer.off");
+  }
+
+  function stopRecipeTimer(resetWake) {
+    pauseRecipeTimer();
+    recipeTimer.activeId = null;
+    recipeTimer.total = 0;
+    recipeTimer.remaining = 0;
+    updateTimerDisplay();
+    if (resetWake) {
+      recipeTimer.wakeWanted = false;
+      releaseWakeLock();
+    }
+  }
+
+  async function requestWakeLock() {
+    if (!("wakeLock" in navigator)) {
+      recipeTimer.wakeWanted = false;
+      const checkbox = document.querySelector("[data-wake-lock]");
+      if (checkbox) checkbox.checked = false;
+      setWakeStatus("timer.unsupported");
+      return;
+    }
+
+    try {
+      recipeTimer.wakeLock = await navigator.wakeLock.request("screen");
+      setWakeStatus("timer.on");
+      recipeTimer.wakeLock.addEventListener("release", () => {
+        recipeTimer.wakeLock = null;
+        if (recipeTimer.wakeWanted) setWakeStatus("timer.paused");
+      });
+    } catch (error) {
+      recipeTimer.wakeWanted = false;
+      const checkbox = document.querySelector("[data-wake-lock]");
+      if (checkbox) checkbox.checked = false;
+      setWakeStatus("timer.blocked");
+    }
+  }
+
+  function startRecipeTimer() {
+    if (recipeTimer.running || recipeTimer.remaining <= 0) return;
+
+    recipeTimer.running = true;
+    updateTimerDisplay();
+    recipeTimer.interval = window.setInterval(() => {
+      recipeTimer.remaining = Math.max(0, recipeTimer.remaining - 1);
+      updateTimerDisplay();
+
+      if (recipeTimer.remaining === 0) {
+        pauseRecipeTimer();
+      }
+    }, 1000);
+
+    if (recipeTimer.wakeWanted) requestWakeLock();
+  }
+
+  function toggleStepTimer(button) {
+    if (!button) return;
+
+    const timerId = button.dataset.stepTimer;
+    const seconds = Number(button.dataset.stepTimerSeconds || 0);
+    if (!timerId || seconds <= 0) return;
+
+    if (recipeTimer.activeId !== timerId) {
+      pauseRecipeTimer();
+      recipeTimer.activeId = timerId;
+      recipeTimer.total = seconds;
+      recipeTimer.remaining = seconds;
+      startRecipeTimer();
+      return;
+    }
+
+    if (recipeTimer.running) {
+      pauseRecipeTimer();
+      return;
+    }
+
+    if (recipeTimer.remaining <= 0) recipeTimer.remaining = recipeTimer.total;
+    startRecipeTimer();
+  }
 
   function renderRecipes(filter = "all") {
     const mount = document.querySelector("[data-recipes]");
@@ -1031,22 +1958,23 @@
     const visible = filter === "all" ? recipes : recipes.filter((recipe) => recipe.tags.includes(filter));
     mount.innerHTML = visible.map((recipe) => {
       const originalIndex = recipes.findIndex((item) => item.id === recipe.id) + 1;
-      const inStore = recipe.ingredients.filter((ingredient) => ingredient.inStore).length;
+      const ingredients = recipeIngredients(recipe);
+      const inStore = ingredients.filter((ingredient) => ingredient.inStore).length;
       const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
 
       return `
         <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
           <span class="rc__top">
             <span class="rc__no">${escapeHtml(tr("recipe.label"))} ${String(originalIndex).padStart(2, "0")}</span>
-            <span class="rc__time">${escapeHtml(recipe.time)}</span>
+            <span class="rc__time">${escapeHtml(recipeTime(recipe))}</span>
           </span>
           <span class="rc__body">
-            <span class="rc__name">${escapeHtml(recipe.name)}</span>
+            <span class="rc__name">${escapeHtml(recipeName(recipe))}</span>
             <span class="rc__blurb">${escapeHtml(recipeBlurb(recipe))}</span>
           </span>
           <span class="rc__meta">
             <span class="rc__tags">${tags}</span>
-            <span class="rc__availability">${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
+            <span class="rc__availability">${escapeHtml(tr("recipe.inStore", { current: inStore, total: ingredients.length }))}</span>
           </span>
         </button>
       `;
@@ -1062,19 +1990,43 @@
     const view = document.querySelector("[data-recipe-view]");
     if (!recipe || !view) return;
 
-    const inStore = recipe.ingredients.filter((ingredient) => ingredient.inStore).length;
+    const localizedIngredients = recipeIngredients(recipe);
+    const localizedSteps = recipeSteps(recipe);
+    const inStore = localizedIngredients.filter((ingredient) => ingredient.inStore).length;
     const recipeIndex = recipes.findIndex((item) => item.id === id);
     const nextRecipe = recipes[(recipeIndex + 1) % recipes.length];
-    const ingredients = recipe.ingredients.map((ingredient) => `
+    const ingredients = localizedIngredients.map((ingredient) => `
       <li class="ing ${ingredient.inStore ? "ing--here" : ""}">
         <span class="ing__mark" aria-hidden="true">${ingredient.inStore ? "●" : "○"}</span>
         <span class="ing__name">${escapeHtml(ingredient.name)}</span>
         ${ingredient.inStore ? `<span class="ing__aisle">${escapeHtml(ingredient.aisle)}</span>` : ""}
       </li>
     `).join("");
-    const steps = recipe.steps.map((step, index) => `
-      <li><span class="step__n">${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(step)}</span></li>
-    `).join("");
+    const steps = localizedSteps.map((step, index) => {
+      const timerSeconds = stepTimerSeconds(step);
+      const timerId = `${recipe.id}-${index}`;
+      const timer = timerSeconds > 0
+        ? `
+          <button class="step-timer" type="button" data-step-timer="${escapeHtml(timerId)}" data-step-timer-seconds="${timerSeconds}" aria-label="${escapeHtml(`${tr("timer.start")} ${formatTimer(timerSeconds)}`)}">
+            <span class="step-timer__icon" aria-hidden="true">
+              <span class="step-timer__play"></span>
+              <span class="step-timer__pause"></span>
+            </span>
+            <span data-step-timer-display>${escapeHtml(formatTimer(timerSeconds))}</span>
+          </button>
+        `
+        : "";
+
+      return `
+        <li>
+          <span class="step__n">${String(index + 1).padStart(2, "0")}</span>
+          <span class="step__body">
+            <span>${escapeHtml(step)}</span>
+            ${timer}
+          </span>
+        </li>
+      `;
+    }).join("");
     const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
 
     view.innerHTML = `
@@ -1089,31 +2041,47 @@
             <span aria-hidden="true">→</span>
           </button>
         </div>
-        <span class="recipe-view__small">${escapeHtml(recipe.time)} - ${escapeHtml(tr("recipe.serves"))} ${recipe.serves} - ${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
+        <span class="recipe-view__small">${escapeHtml(recipeTime(recipe))} - ${escapeHtml(tr("recipe.serves"))} ${recipe.serves} - ${escapeHtml(tr("recipe.inStore", { current: inStore, total: localizedIngredients.length }))}</span>
       </div>
       <article class="recipe-page" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
         <div class="recipe-page__hero">
           <div>
             <span class="eyebrow">${escapeHtml(tr("recipe.eyebrow"))}</span>
-            <h3 class="recipe-page__title" id="recipe-title">${escapeHtml(recipe.name)}</h3>
+            <h3 class="recipe-page__title" id="recipe-title">${escapeHtml(recipeName(recipe))}</h3>
             <p class="recipe-page__blurb">${escapeHtml(recipeBlurb(recipe))}</p>
           </div>
-          <div class="recipe-page__stats" aria-label="Recipe summary">
-            <div class="recipe-stat"><span>${escapeHtml(tr("recipe.time"))}</span><strong>${escapeHtml(recipe.time)}</strong></div>
+          <div class="recipe-page__stats" aria-label="${escapeHtml(tr("recipe.summary"))}">
+            <div class="recipe-stat"><span>${escapeHtml(tr("recipe.time"))}</span><strong>${escapeHtml(recipeTime(recipe))}</strong></div>
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.servesLabel"))}</span><strong>${recipe.serves}</strong></div>
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.tags"))}</span><strong>${tags}</strong></div>
           </div>
         </div>
         <div class="recipe-page__grid">
-          <div class="recipe-panel">
+          <div class="recipe-panel recipe-panel--ingredients" data-ingredients-panel data-ingredients-collapsed="true">
             <div class="ings__head">
               <h4>${escapeHtml(tr("recipe.ingredients"))}</h4>
-              <span class="ings__legend"><span class="dot dot--accent"></span> ${escapeHtml(tr("recipe.inStore", { current: inStore, total: recipe.ingredients.length }))}</span>
+              <span class="ings__legend"><span class="dot dot--accent"></span> ${escapeHtml(tr("recipe.inStore", { current: inStore, total: localizedIngredients.length }))}</span>
+              <button class="ingredients-toggle" type="button" data-ingredients-toggle aria-expanded="false" aria-controls="recipe-ingredients-${escapeHtml(recipe.id)}" aria-label="${escapeHtml(tr("recipe.showIngredients"))}" title="${escapeHtml(tr("recipe.showIngredients"))}">
+                <span data-ingredients-toggle-icon aria-hidden="true">+</span>
+              </button>
             </div>
-            <ul>${ingredients}</ul>
+            <ul id="recipe-ingredients-${escapeHtml(recipe.id)}" class="ingredients-list">${ingredients}</ul>
           </div>
           <div class="recipe-panel">
-            <h4>${escapeHtml(tr("recipe.method"))}</h4>
+            <div class="method-head">
+              <h4>${escapeHtml(tr("recipe.method"))}</h4>
+              <label class="wake-lock">
+                <input type="checkbox" data-wake-lock />
+                <span class="wake-lock__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="12" height="16" rx="2"></rect>
+                    <path d="M10 17h4"></path>
+                  </svg>
+                </span>
+                <span class="wake-lock__text">${escapeHtml(tr("timer.keepAwake"))}</span>
+                <span class="wake-status" data-wake-status>${escapeHtml(tr("timer.off"))}</span>
+              </label>
+            </div>
             <ol>${steps}</ol>
           </div>
         </div>
@@ -1123,6 +2091,8 @@
     view.dataset.activeRecipe = id;
     view.setAttribute("aria-hidden", "false");
     document.body.classList.add("recipe-open");
+    stopRecipeTimer(true);
+    setWakeStatus("timer.off");
     view.scrollTo({ top: 0, behavior: "auto" });
     requestAnimationFrame(() => view.classList.add("recipe-view--open"));
     view.querySelector("[data-close-recipe]")?.focus();
@@ -1135,6 +2105,7 @@
     view.classList.remove("recipe-view--open");
     view.setAttribute("aria-hidden", "true");
     document.body.classList.remove("recipe-open");
+    stopRecipeTimer(true);
     delete view.dataset.activeRecipe;
 
     window.setTimeout(() => {
@@ -1142,8 +2113,34 @@
     }, 520);
   }
 
+  function openAdjacentRecipe(direction = 1) {
+    const view = document.querySelector("[data-recipe-view]");
+    const activeRecipe = view?.dataset.activeRecipe;
+    const index = recipes.findIndex((item) => item.id === activeRecipe);
+    if (index < 0) return;
+
+    const nextIndex = (index + direction + recipes.length) % recipes.length;
+    openRecipe(recipes[nextIndex].id);
+  }
+
+  function setIngredientsCollapsed(panel, collapsed) {
+    if (!panel) return;
+
+    panel.dataset.ingredientsCollapsed = String(collapsed);
+    const button = panel.querySelector("[data-ingredients-toggle]");
+    const icon = panel.querySelector("[data-ingredients-toggle-icon]");
+    const label = tr(collapsed ? "recipe.showIngredients" : "recipe.hideIngredients");
+
+    button?.setAttribute("aria-expanded", String(!collapsed));
+    button?.setAttribute("aria-label", label);
+    button?.setAttribute("title", label);
+    if (icon) icon.textContent = collapsed ? "+" : "-";
+  }
+
   function initRecipes() {
     renderRecipes(activeFilter);
+    const mobileRecipeQuery = window.matchMedia("(max-width: 720px)");
+    let swipeStart = null;
 
     document.querySelector(".filters")?.addEventListener("click", (event) => {
       const button = event.target.closest("[data-filter]");
@@ -1165,12 +2162,63 @@
     view?.addEventListener("click", (event) => {
       if (event.target.closest("[data-close-recipe]")) closeRecipe();
 
+      const ingredientsButton = event.target.closest("[data-ingredients-toggle]");
+      if (ingredientsButton) {
+        const panel = ingredientsButton.closest("[data-ingredients-panel]");
+        setIngredientsCollapsed(panel, panel?.dataset.ingredientsCollapsed !== "true");
+      }
+
+      const stepTimer = event.target.closest("[data-step-timer]");
+      if (stepTimer) toggleStepTimer(stepTimer);
+
       const nextButton = event.target.closest("[data-next-recipe]");
       if (nextButton) openRecipe(nextButton.dataset.nextRecipe);
     });
 
+    view?.addEventListener("pointerdown", (event) => {
+      if (!mobileRecipeQuery.matches || event.pointerType === "mouse") return;
+      if (event.target.closest("button, a, input, label, textarea, select")) return;
+
+      swipeStart = {
+        x: event.clientX,
+        y: event.clientY,
+        time: Date.now(),
+      };
+    });
+
+    view?.addEventListener("pointerup", (event) => {
+      if (!swipeStart || !mobileRecipeQuery.matches) return;
+
+      const deltaX = event.clientX - swipeStart.x;
+      const deltaY = event.clientY - swipeStart.y;
+      const elapsed = Date.now() - swipeStart.time;
+      swipeStart = null;
+
+      if (elapsed > 700) return;
+      if (Math.abs(deltaX) < 72 || Math.abs(deltaX) < Math.abs(deltaY) * 1.35) return;
+
+      openAdjacentRecipe(deltaX < 0 ? 1 : -1);
+    });
+
+    view?.addEventListener("pointercancel", () => {
+      swipeStart = null;
+    });
+
+    view?.addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-wake-lock]");
+      if (!checkbox) return;
+
+      recipeTimer.wakeWanted = checkbox.checked;
+      if (checkbox.checked) requestWakeLock();
+      else releaseWakeLock();
+    });
+
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeRecipe();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible" && recipeTimer.wakeWanted) requestWakeLock();
     });
 
     window.ChooI18n?.onChange(() => {
@@ -1690,60 +2738,4 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
-})();
-
-/* ===== Reviews carousel ===== */
-(function () {
-  const grid = document.querySelector(".review-grid");
-  if (!grid) return;
-  const reviews = Array.from(grid.querySelectorAll(".review"));
-  if (reviews.length <= 1) return;
-
-  let activeIndex = 0;
-  let timer = null;
-  const interval = 5000;
-
-  function show(index) {
-    const isMobile = window.innerWidth <= 900;
-    const step = isMobile ? 1 : 2;
-    
-    activeIndex = index % reviews.length;
-    activeIndex = Math.floor(activeIndex / step) * step;
-
-    reviews.forEach((review, i) => {
-      const isActive = isMobile 
-        ? i === activeIndex 
-        : (i === activeIndex || i === activeIndex + 1);
-      review.classList.toggle("is-active", isActive);
-    });
-  }
-
-  function start() {
-    if (timer) return;
-    timer = window.setInterval(() => {
-      const step = window.innerWidth <= 900 ? 1 : 2;
-      show(activeIndex + step);
-    }, interval);
-  }
-
-  function restart() {
-    window.clearInterval(timer);
-    timer = null;
-    start();
-  }
-
-  grid.addEventListener("mouseenter", () => {
-    window.clearInterval(timer);
-    timer = null;
-  });
-  grid.addEventListener("mouseleave", start);
-  
-  let resizeTimer;
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => show(activeIndex), 200);
-  });
-
-  show(0);
-  start();
 })();
