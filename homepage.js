@@ -79,6 +79,8 @@
       "recipe.label": "Recipe",
       "recipe.inStore": "{current}/{total} in store",
       "recipe.back": "Back to recipes",
+      "recipe.navigation": "Recipe navigation",
+      "recipe.previous": "Previous recipe",
       "recipe.next": "Next recipe",
       "recipe.serves": "serves",
       "recipe.atChoo": "at Choo",
@@ -91,6 +93,14 @@
       "recipe.summary": "Recipe summary",
       "recipe.showIngredients": "Show ingredients",
       "recipe.hideIngredients": "Hide ingredients",
+      "recipe.moreIngredients": "{count} more ingredients",
+      "recipe.nutrition": "Nutrition",
+      "recipe.per100g": "per 100g",
+      "recipe.perServing": "per serving",
+      "nutrition.energy": "Energy",
+      "nutrition.protein": "Protein",
+      "nutrition.carbs": "Carbs",
+      "nutrition.fat": "Fat",
       "timer.start": "Start",
       "timer.pause": "Pause",
       "timer.keepAwake": "Keep screen on",
@@ -187,6 +197,8 @@
       "recipe.label": "Rezept",
       "recipe.inStore": "{current}/{total} im Markt",
       "recipe.back": "Zurück zu den Rezepten",
+      "recipe.navigation": "Rezeptnavigation",
+      "recipe.previous": "Voriges Rezept",
       "recipe.next": "Nächstes Rezept",
       "recipe.serves": "für",
       "recipe.atChoo": "bei Choo",
@@ -199,6 +211,14 @@
       "recipe.summary": "Rezeptübersicht",
       "recipe.showIngredients": "Zutaten anzeigen",
       "recipe.hideIngredients": "Zutaten ausblenden",
+      "recipe.moreIngredients": "{count} weitere Zutaten",
+      "recipe.nutrition": "Nährwerte",
+      "recipe.per100g": "pro 100g",
+      "recipe.perServing": "pro Portion",
+      "nutrition.energy": "Energie",
+      "nutrition.protein": "Eiweiß",
+      "nutrition.carbs": "Kohlenhydrate",
+      "nutrition.fat": "Fett",
       "timer.start": "Start",
       "timer.pause": "Pause",
       "timer.keepAwake": "Bildschirm anlassen",
@@ -295,6 +315,8 @@
       "recipe.label": "食谱",
       "recipe.inStore": "店内有 {current}/{total}",
       "recipe.back": "返回食谱",
+      "recipe.navigation": "食谱导航",
+      "recipe.previous": "上一道食谱",
       "recipe.next": "下一道食谱",
       "recipe.serves": "份量",
       "recipe.atChoo": "在 Choo",
@@ -307,6 +329,14 @@
       "recipe.summary": "食谱概要",
       "recipe.showIngredients": "显示食材",
       "recipe.hideIngredients": "隐藏食材",
+      "recipe.moreIngredients": "还有 {count} 种食材",
+      "recipe.nutrition": "营养",
+      "recipe.per100g": "每100克",
+      "recipe.perServing": "每份",
+      "nutrition.energy": "能量",
+      "nutrition.protein": "蛋白质",
+      "nutrition.carbs": "碳水化合物",
+      "nutrition.fat": "脂肪",
       "timer.start": "开始",
       "timer.pause": "暂停",
       "timer.keepAwake": "保持屏幕常亮",
@@ -1964,6 +1994,9 @@
 
       return `
         <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
+          <span class="rc__image" aria-hidden="true">
+            <img src="images/recipe-placeholder.png" alt="" width="1448" height="1086" loading="lazy" decoding="async" />
+          </span>
           <span class="rc__top">
             <span class="rc__no">${escapeHtml(tr("recipe.label"))} ${String(originalIndex).padStart(2, "0")}</span>
             <span class="rc__time">${escapeHtml(recipeTime(recipe))}</span>
@@ -1985,7 +2018,7 @@
     }
   }
 
-  function openRecipe(id) {
+  function openRecipe(id, options = {}) {
     const recipe = recipes.find((item) => item.id === id);
     const view = document.querySelector("[data-recipe-view]");
     if (!recipe || !view) return;
@@ -1993,8 +2026,16 @@
     const localizedIngredients = recipeIngredients(recipe);
     const localizedSteps = recipeSteps(recipe);
     const inStore = localizedIngredients.filter((ingredient) => ingredient.inStore).length;
-    const recipeIndex = recipes.findIndex((item) => item.id === id);
-    const nextRecipe = recipes[(recipeIndex + 1) % recipes.length];
+    const direction = options.direction === -1 ? -1 : 1;
+    const shouldAnimate = Boolean(
+      options.animate &&
+      view.classList.contains("recipe-view--open") &&
+      view.dataset.activeRecipe &&
+      view.dataset.activeRecipe !== id
+    );
+
+    if (shouldAnimate && view.dataset.recipeSwitching === "true") return;
+
     const ingredients = localizedIngredients.map((ingredient) => `
       <li class="ing ${ingredient.inStore ? "ing--here" : ""}">
         <span class="ing__mark" aria-hidden="true">${ingredient.inStore ? "●" : "○"}</span>
@@ -2028,35 +2069,48 @@
       `;
     }).join("");
     const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
+    const nutrition = computeNutrition(recipe);
 
-    view.innerHTML = `
+    const markup = `
       <div class="recipe-view__bar">
         <div class="recipe-view__actions">
           <button class="recipe-view__back" type="button" data-close-recipe>
-            <span aria-hidden="true">←</span>
+            <svg class="recipe-view__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M15 18 9 12l6-6"></path>
+            </svg>
             <span>${escapeHtml(tr("recipe.back"))}</span>
           </button>
-          <button class="recipe-view__next" type="button" data-next-recipe="${escapeHtml(nextRecipe.id)}">
-            <span>${escapeHtml(tr("recipe.next"))}</span>
-            <span aria-hidden="true">→</span>
-          </button>
         </div>
-        <span class="recipe-view__small">${escapeHtml(recipeTime(recipe))} - ${escapeHtml(tr("recipe.serves"))} ${recipe.serves} - ${escapeHtml(tr("recipe.inStore", { current: inStore, total: localizedIngredients.length }))}</span>
       </div>
+      <nav class="recipe-view__side-nav" aria-label="${escapeHtml(tr("recipe.navigation"))}">
+        <button class="recipe-view__nav recipe-view__nav--prev" type="button" data-adjacent-recipe="-1" aria-label="${escapeHtml(tr("recipe.previous"))}" title="${escapeHtml(tr("recipe.previous"))}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 18 9 12l6-6"></path>
+          </svg>
+          <span class="visually-hidden">${escapeHtml(tr("recipe.previous"))}</span>
+        </button>
+        <button class="recipe-view__nav recipe-view__nav--next" type="button" data-adjacent-recipe="1" aria-label="${escapeHtml(tr("recipe.next"))}" title="${escapeHtml(tr("recipe.next"))}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+          <span class="visually-hidden">${escapeHtml(tr("recipe.next"))}</span>
+        </button>
+      </nav>
       <article class="recipe-page" role="dialog" aria-modal="true" aria-labelledby="recipe-title">
         <div class="recipe-page__hero">
-          <div>
+          <header class="recipe-page__header">
             <span class="eyebrow">${escapeHtml(tr("recipe.eyebrow"))}</span>
             <h3 class="recipe-page__title" id="recipe-title">${escapeHtml(recipeName(recipe))}</h3>
             <p class="recipe-page__blurb">${escapeHtml(recipeBlurb(recipe))}</p>
-          </div>
+          </header>
+          <figure class="recipe-page__image">
+            <img src="images/recipe-placeholder.png" alt="" width="1448" height="1086" loading="lazy" decoding="async" />
+          </figure>
           <div class="recipe-page__stats" aria-label="${escapeHtml(tr("recipe.summary"))}">
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.time"))}</span><strong>${escapeHtml(recipeTime(recipe))}</strong></div>
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.servesLabel"))}</span><strong>${recipe.serves}</strong></div>
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.tags"))}</span><strong>${tags}</strong></div>
           </div>
-        </div>
-        <div class="recipe-page__grid">
           <div class="recipe-panel recipe-panel--ingredients" data-ingredients-panel data-ingredients-collapsed="true">
             <div class="ings__head">
               <h4>${escapeHtml(tr("recipe.ingredients"))}</h4>
@@ -2066,7 +2120,10 @@
               </button>
             </div>
             <ul id="recipe-ingredients-${escapeHtml(recipe.id)}" class="ingredients-list">${ingredients}</ul>
+            ${localizedIngredients.length > 5 ? `<button class="ingredients-show-more" type="button" data-ingredients-toggle>${escapeHtml(tr("recipe.moreIngredients", { count: localizedIngredients.length - 5 }))}</button>` : ""}
           </div>
+        </div>
+        <div class="recipe-page__grid">
           <div class="recipe-panel">
             <div class="method-head">
               <h4>${escapeHtml(tr("recipe.method"))}</h4>
@@ -2084,18 +2141,60 @@
             </div>
             <ol>${steps}</ol>
           </div>
+          <aside class="recipe-panel recipe-panel--nutrition" data-nutrition-panel data-nutrition-mode="per100g">
+            <div class="nutrition-head">
+              <h4>${escapeHtml(tr("recipe.nutrition"))}</h4>
+              <div class="nutrition-toggle" role="group" aria-label="${escapeHtml(tr("recipe.nutrition"))}">
+                <button type="button" class="nutrition-toggle__btn nutrition-toggle__btn--on" data-nutrition-mode="per100g">${escapeHtml(tr("recipe.per100g"))}</button>
+                <button type="button" class="nutrition-toggle__btn" data-nutrition-mode="perServing">${escapeHtml(tr("recipe.perServing"))}</button>
+              </div>
+            </div>
+            <ul class="nutrition-list">
+              <li><span>${escapeHtml(tr("nutrition.energy"))}</span><strong data-nutri="kcal" data-per100g="${nutrition.per100g.kcal} kcal" data-perserving="${nutrition.perServing.kcal} kcal">${nutrition.per100g.kcal} kcal</strong></li>
+              <li><span>${escapeHtml(tr("nutrition.protein"))}</span><strong data-nutri="protein" data-per100g="${nutrition.per100g.protein} g" data-perserving="${nutrition.perServing.protein} g">${nutrition.per100g.protein} g</strong></li>
+              <li><span>${escapeHtml(tr("nutrition.carbs"))}</span><strong data-nutri="carbs" data-per100g="${nutrition.per100g.carbs} g" data-perserving="${nutrition.perServing.carbs} g">${nutrition.per100g.carbs} g</strong></li>
+              <li><span>${escapeHtml(tr("nutrition.fat"))}</span><strong data-nutri="fat" data-per100g="${nutrition.per100g.fat} g" data-perserving="${nutrition.perServing.fat} g">${nutrition.per100g.fat} g</strong></li>
+            </ul>
+          </aside>
         </div>
       </article>
     `;
 
-    view.dataset.activeRecipe = id;
-    view.setAttribute("aria-hidden", "false");
-    document.body.classList.add("recipe-open");
     stopRecipeTimer(true);
-    setWakeStatus("timer.off");
-    view.scrollTo({ top: 0, behavior: "auto" });
-    requestAnimationFrame(() => view.classList.add("recipe-view--open"));
-    view.querySelector("[data-close-recipe]")?.focus();
+
+    const commitMarkup = () => {
+      view.innerHTML = markup;
+      view.dataset.activeRecipe = id;
+      view.setAttribute("aria-hidden", "false");
+      document.body.classList.add("recipe-open");
+      setWakeStatus("timer.off");
+      view.scrollTo({ top: 0, behavior: "auto" });
+
+      const activePage = view.querySelector(".recipe-page");
+      if (shouldAnimate && activePage) {
+        activePage.classList.add(direction > 0 ? "recipe-page--enter-right" : "recipe-page--enter-left");
+        requestAnimationFrame(() => activePage.classList.add("recipe-page--enter-active"));
+        window.setTimeout(() => {
+          activePage.classList.remove("recipe-page--enter-right", "recipe-page--enter-left", "recipe-page--enter-active");
+          delete view.dataset.recipeSwitching;
+          view.querySelector(`[data-adjacent-recipe="${direction}"]`)?.focus();
+        }, 420);
+      } else {
+        view.querySelector("[data-close-recipe]")?.focus();
+      }
+
+      requestAnimationFrame(() => view.classList.add("recipe-view--open"));
+    };
+
+    if (shouldAnimate) {
+      view.dataset.recipeSwitching = "true";
+      const currentPage = view.querySelector(".recipe-page");
+      currentPage?.classList.add(direction > 0 ? "recipe-page--exit-left" : "recipe-page--exit-right");
+      window.setTimeout(commitMarkup, 170);
+      return;
+    }
+
+    commitMarkup();
   }
 
   function closeRecipe() {
@@ -2107,20 +2206,23 @@
     document.body.classList.remove("recipe-open");
     stopRecipeTimer(true);
     delete view.dataset.activeRecipe;
+    delete view.dataset.recipeSwitching;
 
     window.setTimeout(() => {
       if (!view.classList.contains("recipe-view--open")) view.innerHTML = "";
     }, 520);
   }
 
-  function openAdjacentRecipe(direction = 1) {
+  function openAdjacentRecipe(direction = 1, options = {}) {
     const view = document.querySelector("[data-recipe-view]");
+    if (view?.dataset.recipeSwitching === "true") return;
+
     const activeRecipe = view?.dataset.activeRecipe;
     const index = recipes.findIndex((item) => item.id === activeRecipe);
     if (index < 0) return;
 
     const nextIndex = (index + direction + recipes.length) % recipes.length;
-    openRecipe(recipes[nextIndex].id);
+    openRecipe(recipes[nextIndex].id, { animate: options.animate ?? true, direction });
   }
 
   function setIngredientsCollapsed(panel, collapsed) {
@@ -2135,6 +2237,40 @@
     button?.setAttribute("aria-label", label);
     button?.setAttribute("title", label);
     if (icon) icon.textContent = collapsed ? "+" : "-";
+  }
+
+  function computeNutrition(recipe) {
+    if (recipe.nutrition) return recipe.nutrition;
+    const seed = recipe.id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+    const kcal = 110 + (seed % 80);
+    const protein = 6 + (seed % 9);
+    const carbs = 9 + (seed % 14);
+    const fat = 3 + (seed % 8);
+    const portionWeight = 320;
+    return {
+      per100g: { kcal, protein, carbs, fat },
+      perServing: {
+        kcal: Math.round((kcal * portionWeight) / 100),
+        protein: Math.round((protein * portionWeight) / 100),
+        carbs: Math.round((carbs * portionWeight) / 100),
+        fat: Math.round((fat * portionWeight) / 100),
+      },
+    };
+  }
+
+  function setNutritionMode(panel, mode) {
+    if (!panel) return;
+    const next = mode === "perServing" ? "perServing" : "per100g";
+    panel.dataset.nutritionMode = next;
+    panel.querySelectorAll("[data-nutrition-mode]").forEach((btn) => {
+      btn.classList.toggle("nutrition-toggle__btn--on", btn.dataset.nutritionMode === next);
+      btn.setAttribute("aria-pressed", String(btn.dataset.nutritionMode === next));
+    });
+    const attr = next === "perServing" ? "perserving" : "per100g";
+    panel.querySelectorAll("[data-nutri]").forEach((cell) => {
+      const value = cell.dataset[attr];
+      if (value) cell.textContent = value;
+    });
   }
 
   function initRecipes() {
@@ -2168,11 +2304,17 @@
         setIngredientsCollapsed(panel, panel?.dataset.ingredientsCollapsed !== "true");
       }
 
+      const nutritionButton = event.target.closest("[data-nutrition-mode]");
+      if (nutritionButton && nutritionButton.matches("button")) {
+        const panel = nutritionButton.closest("[data-nutrition-panel]");
+        setNutritionMode(panel, nutritionButton.dataset.nutritionMode);
+      }
+
       const stepTimer = event.target.closest("[data-step-timer]");
       if (stepTimer) toggleStepTimer(stepTimer);
 
-      const nextButton = event.target.closest("[data-next-recipe]");
-      if (nextButton) openRecipe(nextButton.dataset.nextRecipe);
+      const adjacentButton = event.target.closest("[data-adjacent-recipe]");
+      if (adjacentButton) openAdjacentRecipe(Number(adjacentButton.dataset.adjacentRecipe || 1), { animate: true });
     });
 
     view?.addEventListener("pointerdown", (event) => {
@@ -2197,7 +2339,7 @@
       if (elapsed > 700) return;
       if (Math.abs(deltaX) < 72 || Math.abs(deltaX) < Math.abs(deltaY) * 1.35) return;
 
-      openAdjacentRecipe(deltaX < 0 ? 1 : -1);
+      openAdjacentRecipe(deltaX < 0 ? 1 : -1, { animate: true });
     });
 
     view?.addEventListener("pointercancel", () => {
