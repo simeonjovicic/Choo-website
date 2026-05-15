@@ -1615,18 +1615,16 @@ body.country-modal-open {
 .review-grid {
   position: relative;
   z-index: 1;
-  max-width: 760px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
 .review {
   position: relative;
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   gap: 22px;
@@ -1639,17 +1637,16 @@ body.country-modal-open {
   background: var(--ink);
   color: var(--paper);
   box-shadow: 0 20px 44px rgba(22, 22, 22, 0.18);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px);
-  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0s linear 0.55s;
 }
 
 .review.is-active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0s;
+  display: flex;
+  animation: reviewFadeIn 0.55s ease forwards;
+}
+
+@keyframes reviewFadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .review::before {
@@ -1703,10 +1700,7 @@ body.country-modal-open {
 }
 
 .review-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
+  display: none;
 }
 
 .review-dots button {
@@ -1748,6 +1742,9 @@ body.country-modal-open {
     grid-row: auto;
     align-items: flex-start;
     text-align: left;
+  }
+  .review-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1827,17 +1824,6 @@ body.country-modal-open {
 
 .student-band__inner > .student-band__title {
   position: relative;
-}
-
-.student-band__inner > .student-band__title::before {
-  content: "❖";
-  position: absolute;
-  left: 38px;
-  bottom: -32px;
-  font-size: 14px;
-  color: #b39450;
-  background: #f7f1e3;
-  padding: 0 8px;
 }
 
 .student-band__offer {

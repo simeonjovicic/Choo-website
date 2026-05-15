@@ -1695,8 +1695,7 @@
 /* ===== Reviews carousel ===== */
 (function () {
   const grid = document.querySelector(".review-grid");
-  const dotsHost = document.querySelector("[data-review-dots]");
-  if (!grid || !dotsHost) return;
+  if (!grid) return;
   const reviews = Array.from(grid.querySelectorAll(".review"));
   if (reviews.length <= 1) return;
 
@@ -1704,32 +1703,27 @@
   let timer = null;
   const interval = 5000;
 
-  const dots = reviews.map((_, i) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-label", `Show review ${i + 1}`);
-    btn.addEventListener("click", () => {
-      show(i);
-      restart();
-    });
-    dotsHost.appendChild(btn);
-    return btn;
-  });
-
   function show(index) {
-    activeIndex = (index + reviews.length) % reviews.length;
-    reviews.forEach((review, i) => review.classList.toggle("is-active", i === activeIndex));
-    dots.forEach((dot, i) => {
-      const selected = i === activeIndex;
-      dot.classList.toggle("is-active", selected);
-      dot.setAttribute("aria-selected", String(selected));
+    const isMobile = window.innerWidth <= 900;
+    const step = isMobile ? 1 : 2;
+    
+    activeIndex = index % reviews.length;
+    activeIndex = Math.floor(activeIndex / step) * step;
+
+    reviews.forEach((review, i) => {
+      const isActive = isMobile 
+        ? i === activeIndex 
+        : (i === activeIndex || i === activeIndex + 1);
+      review.classList.toggle("is-active", isActive);
     });
   }
 
   function start() {
     if (timer) return;
-    timer = window.setInterval(() => show(activeIndex + 1), interval);
+    timer = window.setInterval(() => {
+      const step = window.innerWidth <= 900 ? 1 : 2;
+      show(activeIndex + step);
+    }, interval);
   }
 
   function restart() {
@@ -1743,6 +1737,12 @@
     timer = null;
   });
   grid.addEventListener("mouseleave", start);
+  
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => show(activeIndex), 200);
+  });
 
   show(0);
   start();
