@@ -312,12 +312,10 @@ export async function handleApiRequest(request: Request, env: Env, deps: RouteDe
     const status = typeof caught === "object" && caught && "status" in caught ? Number(caught.status) : 500;
     if (status === 401) return error(401, "Unauthorized");
     if (status === 403) return error(403, "Forbidden");
+    if (status === 400) return error(400, "Invalid payload");
     if (status === 413) return error(413, "Payload too large");
     if (caught instanceof Error && /UNIQUE constraint failed/i.test(caught.message)) {
       return error(409, "Recipe slug already exists");
-    }
-    if (caught instanceof Error && caught.name === "ZodError") {
-      return error(400, "Invalid payload");
     }
     console.error(caught);
     return error(status || 500, "Request failed");

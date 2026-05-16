@@ -1,78 +1,181 @@
-import { z } from "zod";
+import type { Difficulty, Ingredient, Locale, Nutrition, RecipeInput, RecipeStatus, RecipeStep, RecipeTranslationInput } from "./types";
 
-export const localeSchema = z.enum(["en", "de", "zh"]);
+type ParseSuccess<T> = { success: true; data: T };
+type ParseFailure = { success: false; error: ValidationError };
 
-export const loginSchema = z.object({
-  password: z.string().min(1).max(512),
-  turnstileToken: z.string().min(1).max(2048),
-});
+export class ValidationError extends Error {
+  status = 400;
 
-export const ingredientSchema = z.object({
-  name: z.string().trim().min(1).max(180),
-  amount: z.string().trim().max(60).optional().default(""),
-  unit: z.string().trim().max(40).optional().default(""),
-  note: z.string().trim().max(180).optional().default(""),
-  aisle: z.string().trim().max(80).optional().default(""),
-  inStore: z.boolean().optional().default(false),
-});
-
-export const stepSchema = z.object({
-  text: z.string().trim().min(1).max(800),
-  timerSeconds: z.number().int().min(0).max(24 * 60 * 60).optional(),
-});
-
-export const nutritionSchema = z.object({
-  kcal: z.number().min(0).max(5000).optional(),
-  protein: z.number().min(0).max(500).optional(),
-  carbs: z.number().min(0).max(500).optional(),
-  fat: z.number().min(0).max(500).optional(),
-}).optional().default({});
-
-export const recipeTranslationSchema = z.object({
-  locale: localeSchema,
-  title: z.string().trim().min(1).max(160),
-  description: z.string().trim().max(800).default(""),
-  origin: z.string().trim().max(120).optional().default(""),
-  occasion: z.string().trim().max(120).optional().default(""),
-  notes: z.string().trim().max(2000).optional().default(""),
-  ingredients: z.array(ingredientSchema).min(1).max(80),
-  steps: z.array(stepSchema).min(1).max(80),
-  nutrition: nutritionSchema,
-});
-
-export const slugSchema = z.string()
-  .trim()
-  .min(2)
-  .max(120)
-  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-
-export const tagSchema = z.string()
-  .trim()
-  .min(1)
-  .max(40)
-  .regex(/^[a-z0-9-]+$/);
-
-export const recipePayloadSchema = z.object({
-  slug: slugSchema,
-  status: z.enum(["draft", "published"]).default("draft"),
-  servings: z.number().int().min(1).max(50).default(2),
-  prepMinutes: z.number().int().min(0).max(7 * 24 * 60).default(0),
-  cookMinutes: z.number().int().min(0).max(7 * 24 * 60).default(0),
-  totalMinutes: z.number().int().min(0).max(7 * 24 * 60).default(0),
-  difficulty: z.enum(["easy", "medium", "hard"]).default("easy"),
-  tags: z.array(tagSchema).max(20).default([]),
-  imageIds: z.array(z.string().uuid()).max(20).default([]),
-  heroImageId: z.string().uuid().optional(),
-  translations: z.array(recipeTranslationSchema).min(1).max(3),
-}).superRefine((value, ctx) => {
-  const locales = new Set(value.translations.map((translation) => translation.locale));
-  if (!locales.has("en")) {
-    ctx.addIssue({ code: "custom", message: "English translation is required", path: ["translations"] });
+  constructor(message = "Invalid payload") {
+    super(message);
+    this.name = "ValidationError";
   }
-  if (locales.size !== value.translations.length) {
-    ctx.addIssue({ code: "custom", message: "Translation locales must be unique", path: ["translations"] });
+}
+
+function schema<T>(parser: (value: unknown) => T) {
+  return {
+    parse: parser,
+    safeParse(value: unknown): ParseSuccess<T> | ParseFailure {
+      try {
+        return { success: true, data: parser(value) };
+      } catch (error) {
+        return { success: false, error: error instanceof ValidationError ? error : new ValidationError() };
+      }
+    },
+  };
+}
+
+function fail(message?: string): never {
+  throw new ValidationError(message);
+}
+
+function record(value: unknown): Record<string, unknown> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) fail();
+  return value as Record<string, unknown>;
+}
+
+function text(value: unknown, min: number, max: number, fallback?: string): string {
+  if (value == null) {
+    if (fallback !== undefined) return fallback;
+    fail();
   }
-  if (value.heroImageId && !value.imageIds.includes(value.heroImageId)) {
-    ctx.addIssue({ code: "custom", message: "Hero image must be included in imageIds", path: ["heroImageId"] });
-  }
+  if (typeof value !== "string") fail();
+  const trimmed = value.trim();
+  if (trimmed.length < min || trimmed.length > max) fail();
+  return trimmed;
+}
+
+function integer(value: unknown, min: number, max: number, fallback: number): number {
+  const raw = value == null ? fallback : value;
+  if (typeof raw !== "number" || !Number.isInteger(raw) || raw < min || raw > max) fail();
+  return raw;
+}
+
+function optionalNumber(value: unknown, min: number, max: number): number | undefined {
+  if (value == null) return undefined;
+  if (typeof value !== "number" || !Number.isFinite(value) || value < min || value > max) fail();
+  return value;
+}
+
+function booleanValue(value: unknown, fallback: boolean): boolean {
+  if (value == null) return fallback;
+  if (typeof value !== "boolean") fail();
+  return value;
+}
+
+function arrayValue<T>(value: unknown, min: number, max: number, parser: (item: unknown) => T): T[] {
+  if (!Array.isArray(value) || value.length < min || value.length > max) fail();
+  return value.map(parser);
+}
+
+function optionalArray<T>(value: unknown, max: number, parser: (item: unknown) => T): T[] {
+  if (value == null) return [];
+  return arrayValue(value, 0, max, parser);
+}
+
+function oneOf<T extends string>(value: unknown, values: readonly T[], fallback?: T): T {
+  if (value == null && fallback !== undefined) return fallback;
+  if (typeof value !== "string" || !values.includes(value as T)) fail();
+  return value as T;
+}
+
+function slug(value: unknown): string {
+  const parsed = text(value, 2, 120);
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(parsed)) fail();
+  return parsed;
+}
+
+function tag(value: unknown): string {
+  const parsed = text(value, 1, 40);
+  if (!/^[a-z0-9-]+$/.test(parsed)) fail();
+  return parsed;
+}
+
+function uuid(value: unknown): string {
+  const parsed = text(value, 36, 36);
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(parsed)) fail();
+  return parsed;
+}
+
+function ingredient(value: unknown): Ingredient {
+  const item = record(value);
+  return {
+    name: text(item.name, 1, 180),
+    amount: text(item.amount, 0, 60, ""),
+    unit: text(item.unit, 0, 40, ""),
+    note: text(item.note, 0, 180, ""),
+    aisle: text(item.aisle, 0, 80, ""),
+    inStore: booleanValue(item.inStore, false),
+  };
+}
+
+function step(value: unknown): RecipeStep {
+  const item = record(value);
+  const timerSeconds = integer(item.timerSeconds, 0, 24 * 60 * 60, 0);
+  return {
+    text: text(item.text, 1, 800),
+    ...(timerSeconds > 0 ? { timerSeconds } : {}),
+  };
+}
+
+function nutrition(value: unknown): Nutrition {
+  if (value == null) return {};
+  const item = record(value);
+  return {
+    ...(item.kcal != null ? { kcal: optionalNumber(item.kcal, 0, 5000) } : {}),
+    ...(item.protein != null ? { protein: optionalNumber(item.protein, 0, 500) } : {}),
+    ...(item.carbs != null ? { carbs: optionalNumber(item.carbs, 0, 500) } : {}),
+    ...(item.fat != null ? { fat: optionalNumber(item.fat, 0, 500) } : {}),
+  };
+}
+
+function translation(value: unknown): RecipeTranslationInput {
+  const item = record(value);
+  return {
+    locale: oneOf<Locale>(item.locale, ["en", "de", "zh"]),
+    title: text(item.title, 1, 160),
+    description: text(item.description, 0, 800, ""),
+    origin: text(item.origin, 0, 120, ""),
+    occasion: text(item.occasion, 0, 120, ""),
+    notes: text(item.notes, 0, 2000, ""),
+    ingredients: arrayValue(item.ingredients, 1, 80, ingredient),
+    steps: arrayValue(item.steps, 1, 80, step),
+    nutrition: nutrition(item.nutrition),
+  };
+}
+
+export const loginSchema = schema((value: unknown) => {
+  const item = record(value);
+  return {
+    password: text(item.password, 1, 512),
+    turnstileToken: text(item.turnstileToken, 1, 2048),
+  };
+});
+
+export const tagSchema = schema(tag);
+
+export const recipePayloadSchema = schema((value: unknown): RecipeInput => {
+  const item = record(value);
+  const imageIds = optionalArray(item.imageIds, 20, uuid);
+  const heroImageId = item.heroImageId == null ? undefined : uuid(item.heroImageId);
+  const translations = arrayValue(item.translations, 1, 3, translation);
+  const locales = new Set(translations.map((entry) => entry.locale));
+
+  if (!locales.has("en")) fail("English translation is required");
+  if (locales.size !== translations.length) fail("Translation locales must be unique");
+  if (heroImageId && !imageIds.includes(heroImageId)) fail("Hero image must be included in imageIds");
+
+  return {
+    slug: slug(item.slug),
+    status: oneOf<RecipeStatus>(item.status, ["draft", "published"], "draft"),
+    servings: integer(item.servings, 1, 50, 2),
+    prepMinutes: integer(item.prepMinutes, 0, 7 * 24 * 60, 0),
+    cookMinutes: integer(item.cookMinutes, 0, 7 * 24 * 60, 0),
+    totalMinutes: integer(item.totalMinutes, 0, 7 * 24 * 60, 0),
+    difficulty: oneOf<Difficulty>(item.difficulty, ["easy", "medium", "hard"], "easy"),
+    tags: optionalArray(item.tags, 20, tag),
+    imageIds,
+    ...(heroImageId ? { heroImageId } : {}),
+    translations,
+  };
 });
