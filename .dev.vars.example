@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local `wrangler pages dev .`.
+# Keep real values out of git and set Preview/Production secrets separately.
+
+ADMIN_PATH="/__admin-local"
+ADMIN_HASH="base64-pbkdf2-output-from-npm-run-hash-password"
+ADMIN_SALT="base64-salt-from-npm-run-hash-password"
+JWT_SECRET="replace-with-at-least-32-random-bytes-base64-or-long-random-text"
+TURNSTILE_SECRET="replace-with-turnstile-secret"
+TURNSTILE_SITE_KEY="replace-with-turnstile-site-key"

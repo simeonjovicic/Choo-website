@@ -916,7 +916,7 @@
 
 /* ===== Recipes — from test34 ===== */
 (() => {
-  const recipes = [
+  let recipes = [
     {
       id: "mapo",
       name: "Mapo Tofu",
@@ -1842,6 +1842,66 @@
   };
   const tagLabel = (tag) => tr(`filter.${tag}`);
 
+  function normalizeApiRecipe(recipe) {
+    const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
+    const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+    return {
+      ...recipe,
+      id: recipe.slug || recipe.id,
+      name: recipe.name || recipe.title || "",
+      blurb: recipe.blurb || recipe.description || "",
+      time: recipe.time || (recipe.totalMinutes ? `${recipe.totalMinutes} min` : ""),
+      serves: Number(recipe.serves || recipe.servings || 2),
+      tags: Array.isArray(recipe.tags) ? recipe.tags : [],
+      ingredients: ingredients.map((ingredient) => ({
+        name: ingredient.name || [ingredient.amount, ingredient.unit, ingredient.rawName].filter(Boolean).join(" "),
+        inStore: Boolean(ingredient.inStore),
+        aisle: ingredient.aisle || "",
+      })),
+      steps: steps.map((step) => typeof step === "string" ? step : step.text).filter(Boolean),
+      imageUrl: recipe.imageUrl || "",
+      imageAlt: recipe.imageAlt || recipe.name || recipe.title || "",
+    };
+  }
+
+  async function loadRecipes(filter = activeFilter) {
+    const params = new URLSearchParams({ lang: currentLang() });
+    if (filter && filter !== "all") params.set("tag", filter);
+
+    try {
+      const response = await fetch(`/api/recipes?${params.toString()}`, {
+        headers: { "Accept": "application/json" },
+      });
+      if (!response.ok) throw new Error(`Recipe API failed: ${response.status}`);
+      const payload = await response.json();
+      if (Array.isArray(payload.recipes)) {
+        recipes = payload.recipes.map(normalizeApiRecipe);
+        renderRecipes(filter);
+      }
+    } catch (error) {
+      renderRecipes(filter);
+    }
+  }
+
+  async function findRecipeForOpen(id) {
+    const found = recipes.find((item) => item.id === id || item.slug === id || item.recipeId === id);
+    if (found) return found;
+
+    try {
+      const response = await fetch(`/api/recipes/${encodeURIComponent(id)}?lang=${encodeURIComponent(currentLang())}`, {
+        headers: { "Accept": "application/json" },
+      });
+      if (!response.ok) return null;
+      const payload = await response.json();
+      if (!payload.recipe) return null;
+      const loaded = normalizeApiRecipe(payload.recipe);
+      recipes = [loaded, ...recipes.filter((item) => item.id !== loaded.id && item.slug !== loaded.slug && item.recipeId !== loaded.recipeId)];
+      return loaded;
+    } catch (error) {
+      return null;
+    }
+  }
+
   function stepTimerSeconds(step) {
     const text = String(step);
     const minuteMatch = text.match(/(\d+(?:[.,]\d+)?)\s*(?:min\.?|minutes?|分钟|分鐘)/i);
@@ -1991,11 +2051,13 @@
       const ingredients = recipeIngredients(recipe);
       const inStore = ingredients.filter((ingredient) => ingredient.inStore).length;
       const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
+      const imageSrc = recipe.imageUrl || "images/recipe-placeholder.png";
+      const imageAlt = recipe.imageAlt || "";
 
       return `
         <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
           <span class="rc__image" aria-hidden="true">
-            <img src="images/recipe-placeholder.png" alt="" width="1448" height="1086" loading="lazy" decoding="async" />
+            <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}" width="1448" height="1086" loading="lazy" decoding="async" />
           </span>
           <span class="rc__top">
             <span class="rc__no">${escapeHtml(tr("recipe.label"))} ${String(originalIndex).padStart(2, "0")}</span>
@@ -2018,10 +2080,11 @@
     }
   }
 
-  function openRecipe(id, options = {}) {
-    const recipe = recipes.find((item) => item.id === id);
+  async function openRecipe(id, options = {}) {
+    const recipe = await findRecipeForOpen(id);
     const view = document.querySelector("[data-recipe-view]");
     if (!recipe || !view) return;
+    const recipeId = recipe.id || recipe.slug || id;
 
     const localizedIngredients = recipeIngredients(recipe);
     const localizedSteps = recipeSteps(recipe);
@@ -2031,7 +2094,7 @@
       options.animate &&
       view.classList.contains("recipe-view--open") &&
       view.dataset.activeRecipe &&
-      view.dataset.activeRecipe !== id
+      view.dataset.activeRecipe !== recipeId
     );
 
     if (shouldAnimate && view.dataset.recipeSwitching === "true") return;
@@ -2045,7 +2108,7 @@
     `).join("");
     const steps = localizedSteps.map((step, index) => {
       const timerSeconds = stepTimerSeconds(step);
-      const timerId = `${recipe.id}-${index}`;
+      const timerId = `${recipeId}-${index}`;
       const timer = timerSeconds > 0
         ? `
           <button class="step-timer" type="button" data-step-timer="${escapeHtml(timerId)}" data-step-timer-seconds="${timerSeconds}" aria-label="${escapeHtml(`${tr("timer.start")} ${formatTimer(timerSeconds)}`)}">
@@ -2070,6 +2133,8 @@
     }).join("");
     const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
     const nutrition = computeNutrition(recipe);
+    const imageSrc = recipe.imageUrl || "images/recipe-placeholder.png";
+    const imageAlt = recipe.imageAlt || recipeName(recipe);
 
     const markup = `
       <div class="recipe-view__bar">
@@ -2104,7 +2169,7 @@
             <p class="recipe-page__blurb">${escapeHtml(recipeBlurb(recipe))}</p>
           </header>
           <figure class="recipe-page__image">
-            <img src="images/recipe-placeholder.png" alt="" width="1448" height="1086" loading="lazy" decoding="async" />
+            <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}" width="1448" height="1086" loading="lazy" decoding="async" />
           </figure>
           <div class="recipe-page__stats" aria-label="${escapeHtml(tr("recipe.summary"))}">
             <div class="recipe-stat"><span>${escapeHtml(tr("recipe.time"))}</span><strong>${escapeHtml(recipeTime(recipe))}</strong></div>
@@ -2115,11 +2180,11 @@
             <div class="ings__head">
               <h4>${escapeHtml(tr("recipe.ingredients"))}</h4>
               <span class="ings__legend"><span class="dot dot--accent"></span> ${escapeHtml(tr("recipe.inStore", { current: inStore, total: localizedIngredients.length }))}</span>
-              <button class="ingredients-toggle" type="button" data-ingredients-toggle aria-expanded="false" aria-controls="recipe-ingredients-${escapeHtml(recipe.id)}" aria-label="${escapeHtml(tr("recipe.showIngredients"))}" title="${escapeHtml(tr("recipe.showIngredients"))}">
+              <button class="ingredients-toggle" type="button" data-ingredients-toggle aria-expanded="false" aria-controls="recipe-ingredients-${escapeHtml(recipeId)}" aria-label="${escapeHtml(tr("recipe.showIngredients"))}" title="${escapeHtml(tr("recipe.showIngredients"))}">
                 <span data-ingredients-toggle-icon aria-hidden="true">+</span>
               </button>
             </div>
-            <ul id="recipe-ingredients-${escapeHtml(recipe.id)}" class="ingredients-list">${ingredients}</ul>
+            <ul id="recipe-ingredients-${escapeHtml(recipeId)}" class="ingredients-list">${ingredients}</ul>
             ${localizedIngredients.length > 5 ? `<button class="ingredients-show-more" type="button" data-ingredients-toggle>${escapeHtml(tr("recipe.moreIngredients", { count: localizedIngredients.length - 5 }))}</button>` : ""}
           </div>
         </div>
@@ -2164,7 +2229,7 @@
 
     const commitMarkup = () => {
       view.innerHTML = markup;
-      view.dataset.activeRecipe = id;
+      view.dataset.activeRecipe = recipeId;
       view.setAttribute("aria-hidden", "false");
       document.body.classList.add("recipe-open");
       setWakeStatus("timer.off");
@@ -2240,14 +2305,13 @@
   }
 
   function computeNutrition(recipe) {
-    if (recipe.nutrition) return recipe.nutrition;
     const seed = recipe.id.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
     const kcal = 110 + (seed % 80);
     const protein = 6 + (seed % 9);
     const carbs = 9 + (seed % 14);
     const fat = 3 + (seed % 8);
     const portionWeight = 320;
-    return {
+    const fallback = {
       per100g: { kcal, protein, carbs, fat },
       perServing: {
         kcal: Math.round((kcal * portionWeight) / 100),
@@ -2256,6 +2320,29 @@
         fat: Math.round((fat * portionWeight) / 100),
       },
     };
+    if (!recipe.nutrition) return fallback;
+    if (recipe.nutrition.per100g && recipe.nutrition.perServing) return recipe.nutrition;
+
+    const flat = recipe.nutrition;
+    if (flat.kcal || flat.protein || flat.carbs || flat.fat) {
+      const per100g = {
+        kcal: Math.round(Number(flat.kcal ?? fallback.per100g.kcal)),
+        protein: Math.round(Number(flat.protein ?? fallback.per100g.protein)),
+        carbs: Math.round(Number(flat.carbs ?? fallback.per100g.carbs)),
+        fat: Math.round(Number(flat.fat ?? fallback.per100g.fat)),
+      };
+      return {
+        per100g,
+        perServing: {
+          kcal: Math.round((per100g.kcal * portionWeight) / 100),
+          protein: Math.round((per100g.protein * portionWeight) / 100),
+          carbs: Math.round((per100g.carbs * portionWeight) / 100),
+          fat: Math.round((per100g.fat * portionWeight) / 100),
+        },
+      };
+    }
+
+    return fallback;
   }
 
   function setNutritionMode(panel, mode) {
@@ -2275,6 +2362,7 @@
 
   function initRecipes() {
     renderRecipes(activeFilter);
+    loadRecipes(activeFilter);
     const mobileRecipeQuery = window.matchMedia("(max-width: 720px)");
     let swipeStart = null;
 
@@ -2286,7 +2374,7 @@
       document.querySelectorAll("[data-filter]").forEach((item) => {
         item.classList.toggle("filter--on", item === button);
       });
-      renderRecipes(activeFilter);
+      loadRecipes(activeFilter);
     });
 
     document.querySelector("[data-recipes]")?.addEventListener("click", (event) => {
@@ -2364,7 +2452,7 @@
     });
 
     window.ChooI18n?.onChange(() => {
-      renderRecipes(activeFilter);
+      loadRecipes(activeFilter);
       const activeRecipe = view?.dataset.activeRecipe;
       if (activeRecipe) openRecipe(activeRecipe);
     });
