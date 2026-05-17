@@ -1,7 +1,7 @@
 export const adminEntryJs = `
 const ADMIN_HASHES = new Set(["#login", "#admin", "#new"]);
 function shouldBoot() {
-  return ADMIN_HASHES.has(location.hash) || location.hash.startsWith("#edit-");
+  return ADMIN_HASHES.has(location.hash) || location.hash.startsWith("#edit-") || location.hash.startsWith("#view-");
 }
 async function boot() {
   if (!shouldBoot() || window.__chooAdminBooted) return;
@@ -57,8 +57,11 @@ export const adminStylesCss = `
 .admin-login{max-width:440px;margin:70px auto}
 .admin-login h1{margin:0 0 18px;font-size:30px}
 .admin-toolbar{display:grid;grid-template-columns:minmax(220px,1fr) 180px auto;gap:10px;margin-bottom:16px}
+.admin-bulk{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;padding:10px 12px;border:1px solid var(--admin-line);border-radius:8px;background:#fbf7f0}
+.admin-check{display:flex;align-items:center;justify-content:center}
+.admin-check input{width:18px;height:18px;accent-color:var(--admin-strong)}
 .admin-list{display:grid;gap:10px}
-.admin-row{display:grid;grid-template-columns:76px 1fr auto;gap:14px;align-items:center;border:1px solid var(--admin-line);border-radius:8px;background:var(--admin-surface);padding:12px}
+.admin-row{display:grid;grid-template-columns:28px 76px 1fr auto;gap:14px;align-items:center;border:1px solid var(--admin-line);border-radius:8px;background:var(--admin-surface);padding:12px}
 .admin-row-media{width:76px;aspect-ratio:1.2;border-radius:7px;background:#eee7dc;overflow:hidden;display:grid;place-items:center;color:var(--admin-muted);font-weight:800}
 .admin-row-media img{width:100%;height:100%;object-fit:cover}
 .admin-row strong{display:block;font-size:17px}
@@ -100,8 +103,15 @@ export const adminStylesCss = `
 .admin-preview-stat strong{font-size:15px}
 .admin-tags{display:flex;gap:6px;flex-wrap:wrap}
 .admin-nutrition{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.admin-view-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start}
+.admin-view-stack{display:grid;gap:14px}
+.admin-definition{display:grid;grid-template-columns:140px 1fr;gap:8px 14px;margin:0}
+.admin-definition dt{color:var(--admin-muted);font-weight:800}
+.admin-definition dd{margin:0}
+.admin-read-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.admin-read-list li{border:1px solid var(--admin-line);border-radius:7px;background:#fbf7f0;padding:10px}
 @media (max-width:980px){.admin-editor{grid-template-columns:1fr}.admin-editor-side{position:static}.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-toolbar{grid-template-columns:1fr}.admin-upload{grid-template-columns:1fr}}
-@media (max-width:720px){.admin-bar,.admin-page-head,.admin-row{grid-template-columns:1fr;display:grid}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition{grid-template-columns:1fr}.admin-main{padding:18px 12px 40px}.admin-row-media{width:100%}}
+@media (max-width:720px){.admin-bar,.admin-page-head,.admin-row,.admin-view-grid{grid-template-columns:1fr;display:grid}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition,.admin-definition{grid-template-columns:1fr}.admin-main{padding:18px 12px 40px}.admin-row-media{width:100%}.admin-bulk{align-items:flex-start;flex-direction:column}}
 `;
 
 export const adminUiJs = `
@@ -109,7 +119,7 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const all = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 const locales = ["en", "de", "zh"];
 const localeNames = { en: "English", de: "Deutsch", zh: "中文" };
-let state = { recipes: [], editing: null, draft: null, images: [], activeLocale: "en", selectedFile: null, selectedPreviewUrl: "" };
+let state = { recipes: [], editing: null, draft: null, images: [], activeLocale: "en", selectedFile: null, selectedPreviewUrl: "", selectedRecipeIds: new Set() };
 
 function text(value) { return value == null ? "" : String(value); }
 function formatBytes(size) {
@@ -308,10 +318,28 @@ async function renderDashboard() {
   const statusFilter = select("statusFilter", "all", [["all","All statuses"],["published","Published"],["draft","Draft"]]);
   const count = document.createElement("p");
   count.className = "admin-muted";
+  const bulk = document.createElement("div");
+  bulk.className = "admin-bulk";
+  const selectAllWrap = document.createElement("label");
+  selectAllWrap.className = "admin-row-label";
+  const selectAll = input("selectAllRecipes", "1", "checkbox");
+  selectAllWrap.append(selectAll, document.createTextNode("Select shown"));
+  const bulkMeta = document.createElement("span");
+  bulkMeta.className = "admin-muted";
+  const bulkDelete = button("Delete selected", "danger", async () => {
+    const ids = Array.from(state.selectedRecipeIds);
+    if (!ids.length) return;
+    if (!confirm("Delete " + ids.length + " selected recipe" + (ids.length === 1 ? "" : "s") + "? This also removes attached recipe images.")) return;
+    bulkDelete.disabled = true;
+    await Promise.all(ids.map((id) => api("/api/admin/recipes/" + encodeURIComponent(id), { method: "DELETE" })));
+    state.selectedRecipeIds.clear();
+    await renderDashboard();
+  });
+  bulk.append(selectAllWrap, bulkMeta, bulkDelete);
   const list = document.createElement("div");
   list.className = "admin-list";
   toolbar.append(search, statusFilter, count);
-  panel.append(toolbar, list);
+  panel.append(toolbar, bulk, list);
   main.append(panel);
   function paint() {
     const term = search.value.trim().toLowerCase();
@@ -322,6 +350,12 @@ async function renderDashboard() {
       return (!term || haystack.includes(term)) && (status === "all" || recipe.status === status);
     });
     count.textContent = recipes.length + " shown";
+    const shownIds = recipes.map((recipe) => recipe.recipeId);
+    const selectedShown = shownIds.filter((id) => state.selectedRecipeIds.has(id)).length;
+    selectAll.checked = Boolean(shownIds.length && selectedShown === shownIds.length);
+    selectAll.indeterminate = Boolean(selectedShown && selectedShown < shownIds.length);
+    bulkMeta.textContent = state.selectedRecipeIds.size + " selected";
+    bulkDelete.disabled = state.selectedRecipeIds.size === 0;
     if (!recipes.length) {
       const empty = document.createElement("p");
       empty.className = "admin-muted";
@@ -329,21 +363,43 @@ async function renderDashboard() {
       list.append(empty);
       return;
     }
-    recipes.forEach((recipe) => list.append(recipeRow(recipe)));
+    recipes.forEach((recipe) => list.append(recipeRow(recipe, paint)));
   }
   try {
     const data = await api("/api/admin/recipes");
     state.recipes = data.recipes || [];
     search.addEventListener("input", paint);
     statusFilter.addEventListener("change", paint);
+    selectAll.addEventListener("change", () => {
+      const term = search.value.trim().toLowerCase();
+      const status = statusFilter.value;
+      state.recipes.forEach((recipe) => {
+        const haystack = [recipe.title || recipe.name, recipe.slug, (recipe.tags || []).join(" ")].join(" ").toLowerCase();
+        const visible = (!term || haystack.includes(term)) && (status === "all" || recipe.status === status);
+        if (!visible) return;
+        if (selectAll.checked) state.selectedRecipeIds.add(recipe.recipeId);
+        else state.selectedRecipeIds.delete(recipe.recipeId);
+      });
+      paint();
+    });
     paint();
   } catch {
     $(".admin-shell")?.remove();
   }
 }
-function recipeRow(recipe) {
+function recipeRow(recipe, onSelectionChange) {
   const row = document.createElement("div");
   row.className = "admin-row";
+  const checkWrap = document.createElement("label");
+  checkWrap.className = "admin-check";
+  const check = input("recipeSelect", recipe.recipeId, "checkbox");
+  check.checked = state.selectedRecipeIds.has(recipe.recipeId);
+  check.addEventListener("change", () => {
+    if (check.checked) state.selectedRecipeIds.add(recipe.recipeId);
+    else state.selectedRecipeIds.delete(recipe.recipeId);
+    onSelectionChange();
+  });
+  checkWrap.append(check);
   const media = document.createElement("div");
   media.className = "admin-row-media";
   if (recipe.imageUrl) {
@@ -366,14 +422,16 @@ function recipeRow(recipe) {
   const actions = document.createElement("div");
   actions.className = "admin-actions";
   actions.append(
+    button("View", "ghost", async () => { await loadRecipe(recipe.recipeId); location.hash = "#view-" + recipe.recipeId; renderRecipeView(); }),
     button("Edit", "secondary", async () => { await loadRecipe(recipe.recipeId); location.hash = "#edit-" + recipe.recipeId; renderForm(); }),
     button("Delete", "danger", async () => {
       if (!confirm("Delete this recipe?")) return;
       await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
+      state.selectedRecipeIds.delete(recipe.recipeId);
       await renderDashboard();
     })
   );
-  row.append(media, meta, actions);
+  row.append(checkWrap, media, meta, actions);
   return row;
 }
 async function loadRecipe(id) {
@@ -382,6 +440,119 @@ async function loadRecipe(id) {
   state.draft = null;
   state.images = data.recipe.images || [];
   resetSelectedFile();
+}
+function renderRecipeView() {
+  const recipe = normalizeEditing();
+  const main = shell();
+  main.replaceChildren();
+  const edit = button("Edit", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
+  const back = button("Back to recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  const remove = button("Delete", "danger", async () => {
+    if (!confirm("Delete this recipe? This also removes attached recipe images.")) return;
+    await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
+    state.selectedRecipeIds.delete(recipe.recipeId);
+    location.hash = "#admin";
+    await renderDashboard();
+  });
+  main.append(pageHead("Read only", recipe.title || recipe.name || "Recipe preview", [edit, back, remove]));
+  const layout = document.createElement("div");
+  layout.className = "admin-view-grid";
+  const stack = document.createElement("div");
+  stack.className = "admin-view-stack";
+  const side = document.createElement("aside");
+  side.className = "admin-editor-side";
+  const preview = document.createElement("section");
+  preview.className = "admin-card admin-preview";
+  side.append(preview);
+  renderLivePreview(recipe, preview);
+  stack.append(readOnlyBasics(recipe), readOnlyImages(recipe), ...recipe.translations.map(readOnlyTranslation));
+  layout.append(stack, side);
+  main.append(layout);
+}
+function definition(items) {
+  const dl = document.createElement("dl");
+  dl.className = "admin-definition";
+  items.forEach(([label, value]) => {
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = text(value || "-");
+    dl.append(dt, dd);
+  });
+  return dl;
+}
+function readOnlyBasics(recipe) {
+  const panel = card("Basics", "");
+  panel.append(definition([
+    ["Slug", recipe.slug],
+    ["Status", recipe.status],
+    ["Difficulty", recipe.difficulty],
+    ["Servings", recipe.servings],
+    ["Prep", recipe.prepMinutes + " min"],
+    ["Cook", recipe.cookMinutes + " min"],
+    ["Total", recipe.totalMinutes + " min"],
+    ["Tags", (recipe.tags || []).join(", ")],
+  ]));
+  return panel;
+}
+function readOnlyImages(recipe) {
+  const panel = card("Images", "");
+  const grid = document.createElement("div");
+  grid.className = "admin-image-grid";
+  (state.images || recipe.images || []).forEach((image) => {
+    const item = document.createElement("article");
+    item.className = "admin-image-card";
+    const img = document.createElement("img");
+    img.src = image.url;
+    img.alt = image.altText || "";
+    const body = document.createElement("div");
+    body.className = "admin-image-card-body";
+    const meta = document.createElement("span");
+    meta.className = "admin-muted";
+    meta.textContent = image.isHero || recipe.heroImageId === image.id ? "Hero image" : (image.altText || "Recipe image");
+    body.append(meta);
+    item.append(img, body);
+    grid.append(item);
+  });
+  if (!grid.children.length) {
+    const empty = document.createElement("p");
+    empty.className = "admin-muted";
+    empty.textContent = "No images.";
+    panel.append(empty);
+  } else {
+    panel.append(grid);
+  }
+  return panel;
+}
+function readOnlyTranslation(translation) {
+  const panel = card(localeNames[translation.locale] + " content", "");
+  panel.append(definition([
+    ["Title", translation.title],
+    ["Description", translation.description],
+    ["Origin", translation.origin],
+    ["Occasion", translation.occasion],
+    ["Notes", translation.notes],
+  ]));
+  const ingredientsTitle = document.createElement("h3");
+  ingredientsTitle.textContent = "Ingredients";
+  const ingredients = document.createElement("ul");
+  ingredients.className = "admin-read-list";
+  (translation.ingredients || []).forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = [item.amount, item.unit, item.name, item.aisle ? "(" + item.aisle + ")" : "", item.inStore ? "in store" : ""].filter(Boolean).join(" ");
+    ingredients.append(li);
+  });
+  const stepsTitle = document.createElement("h3");
+  stepsTitle.textContent = "Steps";
+  const steps = document.createElement("ol");
+  steps.className = "admin-read-list";
+  (translation.steps || []).forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item.text + (item.timerSeconds ? " · " + item.timerSeconds + "s" : "");
+    steps.append(li);
+  });
+  panel.append(ingredientsTitle, ingredients, stepsTitle, steps);
+  return panel;
 }
 function defaultTranslation(locale) {
   return {
@@ -758,6 +929,11 @@ export async function mountAdmin() {
     if (location.hash.startsWith("#edit-")) {
       await loadRecipe(location.hash.replace("#edit-", ""));
       renderForm();
+      return;
+    }
+    if (location.hash.startsWith("#view-")) {
+      await loadRecipe(location.hash.replace("#view-", ""));
+      renderRecipeView();
       return;
     }
     if (location.hash === "#new") {
