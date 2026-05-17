@@ -128,6 +128,11 @@ function formatBytes(size) {
   if (size < 1024 * 1024) return Math.round(size / 1024) + " KB";
   return (size / 1024 / 1024).toFixed(1) + " MB";
 }
+function recipeTitle(recipe, fallback = "Untitled recipe") {
+  const translations = recipe.translations || [];
+  const translated = translations.find((item) => item.locale === state.activeLocale && item.title) || translations.find((item) => item.locale === "en" && item.title) || translations.find((item) => item.title);
+  return recipe.title || recipe.name || translated?.title || fallback;
+}
 function csrf() {
   return document.cookie.split(";").map((part) => part.trim()).find((part) => part.startsWith("choo_csrf="))?.split("=").slice(1).join("=") || "";
 }
@@ -160,14 +165,14 @@ function shell() {
   const dot = document.createElement("span");
   dot.className = "admin-dot";
   const label = document.createElement("span");
-  label.textContent = "Choo Recipe Admin";
+  label.textContent = "Recipe Admin";
   brand.append(dot, label);
   const nav = document.createElement("div");
   nav.className = "admin-nav";
   nav.append(
-    button("Recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); }),
-    button("New recipe", "primary", () => { state.editing = null; state.draft = null; state.images = []; resetSelectedFile(); location.hash = "#new"; renderForm(); }),
-    button("Logout", "danger", async () => { await api("/api/admin/logout", { method: "POST" }); location.hash = ""; root.remove(); })
+    button("All recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); }),
+    button("Create recipe", "primary", () => { state.editing = null; state.draft = null; state.images = []; resetSelectedFile(); location.hash = "#new"; renderForm(); }),
+    button("Log out", "danger", async () => { await api("/api/admin/logout", { method: "POST" }); location.hash = ""; root.remove(); })
   );
   bar.append(brand, nav);
   const main = document.createElement("main");
@@ -308,7 +313,7 @@ async function renderDashboard() {
   resetSelectedFile();
   const main = shell();
   main.replaceChildren();
-  main.append(pageHead("Recipes", "Manage recipes", [button("New recipe", "primary", () => { state.editing = null; state.draft = null; state.images = []; location.hash = "#new"; renderForm(); })]));
+  main.append(pageHead("Recipe list", "All recipes", [button("Create recipe", "primary", () => { state.editing = null; state.draft = null; state.images = []; location.hash = "#new"; renderForm(); })]));
   const panel = document.createElement("section");
   panel.className = "admin-panel";
   const toolbar = document.createElement("div");
@@ -323,13 +328,13 @@ async function renderDashboard() {
   const selectAllWrap = document.createElement("label");
   selectAllWrap.className = "admin-row-label";
   const selectAll = input("selectAllRecipes", "1", "checkbox");
-  selectAllWrap.append(selectAll, document.createTextNode("Select shown"));
+  selectAllWrap.append(selectAll, document.createTextNode("Select visible recipes"));
   const bulkMeta = document.createElement("span");
   bulkMeta.className = "admin-muted";
   const bulkDelete = button("Delete selected", "danger", async () => {
     const ids = Array.from(state.selectedRecipeIds);
     if (!ids.length) return;
-    if (!confirm("Delete " + ids.length + " selected recipe" + (ids.length === 1 ? "" : "s") + "? This also removes attached recipe images.")) return;
+    if (!confirm("Delete " + ids.length + " selected recipe" + (ids.length === 1 ? "" : "s") + "? This permanently removes them and their attached images.")) return;
     bulkDelete.disabled = true;
     await Promise.all(ids.map((id) => api("/api/admin/recipes/" + encodeURIComponent(id), { method: "DELETE" })));
     state.selectedRecipeIds.clear();
@@ -349,7 +354,7 @@ async function renderDashboard() {
       const haystack = [recipe.title || recipe.name, recipe.slug, (recipe.tags || []).join(" ")].join(" ").toLowerCase();
       return (!term || haystack.includes(term)) && (status === "all" || recipe.status === status);
     });
-    count.textContent = recipes.length + " shown";
+    count.textContent = recipes.length + " visible";
     const shownIds = recipes.map((recipe) => recipe.recipeId);
     const selectedShown = shownIds.filter((id) => state.selectedRecipeIds.has(id)).length;
     selectAll.checked = Boolean(shownIds.length && selectedShown === shownIds.length);
@@ -412,7 +417,7 @@ function recipeRow(recipe, onSelectionChange) {
   }
   const meta = document.createElement("div");
   const name = document.createElement("strong");
-  name.textContent = recipe.title || recipe.name || "Untitled recipe";
+  name.textContent = recipeTitle(recipe);
   const sub = document.createElement("span");
   sub.textContent = [recipe.slug, (recipe.tags || []).join(", ")].filter(Boolean).join(" · ");
   const status = document.createElement("span");
@@ -425,7 +430,7 @@ function recipeRow(recipe, onSelectionChange) {
     button("View", "ghost", async () => { await loadRecipe(recipe.recipeId); location.hash = "#view-" + recipe.recipeId; renderRecipeView(); }),
     button("Edit", "secondary", async () => { await loadRecipe(recipe.recipeId); location.hash = "#edit-" + recipe.recipeId; renderForm(); }),
     button("Delete", "danger", async () => {
-      if (!confirm("Delete this recipe?")) return;
+      if (!confirm("Delete this recipe? This permanently removes it and its attached images.")) return;
       await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
       state.selectedRecipeIds.delete(recipe.recipeId);
       await renderDashboard();
@@ -445,16 +450,16 @@ function renderRecipeView() {
   const recipe = normalizeEditing();
   const main = shell();
   main.replaceChildren();
-  const edit = button("Edit", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
-  const back = button("Back to recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
-  const remove = button("Delete", "danger", async () => {
-    if (!confirm("Delete this recipe? This also removes attached recipe images.")) return;
+  const back = button("Back to recipe list", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  const edit = button("Edit recipe", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
+  const remove = button("Delete recipe", "danger", async () => {
+    if (!confirm("Delete this recipe? This permanently removes it and its attached images.")) return;
     await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
     state.selectedRecipeIds.delete(recipe.recipeId);
     location.hash = "#admin";
     await renderDashboard();
   });
-  main.append(pageHead("Read only", recipe.title || recipe.name || "Recipe preview", [edit, back, remove]));
+  main.append(pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [back, edit, remove]));
   const layout = document.createElement("div");
   layout.className = "admin-view-grid";
   const stack = document.createElement("div");
@@ -586,7 +591,7 @@ function renderForm() {
   const status = document.createElement("p");
   status.className = "admin-status";
   const save = button("Save recipe", "primary");
-  const cancel = button("Cancel", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  const back = button("Back to recipe list", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
   const form = document.createElement("form");
   form.className = "admin-editor";
   save.addEventListener("click", () => form.requestSubmit());
@@ -597,7 +602,7 @@ function renderForm() {
   const previewCard = document.createElement("section");
   previewCard.className = "admin-card admin-preview";
   sideColumn.append(previewCard);
-  main.append(pageHead(state.editing ? "Edit" : "Create", state.editing ? "Edit recipe" : "New recipe", [save, cancel]));
+  main.append(pageHead(state.editing ? "Editing recipe" : "Creating recipe", state.editing ? recipeTitle(recipe, "Edit recipe") : "New recipe", [back, save]));
   main.append(form);
   mainColumn.append(renderBasics(recipe), renderImagePanel(recipe), renderLocaleTabs(recipe), renderTranslationFields(recipe.translations.find((item) => item.locale === state.activeLocale)));
   mainColumn.append(status);
