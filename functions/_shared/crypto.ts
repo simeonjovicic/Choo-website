@@ -1,5 +1,6 @@
 const textEncoder = new TextEncoder();
 const textDecoder = new TextDecoder();
+const MAX_WORKERS_PBKDF2_ITERATIONS = 100_000;
 
 function arrayBuffer(bytes: Uint8Array): ArrayBuffer {
   return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
@@ -39,12 +40,12 @@ export function randomToken(length = 32): string {
   return base64UrlEncode(randomBytes(length));
 }
 
-export async function pbkdf2Sha256(password: string, saltBase64: string, iterations = 210_000): Promise<Uint8Array> {
-  const key = await crypto.subtle.importKey("raw", textEncoder.encode(password), "PBKDF2", false, ["deriveBits"]);
+async function derivePbkdf2Sha256(input: Uint8Array, salt: Uint8Array, iterations: number): Promise<Uint8Array> {
+  const key = await crypto.subtle.importKey("raw", arrayBuffer(input), "PBKDF2", false, ["deriveBits"]);
   const bits = await crypto.subtle.deriveBits(
     {
       name: "PBKDF2",
-      salt: arrayBuffer(base64ToBytes(saltBase64)),
+      salt: arrayBuffer(salt),
       iterations,
       hash: "SHA-256",
     },
@@ -52,6 +53,20 @@ export async function pbkdf2Sha256(password: string, saltBase64: string, iterati
     256,
   );
   return new Uint8Array(bits);
+}
+
+export async function pbkdf2Sha256(password: string, saltBase64: string, iterations = 210_000): Promise<Uint8Array> {
+  const salt = base64ToBytes(saltBase64);
+  let remaining = iterations;
+  let material: Uint8Array = textEncoder.encode(password);
+
+  while (remaining > 0) {
+    const chunk = Math.min(remaining, MAX_WORKERS_PBKDF2_ITERATIONS);
+    material = await derivePbkdf2Sha256(material, salt, chunk);
+    remaining -= chunk;
+  }
+
+  return material;
 }
 
 export function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {

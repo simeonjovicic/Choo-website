@@ -63,7 +63,7 @@ npm install
 npm run hash-password
 ```
 
-Set `ADMIN_HASH` and `ADMIN_SALT` from the output. Generate a separate `JWT_SECRET` with at least 32 random bytes, for example:
+Set `ADMIN_HASH` and `ADMIN_SALT` from the output. The script uses 210,000 total PBKDF2-SHA-256 iterations split into Cloudflare-compatible chunks because Workers currently reject a single PBKDF2 call above 100,000 iterations. Generate a separate `JWT_SECRET` with at least 32 random bytes, for example:
 
 ```sh
 openssl rand -base64 32
