@@ -70,6 +70,9 @@ export const adminStylesCss = `
 .admin-chip{display:inline-flex;align-items:center;border:1px solid var(--admin-line);border-radius:999px;background:#f5efe5;color:var(--admin-muted);padding:3px 8px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
 .admin-chip.published{background:#e9f6ef;color:var(--admin-good);border-color:#b8deca}
 .admin-chip.draft{background:#fff7df;color:var(--admin-warn);border-color:#ead39b}
+.admin-row--clickable{cursor:pointer;transition:border-color .12s,background .12s}
+.admin-row--clickable:hover{border-color:var(--admin-strong);background:#fffcf7}
+.admin-fab{position:fixed;bottom:28px;right:28px;z-index:200;box-shadow:0 6px 24px rgba(0,0,0,.22);min-height:50px;padding:13px 26px;font-size:15px;font-weight:700;border-radius:12px}
 .admin-editor{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start}
 .admin-editor-main{display:grid;gap:14px}
 .admin-editor-side{position:sticky;top:84px;display:grid;gap:14px}
@@ -332,14 +335,15 @@ async function renderDashboard() {
   selectAllWrap.append(selectAll, document.createTextNode("Select visible recipes"));
   const bulkMeta = document.createElement("span");
   bulkMeta.className = "admin-muted";
-  const bulkDelete = button("Delete selected", "danger", async () => {
+  const bulkDelete = button("Delete selected", "danger", () => {
     const ids = Array.from(state.selectedRecipeIds);
     if (!ids.length) return;
-    if (!confirm("Delete " + ids.length + " selected recipe" + (ids.length === 1 ? "" : "s") + "? This permanently removes them and their attached images.")) return;
-    bulkDelete.disabled = true;
-    await Promise.all(ids.map((id) => api("/api/admin/recipes/" + encodeURIComponent(id), { method: "DELETE" })));
-    state.selectedRecipeIds.clear();
-    await renderDashboard();
+    showDeleteConfirm("This permanently removes " + ids.length + " recipe" + (ids.length === 1 ? "" : "s") + " and their attached images.", async () => {
+      bulkDelete.disabled = true;
+      await Promise.all(ids.map((id) => api("/api/admin/recipes/" + encodeURIComponent(id), { method: "DELETE" })));
+      state.selectedRecipeIds.clear();
+      await renderDashboard();
+    });
   });
   bulk.append(selectAllWrap, bulkMeta, bulkDelete);
   const list = document.createElement("div");
@@ -395,7 +399,13 @@ async function renderDashboard() {
 }
 function recipeRow(recipe, onSelectionChange) {
   const row = document.createElement("div");
-  row.className = "admin-row";
+  row.className = "admin-row admin-row--clickable";
+  row.addEventListener("click", async (e) => {
+    if (e.target.closest(".admin-check") || e.target.closest(".admin-actions")) return;
+    await loadRecipe(recipe.recipeId);
+    location.hash = "#view-" + recipe.recipeId;
+    renderRecipeView();
+  });
   const checkWrap = document.createElement("label");
   checkWrap.className = "admin-check";
   const check = input("recipeSelect", recipe.recipeId, "checkbox");
@@ -427,16 +437,31 @@ function recipeRow(recipe, onSelectionChange) {
   meta.append(name, sub, document.createElement("br"), status);
   const actions = document.createElement("div");
   actions.className = "admin-actions";
-  actions.append(
-    button("View", "ghost", async () => { await loadRecipe(recipe.recipeId); location.hash = "#view-" + recipe.recipeId; renderRecipeView(); }),
-    button("Edit", "secondary", async () => { await loadRecipe(recipe.recipeId); location.hash = "#edit-" + recipe.recipeId; renderForm(); }),
-    button("Delete", "danger", async () => {
-      if (!confirm("Delete this recipe? This permanently removes it and its attached images.")) return;
+  const editBtn = button("Edit", "primary", async (e) => {
+    e.stopPropagation();
+    await loadRecipe(recipe.recipeId);
+    location.hash = "#edit-" + recipe.recipeId;
+    renderForm();
+  });
+  const deleteBtn = button("", "danger", (e) => {
+    e.stopPropagation();
+    showDeleteConfirm("This permanently removes the recipe and its attached images.", async () => {
       await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
       state.selectedRecipeIds.delete(recipe.recipeId);
       await renderDashboard();
-    })
-  );
+    });
+  });
+  deleteBtn.setAttribute("aria-label", "Delete recipe");
+  deleteBtn.style.cssText = "padding:2px 9px";
+  const trashSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  trashSvg.setAttribute("width", "15"); trashSvg.setAttribute("height", "15");
+  trashSvg.setAttribute("viewBox", "0 0 24 24"); trashSvg.setAttribute("fill", "none");
+  trashSvg.setAttribute("stroke", "currentColor"); trashSvg.setAttribute("stroke-width", "2");
+  trashSvg.setAttribute("stroke-linecap", "round"); trashSvg.setAttribute("stroke-linejoin", "round");
+  trashSvg.setAttribute("aria-hidden", "true");
+  trashSvg.innerHTML = '<polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>';
+  deleteBtn.append(trashSvg);
+  actions.append(editBtn, deleteBtn);
   row.append(checkWrap, media, meta, actions);
   return row;
 }
@@ -457,18 +482,15 @@ function renderRecipeView() {
   backLink.style.cssText = "font-size:13px;padding:5px 10px;opacity:.65";
   breadcrumb.append(backLink);
   main.append(breadcrumb);
-  const edit = button("Edit recipe", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
-  const divider = document.createElement("span");
-  divider.setAttribute("aria-hidden", "true");
-  divider.style.cssText = "display:inline-block;width:1px;height:20px;background:var(--admin-line);margin:0 2px;align-self:center;flex-shrink:0";
-  const remove = button("Delete recipe", "danger", async () => {
-    if (!confirm("Delete this recipe? This permanently removes it and its attached images.")) return;
-    await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
-    state.selectedRecipeIds.delete(recipe.recipeId);
-    location.hash = "#admin";
-    await renderDashboard();
+  const remove = button("Delete recipe", "danger", () => {
+    showDeleteConfirm("This permanently removes the recipe and its attached images.", async () => {
+      await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
+      state.selectedRecipeIds.delete(recipe.recipeId);
+      location.hash = "#admin";
+      await renderDashboard();
+    });
   });
-  const viewHead = pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [edit, divider, remove]);
+  const viewHead = pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [remove]);
   viewHead.classList.add("is-sticky");
   main.append(viewHead);
   const layout = document.createElement("div");
@@ -484,6 +506,9 @@ function renderRecipeView() {
   stack.append(readOnlyBasics(recipe), readOnlyImages(recipe), ...recipe.translations.map(readOnlyTranslation));
   layout.append(stack, side);
   main.append(layout);
+  const floatingEdit = button("Edit recipe", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
+  floatingEdit.classList.add("admin-fab");
+  $(".admin-shell").append(floatingEdit);
 }
 function definition(items) {
   const dl = document.createElement("dl");
@@ -594,6 +619,34 @@ function normalizeEditing() {
   recipe.translations = locales.map((locale) => map.get(locale));
   if (!state.images.length && Array.isArray(recipe.images)) state.images = recipe.images.slice();
   return recipe;
+}
+function showDeleteConfirm(subtitle, onConfirm) {
+  const overlay = document.createElement("div");
+  overlay.style.cssText = "position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.45)";
+  const box = document.createElement("div");
+  box.style.cssText = "background:#fff;border-radius:14px;padding:30px 32px;text-align:center;max-width:320px;width:90%;box-shadow:0 24px 64px rgba(0,0,0,.2)";
+  const icon = document.createElement("div");
+  icon.style.cssText = "width:50px;height:50px;border-radius:999px;background:#fff3ef;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:#a83218";
+  icon.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>';
+  const title = document.createElement("p");
+  title.style.cssText = "font-size:17px;font-weight:700;color:#171615;margin:0 0 6px";
+  title.textContent = "Delete recipe?";
+  const sub = document.createElement("p");
+  sub.style.cssText = "font-size:13px;color:#6f6a61;margin:0 0 24px;line-height:1.4";
+  sub.textContent = subtitle;
+  const btns = document.createElement("div");
+  btns.style.cssText = "display:flex;gap:10px";
+  const cancel = button("Cancel", "secondary");
+  cancel.style.cssText = "flex:1;min-height:40px";
+  cancel.addEventListener("click", () => overlay.remove());
+  const del = button("Delete", "danger");
+  del.style.cssText = "flex:1;min-height:40px";
+  del.addEventListener("click", () => { overlay.remove(); onConfirm(); });
+  btns.append(cancel, del);
+  box.append(icon, title, sub, btns);
+  overlay.append(box);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.append(overlay);
 }
 function showSuccessModal(message) {
   const overlay = document.createElement("div");
