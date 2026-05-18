@@ -2987,18 +2987,11 @@
     },
     {
       id: "pantry",
+      image: "assets/categories/gifts.png",
       copy: {
-        en: { title: "Pantry & Specialties", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour"] },
-        de: { title: "Vorrat & Spezialitäten", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl"] },
-        zh: { title: "常备食材与特色食品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉"] }
-      }
-    },
-    {
-      id: "non-food",
-      copy: {
-        en: { title: "Kitchen & Non-Food", items: ["Cooking Tools & Tableware", "Merchandise", "Decor"] },
-        de: { title: "Küche & Non-Food", items: ["Kochutensilien & Geschirr", "Merchandise", "Dekor"] },
-        zh: { title: "厨房用品与非食品", items: ["厨房工具与餐具", "周边商品", "装饰"] }
+        en: { title: "Pantry & Gift Ideas", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour", "Cooking Tools & Tableware", "Gift Ideas & Decor"] },
+        de: { title: "Vorrat & Geschenkideen", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl", "Kochutensilien & Geschirr", "Geschenkideen & Dekor"] },
+        zh: { title: "常备食材与礼品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉", "厨房工具与餐具", "礼品与装饰"] }
       }
     }
   ];
