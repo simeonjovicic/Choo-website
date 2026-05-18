@@ -28,6 +28,7 @@ export const adminStylesCss = `
 .admin-nav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .admin-main{max-width:1320px;margin:0 auto;padding:26px 18px 54px}
 .admin-page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}
+.admin-page-head.is-sticky{position:sticky;top:60px;z-index:4;background:rgba(246,243,237,.94);backdrop-filter:blur(14px);padding:12px 0;margin:-12px 0 18px;border-bottom:1px solid var(--admin-line)}
 .admin-page-head h1{font-size:clamp(26px,3vw,42px);line-height:1.05;margin:0;color:var(--admin-ink);letter-spacing:0}
 .admin-kicker{margin:0 0 7px;color:var(--admin-accent);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .admin-muted{color:var(--admin-muted)}
@@ -459,7 +460,9 @@ function renderRecipeView() {
     location.hash = "#admin";
     await renderDashboard();
   });
-  main.append(pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [back, edit, remove]));
+  const viewHead = pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [back, edit, remove]);
+  viewHead.classList.add("is-sticky");
+  main.append(viewHead);
   const layout = document.createElement("div");
   layout.className = "admin-view-grid";
   const stack = document.createElement("div");
