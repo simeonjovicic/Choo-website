@@ -157,8 +157,8 @@
       "filter.spicy": "scharf",
       "filter.quick": "schnell",
       "events.eyebrow": "04 - Chinesischer Kalender",
-      "events.title": "Traditionelle Feste im Jahr 2026.",
-      "events.text": "Zuerst siehst du die nächsten Termine, danach kannst du Monat für Monat springen.",
+      "events.title": "Chinesische Feste und Feiertage 2026.",
+      "events.text": "Zuerst siehst du die nächsten Termine; danach kannst du dich Monat für Monat durchklicken.",
       "student.eyebrow": "Exklusiv für Studierende",
       "student.title": "Studentenrabatt",
       "student.stamp": "Rabatt",
@@ -227,8 +227,8 @@
       "timer.paused": "Pausiert",
       "timer.blocked": "Blockiert",
       "timer.unsupported": "Nicht unterstützt",
-      "event.one": "Termin",
-      "event.many": "Termine",
+      "event.one": "Eintrag",
+      "event.many": "Einträge",
       "event.today": "Heute",
       "event.tomorrow": "Morgen",
       "event.inDays": "In {days} Tagen",
@@ -2508,19 +2508,19 @@
 
   const EVENT_TRANSLATIONS = {
     "New Year's Day": {
-      de: { title: "Neujahrstag", cn: "元旦 - Yuandan", tag: "Feiertag", summary: "Chinas Neujahrsfeiertag nach gregorianischem Kalender und eine kurze Winterpause.", meaning: "Ein moderner nationaler Feiertag für Erholung, Reisen und den Start ins Kalenderjahr.", shelf: "Tee, Snacks, Geschenkboxen und schnelle Vorrats-Basics." },
+      de: { title: "Neujahrstag", cn: "元旦 - Yuandan", tag: "Feiertag", summary: "Der chinesische Neujahrsfeiertag nach dem gregorianischen Kalender, meist mit kurzer Winterpause.", meaning: "Ein moderner nationaler Feiertag für Erholung, Reisen und den Start ins Kalenderjahr.", shelf: "Tee, Snacks, Geschenkboxen und schnelle Vorratsartikel." },
       zh: { title: "元旦", cn: "公历新年", tag: "法定假日", summary: "中国公历新年的法定假日，也是短暂的冬日休整。", meaning: "这是现代公共假日，适合休息、出行，也标志着新日历年的开始。", shelf: "茶、零食、礼盒，以及快速补齐家中常备食材。" }
     },
     "Laba Festival": {
-      de: { title: "Laba-Fest", cn: "腊八节 - Laba", tag: "Laba-Congee", summary: "Der achte Tag des zwölften Mondmonats, bekannt für Laba-Brei und Wintersegen.", meaning: "Ein Vorzeichen des Neujahrs, verbunden mit Ernte, Dankbarkeit und der Vorbereitung auf das Frühlingsfest.", shelf: "Klebreis, rote Bohnen, Erdnüsse, Lotussamen, Jujuben und Getreide." },
+      de: { title: "Laba-Fest", cn: "腊八节 - Laba", tag: "Laba-Congee", summary: "Der achte Tag des zwölften Mondmonats, bekannt für Laba-Brei und Wintersegen.", meaning: "Ein Auftakt Richtung Neujahr, verbunden mit Ernte, Dankbarkeit und der Vorbereitung auf das Frühlingsfest.", shelf: "Klebreis, rote Bohnen, Erdnüsse, Lotussamen, Jujuben und Getreide." },
       zh: { title: "腊八节", cn: "腊八粥", tag: "腊八粥", summary: "农历腊月初八，常以腊八粥和冬日祈福来迎接年味。", meaning: "它像春节前的信号，和收获、感恩、备年货的传统联系在一起。", shelf: "糯米、红豆、花生、莲子、红枣和杂粮。" }
     },
     "Spring Festival Eve": {
-      de: { title: "Vorabend des Frühlingsfests", cn: "除夕 - Chuxi", tag: "Familienessen", summary: "Der Abend des großen Wiedersehensmahls vor dem Mondneujahr.", meaning: "Die Familie kommt zur wichtigsten Mahlzeit des Jahres zusammen, bevor das neue Jahr begrüßt wird.", shelf: "Hotpot-Basen, Teigtaschenblätter, Nudeln, Saucen und festliche Süßigkeiten." },
+      de: { title: "Vorabend des Frühlingsfests", cn: "除夕 - Chuxi", tag: "Familienessen", summary: "Der Abend des großen Familienessens vor dem Mondneujahr.", meaning: "Die Familie kommt zur wichtigsten Mahlzeit des Jahres zusammen, bevor das neue Jahr begrüßt wird.", shelf: "Hotpot-Basen, Teigblätter für Dumplings, Nudeln, Saucen und festliche Süßigkeiten." },
       zh: { title: "除夕", cn: "团圆饭", tag: "团圆饭", summary: "农历新年前夜，是一年中最重要的团圆饭时间。", meaning: "家人围坐一桌，辞旧迎新，也把来年的祝福放进这顿饭里。", shelf: "火锅底料、饺子皮、面条、酱料和年节糖果。" }
     },
     "Spring Festival": {
-      de: { title: "Frühlingsfest", cn: "春节 - Jahr des Feuer-Pferdes", tag: "Mondneujahr", summary: "Familienessen, rote Umschläge, Türsprüche und Löwentänze prägen den ersten Tag des Mondjahres.", meaning: "Neuanfang, Familienzusammenkunft und Glück für das kommende Jahr.", shelf: "Langlebigkeitsnudeln, rote Umschläge, Süßigkeiten, Tee und Hotpot-Zutaten." },
+      de: { title: "Frühlingsfest", cn: "春节 - Jahr des Feuer-Pferdes", tag: "Mondneujahr", summary: "Familienessen, rote Umschläge, Türspruch-Banner und Löwentänze prägen den ersten Tag des Mondjahres.", meaning: "Neuanfang, Familienzusammenkunft und Glück für das kommende Jahr.", shelf: "Langlebigkeitsnudeln, rote Umschläge, Süßigkeiten, Tee und Hotpot-Zutaten." },
       zh: { title: "春节", cn: "丙午马年", tag: "农历新年", summary: "团圆饭、红包、春联和舞狮，构成农历新年的第一天。", meaning: "春节代表新的开始、家人团聚，以及对新一年好运的祝愿。", shelf: "长寿面、红包、糖果、茶和火锅食材。" }
     },
     "Lantern Festival": {
@@ -2528,7 +2528,7 @@
       zh: { title: "元宵节", cn: "灯谜与汤圆", tag: "元宵灯会", summary: "春节节期在灯笼、灯谜和汤圆中收尾。", meaning: "农历正月十五以光和团圆结束新年庆祝，圆形食物象征团聚。", shelf: "汤圆、黑芝麻、花生馅、姜糖水和纸灯笼。" }
     },
     "Zhonghe Festival": {
-      de: { title: "Zhonghe-Fest", cn: "中和节 - Blauer Drache", tag: "Blauer Drache", summary: "Ein Brauch im zweiten Mondmonat, verbunden mit Frühling, Land und Erntewünschen.", meaning: "Traditionell geht es um das Erwachen des Drachen und Bitten um Regen und gute Ernten.", shelf: "Reiskuchen, Frühlingssnacks, Tee und kleine Pantry-Geschenke." },
+      de: { title: "Zhonghe-Fest", cn: "中和节 - Blauer Drache", tag: "Blauer Drache", summary: "Ein Fest im zweiten Mondmonat, verbunden mit Frühling, Land und Erntewünschen.", meaning: "Traditionell geht es um das Wecken des Drachen und die Bitte um Regen und gute Ernten.", shelf: "Reiskuchen, Frühlingssnacks, Tee und kleine Geschenke aus dem Vorratsregal." },
       zh: { title: "中和节", cn: "青龙节", tag: "青龙", summary: "农历二月的传统节日，和春天、土地与农事祈愿相关。", meaning: "民俗中有唤醒青龙、祈雨和祈求丰收的含义。", shelf: "米糕、春季点心、茶和适合送礼的常备食材。" }
     },
     "Qingming Festival": {
@@ -2536,35 +2536,35 @@
       zh: { title: "清明节", cn: "扫墓踏青", tag: "祭祖", summary: "清明是春日祭祖、扫墓，也适合外出踏青的日子。", meaning: "这个节日把纪念先人、整理墓地和感受早春联系在一起。", shelf: "绿茶、米粉、芝麻、春季点心和适合家人分享的基础食材。" }
     },
     "Labour Day": {
-      de: { title: "Tag der Arbeit", cn: "劳动节 - Laodong Jie", tag: "Feiertag", summary: "Ein nationaler Feiertagszeitraum und eine der großen Reisezeiten in China.", meaning: "Ein moderner Feiertag für Arbeit, Erholung und Reisen im eigenen Land.", shelf: "Instantnudeln, Flaschentees, Reisesnacks und Picknick-Vorrat." },
+      de: { title: "Tag der Arbeit", cn: "劳动节 - Laodong Jie", tag: "Feiertag", summary: "Ein nationaler Feiertag und einer der großen Reisezeiträume in China.", meaning: "Ein moderner Feiertag für Arbeit, Erholung und Reisen im eigenen Land.", shelf: "Instantnudeln, Flaschentees, Reisesnacks und Picknick-Zutaten." },
       zh: { title: "劳动节", cn: "五一假期", tag: "法定假日", summary: "五一是中国重要的公共假期，也是全年主要出行时段之一。", meaning: "这是现代劳动者节日，也常被用来休息、短途旅行或家庭聚会。", shelf: "方便面、瓶装茶、旅行零食和野餐常备用品。" }
     },
     "Youth Day": {
-      de: { title: "Tag der Jugend", cn: "青年节 - Qingnian Jie", tag: "Jugend", summary: "Ein moderner Gedenktag rund um Jugend, Bildung und die Bewegung des 4. Mai.", meaning: "Er würdigt junge Menschen und einen wichtigen Moment der modernen chinesischen Kulturgeschichte.", shelf: "Milchtee-Sets, Snacks, Süßigkeiten und einfache Nudeln für den Alltag." },
+      de: { title: "Tag der Jugend", cn: "青年节 - Qingnian Jie", tag: "Jugend", summary: "Ein moderner Gedenktag rund um Jugend, Bildung und die Bewegung des 4. Mai.", meaning: "Er würdigt junge Menschen und einen wichtigen Moment der modernen chinesischen Kulturgeschichte.", shelf: "Milchtee-Sets, Snacks, Süßigkeiten und schnelle Nudeln." },
       zh: { title: "青年节", cn: "五四青年节", tag: "青年", summary: "这个现代纪念日和青年、教育以及五四运动联系在一起。", meaning: "它纪念年轻人，也连接着中国现代文化史中的重要时刻。", shelf: "奶茶套装、零食、糖果和轻松快手的面食。" }
     },
     "Children's Day": {
-      de: { title: "Kindertag", cn: "儿童节 - Ertong Jie", tag: "Kinder", summary: "Ein Tag für Kinder, oft mit Aktivitäten in Schule und Familie.", meaning: "Im Mittelpunkt stehen Kinder, Spielen, kleine Geschenke und unkomplizierte Feiern.", shelf: "Mochi, Jelly Cups, Pocky, Garnelenchips und Fruchtgetränke." },
+      de: { title: "Kindertag", cn: "儿童节 - Ertong Jie", tag: "Kinder", summary: "Ein Tag für Kinder, oft mit Aktivitäten in Schule und Familie.", meaning: "Im Mittelpunkt stehen Kinder, Spielen, kleine Geschenke und einfache Feiern.", shelf: "Mochi, Jelly Cups, Pocky, Garnelenchips und Fruchtgetränke." },
       zh: { title: "儿童节", cn: "六一儿童节", tag: "儿童", summary: "儿童节通常在学校和家庭活动中庆祝。", meaning: "这一天围绕孩子、游戏、礼物和轻松的小庆祝展开。", shelf: "麻薯、果冻杯、Pocky、虾片和果味饮料。" }
     },
     "Dragon Boat Festival": {
-      de: { title: "Drachenbootfest", cn: "端午节 - Duanwu", tag: "Zongzi-Saison", summary: "Drachenbootrennen, Zongzi und Bräuche rund um Qu Yuan.", meaning: "Das Fest erinnert an Qu Yuan und verbindet Sommer-Schutzbräuche mit Renntraditionen.", shelf: "Zongzi, Klebreis, Bambusblätter, rote Bohnen, Mungbohnen und gesalzenes Eigelb." },
+      de: { title: "Drachenbootfest", cn: "端午节 - Duanwu", tag: "Zongzi-Saison", summary: "Drachenbootrennen, Zongzi und Bräuche rund um Qu Yuan.", meaning: "Das Fest erinnert an Qu Yuan und verbindet sommerliche Schutzbräuche mit Renntraditionen.", shelf: "Zongzi, Klebreis, Bambusblätter, rote Bohnen, Mungbohnen und gesalzenes Eigelb." },
       zh: { title: "端午节", cn: "粽子时节", tag: "粽子", summary: "端午节有龙舟赛、粽子，也和屈原故事及传统习俗有关。", meaning: "它纪念屈原，也包含夏季避邪、护身和竞渡传统。", shelf: "粽子、糯米、粽叶、红豆、绿豆和咸蛋黄。" }
     },
     "CPC Founding Day": {
-      de: { title: "Gründungstag der KP Chinas", cn: "建党节 - Jiandang Jie", tag: "Gedenktag", summary: "Ein moderner politischer Gedenktag im offiziellen chinesischen Kalender.", meaning: "Ein offizieller Gedenktag, nicht im Kern ein traditionelles Familienfest.", shelf: "Geschenktees, Snackboxen und Vorratsprodukte für Treffen." },
+      de: { title: "Gründungstag der KP Chinas", cn: "建党节 - Jiandang Jie", tag: "Gedenktag", summary: "Ein moderner politischer Gedenktag im offiziellen chinesischen Kalender.", meaning: "Ein offizieller Gedenktag, kein klassisches Familienfest.", shelf: "Geschenktees, Snackboxen und Vorratsprodukte für Treffen." },
       zh: { title: "建党节", cn: "中国共产党成立纪念日", tag: "纪念日", summary: "建党节是中国官方日历中的现代政治纪念日。", meaning: "它属于官方纪念日，并不是传统家庭节日。", shelf: "礼品茶、盒装点心和聚会常备食材。" }
     },
     "Ghost Month Begins": {
-      de: { title: "Beginn des Geistermonats", cn: "鬼月 - Gui Yue", tag: "Geistermonat", summary: "Der siebte Mondmonat beginnt, verbunden mit Ahnen- und Geisterbräuchen.", meaning: "Eine Zeit für Opfergaben, Erinnerung und achtsames Verhalten in der Volksreligion.", shelf: "Falls verfügbar papiernahe Ritualwaren, Tee, Fruchtsnacks und Reis." },
+      de: { title: "Beginn des Geistermonats", cn: "鬼月 - Gui Yue", tag: "Geistermonat", summary: "Der siebte Mondmonat beginnt, verbunden mit Ahnen- und Geisterbräuchen.", meaning: "Eine Zeit für Opfergaben, Erinnerung und achtsames Verhalten im Volksglauben.", shelf: "Papierwaren für Rituale, soweit verfügbar, dazu Tee, Fruchtsnacks und Reis." },
       zh: { title: "鬼月开始", cn: "农历七月", tag: "鬼月", summary: "农历七月开始，在民俗中和祭祖、祭祀及亡灵习俗有关。", meaning: "这个时期常强调供奉、追思和谨慎的民俗行为。", shelf: "如有供应可选相关纸品，也有茶、水果零食和米。" }
     },
     "Qixi Festival": {
-      de: { title: "Qixi-Fest", cn: "七夕节 - Doppel-Sieben", tag: "Qixi", summary: "Oft chinesischer Valentinstag genannt, verbunden mit der Geschichte von Kuhhirte und Weberin.", meaning: "Ein romantisches Fest über Wiedersehen, Sehnsucht und geschickte Hände.", shelf: "Geschenk-Süßigkeiten, Tee, Mochi, Bonbons und elegante Snackboxen." },
+      de: { title: "Qixi-Fest", cn: "七夕节 - Doppel-Sieben", tag: "Qixi", summary: "Oft der chinesische Valentinstag genannt, verbunden mit der Geschichte von Kuhhirte und Weberin.", meaning: "Ein romantisches Fest über Wiedersehen, Sehnsucht und handwerkliches Geschick.", shelf: "Süßigkeiten zum Verschenken, Tee, Mochi, Bonbons und elegante Snackboxen." },
       zh: { title: "七夕节", cn: "牛郎织女", tag: "七夕", summary: "七夕常被称作中国情人节，源自牛郎织女的传说。", meaning: "它讲述相会、思念和巧手，也带有浪漫的节日气氛。", shelf: "适合送礼的甜点、茶、麻薯、糖果和精致零食盒。" }
     },
     "Ghost Festival": {
-      de: { title: "Geisterfest", cn: "中元节 - Zhongyuan", tag: "Geisterfest", summary: "Der fünfzehnte Tag des Geistermonats, verbunden mit Opfergaben und Gedenken.", meaning: "Ein Volksbrauch, bei dem Ahnen und wandernden Geistern Fürsorge gilt.", shelf: "Reis, Tee, Obst, Süßigkeiten und einfache Vorratsprodukte im Stil von Opfergaben." },
+      de: { title: "Geisterfest", cn: "中元节 - Zhongyuan", tag: "Geisterfest", summary: "Der fünfzehnte Tag des Geistermonats, verbunden mit Opfergaben und Gedenken.", meaning: "Ein Volksbrauch, bei dem man Ahnen und wandernden Geistern Aufmerksamkeit schenkt.", shelf: "Reis, Tee, Obst, Süßigkeiten und einfache Vorratsprodukte für Opfergaben." },
       zh: { title: "中元节", cn: "盂兰盆相关民俗", tag: "中元", summary: "中元节在农历七月十五，和供奉、追思等习俗有关。", meaning: "民俗中会照顾祖先与游魂，表达记念与安抚。", shelf: "米、茶、水果、甜点和适合供奉风格的基础食材。" }
     },
     "Teachers' Day": {
@@ -2572,7 +2572,7 @@
       zh: { title: "教师节", cn: "感谢师恩", tag: "教师", summary: "教师节是表达对老师和教育工作者敬意的现代节日。", meaning: "这一天适合表达尊重、感谢，也常会送上小礼物。", shelf: "礼品茶、饼干、糖果和盒装零食。" }
     },
     "Mid-Autumn Festival": {
-      de: { title: "Mondfest", cn: "中秋节 - Mittherbstfest", tag: "Mondkuchen", summary: "Mondkuchen, Laternen und Wiedersehensessen unter dem Vollmond.", meaning: "Vollmond, Ernte, Familienzusammenkunft und Wünsche im Licht der Laternen.", shelf: "Mondkuchen, Lotuspaste, rote Bohnenpaste, Jasmintee, Oolong und Laternen." },
+      de: { title: "Mondfest", cn: "中秋节 - Mittherbstfest", tag: "Mondkuchen", summary: "Mondkuchen, Laternen und Familienessen unter dem Vollmond.", meaning: "Vollmond, Ernte, Familienzusammenkunft und Wünsche im Licht der Laternen.", shelf: "Mondkuchen, Lotuspaste, rote Bohnenpaste, Jasmintee, Oolong und Laternen." },
       zh: { title: "中秋节", cn: "月圆团圆", tag: "月饼", summary: "中秋节有月饼、灯笼，以及满月下的团圆饭。", meaning: "圆月象征收获、团圆，也承载着家人之间的祝福。", shelf: "月饼、莲蓉、红豆沙、茉莉花茶、乌龙茶和灯笼。" }
     },
     "National Day": {
@@ -2580,15 +2580,15 @@
       zh: { title: "国庆节", cn: "黄金周", tag: "黄金周", summary: "国庆节开启中国的黄金周假期。", meaning: "这是现代国家节日，也是全年最重要的出行时段之一。", shelf: "旅行零食、瓶装茶、方便面和家庭装常备食材。" }
     },
     "Double Ninth Festival": {
-      de: { title: "Doppel-Neun-Fest", cn: "重阳节 - Chongyang", tag: "Langlebigkeit", summary: "Ein Tag rund um ältere Menschen, Bergsteigen und Chrysanthemen.", meaning: "Respekt vor Älteren, Langlebigkeit, Herbstwanderungen und Chrysanthemen-Traditionen.", shelf: "Chrysanthementee, Trockenfrüchte, Reiskuchen, Kräutergetränke und Geschenk-Snacks." },
+      de: { title: "Doppel-Neun-Fest", cn: "重阳节 - Chongyang", tag: "Langlebigkeit", summary: "Ein Tag rund um Ältere, Bergsteigen und Chrysanthemen.", meaning: "Respekt vor Älteren, Langlebigkeit, Herbstwanderungen und Chrysanthemen-Traditionen.", shelf: "Chrysanthementee, Trockenfrüchte, Reiskuchen, Kräutergetränke und Snacks zum Verschenken." },
       zh: { title: "重阳节", cn: "敬老与登高", tag: "长寿", summary: "重阳节和敬老、登高、赏菊等秋日习俗相关。", meaning: "它表达对长辈的尊重，也象征长寿、秋游和菊花传统。", shelf: "菊花茶、果干、米糕、草本饮品和礼品零食。" }
     },
     "Journalists' Day": {
-      de: { title: "Journalistentag", cn: "记者节 - Jizhe Jie", tag: "Gedenktag", summary: "Ein moderner Berufs-Gedenktag im öffentlichen Kalender Chinas.", meaning: "Der Tag würdigt Journalismus und Medienschaffende.", shelf: "Schreibtisch-Snacks, Tee, Kaffee-Sachets und schnelle Nudelschalen." },
+      de: { title: "Journalistentag", cn: "记者节 - Jizhe Jie", tag: "Gedenktag", summary: "Ein moderner Gedenktag für einen Berufsstand im öffentlichen Kalender Chinas.", meaning: "Der Tag würdigt Journalismus und Medienschaffende.", shelf: "Schreibtisch-Snacks, Tee, Instantkaffee und schnelle Nudelbowls." },
       zh: { title: "记者节", cn: "新闻工作者日", tag: "纪念日", summary: "记者节是中国公共日历中的现代职业纪念日。", meaning: "它表达对新闻工作和媒体从业者的认可。", shelf: "办公零食、茶、速溶咖啡和快手面碗。" }
     },
     "Winter Solstice": {
-      de: { title: "Wintersonnenwende", cn: "冬至 - Dongzhi", tag: "Tangyuan", summary: "Die Wintersonnenwende ist mit Speisen des Wiedersehens wie Tangyuan verbunden.", meaning: "Die längste Nacht wendet sich zu längeren Tagen; runde Speisen stehen für Zusammenhalt.", shelf: "Tangyuan, Klebreismehl, Ingwersirup, Sesampaste und wärmende Tees." },
+      de: { title: "Wintersonnenwende", cn: "冬至 - Dongzhi", tag: "Tangyuan", summary: "Die Wintersonnenwende ist mit Speisen für das Zusammenkommen verbunden, zum Beispiel Tangyuan.", meaning: "Die längste Nacht wendet sich zu längeren Tagen; runde Speisen stehen für Zusammenhalt.", shelf: "Tangyuan, Klebreismehl, Ingwersirup, Sesampaste und wärmende Tees." },
       zh: { title: "冬至", cn: "冬至团圆", tag: "汤圆", summary: "冬至常和汤圆等团圆食物联系在一起。", meaning: "最长的夜晚之后白昼渐长，圆形食物象征团聚。", shelf: "汤圆、糯米粉、姜糖水、芝麻酱和暖身茶。" }
     }
   };
