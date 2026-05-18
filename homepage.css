@@ -627,24 +627,6 @@ body.menu-open .site-header {
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.cat::before {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(20, 18, 14, 0.12);
-  border-radius: 50%;
-  color: var(--dim);
-  content: "+";
-  display: grid;
-  font-family: var(--mono);
-  font-size: 16px;
-  line-height: 1;
-  place-items: center;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
-}
-
 .cat:hover {
   background:
     linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(245, 238, 226, 0.96)),
@@ -652,13 +634,6 @@ body.menu-open .site-header {
   border-color: rgba(20, 18, 14, 0.28);
   box-shadow: 0 18px 42px rgba(20, 18, 14, 0.11);
   transform: translateY(-3px);
-}
-
-.cat:hover::before {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--paper);
-  transform: rotate(90deg);
 }
 
 .cat-icon {
@@ -691,14 +666,12 @@ body.menu-open .site-header {
 
 .cat-name {
   margin-bottom: 8px;
-  padding-right: 18px;
   font-family: "Fraunces", Georgia, serif;
   font-size: 18px;
   line-height: 1.08;
 }
 
 .cat-sub {
-  padding-right: 28px;
   color: var(--dim);
   font-size: 12px;
   letter-spacing: 0.3px;
