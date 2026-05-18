@@ -63,7 +63,7 @@ export const adminStylesCss = `
 .admin-check input{width:18px;height:18px;accent-color:var(--admin-strong)}
 .admin-list{display:grid;gap:10px}
 .admin-row{display:grid;grid-template-columns:28px 56px 1fr auto;gap:12px;align-items:center;border:1px solid var(--admin-line);border-radius:8px;background:var(--admin-surface);padding:10px 12px}
-.admin-row-media{width:76px;aspect-ratio:1.2;border-radius:7px;background:#eee7dc;overflow:hidden;display:grid;place-items:center;color:var(--admin-muted);font-weight:800}
+.admin-row-media{width:56px;height:56px;border-radius:7px;background:#eee7dc;overflow:hidden;display:grid;place-items:center;color:var(--admin-muted);font-weight:800}
 .admin-row-media img{width:100%;height:100%;object-fit:cover}
 .admin-row strong{display:block;font-size:17px}
 .admin-row span{color:var(--admin-muted);font-size:13px}
