@@ -2942,6 +2942,7 @@
   const STORE_CATEGORIES = [
     {
       id: "instant",
+      image: "assets/categories/instant.png",
       copy: {
         en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
         de: { title: "Instant & Fertiggerichte", items: ["Instant-Nudeln & Ramen", "Ricecake-Cups"] },
@@ -2950,6 +2951,7 @@
     },
     {
       id: "snacks",
+      image: "assets/categories/snacks-sweets.png",
       copy: {
         en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
         de: { title: "Snacks & Süßes", items: ["Bonbons & Zuckerln", "Chips & Knabbereien", "Kekse & Desserts", "Mochis", "Popping Boba & Toppings"] },
@@ -2958,6 +2960,7 @@
     },
     {
       id: "drinks",
+      image: "assets/categories/drinks.png",
       copy: {
         en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
         de: { title: "Getränke", items: ["Softdrinks", "Milchdrinks & Kokosdrinks", "Tee & Matcha"] },
@@ -2966,6 +2969,7 @@
     },
     {
       id: "sauces",
+      image: "assets/categories/sauces-seasoning.png",
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
         de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Öle & Essig"] },
@@ -2974,6 +2978,7 @@
     },
     {
       id: "noodles-rice",
+      image: "assets/categories/noodles-rice.png",
       copy: {
         en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
         de: { title: "Nudeln & Reis", items: ["Nudeln", "Basmatireis", "Jasminreis", "Klebereis", "Sushireis", "Gekochter Reis", "Reiskuchen", "Reispapier"] },
@@ -3098,6 +3103,23 @@
     return svg;
   }
 
+  function createCategoryVisual(category) {
+    if (category.image) {
+      const image = document.createElement("img");
+      image.className = "category-icon-img";
+      image.src = category.image;
+      image.alt = "";
+      image.decoding = "async";
+      image.loading = "lazy";
+      image.onerror = () => {
+        image.replaceWith(createCategoryIcon(category.id));
+      };
+      return image;
+    }
+
+    return createCategoryIcon(category.id);
+  }
+
   function renderGrid() {
     grid.textContent = "";
     grid.setAttribute("aria-label", tr("categories.tablist"));
@@ -3117,7 +3139,7 @@
       button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
 
       icon.className = "cat-icon";
-      icon.append(createCategoryIcon(category.id));
+      icon.append(createCategoryVisual(category));
 
       name.className = "cat-name";
       name.textContent = copy.title;
@@ -3138,7 +3160,7 @@
 
     if (closeButton) closeButton.setAttribute("aria-label", tr("categories.close"));
     modalIcon.textContent = "";
-    modalIcon.append(createCategoryIcon(category.id));
+    modalIcon.append(createCategoryVisual(category));
     modalTitle.textContent = copy.title;
     modalCount.textContent = tr("categories.itemCount", { count: copy.items.length });
     modalList.textContent = "";
