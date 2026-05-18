@@ -112,7 +112,7 @@ export const adminStylesCss = `
 .admin-read-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
 .admin-read-list li{border:1px solid var(--admin-line);border-radius:7px;background:#fbf7f0;padding:10px}
 @media (max-width:980px){.admin-editor{grid-template-columns:1fr}.admin-editor-side{position:static}.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-toolbar{grid-template-columns:1fr}.admin-upload{grid-template-columns:1fr}}
-@media (max-width:720px){.admin-bar,.admin-page-head,.admin-row,.admin-view-grid{grid-template-columns:1fr;display:grid}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition,.admin-definition{grid-template-columns:1fr}.admin-main{padding:18px 12px 40px}.admin-row-media{width:100%}.admin-bulk{align-items:flex-start;flex-direction:column}}
+@media (max-width:720px){.admin-bar,.admin-page-head,.admin-view-grid{grid-template-columns:1fr;display:grid}.admin-row{grid-template-columns:28px 56px 1fr;gap:10px}.admin-row .admin-actions{grid-column:2/-1;flex-wrap:wrap}.admin-row-media{width:56px;height:56px;aspect-ratio:1}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition,.admin-definition{grid-template-columns:1fr}.admin-main{padding:18px 12px 40px}.admin-bulk{align-items:flex-start;flex-direction:column}}
 `;
 
 export const adminUiJs = `
@@ -451,8 +451,16 @@ function renderRecipeView() {
   const recipe = normalizeEditing();
   const main = shell();
   main.replaceChildren();
-  const back = button("Back to recipe list", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  const breadcrumb = document.createElement("nav");
+  breadcrumb.style.cssText = "margin-bottom:2px";
+  const backLink = button("← All recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  backLink.style.cssText = "font-size:13px;padding:5px 10px;opacity:.65";
+  breadcrumb.append(backLink);
+  main.append(breadcrumb);
   const edit = button("Edit recipe", "primary", () => { location.hash = "#edit-" + recipe.recipeId; renderForm(); });
+  const divider = document.createElement("span");
+  divider.setAttribute("aria-hidden", "true");
+  divider.style.cssText = "display:inline-block;width:1px;height:20px;background:var(--admin-line);margin:0 2px;align-self:center;flex-shrink:0";
   const remove = button("Delete recipe", "danger", async () => {
     if (!confirm("Delete this recipe? This permanently removes it and its attached images.")) return;
     await api("/api/admin/recipes/" + encodeURIComponent(recipe.recipeId), { method: "DELETE" });
@@ -460,7 +468,7 @@ function renderRecipeView() {
     location.hash = "#admin";
     await renderDashboard();
   });
-  const viewHead = pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [back, edit, remove]);
+  const viewHead = pageHead("Viewing recipe", recipeTitle(recipe, "Recipe preview"), [edit, divider, remove]);
   viewHead.classList.add("is-sticky");
   main.append(viewHead);
   const layout = document.createElement("div");
@@ -587,6 +595,26 @@ function normalizeEditing() {
   if (!state.images.length && Array.isArray(recipe.images)) state.images = recipe.images.slice();
   return recipe;
 }
+function showSuccessModal(message) {
+  const overlay = document.createElement("div");
+  overlay.style.cssText = "position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4)";
+  const box = document.createElement("div");
+  box.style.cssText = "background:#fff;border-radius:12px;padding:36px 44px;text-align:center;max-width:340px;width:90%;box-shadow:0 24px 64px rgba(0,0,0,.18)";
+  const icon = document.createElement("div");
+  icon.style.cssText = "width:56px;height:56px;border-radius:999px;background:#e9f6ef;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px;color:#1e7a55";
+  icon.textContent = "✓";
+  const msg = document.createElement("p");
+  msg.style.cssText = "font-size:18px;font-weight:700;color:#171615;margin:0 0 22px";
+  msg.textContent = message;
+  const ok = button("OK", "primary");
+  ok.style.cssText = "width:100%;min-height:42px";
+  ok.addEventListener("click", () => overlay.remove());
+  box.append(icon, msg, ok);
+  overlay.append(box);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
+  document.body.append(overlay);
+  setTimeout(() => { if (document.body.contains(overlay)) overlay.remove(); }, 4000);
+}
 function renderForm() {
   const main = shell();
   const recipe = normalizeEditing();
@@ -594,7 +622,6 @@ function renderForm() {
   const status = document.createElement("p");
   status.className = "admin-status";
   const save = button("Save recipe", "primary");
-  const back = button("Back to recipe list", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
   const form = document.createElement("form");
   form.className = "admin-editor";
   save.addEventListener("click", () => form.requestSubmit());
@@ -605,7 +632,13 @@ function renderForm() {
   const previewCard = document.createElement("section");
   previewCard.className = "admin-card admin-preview";
   sideColumn.append(previewCard);
-  main.append(pageHead(state.editing ? "Editing recipe" : "Creating recipe", state.editing ? recipeTitle(recipe, "Edit recipe") : "New recipe", [back, save]));
+  const formBreadcrumb = document.createElement("nav");
+  formBreadcrumb.style.cssText = "margin-bottom:2px";
+  const formBackLink = button("← All recipes", "ghost", () => { location.hash = "#admin"; renderDashboard(); });
+  formBackLink.style.cssText = "font-size:13px;padding:5px 10px;opacity:.65";
+  formBreadcrumb.append(formBackLink);
+  main.append(formBreadcrumb);
+  main.append(pageHead(state.editing ? "Editing recipe" : "Creating recipe", state.editing ? recipeTitle(recipe, "Edit recipe") : "New recipe", [save]));
   main.append(form);
   mainColumn.append(renderBasics(recipe), renderImagePanel(recipe), renderLocaleTabs(recipe), renderTranslationFields(recipe.translations.find((item) => item.locale === state.activeLocale)));
   mainColumn.append(status);
@@ -630,9 +663,9 @@ function renderForm() {
       state.draft = null;
       state.images = data.recipe.images || [];
       resetSelectedFile();
-      status.textContent = "Saved.";
       location.hash = "#edit-" + data.recipe.recipeId;
       renderForm();
+      showSuccessModal("Rezept gespeichert!");
     } catch (error) {
       status.textContent = error.message || "Save failed.";
       save.disabled = false;
