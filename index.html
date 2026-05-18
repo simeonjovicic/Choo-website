@@ -77,51 +77,27 @@
 
     </section>
 
-    <section class="cat-row" id="laender" aria-label="Countries and selection">
-      <div class="cat-row-inner" role="tablist" aria-label="Countries of origin">
-        <button class="cat" type="button" role="tab" aria-selected="false" aria-controls="country-panel" data-country="china">
-          <span class="cat-glyph cn" aria-hidden="true">中</span>
-          <span class="cat-name">China</span>
-          <span class="cat-sub" data-i18n="cat.china">Main aisle</span>
-        </button>
-        <button class="cat" type="button" role="tab" aria-selected="false" aria-controls="country-panel" data-country="japan">
-          <span class="cat-glyph cn" aria-hidden="true">日</span>
-          <span class="cat-name">Japan</span>
-          <span class="cat-sub">Ramen · Matcha</span>
-        </button>
-        <button class="cat" type="button" role="tab" aria-selected="false" aria-controls="country-panel" data-country="korea">
-          <span class="cat-glyph cn" aria-hidden="true">韩</span>
-          <span class="cat-name">Korea</span>
-          <span class="cat-sub">Gochujang · Kimchi</span>
-        </button>
-        <button class="cat" type="button" role="tab" aria-selected="false" aria-controls="country-panel" data-country="vietnam">
-          <span class="cat-glyph cn" aria-hidden="true">越</span>
-          <span class="cat-name">Vietnam</span>
-          <span class="cat-sub" data-i18n="cat.vietnam">Pho · Rice paper</span>
-        </button>
-        <button class="cat" type="button" role="tab" aria-selected="false" aria-controls="country-panel" data-country="thailand">
-          <span class="cat-glyph cn" aria-hidden="true">泰</span>
-          <span class="cat-name">Thailand</span>
-          <span class="cat-sub" data-i18n="cat.thailand">Curry · Coconut</span>
-        </button>
+    <section class="cat-row store-categories" id="laender" aria-labelledby="store-categories-title">
+      <div class="store-categories__head">
+        <p class="section-eyebrow" data-i18n="categories.eyebrow">01 - Store categories</p>
+        <h2 id="store-categories-title" data-i18n="categories.title">What we keep on the shelves.</h2>
+        <p data-i18n="categories.text">Tap a category to see the kinds of products you can usually find at Choo.</p>
       </div>
-
+      <div class="cat-row-inner store-categories__grid" aria-label="Store categories" data-store-category-grid></div>
     </section>
 
-    <div class="country-modal" id="country-panel" role="dialog" aria-modal="true" aria-labelledby="country-modal-title" aria-live="polite" hidden>
-      <div class="country-modal__backdrop" data-country-close></div>
-      <figure class="country-modal__card">
-        <button class="country-modal__close" type="button" aria-label="Close selection" data-country-close>×</button>
-        <div class="country-modal__media">
-          <img data-country-image src="" alt="" />
+    <div class="store-category-modal" id="store-category-modal" role="dialog" aria-modal="true" aria-labelledby="store-category-modal-title" aria-live="polite" aria-hidden="true" hidden>
+      <div class="store-category-modal__backdrop" data-store-category-close></div>
+      <div class="store-category-modal__card" role="document">
+        <button class="store-category-modal__close" type="button" data-store-category-close data-i18n-aria-label="categories.close" aria-label="Close category">×</button>
+        <div class="store-category-modal__visual" data-store-category-modal-icon aria-hidden="true"></div>
+        <div class="store-category-modal__content">
+          <p class="store-category-modal__eyebrow" data-store-category-modal-count>Category</p>
+          <h3 id="store-category-modal-title" data-store-category-modal-title>Category</h3>
+          <p class="store-category-modal__intro" data-i18n="categories.modalIntro">Typical product groups</p>
+          <ul class="store-category-modal__items" data-store-category-modal-list></ul>
         </div>
-        <figcaption class="country-modal__caption">
-          <span class="country-modal__glyph cn" data-country-glyph aria-hidden="true">中</span>
-          <p class="country-modal__eyebrow" data-country-eyebrow>Origin</p>
-          <h3 class="country-modal__title" id="country-modal-title" data-country-title>China</h3>
-          <p class="country-modal__line" data-country-line></p>
-        </figcaption>
-      </figure>
+      </div>
     </div>
 
     <section class="aisle" id="about">

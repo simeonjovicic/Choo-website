@@ -19,9 +19,14 @@
       "hero.text": "An Asian market on Linke Wienzeile. Pantry staples, noodles, snacks and sauces from across Asia.",
       "hero.cta": "Visit ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Vienna",
-      "cat.china": "Main aisle",
-      "cat.vietnam": "Pho · Rice paper",
-      "cat.thailand": "Curry · Coconut",
+      "categories.eyebrow": "01 - Store categories",
+      "categories.title": "What we keep on the shelves.",
+      "categories.text": "Tap a category for a quick overview of the product groups you can usually find at Choo.",
+      "categories.tablist": "Store categories",
+      "categories.open": "Open {category}",
+      "categories.close": "Close category",
+      "categories.modalIntro": "Typical product groups",
+      "categories.itemCount": "{count} groups",
       "story.eyebrow": "Our market",
       "story.title": "Asia, carefully sorted.",
       "story.p1": "More than 3,000 products from China, Japan, Korea, Vietnam and Southeast Asia, from soy sauce to rice cookers. Clear, clean and easy to shop.",
@@ -137,9 +142,14 @@
       "hero.text": "Asia-Markt an der Linken Wienzeile. Vorrat, Nudeln, Snacks und Saucen aus ganz Asien.",
       "hero.cta": "Besuchen ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Wien",
-      "cat.china": "Hauptregal",
-      "cat.vietnam": "Pho · Reispapier",
-      "cat.thailand": "Curry · Kokos",
+      "categories.eyebrow": "01 - Sortiment",
+      "categories.title": "Was bei uns im Regal steht.",
+      "categories.text": "Tippe eine Kategorie an und sieh kurz, welche Produktgruppen du meistens bei Choo findest.",
+      "categories.tablist": "Sortimentskategorien",
+      "categories.open": "{category} öffnen",
+      "categories.close": "Kategorie schließen",
+      "categories.modalIntro": "Typische Produktgruppen",
+      "categories.itemCount": "{count} Produktgruppen",
       "story.eyebrow": "Unser Markt",
       "story.title": "Asien, sorgfältig sortiert.",
       "story.p1": "Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien, von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.",
@@ -255,9 +265,14 @@
       "hero.text": "位于 Linke Wienzeile 的亚洲市场。这里有来自亚洲各地的主食、面、零食和酱料。",
       "hero.cta": "到店看看 ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 维也纳",
-      "cat.china": "主货架",
-      "cat.vietnam": "河粉 · 米纸",
-      "cat.thailand": "咖喱 · 椰奶",
+      "categories.eyebrow": "01 - 商品分类",
+      "categories.title": "货架上有哪些商品。",
+      "categories.text": "点选一个分类，看看 Choo 通常会有哪些商品。",
+      "categories.tablist": "商品分类",
+      "categories.open": "打开{category}",
+      "categories.close": "关闭分类",
+      "categories.modalIntro": "常见商品",
+      "categories.itemCount": "{count} 个商品组",
       "story.eyebrow": "我们的市场",
       "story.title": "亚洲风味，精心陈列。",
       "story.p1": "超过 3,000 种来自中国、日本、韩国、越南和东南亚的商品，从酱油到电饭煲，一目了然，干净好逛。",
@@ -2922,125 +2937,272 @@
   }
 })();
 
-/* ===== Country category buttons ===== */
+/* ===== Store category buttons ===== */
 (function () {
-  const COUNTRIES = {
-    china: {
-      glyph: "中",
-      image: "images/gallery.png",
+  const STORE_CATEGORIES = [
+    {
+      id: "instant",
       copy: {
-        en: { title: "China", eyebrow: "01 - Main aisle", line: "From slow Sichuan braises to clean southern rice - the heart of our market.", alt: "Still life with Chinese ingredients" },
-        de: { title: "China", eyebrow: "01 - Hauptregal", line: "Vom langsamen Schmoren in Sichuan bis zum klaren Reis aus dem Süden - das Herz unseres Marktes.", alt: "Stillleben mit chinesischen Zutaten" },
-        zh: { title: "中国", eyebrow: "01 - 主货架", line: "从川味慢炖到南方清香米，这里是我们市场的核心。", alt: "中式食材静物" }
+        en: { title: "Instant Products", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
+        de: { title: "Instant Produkte", items: ["Instant Noodles & Ramen", "Ricecake Cups"] },
+        zh: { title: "速食产品", items: ["方便面与拉面", "年糕杯"] }
       }
     },
-    japan: {
-      glyph: "日",
-      image: "images/gallery_2.png",
+    {
+      id: "snacks",
       copy: {
-        en: { title: "Japan", eyebrow: "02 - Ramen · Matcha", line: "Quiet precision: long-aged soy sauces, fresh udon and bright green matcha from Uji.", alt: "Japanese pantry selection" },
-        de: { title: "Japan", eyebrow: "02 - Ramen · Matcha", line: "Stille Präzision: Sojasaucen mit langer Reife, frische Udon und ein leuchtend grüner Matcha aus Uji.", alt: "Japanische Pantry-Auswahl" },
-        zh: { title: "日本", eyebrow: "02 - 拉面 · 抹茶", line: "安静而精准：熟成酱油、新鲜乌冬和来自宇治的清亮抹茶。", alt: "日式食材选择" }
+        en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
+        de: { title: "Snacks & Süßes", items: ["Bonbons & Zuckerln", "Chips & Knabbereien", "Kekse & Desserts", "Mochis", "Popping Boba & Toppings"] },
+        zh: { title: "零食与甜点", items: ["糖果", "薯片与咸味零食", "饼干与甜点", "麻薯", "爆爆珠与配料"] }
       }
     },
-    korea: {
-      glyph: "韩",
-      image: "images/gallery_3.png",
+    {
+      id: "drinks",
       copy: {
-        en: { title: "Korea", eyebrow: "03 - Gochujang · Kimchi", line: "Fermentation as craft - deep heat, gentle sweetness and kimchi from the fridge.", alt: "Korean pastes and kimchi" },
-        de: { title: "Korea", eyebrow: "03 - Gochujang · Kimchi", line: "Fermentation als Handwerk - tiefe Schärfe, milde Süße und Kimchi aus dem Kühlregal.", alt: "Koreanische Pasten und Kimchi" },
-        zh: { title: "韩国", eyebrow: "03 - 辣椒酱 · 泡菜", line: "发酵是一门手艺：深层辣味、柔和甜感和冷藏泡菜。", alt: "韩国酱料和泡菜" }
+        en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
+        de: { title: "Getränke", items: ["Softdrinks", "Milchdrinks & Kokosdrinks", "Tee & Matcha"] },
+        zh: { title: "饮品", items: ["汽水与软饮", "奶饮与椰子饮品", "茶与抹茶"] }
       }
     },
-    vietnam: {
-      glyph: "越",
-      image: "images/gallery_4.png",
+    {
+      id: "sauces",
       copy: {
-        en: { title: "Vietnam", eyebrow: "04 - Pho · Rice paper", line: "Clear broths, fresh herbs and fine rice paper - the lighter side of Asian cooking.", alt: "Vietnamese ingredients" },
-        de: { title: "Vietnam", eyebrow: "04 - Pho · Reispapier", line: "Klare Brühen, frische Kräuter und feines Reispapier - die leichte Seite der asiatischen Küche.", alt: "Vietnamesische Zutaten" },
-        zh: { title: "越南", eyebrow: "04 - 河粉 · 米纸", line: "清澈汤底、新鲜香草和细腻米纸，是亚洲料理轻盈的一面。", alt: "越南食材" }
+        en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
+        de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Essig & Öle"] },
+        zh: { title: "酱料与调味", items: ["香料", "酱料与调味酱", "醋与油"] }
       }
     },
-    thailand: {
-      glyph: "泰",
-      image: "images/gallery_5.png",
+    {
+      id: "noodles-rice",
       copy: {
-        en: { title: "Thailand", eyebrow: "05 - Curry · Coconut", line: "Curry pastes, coconut milk and lime leaves - a whole country one wok dish away.", alt: "Thai ingredients" },
-        de: { title: "Thailand", eyebrow: "05 - Curry · Kokos", line: "Currypasten, Kokosmilch und Limettenblätter - ein Wok-Gericht entfernt von einem ganzen Land.", alt: "Thailändische Zutaten" },
-        zh: { title: "泰国", eyebrow: "05 - 咖喱 · 椰奶", line: "咖喱酱、椰奶和青柠叶，一口炒锅就能带你接近整个泰国。", alt: "泰国食材" }
+        en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
+        de: { title: "Nudeln & Reis", items: ["Nudeln", "Basmatireis", "Jasminreis", "Klebereis", "Sushireis", "Gekochter Reis", "Reiskuchen", "Reispapier"] },
+        zh: { title: "面与米", items: ["面条", "巴斯马蒂米", "茉莉香米", "糯米", "寿司米", "即食米饭", "年糕", "米纸"] }
+      }
+    },
+    {
+      id: "pantry",
+      copy: {
+        en: { title: "Pantry & More", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour"] },
+        de: { title: "Weitere Lebensmittel", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl"] },
+        zh: { title: "其他食品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉"] }
+      }
+    },
+    {
+      id: "non-food",
+      copy: {
+        en: { title: "Non-Food", items: ["Cooking Tools & Tableware", "Merchandise", "Decor"] },
+        de: { title: "Non-Food", items: ["Kochutensilien & Geschirr", "Merchandise", "Dekor"] },
+        zh: { title: "非食品", items: ["厨房工具与餐具", "周边商品", "装饰"] }
       }
     }
-  };
+  ];
 
-  const buttons = document.querySelectorAll(".cat[data-country]");
-  const panel = document.getElementById("country-panel");
-  if (!buttons.length || !panel) return;
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  const grid = document.querySelector("[data-store-category-grid]");
+  const modal = document.getElementById("store-category-modal");
+  if (!grid || !modal) return;
 
-  const glyphEl = panel.querySelector("[data-country-glyph]");
-  const eyebrowEl = panel.querySelector("[data-country-eyebrow]");
-  const titleEl = panel.querySelector("[data-country-title]");
-  const lineEl = panel.querySelector("[data-country-line]");
-  const imageEl = panel.querySelector("[data-country-image]");
-  const closeTargets = panel.querySelectorAll("[data-country-close]");
+  const modalIcon = modal.querySelector("[data-store-category-modal-icon]");
+  const modalTitle = modal.querySelector("[data-store-category-modal-title]");
+  const modalCount = modal.querySelector("[data-store-category-modal-count]");
+  const modalList = modal.querySelector("[data-store-category-modal-list]");
+  const closeButton = modal.querySelector(".store-category-modal__close");
+  const closeTargets = modal.querySelectorAll("[data-store-category-close]");
 
-  let active = null;
+  let activeId = null;
+  let lastFocus = null;
 
-  function render(key) {
-    const data = COUNTRIES[key];
-    if (!data) return;
-    const lang = window.ChooI18n?.getLanguage?.() || "en";
-    const copy = data.copy[lang] || data.copy.en;
-    glyphEl.textContent = data.glyph;
-    eyebrowEl.textContent = copy.eyebrow;
-    titleEl.textContent = copy.title;
-    lineEl.textContent = copy.line;
-    if (imageEl) {
-      imageEl.style.opacity = "0";
-      const swap = () => {
-        imageEl.src = data.image;
-        imageEl.alt = copy.alt || copy.title;
-        imageEl.style.opacity = "1";
-      };
-      if (imageEl.src) {
-        setTimeout(swap, 120);
-      } else {
-        swap();
-      }
-    }
+  function getLang() {
+    return window.ChooI18n?.getLanguage?.() || "en";
   }
 
-  function open(key, sourceBtn) {
-    active = key;
-    render(key);
-    panel.hidden = false;
-    document.body.classList.add("country-modal-open");
-    buttons.forEach((btn) => {
-      btn.setAttribute("aria-selected", btn === sourceBtn ? "true" : "false");
+  function tr(key, params) {
+    return window.ChooI18n?.t?.(key, params) || key;
+  }
+
+  function getCopy(category) {
+    return category.copy[getLang()] || category.copy.en;
+  }
+
+  function createSvgElement(tagName, attributes = {}) {
+    const element = document.createElementNS(SVG_NS, tagName);
+    Object.entries(attributes).forEach(([key, value]) => {
+      element.setAttribute(key, String(value));
+    });
+    return element;
+  }
+
+  function appendShape(svg, tagName, attributes = {}) {
+    const shape = createSvgElement(tagName, {
+      fill: "none",
+      stroke: "currentColor",
+      "stroke-width": "2.8",
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      ...attributes
+    });
+    svg.append(shape);
+  }
+
+  function createCategoryIcon(id) {
+    const svg = createSvgElement("svg", {
+      class: "category-icon-svg",
+      viewBox: "0 0 64 64",
+      "aria-hidden": "true",
+      focusable: "false"
+    });
+
+    if (id === "instant") {
+      appendShape(svg, "path", { d: "M22 29h20l-3 22H25l-3-22Z" });
+      appendShape(svg, "path", { d: "M20 29h24" });
+      appendShape(svg, "path", { d: "M25 37c4-3 8 3 12 0" });
+      appendShape(svg, "path", { d: "M28 15c-4 4 4 6 0 10" });
+      appendShape(svg, "path", { d: "M36 12c-4 4 4 7 0 11" });
+      appendShape(svg, "path", { d: "M44 16c-4 4 4 6 0 10" });
+    } else if (id === "snacks") {
+      appendShape(svg, "path", { d: "M18 24l7-6h14l7 6v20l-7 6H25l-7-6V24Z" });
+      appendShape(svg, "path", { d: "M25 18l4 8" });
+      appendShape(svg, "path", { d: "M39 18l-4 8" });
+      appendShape(svg, "circle", { cx: "32", cy: "37", r: "6" });
+    } else if (id === "drinks") {
+      appendShape(svg, "path", { d: "M25 14h14" });
+      appendShape(svg, "path", { d: "M28 14v10l-5 8v18h18V32l-5-8V14" });
+      appendShape(svg, "path", { d: "M23 34h18" });
+      appendShape(svg, "path", { d: "M29 42h6" });
+    } else if (id === "sauces") {
+      appendShape(svg, "rect", { x: "26", y: "15", width: "12", height: "8", rx: "1.5" });
+      appendShape(svg, "path", { d: "M24 23h16l3 27H21l3-27Z" });
+      appendShape(svg, "path", { d: "M25 34h14" });
+      appendShape(svg, "path", { d: "M30 41h4" });
+    } else if (id === "noodles-rice") {
+      appendShape(svg, "path", { d: "M19 34h26l-4 14H23l-4-14Z" });
+      appendShape(svg, "path", { d: "M17 34h30" });
+      appendShape(svg, "path", { d: "M25 28c5 4 9-4 14 0" });
+      appendShape(svg, "path", { d: "M20 20l28-8" });
+      appendShape(svg, "path", { d: "M22 24l28-8" });
+    } else if (id === "pantry") {
+      appendShape(svg, "path", { d: "M22 22l8-8h14v38H22V22Z" });
+      appendShape(svg, "path", { d: "M30 14v38" });
+      appendShape(svg, "path", { d: "M22 22h22" });
+      appendShape(svg, "path", { d: "M27 34h12" });
+      appendShape(svg, "path", { d: "M27 41h8" });
+    } else {
+      appendShape(svg, "circle", { cx: "29", cy: "25", r: "10" });
+      appendShape(svg, "path", { d: "M15 49l14-15" });
+      appendShape(svg, "path", { d: "M42 16v34" });
+      appendShape(svg, "path", { d: "M36 20h12" });
+      appendShape(svg, "path", { d: "M36 27h12" });
+    }
+
+    return svg;
+  }
+
+  function renderGrid() {
+    grid.textContent = "";
+    grid.setAttribute("aria-label", tr("categories.tablist"));
+
+    STORE_CATEGORIES.forEach((category) => {
+      const copy = getCopy(category);
+      const button = document.createElement("button");
+      const icon = document.createElement("span");
+      const name = document.createElement("span");
+      const sub = document.createElement("span");
+
+      button.type = "button";
+      button.className = "cat";
+      button.dataset.storeCategory = category.id;
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "store-category-modal");
+      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+
+      icon.className = "cat-icon";
+      icon.append(createCategoryIcon(category.id));
+
+      name.className = "cat-name";
+      name.textContent = copy.title;
+
+      sub.className = "cat-sub";
+      sub.textContent = tr("categories.itemCount", { count: copy.items.length });
+
+      button.append(icon, name, sub);
+      button.addEventListener("click", () => openModal(category.id, button));
+      grid.append(button);
     });
   }
 
-  function close() {
-    active = null;
-    panel.hidden = true;
-    document.body.classList.remove("country-modal-open");
-    buttons.forEach((btn) => btn.setAttribute("aria-selected", "false"));
+  function renderModal() {
+    if (!activeId || !modalIcon || !modalTitle || !modalCount || !modalList) return;
+    const category = STORE_CATEGORIES.find((entry) => entry.id === activeId) || STORE_CATEGORIES[0];
+    const copy = getCopy(category);
+
+    if (closeButton) closeButton.setAttribute("aria-label", tr("categories.close"));
+    modalIcon.textContent = "";
+    modalIcon.append(createCategoryIcon(category.id));
+    modalTitle.textContent = copy.title;
+    modalCount.textContent = tr("categories.itemCount", { count: copy.items.length });
+    modalList.textContent = "";
+
+    copy.items.forEach((item) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = item;
+      modalList.append(listItem);
+    });
   }
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      open(btn.dataset.country, btn);
-    });
+  function openModal(id, sourceButton) {
+    if (!STORE_CATEGORIES.some((category) => category.id === id)) return;
+    activeId = id;
+    lastFocus = sourceButton || document.activeElement;
+    renderModal();
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("store-category-modal-open");
+    window.requestAnimationFrame(() => closeButton?.focus());
+  }
+
+  function closeModal() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("store-category-modal-open");
+    activeId = null;
+    if (lastFocus && document.contains(lastFocus)) {
+      lastFocus.focus();
+    }
+    lastFocus = null;
+  }
+
+  closeTargets.forEach((target) => {
+    target.addEventListener("click", closeModal);
   });
 
-  closeTargets.forEach((el) => el.addEventListener("click", close));
-
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && active) close();
+    if (modal.hidden) return;
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (event.key !== "Tab") return;
+    const focusable = [...modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])")]
+      .filter((element) => !element.hasAttribute("disabled"));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 
   window.ChooI18n?.onChange(() => {
-    if (active) render(active);
+    renderGrid();
+    if (activeId) renderModal();
   });
+  renderGrid();
 })();
 
 /* ===== Student-band parallax ===== */
