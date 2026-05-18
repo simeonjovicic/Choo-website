@@ -62,7 +62,7 @@ export const adminStylesCss = `
 .admin-check{display:flex;align-items:center;justify-content:center}
 .admin-check input{width:18px;height:18px;accent-color:var(--admin-strong)}
 .admin-list{display:grid;gap:10px}
-.admin-row{display:grid;grid-template-columns:28px 76px 1fr auto;gap:14px;align-items:center;border:1px solid var(--admin-line);border-radius:8px;background:var(--admin-surface);padding:12px}
+.admin-row{display:grid;grid-template-columns:28px 56px 1fr auto;gap:12px;align-items:center;border:1px solid var(--admin-line);border-radius:8px;background:var(--admin-surface);padding:10px 12px}
 .admin-row-media{width:76px;aspect-ratio:1.2;border-radius:7px;background:#eee7dc;overflow:hidden;display:grid;place-items:center;color:var(--admin-muted);font-weight:800}
 .admin-row-media img{width:100%;height:100%;object-fit:cover}
 .admin-row strong{display:block;font-size:17px}
@@ -112,7 +112,7 @@ export const adminStylesCss = `
 .admin-read-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
 .admin-read-list li{border:1px solid var(--admin-line);border-radius:7px;background:#fbf7f0;padding:10px}
 @media (max-width:980px){.admin-editor{grid-template-columns:1fr}.admin-editor-side{position:static}.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-toolbar{grid-template-columns:1fr}.admin-upload{grid-template-columns:1fr}}
-@media (max-width:720px){.admin-bar,.admin-page-head,.admin-view-grid{grid-template-columns:1fr;display:grid}.admin-row{grid-template-columns:28px 56px 1fr;gap:10px}.admin-row .admin-actions{grid-column:2/-1;flex-wrap:wrap}.admin-row-media{width:56px;height:56px;aspect-ratio:1}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition,.admin-definition{grid-template-columns:1fr}.admin-main{padding:18px 12px 40px}.admin-bulk{align-items:flex-start;flex-direction:column}}
+@media (max-width:720px){.admin-bar,.admin-page-head,.admin-view-grid{grid-template-columns:1fr;display:grid}.admin-list{gap:5px}.admin-row{grid-template-columns:18px 38px 1fr auto;gap:7px;padding:7px 9px;border-radius:6px}.admin-row-media{width:38px;height:38px;aspect-ratio:1;border-radius:5px}.admin-row strong{font-size:13px;line-height:1.25}.admin-row>div>span{font-size:11px}.admin-row .admin-actions{flex-wrap:nowrap;gap:4px}.admin-row .admin-actions .admin-btn{min-height:24px;padding:2px 7px;font-size:11px;border-radius:5px}.admin-row .admin-chip{font-size:10px;padding:1px 5px}.admin-grid,.admin-ingredient-row,.admin-step-row,.admin-nutrition{grid-template-columns:1fr}.admin-definition{grid-template-columns:auto 1fr;gap:4px 12px}.admin-page-head.is-sticky{position:static;padding:0;margin:0 0 18px;border-bottom:none;backdrop-filter:none;background:transparent}.admin-main{padding:18px 12px 40px}.admin-bulk{align-items:flex-start;flex-direction:column}}
 `;
 
 export const adminUiJs = `
