@@ -3010,6 +3010,7 @@
 
   let activeId = null;
   let lastFocus = null;
+  let lockedScrollY = 0;
 
   function getLang() {
     return window.ChooI18n?.getLanguage?.() || "en";
@@ -3165,6 +3166,30 @@
     });
   }
 
+  function lockPageScroll() {
+    if (document.body.classList.contains("store-category-modal-open")) return;
+    lockedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.classList.add("store-category-modal-open");
+    document.body.classList.add("store-category-modal-open");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.right = "0";
+    document.body.style.left = "0";
+    document.body.style.width = "100%";
+  }
+
+  function unlockPageScroll() {
+    document.documentElement.classList.remove("store-category-modal-open");
+    document.body.classList.remove("store-category-modal-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.right = "";
+    document.body.style.left = "";
+    document.body.style.width = "";
+    window.scrollTo(0, lockedScrollY);
+    lockedScrollY = 0;
+  }
+
   function openModal(id, sourceButton) {
     if (!STORE_CATEGORIES.some((category) => category.id === id)) return;
     activeId = id;
@@ -3172,7 +3197,7 @@
     renderModal();
     modal.hidden = false;
     modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("store-category-modal-open");
+    lockPageScroll();
     window.requestAnimationFrame(() => closeButton?.focus());
   }
 
@@ -3180,7 +3205,7 @@
     if (modal.hidden) return;
     modal.hidden = true;
     modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("store-category-modal-open");
+    unlockPageScroll();
     activeId = null;
     if (lastFocus && document.contains(lastFocus)) {
       lastFocus.focus();
