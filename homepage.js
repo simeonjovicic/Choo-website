@@ -2943,9 +2943,9 @@
     {
       id: "instant",
       copy: {
-        en: { title: "Instant Products", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
-        de: { title: "Instant Produkte", items: ["Instant Noodles & Ramen", "Ricecake Cups"] },
-        zh: { title: "速食产品", items: ["方便面与拉面", "年糕杯"] }
+        en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
+        de: { title: "Instant & Fertiggerichte", items: ["Instant-Nudeln & Ramen", "Ricecake-Cups"] },
+        zh: { title: "速食与即食餐", items: ["方便面与拉面", "年糕杯"] }
       }
     },
     {
@@ -2968,7 +2968,7 @@
       id: "sauces",
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
-        de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Essig & Öle"] },
+        de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Öle & Essig"] },
         zh: { title: "酱料与调味", items: ["香料", "酱料与调味酱", "醋与油"] }
       }
     },
@@ -2983,17 +2983,17 @@
     {
       id: "pantry",
       copy: {
-        en: { title: "Pantry & More", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour"] },
-        de: { title: "Weitere Lebensmittel", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl"] },
-        zh: { title: "其他食品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉"] }
+        en: { title: "Pantry & Specialties", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour"] },
+        de: { title: "Vorrat & Spezialitäten", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl"] },
+        zh: { title: "常备食材与特色食品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉"] }
       }
     },
     {
       id: "non-food",
       copy: {
-        en: { title: "Non-Food", items: ["Cooking Tools & Tableware", "Merchandise", "Decor"] },
-        de: { title: "Non-Food", items: ["Kochutensilien & Geschirr", "Merchandise", "Dekor"] },
-        zh: { title: "非食品", items: ["厨房工具与餐具", "周边商品", "装饰"] }
+        en: { title: "Kitchen & Non-Food", items: ["Cooking Tools & Tableware", "Merchandise", "Decor"] },
+        de: { title: "Küche & Non-Food", items: ["Kochutensilien & Geschirr", "Merchandise", "Dekor"] },
+        zh: { title: "厨房用品与非食品", items: ["厨房工具与餐具", "周边商品", "装饰"] }
       }
     }
   ];
