@@ -27,6 +27,7 @@
       "categories.close": "Close category",
       "categories.modalIntro": "Usually on these shelves",
       "categories.itemCount": "{count} groups",
+      "categories.brandsLabel": "Brands you'll find",
       "story.eyebrow": "Our market",
       "story.title": "Asia, carefully sorted.",
       "story.p1": "More than 3,000 products from China, Japan, Korea, Vietnam and Southeast Asia, from soy sauce to rice cookers. Clear, clean and easy to shop.",
@@ -150,6 +151,7 @@
       "categories.close": "Kategorie schließen",
       "categories.modalIntro": "Meistens in diesem Regal",
       "categories.itemCount": "{count} Produktgruppen",
+      "categories.brandsLabel": "Marken bei uns",
       "story.eyebrow": "Unser Markt",
       "story.title": "Asien, sorgfältig sortiert.",
       "story.p1": "Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien, von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.",
@@ -273,6 +275,7 @@
       "categories.close": "关闭分类",
       "categories.modalIntro": "这个货架常见的商品",
       "categories.itemCount": "{count} 个商品组",
+      "categories.brandsLabel": "店内品牌",
       "story.eyebrow": "我们的市场",
       "story.title": "亚洲风味，精心陈列。",
       "story.p1": "超过 3,000 种来自中国、日本、韩国、越南和东南亚的商品，从酱油到电饭煲，一目了然，干净好逛。",
@@ -2943,6 +2946,7 @@
     {
       id: "instant",
       image: "assets/categories/instant.png",
+      brands: ["Nongshim", "Samyang", "Nissin"],
       copy: {
         en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
         de: { title: "Instant & Fertiggerichte", items: ["Instant-Nudeln & Ramen", "Ricecake-Cups"] },
@@ -2952,6 +2956,7 @@
     {
       id: "snacks",
       image: "assets/categories/snacks-sweets.png",
+      brands: ["Pocky", "Lotte", "Orion"],
       copy: {
         en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
         de: { title: "Snacks & Süßes", items: ["Bonbons & Zuckerln", "Chips & Knabbereien", "Kekse & Desserts", "Mochis", "Popping Boba & Toppings"] },
@@ -2961,6 +2966,7 @@
     {
       id: "drinks",
       image: "assets/categories/drinks.png",
+      brands: ["Hatakosen", "Ito En", "Qlove"],
       copy: {
         en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
         de: { title: "Getränke", items: ["Softdrinks", "Milchdrinks & Kokosdrinks", "Tee & Matcha"] },
@@ -2970,6 +2976,7 @@
     {
       id: "sauces",
       image: "assets/categories/sauces-seasoning.png",
+      brands: ["Kikkoman", "Lee Kum Kee", "Flying Goose"],
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
         de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Öle & Essig"] },
@@ -2979,6 +2986,7 @@
     {
       id: "noodles-rice",
       image: "assets/categories/noodles-rice.png",
+      brands: ["Obento", "Thai Dancer", "Bamboo Tree"],
       copy: {
         en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
         de: { title: "Nudeln & Reis", items: ["Nudeln", "Basmatireis", "Jasminreis", "Klebereis", "Sushireis", "Gekochter Reis", "Reiskuchen", "Reispapier"] },
@@ -2988,6 +2996,7 @@
     {
       id: "pantry",
       image: "assets/categories/gifts.png",
+      brands: ["Sanrio", "Bandai", "Ajinomoto"],
       copy: {
         en: { title: "Pantry & Gift Ideas", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour", "Cooking Tools & Tableware", "Gift Ideas & Decor"] },
         de: { title: "Vorrat & Geschenkideen", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl", "Kochutensilien & Geschirr", "Geschenkideen & Dekor"] },
@@ -3005,6 +3014,8 @@
   const modalTitle = modal.querySelector("[data-store-category-modal-title]");
   const modalCount = modal.querySelector("[data-store-category-modal-count]");
   const modalList = modal.querySelector("[data-store-category-modal-list]");
+  const modalBrandsLabel = modal.querySelector("[data-store-category-modal-brands-label]");
+  const modalBrands = modal.querySelector("[data-store-category-modal-brands]");
   const closeButton = modal.querySelector(".store-category-modal__close");
   const closeTargets = modal.querySelectorAll("[data-store-category-close]");
 
@@ -3164,6 +3175,24 @@
       listItem.textContent = item;
       modalList.append(listItem);
     });
+
+    if (modalBrands && modalBrandsLabel) {
+      modalBrands.textContent = "";
+      const brands = category.brands || [];
+      if (brands.length) {
+        modalBrandsLabel.textContent = tr("categories.brandsLabel");
+        modalBrandsLabel.hidden = false;
+        modalBrands.hidden = false;
+        brands.forEach((brand) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = brand;
+          modalBrands.append(listItem);
+        });
+      } else {
+        modalBrandsLabel.hidden = true;
+        modalBrands.hidden = true;
+      }
+    }
   }
 
   function lockPageScroll() {
@@ -3179,6 +3208,10 @@
   }
 
   function unlockPageScroll() {
+    const targetScrollY = lockedScrollY;
+    const html = document.documentElement;
+    const previousScrollBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = "auto";
     document.documentElement.classList.remove("store-category-modal-open");
     document.body.classList.remove("store-category-modal-open");
     document.body.style.position = "";
@@ -3186,8 +3219,11 @@
     document.body.style.right = "";
     document.body.style.left = "";
     document.body.style.width = "";
-    window.scrollTo(0, lockedScrollY);
+    window.scrollTo({ top: targetScrollY, left: 0, behavior: "instant" });
     lockedScrollY = 0;
+    window.requestAnimationFrame(() => {
+      html.style.scrollBehavior = previousScrollBehavior;
+    });
   }
 
   function openModal(id, sourceButton) {
