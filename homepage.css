@@ -279,8 +279,8 @@ body.menu-open .site-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
+  width: 74px;
+  height: 74px;
 }
 
 .logo img {
@@ -2919,7 +2919,8 @@ body.store-category-modal-open {
   }
 
   .logo {
-    font-size: 27px;
+    width: 64px;
+    height: 64px;
   }
 
   .hero-classic-content h1 {
