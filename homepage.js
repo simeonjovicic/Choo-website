@@ -3427,7 +3427,7 @@
 
     if (modalBrands && modalBrandsLabel) {
       modalBrands.textContent = "";
-      const brands = category.brands || [];
+      const brands = (category.brands || []).slice(0, 3);
       if (brands.length) {
         modalBrandsLabel.textContent = tr("categories.brandsLabel");
         modalBrandsLabel.hidden = false;
