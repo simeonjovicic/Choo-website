@@ -3776,6 +3776,10 @@ body.store-category-modal-open {
   --visit-social-expanded: 94px;
 }
 
+.visit-socials .social-icon[aria-label="Facebook"] {
+  --visit-social-expanded: 102px;
+}
+
 .visit-socials .social-icon img {
   width: 39px;
   height: 39px;
