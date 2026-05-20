@@ -81,9 +81,16 @@
       <div class="store-categories__head">
         <p class="section-eyebrow" data-i18n="categories.eyebrow">01 - Store categories</p>
         <h2 id="store-categories-title" data-i18n="categories.title">What we keep on the shelves.</h2>
-        <p data-i18n="categories.text">Tap a category to see the kinds of products you can usually find at Choo.</p>
+        <p data-i18n="categories.text">Start with the shelf categories, then use the picks below for dishes, diets and occasions.</p>
       </div>
       <div class="cat-row-inner store-categories__grid" aria-label="Store categories" data-store-category-grid></div>
+      <div class="store-categories__featured" aria-labelledby="store-categories-featured-title">
+        <div class="store-categories__featured-copy">
+          <h3 id="store-categories-featured-title" data-i18n="categories.featuredLabel">Popular picks</h3>
+          <p data-i18n="categories.featuredText">Shortcuts across several shelves, useful when you shop for a dish, diet or occasion.</p>
+        </div>
+        <div class="store-categories__chips" data-store-highlight-grid aria-label="Popular picks"></div>
+      </div>
     </section>
 
     <div class="store-category-modal" id="store-category-modal" role="dialog" aria-modal="true" aria-labelledby="store-category-modal-title" aria-live="polite" aria-hidden="true" hidden>
@@ -94,7 +101,7 @@
         <div class="store-category-modal__content">
           <p class="store-category-modal__eyebrow" data-store-category-modal-count>Category</p>
           <h3 id="store-category-modal-title" data-store-category-modal-title>Category</h3>
-          <p class="store-category-modal__intro" data-i18n="categories.modalIntro">Typical product groups</p>
+          <p class="store-category-modal__intro" data-store-category-modal-intro data-i18n="categories.modalIntro">Typical product groups</p>
           <ul class="store-category-modal__items" data-store-category-modal-list></ul>
           <p class="store-category-modal__brands-label" data-store-category-modal-brands-label hidden>Brands you'll find</p>
           <ul class="store-category-modal__brands" data-store-category-modal-brands></ul>
@@ -233,18 +240,21 @@
         </div>
         <nav class="visit-socials socials" aria-label="Social and delivery links">
           <a class="social-icon" href="https://www.instagram.com/choo.asiamarket/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
-              <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/>
-            </svg>
+            <img src="assets/social/insta-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+            <span class="social-icon__label" aria-hidden="true">Instagram</span>
           </a>
           <a class="social-icon social-icon--wolt" href="https://wolt.com/en/aut/vienna/venue/choo-foodstore" target="_blank" rel="noopener" aria-label="Wolt">
-            <span class="brand-mark" aria-hidden="true">W</span>
+            <img src="assets/social/wolt-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+            <span class="social-icon__label" aria-hidden="true">Wolt</span>
           </a>
           <a class="social-icon social-icon--foodora" href="https://www.foodora.at/en/shop/axa9/choo-asia-foodstore/category/7a3f1dd1-6577-413a-8c28-1b4f69385221" target="_blank" rel="noopener" aria-label="foodora">
-            <span class="brand-mark" aria-hidden="true">f</span>
+            <img src="assets/social/foodora-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+            <span class="social-icon__label" aria-hidden="true">foodora</span>
           </a>
+          <span class="social-icon social-icon--placeholder" role="img" aria-label="Rednote">
+            <img src="assets/social/rednote-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+            <span class="social-icon__label" aria-hidden="true">Rednote</span>
+          </span>
         </nav>
       </div>
       <div class="visit__map" aria-label="Google Maps location">
@@ -274,18 +284,17 @@
       <span data-i18n="footer.copy">© 2026 Choo Foodstore · Linke Wienzeile 54, 1060 Vienna</span>
       <nav class="socials" aria-label="Social and delivery links">
         <a class="social-icon" href="https://www.instagram.com/choo.asiamarket/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
-            <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/>
-          </svg>
+          <img src="assets/social/insta-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
         </a>
         <a class="social-icon social-icon--wolt" href="https://wolt.com/en/aut/vienna/venue/choo-foodstore" target="_blank" rel="noopener" aria-label="Wolt">
-          <span class="brand-mark" aria-hidden="true">W</span>
+          <img src="assets/social/wolt-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
         </a>
         <a class="social-icon social-icon--foodora" href="https://www.foodora.at/en/shop/axa9/choo-asia-foodstore/category/7a3f1dd1-6577-413a-8c28-1b4f69385221" target="_blank" rel="noopener" aria-label="foodora">
-          <span class="brand-mark" aria-hidden="true">f</span>
+          <img src="assets/social/foodora-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
         </a>
+        <span class="social-icon social-icon--placeholder" role="img" aria-label="Rednote">
+          <img src="assets/social/rednote-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+        </span>
       </nav>
       <a class="made-by" href="https://hango.at/" target="_blank" rel="noopener">made by hango.at</a>
     </div>

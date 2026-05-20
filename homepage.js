@@ -21,13 +21,16 @@
       "hero.address": "Linke Wienzeile 54 · 1060 Vienna",
       "categories.eyebrow": "01 - Store categories",
       "categories.title": "What we keep on the shelves.",
-      "categories.text": "Open a category and peek into the shelves, from quick ramen to sauces, rice and kitchen tools.",
+      "categories.text": "Start with the shelf categories, then use the picks below for dishes, diets and occasions.",
       "categories.tablist": "Store categories",
       "categories.open": "Open {category}",
       "categories.close": "Close category",
       "categories.modalIntro": "Usually on these shelves",
       "categories.itemCount": "{count} groups",
       "categories.brandsLabel": "Brands you'll find",
+      "categories.featuredLabel": "Popular picks",
+      "categories.featuredText": "Shortcuts across several shelves, useful when you shop for a dish, diet or occasion.",
+      "categories.featuredAria": "Popular picks",
       "story.eyebrow": "Our market",
       "story.title": "Asia, carefully sorted.",
       "story.p1": "More than 3,000 products from China, Japan, Korea, Vietnam and Southeast Asia, from soy sauce to rice cookers. Clear, clean and easy to shop.",
@@ -145,13 +148,16 @@
       "hero.address": "Linke Wienzeile 54 · 1060 Wien",
       "categories.eyebrow": "01 - Sortiment",
       "categories.title": "Was bei uns im Regal steht.",
-      "categories.text": "Öffne eine Kategorie und wirf einen Blick ins Regal, von schnellem Ramen bis zu Saucen, Reis und Küchenzubehör.",
+      "categories.text": "Zuerst die Regalkategorien, darunter passende Abkürzungen für Gerichte, Ernährung und Anlässe.",
       "categories.tablist": "Sortimentskategorien",
       "categories.open": "{category} öffnen",
       "categories.close": "Kategorie schließen",
       "categories.modalIntro": "Meistens in diesem Regal",
       "categories.itemCount": "{count} Produktgruppen",
       "categories.brandsLabel": "Marken bei uns",
+      "categories.featuredLabel": "Beliebte Auswahl",
+      "categories.featuredText": "Abkürzungen über mehrere Regale hinweg, wenn du nach Gericht, Ernährung oder Anlass einkaufst.",
+      "categories.featuredAria": "Beliebte Auswahl",
       "story.eyebrow": "Unser Markt",
       "story.title": "Asien, sorgfältig sortiert.",
       "story.p1": "Über 3.000 Produkte aus China, Japan, Korea, Vietnam und ganz Südostasien, von der Sojasauce bis zum Reiskocher. Übersichtlich, sauber, gut beraten.",
@@ -269,13 +275,16 @@
       "hero.address": "Linke Wienzeile 54 · 1060 维也纳",
       "categories.eyebrow": "01 - 商品分类",
       "categories.title": "货架上有哪些商品。",
-      "categories.text": "打开一个分类，看看货架上常见的拉面、酱料、米类和厨房用品。",
+      "categories.text": "先看货架分类，再用下方精选按菜式、饮食方式或场景快速查找。",
       "categories.tablist": "商品分类",
       "categories.open": "打开{category}",
       "categories.close": "关闭分类",
       "categories.modalIntro": "这个货架常见的商品",
       "categories.itemCount": "{count} 个商品组",
       "categories.brandsLabel": "店内品牌",
+      "categories.featuredLabel": "热门选择",
+      "categories.featuredText": "跨多个货架的快捷选择，适合按菜式、饮食方式或场景购物。",
+      "categories.featuredAria": "热门选择",
       "story.eyebrow": "我们的市场",
       "story.title": "亚洲风味，精心陈列。",
       "story.p1": "超过 3,000 种来自中国、日本、韩国、越南和东南亚的商品，从酱油到电饭煲，一目了然，干净好逛。",
@@ -2942,11 +2951,82 @@
 
 /* ===== Store category buttons ===== */
 (function () {
+  // Imported from mam-brands-by-origin-2.xlsx. The file has origin data, not shelf/category data.
+  const BRANDS_BY_ORIGIN = {
+    Japan: ["TOKIMEKI", "KIKKOMAN", "NISSIN", "POCKY", "OBENTO", "HATAKOSEN", "AJINOMOTO", "OTAFUKU", "S&B", "YAMAMORI", "BANDAI", "AYUKO", "HIKARI MISO", "JADE TEMPLE", "ITO EN", "ITSUKI", "JP", "MEIJI", "SANRIO", "KEWPIE", "MORINAGA", "SAKURA", "GENJI", "POKKA", "MARUTOMO", "KIRIN", "BENTO", "NF", "DEATH NOTE", "KOIKEYA", "MEASTY SANRIO", "UHA", "MY HERO ACADEMIA", "KITKAT", "YAMASA", "INAKA", "HATSUNE MIKU", "JUJUTSU KAISEN", "MIYATA", "TOHATO", "GLICO", "SEIKI", "TEA TSUBOICHI", "SAVOUR", "ATOM", "PIGEON BRAND", "RIBON", "KANRO", "JELLY B", "TOKYO DESIGN", "SUKINA", "OBAP", "NITTO", "NATURE", "KADOYA", "FUJIYA", "HINODE", "ICHIEIFOODS", "ATTACK ON TITAN", "KUBOTA", "SANGARIA", "TOMOMASU", "MEASTY", "MIZKAN", "SUNTORY", "BULLDOG", "FUTUBA", "KOH", "WAKASHOU", "HISHIWAEN", "JUNJI ITO", "UJINOTSUYU", "MEJI", "YBC", "BOURBON", "YOKIMCHI", "CALBEE", "SAKUMA", "CHO CHO", "NETFLIX", "NEGISAN", "HAKUBAKU", "LINE FRIENDS BT", "POKEMON", "MEITO", "SOUBRY", "MOMOYA", "TAISHO", "Meito", "KitKat", "JP HARAYA", "SANTAPAI", "SPRING HAPPINESS", "HOUSE", "MISAKO", "SHIMONITA", "DAISHIN", "KASUGAI", "NIHON KAISUI", "NINBEN", "KAMADA", "HAYAKAWA", "SAILOR MOON", "KAORIYA", "BERSERK", "DETECTIVE CONAN", "ABYSTYLE", "SEKIRYU", "GARASHA", "MEIZHOUSHIKE", "TSUBOICHI", "ENSKY", "YAMAMA", "YUME NISHIKI", "YAMATO", "Cocolabu", "OTSUKA", "SUZUKIKOSEN", "MASTER SAUCE BBQ", "HAYIN", "NAMU", "NOBEL", "KURATA VEGAN", "SHINZU", "KOTOBUKI", "MARUTO", "SANTAPEI", "YAMAGEN", "WEL PAC", "SHIRAKIKU", "TAKESAN", "KONBU", "SHIN", "HANAMARUKI", "PINE", "DOLLYS", "SENJAKUAME", "KABAYA FOODS", "JP DAISHO", "MARUMIYA", "ORIHIRO", "DAILY", "ASAHI", "SHIMAYA", "HARUKA", "JADE TENMPLE", "INUYASHA", "FAIRY TAIL", "DR STONE", "HUNTER X HUNTER", "HACHI", "WAKAME", "MIYAMOTO", "TOILET-BOUND HANAKO-KUN", "HAIKYU", "CHAINSAW MAN", "PUELLA MAGI MADOKA MAGICA", "YUZUYA", "KIZAMI", "Miyata", "UBENESS", "WADAKYU", "POCARI"],
+    "South Korea": ["SAMYANG", "SEMPIO", "NONGSHIM", "NBH", "OTTOGI", "QLOVE", "LOTTE", "BIBIGO", "YOPOKKI", "ORION", "KOREAN STREET", "PRB", "ALLGROO", "PEPERO", "CHOI'S", "DELAFFE", "JONGGA", "ENNJOI", "YOUNGPOONG", "WANG", "OTTOGI JIN", "PALDO", "HAITAI", "SUGARLOLO", "CHAJU", "CHUNGJUNGONE", "HY BTS", "O'FOOD", "SUNYOUNG", "DONGWON", "JOYTOFU", "CROWN", "CJW", "HBAF", "KWANGCHUN", "CJ", "PROBUNSIK", "SAMLIP", "WOONGJIN", "DELIEF", "HY", "DAEBAK", "EVERYDAZE", "ENNJOI DIY", "PORORO", "AJUMMA REPUBLIC", "BINGGRAE", "JANGSOO", "BLACK PINK", "JLD", "YANGBAN", "ASSI", "SUKHEE HAESOO", "NONGSHIM TAEKYUNG", "SEOJU", "SWEETMONSTER", "HWAGWABANG", "JANEJANE", "RICHY JINJU", "OTTOGI KIMCHI", "BANCHANDAJI", "SINGSONG", "SUNFLOWER", "OFOOD", "SQUID GAME", "BT21", "KR DEMISODA", "BTS", "WOONGJING FOODS", "GARAK", "SEOUL", "MISORI", "ILKWANG", "HARUHARU WONDER", "ANUA", "TORRIDEN", "KOREAN FOOD STYLE", "HARIM", "HANSUNG", "OBOK", "HEART", "POONGNYUN", "KWANGDONG", "ACHIM", "BOSUNG", "JINYANG", "YOONDONG", "HEARTY SPOON", "NBH KR", "LIMGANE", "SAJO", "PULMUONE", "KWANGCHEON", "Ottogi", "OUR HOME", "DANGNYANGI", "PINK FONG", "KOREA SEAFOOD"],
+    China: ["LKK", "HAOLIYUAN", "HAIDILAO", "GOLDEN TURTLE", "ITA", "CHACHA", "Y&L", "BAIJIA", "WEILONG", "GOLDEN SAIL", "SHAN WAI SHAN", "MASTER KONG", "WU JIANG", "BAISHANZU", "SANFENG", "HADAY", "YUMEI", "CHI FOREST", "MOUNTAINS", "JML", "QDOL", "FARMER", "GANGFU", "WU CHUNG", "HIGH UP", "TIAN HU SHAN", "JING YI GEN", "KLKW", "WANT WANT QQ", "DOUBLE PANDA", "CN NFS", "CN WFY", "LV ZHENG FOOD", "KAILO", "SLINMY", "FOREWAY", "BEAR COMING", "LITTLE SHEEP", "JXJ", "GUA", "CN XXZ", "YJX FISH HOME BRAND", "CITYAROMA", "GZSL", "SHIH", "YUANFU", "WEIJUTE", "ITA-SAN", "LIU BIJU", "SHUITA", "HBS BBQ", "JIABAO", "COZZO", "HAGOROMO", "JEFI", "HOT CHIP", "SELECO", "DFSY", "WAHAHA AD", "MIPOPO", "BORAMBIO", "MAI WA", "KOOL", "YJPZ", "WEIPA", "WANDERFORT", "CHUNSI", "GOOSUN", "CRISPY FRAGRANCE GARDEN", "EAGLE COIN", "KR JARDIN", "POP MART", "FIVE HOLES", "WANGZHIHE", "QIU SHI", "SZECHUAN TIAN FU", "HUATIAN", "BESTORE", "WINGMAN", "SHENGYAO", "NARCISSUS", "BACO", "AKUAN", "NUTRI SNACK", "GY", "ZHONGJING", "HUAYANG", "LUOBAWANG", "LOUBAWANG", "YOU NI MIAN", "YIZHI", "MAOXIONG", "FTW", "AODA", "MABU", "ALLOY", "WAN JA SHAN", "FROZZ BT", "CN HUANG FEI HONG", "BESTORE BBQ", "DALI", "CN", "YILE", "LJ BROTHER HOTPOT", "KIREI", "PA", "CWZ", "AMOY", "WELLTOP", "CLH", "OBENTI", "HUANG LONG", "CHANGLISHENG", "KING OF PLUM", "GIANT TREE", "FLCK", "DOUBLE RINGS", "DIAMOND", "SUNWAVE", "LJ BROTHER HOTPOT BASE", "NONGSAO", "GE XIANG WENG", "FUXING", "CUIHONG", "CN LYX", "JINZAI", "WSY", "XIA", "CHIP", "JING FANG", "LJ BROTHER", "GREAT WALL", "GANYUAN", "DOUBLE COIN", "FAMOUS HOUSE", "CAMEL", "JINMI", "HENG SHOU TANG", "TYM", "CN BAIJIA", "CHIN", "LIUPO", "JIA FAN", "SOYSPRING", "CN YON HO", "DOYAL", "CHUANNAN", "UNIEAGLE", "OS", "NING PAGODA", "WEIYUEN", "LONGLIFE", "PANGNIU FOOD", "TAIGANG", "SHUANG LE", "SHENG XIANG ZHEN", "Chin Chin", "JIU LONG ZHAI", "HENG SHUN", "CHUN GUANG", "LONGKOU", "JIADUBAO", "FIRE BULL", "LITTLE MOONS", "YESHU", "WANG LAO JI", "COCO", "MALING", "SPESHOW", "STIK", "SUIRYU"],
+    Taiwan: ["WANT WANT", "TW", "TW Q", "UNIF", "TW QQ", "HT GOLDEN LABEL", "CHI SHENG", "TTL", "TW FH", "SZU SHEN PO", "GOLDEN LILY", "GOLDEN BOWL", "GOLDLEAF", "TW BULLHEAD", "GREENMAX", "WEI LIH", "ROYAL FAMILY", "GOLD LEAF", "GOLDEN LABEL", "TIN LUNG BRAND", "TW GGE", "TW IMEI", "BULLHEAD", "TAISUN"],
+    Thailand: ["FLYING GOOSE", "HEALTHY BOY", "MAMA", "THAI DANCER", "AHG", "PANTAI", "COCK BRAND", "LOBO", "ROYAL ORIENT", "OISHI", "AROY", "THAI PRIDE", "MEGACHEF", "FISH WELL", "ROYAL THAI", "COZY", "MONIKA", "CALYPSO", "ASIAN BOY", "POR KWAN", "ROYAL TIGER", "SMILING FISH", "RANONG TEA", "AROY-D", "MAEPRANOM", "GOLDEN CHEF", "UNCLE BARN", "TARO", "RANONG", "TIPAROS", "X.O", "CARABAO", "MAE KRUA", "GREENDAY", "SQUID", "NIM JIOM", "GOLD PLUM", "JUBJUB", "MALI FLOWER", "NANG FAH", "RED BULL", "NAZIBA", "KOH-KAE", "NICE CHOICE", "AMPAWA", "KHAO SHONG", "KASET", "MAE NAPA", "MATAMUN", "SOUTH WORD", "JUMBO BRAND", "PORK KWAN", "ROYAL LION", "ROSNEUNG", "KUAKON", "SHINE FARM", "TWIN ELEPHANT", "CAP", "SKYBIRD", "KHY", "CHATRAMUNE", "MAE", "SAWAT", "PEAK", "UNCLE BARN'S", "NATUREGIFT"],
+    Vietnam: ["BAMBOO TREE", "DH FOODS", "CUNG DINH", "ACECOOK", "VFRESH", "CHOLIMEX", "BAO LONG", "NONGLAMFOOD", "JHFOODS", "WENDJOE", "AN NHIEN", "VINH THUAN", "TAN HIEP PHAT", "CHAOKOH", "MINH LONG", "TOAN NAM", "TAM DUC", "RNONG", "THV", "SA GIANG", "TRUNG NGUYEN", "VINALY", "VIET NAM", "VF", "UNICA", "PENTA", "X", "MOTHER"],
+    Indonesia: ["INDOMIE", "BALI KITCHEN", "PONDAN", "SUREE", "UDANG MAS", "KOPIKO", "GS", "GINGERBON", "KAKI TIGA", "BAIWEIZHAI", "ASLI", "BAKERDREAM", "KOEPOE", "ABC"],
+    "Malaysia / Singapore": ["SAU TAO", "PRIMA TASTE", "GOLD KILI", "HBS", "SIX FORTUNE", "SUPER", "DRINHO", "TAIYO", "MEE CHUN", "WAI WAI", "OH AIK GUAN", "C2", "TRA CHANG", "MAN CHONG LOONG", "YEO'S", "PATCHUN", "CHEE SENG", "DELI"],
+    Philippines: ["MAMA SITA", "LADY BOBA", "CENTURY", "PROM", "LUCKY ME", "NUTSHOLIC", "DATU PUTI", "MARCA PINA", "SILVER SWAN", "OISHI MARTY", "UFC", "DAGUPAN", "ARGENTINA", "PINOY KITCHEN", "SKIN", "CHI CHI", "HAR HAR", "NAGARAYA", "SAVOY", "BOY BAWANG", "OK", "SPOON", "SESALI", "CARMEN", "MANG TOMAS", "FIL", "JC", "KOLOKO", "OK SNACKS", "UBE", "PILLOWS UBE", "REGENT"],
+    "India / South Asia": ["TRS", "ASHOKA", "PATAK", "RUBICON", "ENCONA", "HEM", "SWAD", "PATAKS", "MAAZA", "Shan", "TILDA", "KTC", "MEHEK", "AMUTHA", "TEMPLE", "BIRDS", "RAJAH"]
+  };
+
+  function uniqueBrands(brands) {
+    const seen = new Set();
+    return brands.filter((brand) => {
+      if (!brand || seen.has(brand)) return false;
+      seen.add(brand);
+      return true;
+    });
+  }
+
+  const ALL_BRANDS = uniqueBrands(Object.values(BRANDS_BY_ORIGIN).flat());
+  const ALL_BRAND_SET = new Set(ALL_BRANDS);
+
+  function brandList(brands) {
+    return uniqueBrands(brands.filter((brand) => ALL_BRAND_SET.has(brand)));
+  }
+
+  function originBrands(origins) {
+    return uniqueBrands(origins.flatMap((origin) => BRANDS_BY_ORIGIN[origin] || []));
+  }
+
+  function remainingBrands(groups) {
+    const used = new Set(groups.flat());
+    return ALL_BRANDS.filter((brand) => !used.has(brand));
+  }
+
+  const BRAND_SEEDS = {
+    instant: ["NISSIN", "SAMYANG", "NONGSHIM", "OTTOGI", "MAMA", "YOPOKKI", "YOUNGPOONG", "OTTOGI JIN", "PALDO", "BIBIGO", "YANGBAN", "DONGWON", "PROBUNSIK", "DAEBAK", "OTTOGI KIMCHI", "PULMUONE", "OUR HOME", "BAIJIA", "MASTER KONG", "JML", "AKUAN", "LUOBAWANG", "LOUBAWANG", "YOU NI MIAN", "CN BAIJIA", "HAIDILAO", "LITTLE SHEEP", "UNIF", "WEI LIH", "MAMA", "LOBO", "CUNG DINH", "ACECOOK", "INDOMIE", "PRIMA TASTE", "WAI WAI", "SAU TAO", "LUCKY ME", "ASHOKA", "PATAK", "PATAKS"],
+    snacks: ["TOKIMEKI", "POCKY", "HAOLIYUAN", "CHACHA", "WEILONG", "WANT WANT", "WANT WANT QQ", "LOTTE", "ORION", "PEPERO", "HAITAI", "CROWN", "HBAF", "SEOJU", "SWEETMONSTER", "HWAGWABANG", "MEIJI", "MORINAGA", "FUJIYA", "KOIKEYA", "UHA", "KITKAT", "TOHATO", "GLICO", "RIBON", "KANRO", "JELLY B", "KASUGAI", "YBC", "BOURBON", "CALBEE", "SAKUMA", "MEITO", "NOBEL", "PINE", "SENJAKUAME", "KABAYA FOODS", "ROYAL FAMILY", "JIABAO", "HOT CHIP", "BESTORE", "NUTRI SNACK", "CN HUANG FEI HONG", "GANYUAN", "LITTLE MOONS", "TARO", "GREENDAY", "KOH-KAE", "NICE CHOICE", "NAGARAYA", "BOY BAWANG", "KOPIKO", "GINGERBON", "PILLOWS UBE", "REGENT"],
+    drinks: ["HATAKOSEN", "ITO EN", "POKKA", "KIRIN", "SANGARIA", "TOMOMASU", "SUNTORY", "TEA TSUBOICHI", "HISHIWAEN", "TSUBOICHI", "OTSUKA", "ASAHI", "POCARI", "QLOVE", "DELAFFE", "WOONGJIN", "BINGGRAE", "KR DEMISODA", "KWANGDONG", "CHI FOREST", "WAHAHA AD", "JIADUBAO", "WANG LAO JI", "COCO", "YESHU", "OISHI", "RANONG TEA", "RANONG", "CARABAO", "RED BULL", "KHAO SHONG", "CHATRAMUNE", "VFRESH", "TAN HIEP PHAT", "TRUNG NGUYEN", "GOLD KILI", "SUPER", "DRINHO", "C2", "YEO'S", "RUBICON", "MAAZA"],
+    sauces: ["KIKKOMAN", "LKK", "FLYING GOOSE", "HEALTHY BOY", "AHG", "PANTAI", "COCK BRAND", "LOBO", "THAI PRIDE", "MEGACHEF", "MAEPRANOM", "TIPAROS", "MAE KRUA", "SQUID", "NIM JIOM", "AMPAWA", "POR KWAN", "MAMA SITA", "DATU PUTI", "SILVER SWAN", "UFC", "MANG TOMAS", "SEMPIO", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "CJW", "OTAFUKU", "S&B", "YAMAMORI", "KEWPIE", "YAMASA", "KADOYA", "MIZKAN", "BULLDOG", "HINODE", "NINBEN", "KAMADA", "TAKESAN", "HACHI", "HADAY", "WAN JA SHAN", "WANGZHIHE", "SZECHUAN TIAN FU", "ZHONGJING", "CUIHONG", "LIUPO", "HENG SHUN", "AMOY", "BULLHEAD", "TW BULLHEAD", "DH FOODS", "CHOLIMEX", "BAO LONG", "BALI KITCHEN", "SUREE", "ABC", "TRS", "PATAK", "PATAKS", "ENCONA", "RAJAH", "Shan"],
+    noodlesRice: ["OBENTO", "THAI DANCER", "BAMBOO TREE", "SAU TAO", "SIX FORTUNE", "WAI WAI", "TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "GOLDEN SAIL", "LONGKOU", "YUME NISHIKI", "SEKIRYU", "HAKUBAKU", "MIYATA", "ITSUKI", "INAKA", "YAMAGEN", "WEL PAC", "SHIRAKIKU", "UNIF", "WEI LIH", "GOLDEN BOWL", "GOLDEN LILY", "MEE CHUN", "TRA CHANG"],
+    pantry: ["AJINOMOTO", "HIKARI MISO", "MARUTOMO", "KONBU", "WAKAME", "HANAMARUKI", "MOMOYA", "SHIMAYA", "KURATA VEGAN", "JOYTOFU", "SOYSPRING", "LADY BOBA", "CENTURY", "DAGUPAN", "ARGENTINA", "PONDAN", "KOEPOE", "UDANG MAS", "TRS", "SWAD", "KTC", "HEM", "SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN"]
+  };
+
+  const BRAND_GROUPS = (() => {
+    const instant = brandList(BRAND_SEEDS.instant);
+    const snacks = brandList(BRAND_SEEDS.snacks);
+    const drinks = brandList(BRAND_SEEDS.drinks);
+    const sauces = brandList(BRAND_SEEDS.sauces);
+    const noodlesRice = brandList(BRAND_SEEDS.noodlesRice);
+    const pantry = uniqueBrands([...brandList(BRAND_SEEDS.pantry), ...remainingBrands([instant, snacks, drinks, sauces, noodlesRice])]);
+
+    return {
+      instant,
+      snacks,
+      drinks,
+      sauces,
+      noodlesRice,
+      pantry,
+      chineseClassics: uniqueBrands([...originBrands(["China", "Taiwan"]), ...brandList(["AMOY", "LKK", "HENG SHUN", "SHUITA", "LONGKOU", "SAU TAO", "PATCHUN", "MEE CHUN"])]),
+      vegan: brandList(["KURATA VEGAN", "JOYTOFU", "PULMUONE", "SOYSPRING", "KIKKOMAN", "LKK", "HIKARI MISO", "HANAMARUKI", "KONBU", "WAKAME", "LONGKOU", "BAMBOO TREE", "THAI DANCER", "TILDA", "TRS", "SWAD", "ASHOKA", "COCK BRAND", "AROY-D", "CHAOKOH", "SIX FORTUNE", "YUME NISHIKI", "SEKIRYU"]),
+      hotPot: brandList(["HAIDILAO", "LITTLE SHEEP", "LJ BROTHER HOTPOT", "LJ BROTHER HOTPOT BASE", "LJ BROTHER", "FLYING GOOSE", "HEALTHY BOY", "PANTAI", "COCK BRAND", "PRB", "ZHONGJING", "CUIHONG", "LIUPO", "SZECHUAN TIAN FU", "BIBIGO", "WANG", "YOPOKKI", "BAMBOO TREE", "LONGKOU", "JOYTOFU"]),
+      spicy: brandList(["SAMYANG", "NONGSHIM", "MAMA", "FLYING GOOSE", "WEILONG", "CJ", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "S&B", "SZECHUAN TIAN FU", "CUIHONG", "LIUPO", "CN HUANG FEI HONG", "HOT CHIP", "HAIDILAO", "LITTLE SHEEP", "MAEPRANOM", "PANTAI", "LOBO", "ENCONA", "YUMEI"]),
+      gifts: brandList(["SANRIO", "MEASTY SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN", "DEATH NOTE", "MY HERO ACADEMIA", "HATSUNE MIKU", "JUJUTSU KAISEN", "ATTACK ON TITAN", "JUNJI ITO", "POKEMON", "SAILOR MOON", "BERSERK", "DETECTIVE CONAN", "ABYSTYLE", "ENSKY", "INUYASHA", "FAIRY TAIL", "DR STONE", "HUNTER X HUNTER", "TOILET-BOUND HANAKO-KUN", "HAIKYU", "CHAINSAW MAN", "PUELLA MAGI MADOKA MAGICA", "BT21", "BTS", "BLACK PINK", "SQUID GAME", "PINK FONG", "TOKIMEKI", "POCKY", "KITKAT", "ROYAL FAMILY"])
+    };
+  })();
+
   const STORE_CATEGORIES = [
     {
       id: "instant",
       image: "assets/categories/instant.png",
-      brands: ["Nongshim", "Samyang", "Nissin"],
+      brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
         de: { title: "Instant & Fertiggerichte", items: ["Instant-Nudeln & Ramen", "Ricecake-Cups"] },
@@ -2956,7 +3036,7 @@
     {
       id: "snacks",
       image: "assets/categories/snacks-sweets.png",
-      brands: ["Pocky", "Lotte", "Orion"],
+      brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
         de: { title: "Snacks & Süßes", items: ["Bonbons & Zuckerln", "Chips & Knabbereien", "Kekse & Desserts", "Mochis", "Popping Boba & Toppings"] },
@@ -2966,7 +3046,7 @@
     {
       id: "drinks",
       image: "assets/categories/drinks.png",
-      brands: ["Hatakosen", "Ito En", "Qlove"],
+      brands: BRAND_GROUPS.drinks,
       copy: {
         en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
         de: { title: "Getränke", items: ["Softdrinks", "Milchdrinks & Kokosdrinks", "Tee & Matcha"] },
@@ -2976,7 +3056,7 @@
     {
       id: "sauces",
       image: "assets/categories/sauces-seasoning.png",
-      brands: ["Kikkoman", "Lee Kum Kee", "Flying Goose"],
+      brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
         de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Öle & Essig"] },
@@ -2986,7 +3066,7 @@
     {
       id: "noodles-rice",
       image: "assets/categories/noodles-rice.png",
-      brands: ["Obento", "Thai Dancer", "Bamboo Tree"],
+      brands: BRAND_GROUPS.noodlesRice,
       copy: {
         en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
         de: { title: "Nudeln & Reis", items: ["Nudeln", "Basmatireis", "Jasminreis", "Klebereis", "Sushireis", "Gekochter Reis", "Reiskuchen", "Reispapier"] },
@@ -2996,7 +3076,7 @@
     {
       id: "pantry",
       image: "assets/categories/gifts.png",
-      brands: ["Sanrio", "Bandai", "Ajinomoto"],
+      brands: BRAND_GROUPS.pantry,
       copy: {
         en: { title: "Pantry & Gift Ideas", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour", "Cooking Tools & Tableware", "Gift Ideas & Decor"] },
         de: { title: "Vorrat & Geschenkideen", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl", "Kochutensilien & Geschirr", "Geschenkideen & Dekor"] },
@@ -3005,14 +3085,125 @@
     }
   ];
 
+  const STORE_HIGHLIGHTS = [
+    {
+      id: "chinese-classics",
+      brands: BRAND_GROUPS.chineseClassics,
+      copy: {
+        en: {
+          title: "Chinese Classics",
+          intro: "A shortcut for classic Chinese home cooking, spread across sauces, pantry and noodle shelves.",
+          items: ["Light & dark soy sauce", "Black vinegar & chili oil", "Shaoxing wine & sesame oil", "Rice, noodles & dumpling wrappers"]
+        },
+        de: {
+          title: "Chinesische Klassiker",
+          intro: "Eine Abkürzung für klassisch chinesisches Kochen, verteilt über Saucen, Vorrat und Nudeln.",
+          items: ["Helle & dunkle Sojasauce", "Schwarzer Essig & Chiliöl", "Shaoxing-Wein & Sesamöl", "Reis, Nudeln & Dumpling-Teig"]
+        },
+        zh: {
+          title: "中式经典",
+          intro: "适合经典中式家常菜的快捷选择，分布在酱料、常备食材和面类货架。",
+          items: ["生抽与老抽", "黑醋与辣椒油", "绍兴酒与芝麻油", "米、面与饺子皮"]
+        }
+      }
+    },
+    {
+      id: "vegan",
+      brands: BRAND_GROUPS.vegan,
+      copy: {
+        en: {
+          title: "Vegan Cooking",
+          intro: "Plant-based basics from several aisles, from tofu to sauces and quick weekday meals.",
+          items: ["Tofu, seitan & bean products", "Mushrooms, bamboo shoots & seaweed", "Coconut milk & curry pastes", "Rice, noodles & vegan sauces"]
+        },
+        de: {
+          title: "Vegan kochen",
+          intro: "Pflanzliche Basics aus mehreren Regalen, von Tofu bis zu Saucen und schnellen Gerichten.",
+          items: ["Tofu, Seitan & Bohnenprodukte", "Pilze, Bambussprossen & Algen", "Kokosmilch & Currypasten", "Reis, Nudeln & vegane Saucen"]
+        },
+        zh: {
+          title: "纯素料理",
+          intro: "来自多个货架的植物性基础食材，从豆腐到酱料和快速餐食。",
+          items: ["豆腐、面筋与豆制品", "蘑菇、笋与海藻", "椰奶与咖喱酱", "米、面与纯素酱料"]
+        }
+      }
+    },
+    {
+      id: "hot-pot",
+      brands: BRAND_GROUPS.hotPot,
+      copy: {
+        en: {
+          title: "Hot Pot",
+          intro: "Everything for a table full of broth, dips, noodles and add-ins.",
+          items: ["Soup bases & chili pastes", "Dipping sauces & sesame paste", "Glass noodles, rice cakes & tofu", "Mushrooms, seaweed & canned vegetables"]
+        },
+        de: {
+          title: "Hot Pot",
+          intro: "Alles für einen Tisch mit Brühe, Dips, Nudeln und Einlagen.",
+          items: ["Suppenbasen & Chilipasten", "Dip-Saucen & Sesampaste", "Glasnudeln, Reiskuchen & Tofu", "Pilze, Algen & Gemüsekonserven"]
+        },
+        zh: {
+          title: "火锅",
+          intro: "火锅汤底、蘸料、面类和配菜的一站式选择。",
+          items: ["火锅底料与辣酱", "蘸料与芝麻酱", "粉丝、年糕与豆腐", "蘑菇、海藻与罐装蔬菜"]
+        }
+      }
+    },
+    {
+      id: "spicy",
+      brands: BRAND_GROUPS.spicy,
+      copy: {
+        en: {
+          title: "Spicy",
+          intro: "For chili heat, numbing pepper and sharp condiments across the shelves.",
+          items: ["Chili crisp & chili oil", "Gochujang & kimchi sauces", "Sichuan pepper & spice mixes", "Spicy ramen & snacks"]
+        },
+        de: {
+          title: "Scharf",
+          intro: "Für Chili-Schärfe, Sichuan-Prickeln und würzige Condiments aus mehreren Regalen.",
+          items: ["Chili-Crisp & Chiliöl", "Gochujang & Kimchi-Saucen", "Sichuanpfeffer & Gewürzmischungen", "Scharfer Ramen & Snacks"]
+        },
+        zh: {
+          title: "辣味选择",
+          intro: "适合寻找辣椒香、麻味和重口调味的快捷选择。",
+          items: ["辣椒脆与辣椒油", "韩式辣酱与泡菜酱", "花椒与香料混合", "辣味拉面与零食"]
+        }
+      }
+    },
+    {
+      id: "gifts",
+      brands: BRAND_GROUPS.gifts,
+      copy: {
+        en: {
+          title: "Gift Ideas",
+          intro: "Small, easy picks when you want to bring something fun or useful.",
+          items: ["Tea, matcha & sweets", "Cute snacks and character goods", "Tableware & small kitchen tools", "Decor and seasonal specials"]
+        },
+        de: {
+          title: "Geschenkideen",
+          intro: "Kleine, einfache Ideen, wenn du etwas Schönes oder Nützliches mitbringen willst.",
+          items: ["Tee, Matcha & Süßes", "Süße Snacks und Character-Ware", "Geschirr & kleine Küchenhelfer", "Deko und Saisonartikel"]
+        },
+        zh: {
+          title: "礼物灵感",
+          intro: "适合作为小礼物的有趣或实用选择。",
+          items: ["茶、抹茶与甜点", "可爱零食与角色商品", "餐具与小厨房工具", "装饰与季节商品"]
+        }
+      }
+    }
+  ];
+
   const SVG_NS = "http://www.w3.org/2000/svg";
+  const STORE_SELECTIONS = [...STORE_CATEGORIES, ...STORE_HIGHLIGHTS];
   const grid = document.querySelector("[data-store-category-grid]");
+  const highlightGrid = document.querySelector("[data-store-highlight-grid]");
   const modal = document.getElementById("store-category-modal");
   if (!grid || !modal) return;
 
   const modalIcon = modal.querySelector("[data-store-category-modal-icon]");
   const modalTitle = modal.querySelector("[data-store-category-modal-title]");
   const modalCount = modal.querySelector("[data-store-category-modal-count]");
+  const modalIntro = modal.querySelector("[data-store-category-modal-intro]");
   const modalList = modal.querySelector("[data-store-category-modal-list]");
   const modalBrandsLabel = modal.querySelector("[data-store-category-modal-brands-label]");
   const modalBrands = modal.querySelector("[data-store-category-modal-brands]");
@@ -3097,6 +3288,33 @@
       appendShape(svg, "path", { d: "M22 22h22" });
       appendShape(svg, "path", { d: "M27 34h12" });
       appendShape(svg, "path", { d: "M27 41h8" });
+    } else if (id === "chinese-classics") {
+      appendShape(svg, "path", { d: "M19 34h26l-4 14H23l-4-14Z" });
+      appendShape(svg, "path", { d: "M17 34h30" });
+      appendShape(svg, "path", { d: "M22 22l26-8" });
+      appendShape(svg, "path", { d: "M24 26l26-8" });
+      appendShape(svg, "path", { d: "M28 39c4-3 8 3 12 0" });
+    } else if (id === "vegan") {
+      appendShape(svg, "path", { d: "M18 43c13 0 27-12 28-27-16 1-29 10-29 25 0 7 5 11 12 11" });
+      appendShape(svg, "path", { d: "M23 43c5-9 12-16 23-27" });
+      appendShape(svg, "path", { d: "M27 31c-4-5-8-7-13-7 1 10 6 16 15 17" });
+    } else if (id === "hot-pot") {
+      appendShape(svg, "path", { d: "M19 34h26l-3 16H22l-3-16Z" });
+      appendShape(svg, "path", { d: "M17 34h30" });
+      appendShape(svg, "path", { d: "M22 29h20" });
+      appendShape(svg, "path", { d: "M26 18c-4 4 4 6 0 10" });
+      appendShape(svg, "path", { d: "M35 16c-4 4 4 7 0 11" });
+      appendShape(svg, "path", { d: "M44 19c-4 4 4 6 0 9" });
+    } else if (id === "spicy") {
+      appendShape(svg, "path", { d: "M22 42c9 4 20-1 24-12 2-6-1-11-6-12-1 10-8 18-18 24Z" });
+      appendShape(svg, "path", { d: "M40 18c-1-5 2-8 7-8" });
+      appendShape(svg, "path", { d: "M25 43c3 7 12 8 18 1" });
+    } else if (id === "gifts") {
+      appendShape(svg, "rect", { x: "18", y: "27", width: "28", height: "24", rx: "2" });
+      appendShape(svg, "path", { d: "M16 27h32v-7H16v7Z" });
+      appendShape(svg, "path", { d: "M32 20v31" });
+      appendShape(svg, "path", { d: "M25 20c-6-5-1-11 7 0" });
+      appendShape(svg, "path", { d: "M39 20c6-5 1-11-7 0" });
     } else {
       appendShape(svg, "circle", { cx: "29", cy: "25", r: "10" });
       appendShape(svg, "path", { d: "M15 49l14-15" });
@@ -3158,9 +3376,39 @@
     });
   }
 
+  function renderHighlightGrid() {
+    if (!highlightGrid) return;
+    highlightGrid.textContent = "";
+    highlightGrid.setAttribute("aria-label", tr("categories.featuredAria"));
+
+    STORE_HIGHLIGHTS.forEach((highlight) => {
+      const copy = getCopy(highlight);
+      const button = document.createElement("button");
+      const icon = document.createElement("span");
+      const name = document.createElement("span");
+
+      button.type = "button";
+      button.className = "store-highlight";
+      button.dataset.storeHighlight = highlight.id;
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "store-category-modal");
+      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+
+      icon.className = "store-highlight__icon";
+      icon.append(createCategoryIcon(highlight.id));
+
+      name.className = "store-highlight__name";
+      name.textContent = copy.title;
+
+      button.append(icon, name);
+      button.addEventListener("click", () => openModal(highlight.id, button));
+      highlightGrid.append(button);
+    });
+  }
+
   function renderModal() {
     if (!activeId || !modalIcon || !modalTitle || !modalCount || !modalList) return;
-    const category = STORE_CATEGORIES.find((entry) => entry.id === activeId) || STORE_CATEGORIES[0];
+    const category = STORE_SELECTIONS.find((entry) => entry.id === activeId) || STORE_CATEGORIES[0];
     const copy = getCopy(category);
 
     if (closeButton) closeButton.setAttribute("aria-label", tr("categories.close"));
@@ -3168,6 +3416,7 @@
     modalIcon.append(createCategoryVisual(category));
     modalTitle.textContent = copy.title;
     modalCount.textContent = tr("categories.itemCount", { count: copy.items.length });
+    if (modalIntro) modalIntro.textContent = copy.intro || tr("categories.modalIntro");
     modalList.textContent = "";
 
     copy.items.forEach((item) => {
@@ -3227,7 +3476,7 @@
   }
 
   function openModal(id, sourceButton) {
-    if (!STORE_CATEGORIES.some((category) => category.id === id)) return;
+    if (!STORE_SELECTIONS.some((category) => category.id === id)) return;
     activeId = id;
     lastFocus = sourceButton || document.activeElement;
     renderModal();
@@ -3276,9 +3525,11 @@
 
   window.ChooI18n?.onChange(() => {
     renderGrid();
+    renderHighlightGrid();
     if (activeId) renderModal();
   });
   renderGrid();
+  renderHighlightGrid();
 })();
 
 /* ===== Student-band parallax ===== */
