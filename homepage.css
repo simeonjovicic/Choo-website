@@ -3281,15 +3281,20 @@ body.store-category-modal-open {
   }
 
   .store-category-modal {
+    display: block;
+    overflow-y: auto;
     padding: 14px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 
   .store-category-modal__card {
     grid-template-columns: 1fr;
     height: auto;
-    max-height: calc(100svh - 28px);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    max-height: none;
+    min-height: auto;
+    overflow: visible;
+    margin: 0 auto;
   }
 
   .store-category-modal__visual {
@@ -3830,6 +3835,43 @@ body.store-category-modal-open {
 .visit-socials .social-icon--placeholder:hover .social-icon__label {
   opacity: 1;
   transform: translateX(0);
+}
+
+@media (max-width: 640px), (hover: none) {
+  .visit-socials {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(132px, 1fr));
+    gap: 12px 16px;
+    max-width: 340px;
+  }
+
+  .visit-socials .social-icon,
+  .visit-socials .social-icon:hover,
+  .visit-socials .social-icon:focus-visible,
+  .visit-socials .social-icon[aria-label="Instagram"],
+  .visit-socials .social-icon[aria-label="foodora"],
+  .visit-socials .social-icon[aria-label="Rednote"],
+  .visit-socials .social-icon[aria-label="Facebook"] {
+    width: 100%;
+    height: 48px;
+    transform: none;
+    transition: none;
+  }
+
+  .visit-socials .social-icon img,
+  .visit-socials .social-icon:hover img {
+    opacity: 1;
+    transform: none;
+  }
+
+  .visit-socials .social-icon__label,
+  .visit-socials .social-icon:hover .social-icon__label,
+  .visit-socials .social-icon:focus-visible .social-icon__label {
+    margin-left: 8px;
+    font-size: 12px;
+    opacity: 1;
+    transform: none;
+  }
 }
 .visit__map {
   width: 100%;
