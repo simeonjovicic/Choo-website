@@ -77,8 +77,14 @@
 
     </section>
 
-    <section class="cat-row store-categories store-categories--variant-a" id="laender" data-variant="a" aria-labelledby="store-categories-title">
-      <span class="variant-badge" data-i18n="categories.variantA" aria-hidden="true">Variant A · Clean &amp; layered</span>
+    <div class="variant-switch-wrap">
+      <div class="variant-switch" role="tablist" aria-label="Layout variant">
+        <button type="button" class="variant-switch__btn variant-switch__btn--on" data-variant-toggle="a" role="tab" aria-selected="true" aria-controls="laender" data-i18n="categories.variantA">Variant A · Clean &amp; layered</button>
+        <button type="button" class="variant-switch__btn" data-variant-toggle="b" role="tab" aria-selected="false" aria-controls="laender-editorial" data-i18n="categories.variantB">Variant B · Editorial</button>
+      </div>
+    </div>
+
+    <section class="cat-row store-categories store-categories--variant-a is-active" id="laender" data-variant="a" aria-labelledby="store-categories-title">
       <div class="store-categories__head">
         <p class="section-eyebrow" data-i18n="categories.eyebrow">01 - Store categories</p>
         <h2 id="store-categories-title" data-i18n="categories.title">What we keep on the shelves.</h2>
@@ -103,8 +109,7 @@
       </div>
     </section>
 
-    <section class="cat-row store-categories store-categories--variant-b" id="laender-editorial" data-variant="b" aria-labelledby="store-editorial-title">
-      <span class="variant-badge variant-badge--alt" data-i18n="categories.variantB" aria-hidden="true">Variant B · Editorial</span>
+    <section class="cat-row store-categories store-categories--variant-b" id="laender-editorial" data-variant="b" aria-labelledby="store-editorial-title" hidden>
       <div class="store-editorial">
         <div class="store-editorial__head">
           <p class="section-eyebrow" data-i18n="categories.editorialEyebrow">01 — Browse the store</p>

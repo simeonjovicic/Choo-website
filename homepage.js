@@ -3939,3 +3939,39 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
+/* ===== Variant A/B toggle ===== */
+(function () {
+  function init() {
+    const buttons = document.querySelectorAll("[data-variant-toggle]");
+    if (!buttons.length) return;
+    const sections = document.querySelectorAll(".store-categories[data-variant]");
+
+    function activate(target) {
+      buttons.forEach((btn) => {
+        const on = btn.dataset.variantToggle === target;
+        btn.classList.toggle("variant-switch__btn--on", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      sections.forEach((section) => {
+        const on = section.dataset.variant === target;
+        section.classList.toggle("is-active", on);
+        if (on) {
+          section.removeAttribute("hidden");
+        } else {
+          section.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => activate(btn.dataset.variantToggle));
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+})();
