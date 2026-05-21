@@ -77,19 +77,45 @@
 
     </section>
 
-    <section class="cat-row store-categories" id="laender" aria-labelledby="store-categories-title">
+    <section class="cat-row store-categories store-categories--variant-a" id="laender" data-variant="a" aria-labelledby="store-categories-title">
+      <span class="variant-badge" data-i18n="categories.variantA" aria-hidden="true">Variant A · Clean &amp; layered</span>
       <div class="store-categories__head">
         <p class="section-eyebrow" data-i18n="categories.eyebrow">01 - Store categories</p>
         <h2 id="store-categories-title" data-i18n="categories.title">What we keep on the shelves.</h2>
         <p data-i18n="categories.text">Start with the shelf categories, then use the picks below for dishes, diets and occasions.</p>
       </div>
-      <div class="cat-row-inner store-categories__grid" aria-label="Store categories" data-store-category-grid></div>
+      <div class="cat-row-inner store-categories__grid store-categories__grid--rich" aria-label="Store categories" data-store-category-grid></div>
+
+      <div class="store-categories__origins" aria-labelledby="store-categories-origins-title">
+        <div class="store-categories__origins-copy">
+          <h3 id="store-categories-origins-title" data-i18n="categories.countriesLabel">Browse by origin</h3>
+          <p data-i18n="categories.countriesText">Same shelves, sorted by where products come from.</p>
+        </div>
+        <div class="store-categories__origins-grid" data-store-origin-grid aria-label="Origins"></div>
+      </div>
+
       <div class="store-categories__featured" aria-labelledby="store-categories-featured-title">
         <div class="store-categories__featured-copy">
           <h3 id="store-categories-featured-title" data-i18n="categories.featuredLabel">Popular picks</h3>
           <p data-i18n="categories.featuredText">Shortcuts across several shelves, useful when you shop for a dish, diet or occasion.</p>
         </div>
         <div class="store-categories__chips" data-store-highlight-grid aria-label="Popular picks"></div>
+      </div>
+    </section>
+
+    <section class="cat-row store-categories store-categories--variant-b" id="laender-editorial" data-variant="b" aria-labelledby="store-editorial-title">
+      <span class="variant-badge variant-badge--alt" data-i18n="categories.variantB" aria-hidden="true">Variant B · Editorial</span>
+      <div class="store-editorial">
+        <div class="store-editorial__head">
+          <p class="section-eyebrow" data-i18n="categories.editorialEyebrow">01 — Browse the store</p>
+          <h2 id="store-editorial-title" data-i18n="categories.editorialTitle">Asia, by aisle.</h2>
+          <p data-i18n="categories.editorialText">Six shelves, hand-picked. Tap a tile for what's inside.</p>
+        </div>
+        <div class="store-editorial__grid" data-store-editorial-grid aria-label="Store categories"></div>
+        <div class="store-editorial__featured">
+          <h3 data-i18n="categories.editorialFeatured">Cross-shelf picks</h3>
+          <div class="store-editorial__chips" data-store-editorial-chips aria-label="Cross-shelf picks"></div>
+        </div>
       </div>
     </section>
 

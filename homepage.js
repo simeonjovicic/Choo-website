@@ -31,6 +31,18 @@
       "categories.featuredLabel": "Popular picks",
       "categories.featuredText": "Shortcuts across several shelves, useful when you shop for a dish, diet or occasion.",
       "categories.featuredAria": "Popular picks",
+      "categories.variantA": "Variant A · Clean & layered",
+      "categories.variantB": "Variant B · Editorial",
+      "categories.brandPreview": "{brands} +{count} more",
+      "categories.countriesLabel": "Browse by origin",
+      "categories.countriesText": "Same shelves, sorted by where products come from.",
+      "categories.countriesAria": "Origins",
+      "categories.brandCount": "{count} brands",
+      "categories.openCountry": "Open {country} brands",
+      "categories.editorialEyebrow": "01 — Browse the store",
+      "categories.editorialTitle": "Asia, by aisle.",
+      "categories.editorialText": "Six shelves, hand-picked. Tap a tile for what's inside.",
+      "categories.editorialFeatured": "Cross-shelf picks",
       "story.eyebrow": "Our market",
       "story.sectionEyebrow": "02 - Our market",
       "story.title": "Asia, carefully sorted.",
@@ -159,6 +171,18 @@
       "categories.featuredLabel": "Beliebte Auswahl",
       "categories.featuredText": "Abkürzungen über mehrere Regale hinweg, wenn du nach Gericht, Ernährung oder Anlass einkaufst.",
       "categories.featuredAria": "Beliebte Auswahl",
+      "categories.variantA": "Variante A · Klar & dicht",
+      "categories.variantB": "Variante B · Editorial",
+      "categories.brandPreview": "{brands} +{count} weitere",
+      "categories.countriesLabel": "Nach Herkunft entdecken",
+      "categories.countriesText": "Dasselbe Sortiment, sortiert nach Herkunftsland.",
+      "categories.countriesAria": "Herkunftsländer",
+      "categories.brandCount": "{count} Marken",
+      "categories.openCountry": "{country}-Marken öffnen",
+      "categories.editorialEyebrow": "01 — Im Markt stöbern",
+      "categories.editorialTitle": "Asien, regalweise.",
+      "categories.editorialText": "Sechs Regale, handverlesen. Tippe auf eine Kachel für den Inhalt.",
+      "categories.editorialFeatured": "Quer durchs Sortiment",
       "story.eyebrow": "Unser Markt",
       "story.sectionEyebrow": "02 - Unser Markt",
       "story.title": "Asien, sorgfältig sortiert.",
@@ -287,6 +311,18 @@
       "categories.featuredLabel": "热门选择",
       "categories.featuredText": "跨多个货架的快捷选择，适合按菜式、饮食方式或场景购物。",
       "categories.featuredAria": "热门选择",
+      "categories.variantA": "版本 A · 简洁分层",
+      "categories.variantB": "版本 B · 编辑视觉",
+      "categories.brandPreview": "{brands} 等 +{count}",
+      "categories.countriesLabel": "按产地浏览",
+      "categories.countriesText": "同样的货架，按商品的来源国家排列。",
+      "categories.countriesAria": "产地",
+      "categories.brandCount": "{count} 个品牌",
+      "categories.openCountry": "打开{country}品牌",
+      "categories.editorialEyebrow": "01 — 逛逛货架",
+      "categories.editorialTitle": "亚洲，按货架陈列。",
+      "categories.editorialText": "六个货架，精心挑选。点击图块查看内容。",
+      "categories.editorialFeatured": "跨货架精选",
       "story.eyebrow": "我们的市场",
       "story.sectionEyebrow": "02 - 我们的市场",
       "story.title": "亚洲风味，精心陈列。",
@@ -3029,6 +3065,7 @@
     {
       id: "instant",
       image: "assets/categories/instant.png",
+      imageInverted: "assets/categories/instan-inverte.png",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
@@ -3039,6 +3076,7 @@
     {
       id: "snacks",
       image: "assets/categories/snacks-sweets.png",
+      imageInverted: "assets/categories/snacks-inverte.png",
       brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
@@ -3049,6 +3087,7 @@
     {
       id: "drinks",
       image: "assets/categories/drinks.png",
+      imageInverted: "assets/categories/drinks-inverte.png",
       brands: BRAND_GROUPS.drinks,
       copy: {
         en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
@@ -3059,6 +3098,7 @@
     {
       id: "sauces",
       image: "assets/categories/sauces-seasoning.png",
+      imageInverted: "assets/categories/sauce-inverte.png",
       brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
@@ -3069,6 +3109,7 @@
     {
       id: "noodles-rice",
       image: "assets/categories/noodles-rice.png",
+      imageInverted: "assets/categories/noodle-inverte.png",
       brands: BRAND_GROUPS.noodlesRice,
       copy: {
         en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
@@ -3079,6 +3120,7 @@
     {
       id: "pantry",
       image: "assets/categories/gifts.png",
+      imageInverted: "assets/categories/gitfs-inverte.png",
       brands: BRAND_GROUPS.pantry,
       copy: {
         en: { title: "Pantry & Gift Ideas", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour", "Cooking Tools & Tableware", "Gift Ideas & Decor"] },
@@ -3197,9 +3239,126 @@
   ];
 
   const SVG_NS = "http://www.w3.org/2000/svg";
-  const STORE_SELECTIONS = [...STORE_CATEGORIES, ...STORE_HIGHLIGHTS];
+
+  const COUNTRY_BROWSE = [
+    {
+      id: "origin-china",
+      originKey: "China",
+      flag: "🇨🇳",
+      brands: BRANDS_BY_ORIGIN.China,
+      copy: {
+        en: { title: "China", short: "China", items: ["Soy & oyster sauce", "Black vinegar & chili oil", "Sichuan pepper & spices", "Rice, noodles & dumplings"] },
+        de: { title: "China", short: "China", items: ["Soja- & Austernsauce", "Schwarzer Essig & Chiliöl", "Sichuanpfeffer & Gewürze", "Reis, Nudeln & Dumplings"] },
+        zh: { title: "中国", short: "中国", items: ["酱油与蚝油", "黑醋与辣椒油", "花椒与香料", "米、面与饺子皮"] }
+      }
+    },
+    {
+      id: "origin-japan",
+      originKey: "Japan",
+      flag: "🇯🇵",
+      brands: BRANDS_BY_ORIGIN.Japan,
+      copy: {
+        en: { title: "Japan", short: "Japan", items: ["Soy sauce, miso & dashi", "Ramen, udon & soba", "Snacks, mochi & sweets", "Matcha, tea & sake"] },
+        de: { title: "Japan", short: "Japan", items: ["Sojasauce, Miso & Dashi", "Ramen, Udon & Soba", "Snacks, Mochi & Süßes", "Matcha, Tee & Sake"] },
+        zh: { title: "日本", short: "日本", items: ["酱油、味噌与高汤", "拉面、乌冬与荞麦面", "零食、麻薯与甜点", "抹茶、茶与清酒"] }
+      }
+    },
+    {
+      id: "origin-korea",
+      originKey: "South Korea",
+      flag: "🇰🇷",
+      brands: BRANDS_BY_ORIGIN["South Korea"],
+      copy: {
+        en: { title: "South Korea", short: "Korea", items: ["Gochujang, kimchi & sauces", "Ramen & tteokbokki", "K-snacks & sweets", "K-drinks & coffee"] },
+        de: { title: "Südkorea", short: "Korea", items: ["Gochujang, Kimchi & Saucen", "Ramen & Tteokbokki", "K-Snacks & Süßes", "K-Drinks & Kaffee"] },
+        zh: { title: "韩国", short: "韩国", items: ["辣酱、泡菜与酱料", "拉面与年糕", "韩式零食与甜点", "韩式饮品与咖啡"] }
+      }
+    },
+    {
+      id: "origin-taiwan",
+      originKey: "Taiwan",
+      flag: "🇹🇼",
+      brands: BRANDS_BY_ORIGIN.Taiwan,
+      copy: {
+        en: { title: "Taiwan", short: "Taiwan", items: ["Bubble tea & boba", "Snacks & rice crackers", "Sauces & pastes", "Instant noodles"] },
+        de: { title: "Taiwan", short: "Taiwan", items: ["Bubble Tea & Boba", "Snacks & Reiscracker", "Saucen & Pasten", "Instant-Nudeln"] },
+        zh: { title: "台湾", short: "台湾", items: ["珍珠奶茶与波霸", "零食与米果", "酱料与酱膏", "方便面"] }
+      }
+    },
+    {
+      id: "origin-thailand",
+      originKey: "Thailand",
+      flag: "🇹🇭",
+      brands: BRANDS_BY_ORIGIN.Thailand,
+      copy: {
+        en: { title: "Thailand", short: "Thailand", items: ["Curry pastes & coconut milk", "Fish sauce & sriracha", "Jasmine rice & noodles", "Thai sweets & snacks"] },
+        de: { title: "Thailand", short: "Thailand", items: ["Currypasten & Kokosmilch", "Fischsauce & Sriracha", "Jasminreis & Nudeln", "Thai-Süßes & Snacks"] },
+        zh: { title: "泰国", short: "泰国", items: ["咖喱酱与椰奶", "鱼露与是拉差", "茉莉香米与面条", "泰式甜点与零食"] }
+      }
+    },
+    {
+      id: "origin-vietnam",
+      originKey: "Vietnam",
+      flag: "🇻🇳",
+      brands: BRANDS_BY_ORIGIN.Vietnam,
+      copy: {
+        en: { title: "Vietnam", short: "Vietnam", items: ["Rice paper & vermicelli", "Pho spices & fish sauce", "Coffee & condensed milk", "Pickles & sauces"] },
+        de: { title: "Vietnam", short: "Vietnam", items: ["Reispapier & Reisnudeln", "Pho-Gewürze & Fischsauce", "Kaffee & Kondensmilch", "Eingelegtes & Saucen"] },
+        zh: { title: "越南", short: "越南", items: ["米纸与河粉", "河粉香料与鱼露", "咖啡与炼乳", "腌菜与酱料"] }
+      }
+    },
+    {
+      id: "origin-indonesia",
+      originKey: "Indonesia",
+      flag: "🇮🇩",
+      brands: BRANDS_BY_ORIGIN.Indonesia,
+      copy: {
+        en: { title: "Indonesia", short: "Indonesia", items: ["Kecap manis & sambal", "Indomie & instant meals", "Spice blends", "Coconut & snacks"] },
+        de: { title: "Indonesien", short: "Indonesien", items: ["Kecap Manis & Sambal", "Indomie & Fertiggerichte", "Gewürzmischungen", "Kokos & Snacks"] },
+        zh: { title: "印度尼西亚", short: "印尼", items: ["甜酱油与参巴酱", "营多面与即食", "香料混合", "椰子与零食"] }
+      }
+    },
+    {
+      id: "origin-malaysia-singapore",
+      originKey: "Malaysia / Singapore",
+      flag: "🇲🇾",
+      brands: BRANDS_BY_ORIGIN["Malaysia / Singapore"],
+      copy: {
+        en: { title: "Malaysia & Singapore", short: "Malaysia & SG", items: ["Curry pastes & laksa", "Hainan & street food kits", "Snacks & drinks", "Sauces & condiments"] },
+        de: { title: "Malaysia & Singapur", short: "Malaysia & SG", items: ["Currypasten & Laksa", "Hainan- & Street-Food-Kits", "Snacks & Getränke", "Saucen & Condiments"] },
+        zh: { title: "马来西亚与新加坡", short: "马新", items: ["咖喱酱与叻沙", "海南风味与街头小食", "零食与饮品", "酱料与调味"] }
+      }
+    },
+    {
+      id: "origin-philippines",
+      originKey: "Philippines",
+      flag: "🇵🇭",
+      brands: BRANDS_BY_ORIGIN.Philippines,
+      copy: {
+        en: { title: "Philippines", short: "Philippines", items: ["Adobo & banana ketchup", "Pancit & instant meals", "Ube sweets & snacks", "Sauces & coconut"] },
+        de: { title: "Philippinen", short: "Philippinen", items: ["Adobo & Bananen-Ketchup", "Pancit & Fertiggerichte", "Ube-Süßes & Snacks", "Saucen & Kokos"] },
+        zh: { title: "菲律宾", short: "菲律宾", items: ["阿斗波与香蕉番茄酱", "炒粉与即食", "紫薯甜点与零食", "酱料与椰子"] }
+      }
+    },
+    {
+      id: "origin-south-asia",
+      originKey: "India / South Asia",
+      flag: "🇮🇳",
+      brands: BRANDS_BY_ORIGIN["India / South Asia"],
+      copy: {
+        en: { title: "India & South Asia", short: "South Asia", items: ["Curry pastes & masalas", "Basmati rice & lentils", "Naan, papad & snacks", "Chutneys & pickles"] },
+        de: { title: "Indien & Südasien", short: "Südasien", items: ["Currypasten & Masalas", "Basmatireis & Linsen", "Naan, Papad & Snacks", "Chutneys & Pickles"] },
+        zh: { title: "印度与南亚", short: "南亚", items: ["咖喱酱与马萨拉", "巴斯马蒂米与扁豆", "馕、papad 与零食", "酸甜酱与腌菜"] }
+      }
+    }
+  ];
+
+  const STORE_SELECTIONS = [...STORE_CATEGORIES, ...STORE_HIGHLIGHTS, ...COUNTRY_BROWSE];
   const grid = document.querySelector("[data-store-category-grid]");
   const highlightGrid = document.querySelector("[data-store-highlight-grid]");
+  const originGrid = document.querySelector("[data-store-origin-grid]");
+  const editorialGrid = document.querySelector("[data-store-editorial-grid]");
+  const editorialChips = document.querySelector("[data-store-editorial-chips]");
   const modal = document.getElementById("store-category-modal");
   if (!grid || !modal) return;
 
@@ -3346,6 +3505,99 @@
     return createCategoryIcon(category.id);
   }
 
+  function createTileVisual(category) {
+    const src = category.imageInverted || category.image;
+    if (src) {
+      const image = document.createElement("img");
+      image.className = "category-icon-img category-icon-img--inverted";
+      image.src = src;
+      image.alt = "";
+      image.decoding = "async";
+      image.loading = "lazy";
+      image.onerror = () => {
+        if (image.dataset.fallback) {
+          image.replaceWith(createCategoryIcon(category.id));
+          return;
+        }
+        image.dataset.fallback = "1";
+        image.classList.remove("category-icon-img--inverted");
+        image.src = category.image;
+      };
+      return image;
+    }
+    return createCategoryIcon(category.id);
+  }
+
+  function brandSlug(brand) {
+    return String(brand)
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function brandInitials(brand) {
+    const parts = String(brand)
+      .split(/[\s·\-_/]+/)
+      .filter(Boolean);
+    if (!parts.length) return "?";
+    if (parts.length === 1) {
+      const word = parts[0];
+      if (word.length <= 3) return word.toUpperCase();
+      return word.slice(0, 2).toUpperCase();
+    }
+    return parts.slice(0, 3).map((part) => part[0]).join("").toUpperCase();
+  }
+
+  function createBrandTile(brand) {
+    const tile = document.createElement("li");
+    tile.className = "brand-tile";
+    tile.setAttribute("title", brand);
+
+    const mark = document.createElement("span");
+    mark.className = "brand-tile__mark";
+    mark.setAttribute("aria-hidden", "true");
+
+    const slug = brandSlug(brand);
+    const initials = brandInitials(brand);
+    const initialSpan = document.createElement("span");
+    initialSpan.className = "brand-tile__initials";
+    initialSpan.textContent = initials;
+    if (initials.length >= 3) initialSpan.classList.add("brand-tile__initials--small");
+
+    const img = document.createElement("img");
+    img.className = "brand-tile__logo";
+    img.src = `assets/brands/${slug}.png`;
+    img.alt = brand;
+    img.decoding = "async";
+    img.loading = "lazy";
+    img.onerror = () => {
+      img.remove();
+      mark.classList.add("brand-tile__mark--no-logo");
+    };
+    img.onload = () => {
+      mark.classList.add("brand-tile__mark--has-logo");
+      initialSpan.hidden = true;
+    };
+
+    mark.append(initialSpan, img);
+
+    const name = document.createElement("span");
+    name.className = "brand-tile__name";
+    name.textContent = brand;
+
+    tile.append(mark, name);
+    return tile;
+  }
+
+  function buildBrandPreview(brands, sampleSize = 3) {
+    if (!brands || !brands.length) return "";
+    const sample = brands.slice(0, sampleSize).join(" · ");
+    const remaining = Math.max(brands.length - sampleSize, 0);
+    if (remaining <= 0) return sample;
+    return tr("categories.brandPreview", { brands: sample, count: remaining });
+  }
+
   function renderGrid() {
     grid.textContent = "";
     grid.setAttribute("aria-label", tr("categories.tablist"));
@@ -3370,12 +3622,115 @@
       name.className = "cat-name";
       name.textContent = copy.title;
 
-      sub.className = "cat-sub";
-      sub.textContent = tr("categories.itemCount", { count: copy.items.length });
+      sub.className = "cat-sub cat-sub--brands";
+      const preview = buildBrandPreview(category.brands, 3);
+      sub.textContent = preview || tr("categories.itemCount", { count: copy.items.length });
 
       button.append(icon, name, sub);
       button.addEventListener("click", () => openModal(category.id, button));
       grid.append(button);
+    });
+  }
+
+  function renderOriginGrid() {
+    if (!originGrid) return;
+    originGrid.textContent = "";
+    originGrid.setAttribute("aria-label", tr("categories.countriesAria"));
+
+    COUNTRY_BROWSE.forEach((country) => {
+      const copy = getCopy(country);
+      const button = document.createElement("button");
+      const flag = document.createElement("span");
+      const name = document.createElement("span");
+      const count = document.createElement("span");
+
+      button.type = "button";
+      button.className = "origin-chip";
+      button.dataset.storeOrigin = country.id;
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "store-category-modal");
+      button.setAttribute("aria-label", tr("categories.openCountry", { country: copy.title }));
+
+      flag.className = "origin-chip__flag";
+      flag.textContent = country.flag;
+      flag.setAttribute("aria-hidden", "true");
+
+      name.className = "origin-chip__name";
+      name.textContent = copy.short || copy.title;
+
+      count.className = "origin-chip__count";
+      count.textContent = tr("categories.brandCount", { count: (country.brands || []).length });
+
+      button.append(flag, name, count);
+      button.addEventListener("click", () => openModal(country.id, button));
+      originGrid.append(button);
+    });
+  }
+
+  function renderEditorialGrid() {
+    if (!editorialGrid) return;
+    editorialGrid.textContent = "";
+    editorialGrid.setAttribute("aria-label", tr("categories.tablist"));
+
+    STORE_CATEGORIES.forEach((category) => {
+      const copy = getCopy(category);
+      const button = document.createElement("button");
+      const media = document.createElement("span");
+      const body = document.createElement("span");
+      const name = document.createElement("span");
+      const sub = document.createElement("span");
+
+      button.type = "button";
+      button.className = "tile";
+      button.dataset.storeEditorial = category.id;
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "store-category-modal");
+      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+
+      media.className = "tile__media";
+      media.append(createTileVisual(category));
+
+      body.className = "tile__body";
+      name.className = "tile__name";
+      name.textContent = copy.title;
+
+      sub.className = "tile__sub";
+      sub.textContent = buildBrandPreview(category.brands, 2);
+
+      body.append(name, sub);
+      button.append(media, body);
+      button.addEventListener("click", () => openModal(category.id, button));
+      editorialGrid.append(button);
+    });
+  }
+
+  function renderEditorialChips() {
+    if (!editorialChips) return;
+    editorialChips.textContent = "";
+    editorialChips.setAttribute("aria-label", tr("categories.featuredAria"));
+
+    STORE_HIGHLIGHTS.forEach((highlight) => {
+      const copy = getCopy(highlight);
+      const button = document.createElement("button");
+      const icon = document.createElement("span");
+      const name = document.createElement("span");
+
+      button.type = "button";
+      button.className = "store-highlight store-highlight--editorial";
+      button.dataset.storeEditorialPick = highlight.id;
+      button.setAttribute("aria-haspopup", "dialog");
+      button.setAttribute("aria-controls", "store-category-modal");
+      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+
+      icon.className = "store-highlight__icon";
+      icon.append(createCategoryIcon(highlight.id));
+
+      name.className = "store-highlight__name";
+      name.textContent = copy.title;
+
+      button.append(icon, name);
+      button.addEventListener("click", () => openModal(highlight.id, button));
+      editorialChips.append(button);
     });
   }
 
@@ -3413,12 +3768,24 @@
     if (!activeId || !modalIcon || !modalTitle || !modalCount || !modalList) return;
     const category = STORE_SELECTIONS.find((entry) => entry.id === activeId) || STORE_CATEGORIES[0];
     const copy = getCopy(category);
+    const isCountry = !!category.originKey;
 
     if (closeButton) closeButton.setAttribute("aria-label", tr("categories.close"));
     modalIcon.textContent = "";
-    modalIcon.append(createCategoryVisual(category));
+    if (isCountry) {
+      modalIcon.classList.add("store-category-modal__visual--flag");
+      const flag = document.createElement("span");
+      flag.className = "store-category-modal__flag";
+      flag.textContent = category.flag || "";
+      modalIcon.append(flag);
+    } else {
+      modalIcon.classList.remove("store-category-modal__visual--flag");
+      modalIcon.append(createCategoryVisual(category));
+    }
     modalTitle.textContent = copy.title;
-    modalCount.textContent = tr("categories.itemCount", { count: copy.items.length });
+    modalCount.textContent = isCountry
+      ? tr("categories.brandCount", { count: (category.brands || []).length })
+      : tr("categories.itemCount", { count: copy.items.length });
     if (modalIntro) modalIntro.textContent = copy.intro || tr("categories.modalIntro");
     modalList.textContent = "";
 
@@ -3430,15 +3797,15 @@
 
     if (modalBrands && modalBrandsLabel) {
       modalBrands.textContent = "";
-      const brands = (category.brands || []).slice(0, 3);
+      modalBrands.classList.add("brand-tile-grid");
+      const brandLimit = isCountry ? 60 : 5;
+      const brands = (category.brands || []).slice(0, brandLimit);
       if (brands.length) {
         modalBrandsLabel.textContent = tr("categories.brandsLabel");
         modalBrandsLabel.hidden = false;
         modalBrands.hidden = false;
         brands.forEach((brand) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = brand;
-          modalBrands.append(listItem);
+          modalBrands.append(createBrandTile(brand));
         });
       } else {
         modalBrandsLabel.hidden = true;
@@ -3529,10 +3896,16 @@
   window.ChooI18n?.onChange(() => {
     renderGrid();
     renderHighlightGrid();
+    renderOriginGrid();
+    renderEditorialGrid();
+    renderEditorialChips();
     if (activeId) renderModal();
   });
   renderGrid();
   renderHighlightGrid();
+  renderOriginGrid();
+  renderEditorialGrid();
+  renderEditorialChips();
 })();
 
 /* ===== Student-band parallax ===== */
