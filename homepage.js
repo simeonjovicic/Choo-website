@@ -3006,12 +3006,12 @@
   }
 
   const BRAND_SEEDS = {
-    instant: ["NISSIN", "SAMYANG", "NONGSHIM", "OTTOGI", "MAMA", "YOPOKKI", "YOUNGPOONG", "OTTOGI JIN", "PALDO", "BIBIGO", "YANGBAN", "DONGWON", "PROBUNSIK", "DAEBAK", "OTTOGI KIMCHI", "PULMUONE", "OUR HOME", "BAIJIA", "MASTER KONG", "JML", "AKUAN", "LUOBAWANG", "LOUBAWANG", "YOU NI MIAN", "CN BAIJIA", "HAIDILAO", "LITTLE SHEEP", "UNIF", "WEI LIH", "MAMA", "LOBO", "CUNG DINH", "ACECOOK", "INDOMIE", "PRIMA TASTE", "WAI WAI", "SAU TAO", "LUCKY ME", "ASHOKA", "PATAK", "PATAKS"],
-    snacks: ["TOKIMEKI", "POCKY", "HAOLIYUAN", "CHACHA", "WEILONG", "WANT WANT", "WANT WANT QQ", "LOTTE", "ORION", "PEPERO", "HAITAI", "CROWN", "HBAF", "SEOJU", "SWEETMONSTER", "HWAGWABANG", "MEIJI", "MORINAGA", "FUJIYA", "KOIKEYA", "UHA", "KITKAT", "TOHATO", "GLICO", "RIBON", "KANRO", "JELLY B", "KASUGAI", "YBC", "BOURBON", "CALBEE", "SAKUMA", "MEITO", "NOBEL", "PINE", "SENJAKUAME", "KABAYA FOODS", "ROYAL FAMILY", "JIABAO", "HOT CHIP", "BESTORE", "NUTRI SNACK", "CN HUANG FEI HONG", "GANYUAN", "LITTLE MOONS", "TARO", "GREENDAY", "KOH-KAE", "NICE CHOICE", "NAGARAYA", "BOY BAWANG", "KOPIKO", "GINGERBON", "PILLOWS UBE", "REGENT"],
-    drinks: ["HATAKOSEN", "ITO EN", "POKKA", "KIRIN", "SANGARIA", "TOMOMASU", "SUNTORY", "TEA TSUBOICHI", "HISHIWAEN", "TSUBOICHI", "OTSUKA", "ASAHI", "POCARI", "QLOVE", "DELAFFE", "WOONGJIN", "BINGGRAE", "KR DEMISODA", "KWANGDONG", "CHI FOREST", "WAHAHA AD", "JIADUBAO", "WANG LAO JI", "COCO", "YESHU", "OISHI", "RANONG TEA", "RANONG", "CARABAO", "RED BULL", "KHAO SHONG", "CHATRAMUNE", "VFRESH", "TAN HIEP PHAT", "TRUNG NGUYEN", "GOLD KILI", "SUPER", "DRINHO", "C2", "YEO'S", "RUBICON", "MAAZA"],
-    sauces: ["KIKKOMAN", "LKK", "FLYING GOOSE", "HEALTHY BOY", "AHG", "PANTAI", "COCK BRAND", "LOBO", "THAI PRIDE", "MEGACHEF", "MAEPRANOM", "TIPAROS", "MAE KRUA", "SQUID", "NIM JIOM", "AMPAWA", "POR KWAN", "MAMA SITA", "DATU PUTI", "SILVER SWAN", "UFC", "MANG TOMAS", "SEMPIO", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "CJW", "OTAFUKU", "S&B", "YAMAMORI", "KEWPIE", "YAMASA", "KADOYA", "MIZKAN", "BULLDOG", "HINODE", "NINBEN", "KAMADA", "TAKESAN", "HACHI", "HADAY", "WAN JA SHAN", "WANGZHIHE", "SZECHUAN TIAN FU", "ZHONGJING", "CUIHONG", "LIUPO", "HENG SHUN", "AMOY", "BULLHEAD", "TW BULLHEAD", "DH FOODS", "CHOLIMEX", "BAO LONG", "BALI KITCHEN", "SUREE", "ABC", "TRS", "PATAK", "PATAKS", "ENCONA", "RAJAH", "Shan"],
-    noodlesRice: ["OBENTO", "THAI DANCER", "BAMBOO TREE", "SAU TAO", "SIX FORTUNE", "WAI WAI", "TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "GOLDEN SAIL", "LONGKOU", "YUME NISHIKI", "SEKIRYU", "HAKUBAKU", "MIYATA", "ITSUKI", "INAKA", "YAMAGEN", "WEL PAC", "SHIRAKIKU", "UNIF", "WEI LIH", "GOLDEN BOWL", "GOLDEN LILY", "MEE CHUN", "TRA CHANG"],
-    pantry: ["AJINOMOTO", "HIKARI MISO", "MARUTOMO", "KONBU", "WAKAME", "HANAMARUKI", "MOMOYA", "SHIMAYA", "KURATA VEGAN", "JOYTOFU", "SOYSPRING", "LADY BOBA", "CENTURY", "DAGUPAN", "ARGENTINA", "PONDAN", "KOEPOE", "UDANG MAS", "TRS", "SWAD", "KTC", "HEM", "SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN"]
+    instant: ["NISSIN", "SAMYANG", "NONGSHIM", "OTTOGI", "MAMA", "YOPOKKI", "YOUNGPOONG", "OTTOGI JIN", "PALDO", "YANGBAN", "PROBUNSIK", "DAEBAK", "OUR HOME", "BAIJIA", "MASTER KONG", "JML", "AKUAN", "LUOBAWANG", "LOUBAWANG", "YOU NI MIAN", "CN BAIJIA", "HAIDILAO", "LITTLE SHEEP", "UNIF", "WEI LIH", "CUNG DINH", "ACECOOK", "INDOMIE", "PRIMA TASTE", "WAI WAI", "SAU TAO", "LUCKY ME", "ASHOKA", "PATAK", "PATAKS"],
+    snacks: ["TOKIMEKI", "POCKY", "HAOLIYUAN", "CHACHA", "WEILONG", "WANT WANT", "WANT WANT QQ", "LOTTE", "ORION", "PEPERO", "HAITAI", "CROWN", "HBAF", "SEOJU", "SWEETMONSTER", "HWAGWABANG", "MEIJI", "MORINAGA", "FUJIYA", "KOIKEYA", "UHA", "KITKAT", "TOHATO", "GLICO", "RIBON", "KANRO", "JELLY B", "KASUGAI", "YBC", "BOURBON", "CALBEE", "SAKUMA", "MEITO", "NOBEL", "PINE", "SENJAKUAME", "KABAYA FOODS", "ROYAL FAMILY", "JIABAO", "HOT CHIP", "BESTORE", "NUTRI SNACK", "CN HUANG FEI HONG", "GANYUAN", "LITTLE MOONS", "TARO", "GREENDAY", "KOH-KAE", "KHAO SHONG", "NICE CHOICE", "NAGARAYA", "BOY BAWANG", "KOPIKO", "GINGERBON", "PILLOWS UBE", "REGENT"],
+    drinks: ["HATAKOSEN", "ITO EN", "POKKA", "KIRIN", "SANGARIA", "TOMOMASU", "SUNTORY", "TEA TSUBOICHI", "HISHIWAEN", "TSUBOICHI", "OTSUKA", "ASAHI", "POCARI", "QLOVE", "DELAFFE", "WOONGJIN", "BINGGRAE", "KR DEMISODA", "KWANGDONG", "CHI FOREST", "WAHAHA AD", "JIADUBAO", "WANG LAO JI", "COCO", "YESHU", "OISHI", "RANONG TEA", "RANONG", "CARABAO", "RED BULL", "CHATRAMUNE", "VFRESH", "TAN HIEP PHAT", "TRUNG NGUYEN", "GOLD KILI", "SUPER", "DRINHO", "C2", "YEO'S", "RUBICON", "MAAZA"],
+    sauces: ["KIKKOMAN", "LKK", "FLYING GOOSE", "HEALTHY BOY", "AHG", "PANTAI", "LOBO", "MEGACHEF", "MAEPRANOM", "TIPAROS", "MAE KRUA", "SQUID", "AMPAWA", "POR KWAN", "MAMA SITA", "DATU PUTI", "SILVER SWAN", "UFC", "MANG TOMAS", "SEMPIO", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "CJW", "OTAFUKU", "S&B", "YAMAMORI", "KEWPIE", "YAMASA", "KADOYA", "MIZKAN", "BULLDOG", "HINODE", "NINBEN", "KAMADA", "TAKESAN", "HACHI", "HADAY", "WAN JA SHAN", "WANGZHIHE", "SZECHUAN TIAN FU", "ZHONGJING", "CUIHONG", "LIUPO", "HENG SHUN", "AMOY", "BULLHEAD", "TW BULLHEAD", "DH FOODS", "CHOLIMEX", "BAO LONG", "BALI KITCHEN", "SUREE", "ABC", "TRS", "PATAK", "PATAKS", "ENCONA", "RAJAH", "Shan"],
+    noodlesRice: ["OBENTO", "THAI DANCER", "BAMBOO TREE", "SAU TAO", "SIX FORTUNE", "WAI WAI", "TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "COCK BRAND", "THAI PRIDE", "GOLDEN SAIL", "LONGKOU", "YUME NISHIKI", "SEKIRYU", "HAKUBAKU", "ITSUKI", "INAKA", "YAMAGEN", "WEL PAC", "SHIRAKIKU", "UNIF", "WEI LIH", "GOLDEN BOWL", "GOLDEN LILY", "MEE CHUN", "TRA CHANG"],
+    pantry: ["AJINOMOTO", "HIKARI MISO", "MARUTOMO", "KONBU", "WAKAME", "HANAMARUKI", "MOMOYA", "MIYATA", "SHIMAYA", "DONGWON", "LADY BOBA", "CENTURY", "DAGUPAN", "ARGENTINA", "PONDAN", "KOEPOE", "UDANG MAS", "SWAD", "KTC", "SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN"]
   };
 
   const BRAND_GROUPS = (() => {
@@ -3021,12 +3021,12 @@
     const sauces = brandList(BRAND_SEEDS.sauces);
     const noodlesRice = brandList(BRAND_SEEDS.noodlesRice);
     const pantry = uniqueBrands([...brandList(BRAND_SEEDS.pantry), ...remainingBrands([instant, snacks, drinks, sauces, noodlesRice])]);
-    const rice = brandList(["TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "GOLDEN SAIL", "YUME NISHIKI", "SEKIRYU", "OBENTO", "THAI DANCER", "TRA CHANG", "SIX FORTUNE", "BAMBOO TREE"]);
+    const rice = brandList(["TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "COCK BRAND", "THAI PRIDE", "GOLDEN SAIL", "YUME NISHIKI", "SEKIRYU", "OBENTO", "THAI DANCER", "TRA CHANG", "SIX FORTUNE", "BAMBOO TREE", "HINODE"]);
     const drinksAlcohol = uniqueBrands([...drinks, ...brandList(["ASAHI", "KIRIN", "SUNTORY", "TTL", "GOLD LEAF"])]);
-    const fresh = brandList(["JOYTOFU", "SOYSPRING", "PULMUONE", "KURATA VEGAN", "BIBIGO", "WANG", "SHIRAKIKU", "ROYAL FAMILY", "LITTLE MOONS", "JONGGA", "SAMLIP", "ALLGROO"]);
+    const fresh = brandList(["JOYTOFU", "SOYSPRING", "PULMUONE", "KURATA VEGAN", "BIBIGO", "OTTOGI KIMCHI", "JONGGA", "WANG", "SHIRAKIKU", "ROYAL FAMILY", "SAMLIP", "ALLGROO", "HANAMARUKI"]);
     const frozen = brandList(["BIBIGO", "WANG", "PULMUONE", "AJINOMOTO", "SHIRAKIKU", "SAMLIP", "LITTLE MOONS", "ROYAL FAMILY", "CP"]);
     const tea = brandList(["ITO EN", "POKKA", "KIRIN", "SANGARIA", "TEA TSUBOICHI", "HISHIWAEN", "TSUBOICHI", "JIADUBAO", "WANG LAO JI", "OISHI", "RANONG TEA", "GOLD KILI", "CHATRAMUNE", "KWANGDONG"]);
-    const tcm = brandList(["KWANGDONG", "JIADUBAO", "WANG LAO JI", "NIM JIOM", "HENG SHOU TANG", "KAKI TIGA", "HEM", "KONBU", "WAKAME", "TRS"]);
+    const tcm = brandList(["NIM JIOM", "KWANGDONG", "JIADUBAO", "WANG LAO JI", "HENG SHOU TANG", "KAKI TIGA"]);
 
     return {
       instant,
@@ -3042,7 +3042,7 @@
       tea,
       tcm,
       chineseClassics: uniqueBrands([...originBrands(["China", "Taiwan"]), ...brandList(["AMOY", "LKK", "HENG SHUN", "SHUITA", "LONGKOU", "SAU TAO", "PATCHUN", "MEE CHUN"])]),
-      vegan: brandList(["KURATA VEGAN", "JOYTOFU", "PULMUONE", "SOYSPRING", "KIKKOMAN", "LKK", "HIKARI MISO", "HANAMARUKI", "KONBU", "WAKAME", "LONGKOU", "BAMBOO TREE", "THAI DANCER", "TILDA", "TRS", "SWAD", "ASHOKA", "COCK BRAND", "AROY-D", "CHAOKOH", "SIX FORTUNE", "YUME NISHIKI", "SEKIRYU"]),
+      vegan: brandList(["JOYTOFU", "PULMUONE", "SOYSPRING", "KIKKOMAN", "LKK", "TILDA", "KURATA VEGAN", "HIKARI MISO", "HANAMARUKI", "KONBU", "WAKAME", "LONGKOU", "BAMBOO TREE", "THAI DANCER", "TRS", "SWAD", "ASHOKA", "COCK BRAND", "AROY-D", "CHAOKOH", "SIX FORTUNE", "YUME NISHIKI", "SEKIRYU"]),
       hotPot: brandList(["HAIDILAO", "LITTLE SHEEP", "LJ BROTHER HOTPOT", "LJ BROTHER HOTPOT BASE", "LJ BROTHER", "FLYING GOOSE", "HEALTHY BOY", "PANTAI", "COCK BRAND", "PRB", "ZHONGJING", "CUIHONG", "LIUPO", "SZECHUAN TIAN FU", "BIBIGO", "WANG", "YOPOKKI", "BAMBOO TREE", "LONGKOU", "JOYTOFU"]),
       spicy: brandList(["SAMYANG", "NONGSHIM", "MAMA", "FLYING GOOSE", "WEILONG", "CJ", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "S&B", "SZECHUAN TIAN FU", "CUIHONG", "LIUPO", "CN HUANG FEI HONG", "HOT CHIP", "HAIDILAO", "LITTLE SHEEP", "MAEPRANOM", "PANTAI", "LOBO", "ENCONA", "YUMEI"]),
       gifts: brandList(["SANRIO", "MEASTY SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN", "DEATH NOTE", "MY HERO ACADEMIA", "HATSUNE MIKU", "JUJUTSU KAISEN", "ATTACK ON TITAN", "JUNJI ITO", "POKEMON", "SAILOR MOON", "BERSERK", "DETECTIVE CONAN", "ABYSTYLE", "ENSKY", "INUYASHA", "FAIRY TAIL", "DR STONE", "HUNTER X HUNTER", "TOILET-BOUND HANAKO-KUN", "HAIKYU", "CHAINSAW MAN", "PUELLA MAGI MADOKA MAGICA", "BT21", "BTS", "BLACK PINK", "SQUID GAME", "PINK FONG", "TOKIMEKI", "POCKY", "KITKAT", "ROYAL FAMILY"])
@@ -3433,24 +3433,21 @@
   }
 
   function createTileVisual(category) {
-    const src = category.imageInverted || category.image;
+    const src = category.image || category.imageInverted;
     if (src) {
       const image = document.createElement("img");
-      image.className = category.imageInverted
-        ? "category-icon-img category-icon-img--inverted"
-        : "category-icon-img";
+      image.className = "category-icon-img";
       image.src = src;
       image.alt = "";
       image.decoding = "async";
       image.loading = "lazy";
       image.onerror = () => {
-        if (image.dataset.fallback) {
+        if (image.dataset.fallback || !category.imageInverted) {
           image.replaceWith(createCategoryIcon(category.id));
           return;
         }
         image.dataset.fallback = "1";
-        image.classList.remove("category-icon-img--inverted");
-        image.src = category.image;
+        image.src = category.imageInverted;
       };
       return image;
     }
@@ -3464,6 +3461,55 @@
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
   }
+
+  const BRAND_LOGO_FILES = {
+    "AHG": "AHG.png",
+    "CHACHA": "chacha.png",
+    "FLYING GOOSE": "flyinggoose.png",
+    "HAOLIYUAN": "haoliyuan.png",
+    "HATAKOSEN": "hata.png",
+    "HEALTHY BOY": "healthyboybrand.png",
+    "ITO EN": "ITOEN.png",
+    "JOYTOFU": "joytofu.png",
+    "KASET": "kaset.png",
+    "KIKKOMAN": "kikkoman.png",
+    "KIRIN": "kirinibachi.png",
+    "LKK": "lkk.png",
+    "MALI FLOWER": "maliflower.png",
+    "MAMA": "mama.png",
+    "NISSIN": "nissin-logo.png",
+    "NONGSHIM": "nongshim.png",
+    "OTTOGI": "ottogi.png",
+    "POCKY": "pocky.png",
+    "POKKA": "pokka.png",
+    "PULMUONE": "pulmuone.png",
+    "ROYAL TIGER": "royaltiger.png",
+    "SAMYANG": "samyang.png",
+    "SANGARIA": "sangaria.png",
+    "SOYSPRING": "soyspring.png",
+    "TILDA": "tilda.png",
+    "TOKIMEKI": "tokimeki.png"
+  };
+
+  function brandLogoSrc(brand) {
+    const file = BRAND_LOGO_FILES[brand];
+    return file ? `assets/marken/${file}` : null;
+  }
+
+  const BRAND_LOGO_SCALES = {
+    "MAMA": 1.08,
+    "SAMYANG": 1.05,
+    "HAOLIYUAN": 1.10,
+    "POCKY": 1.05,
+    "KIKKOMAN": 1.08,
+    "LKK": 1.08,
+    "FLYING GOOSE": 1.08,
+    "HEALTHY BOY": 1.08,
+    "AHG": 1.08,
+    "TILDA": 1.08,
+    "ROYAL TIGER": 1.08,
+    "MALI FLOWER": 1.08
+  };
 
   function brandInitials(brand) {
     const parts = String(brand)
@@ -3487,29 +3533,30 @@
     mark.className = "brand-tile__mark";
     mark.setAttribute("aria-hidden", "true");
 
-    const slug = brandSlug(brand);
     const initials = brandInitials(brand);
     const initialSpan = document.createElement("span");
     initialSpan.className = "brand-tile__initials";
     initialSpan.textContent = initials;
     if (initials.length >= 3) initialSpan.classList.add("brand-tile__initials--small");
+    mark.append(initialSpan);
 
-    const img = document.createElement("img");
-    img.className = "brand-tile__logo";
-    img.src = `assets/brands/${slug}.png`;
-    img.alt = brand;
-    img.decoding = "async";
-    img.loading = "lazy";
-    img.onerror = () => {
-      img.remove();
-      mark.classList.add("brand-tile__mark--no-logo");
-    };
-    img.onload = () => {
-      mark.classList.add("brand-tile__mark--has-logo");
-      initialSpan.hidden = true;
-    };
-
-    mark.append(initialSpan, img);
+    const logoSrc = brandLogoSrc(brand);
+    if (logoSrc) {
+      const img = document.createElement("img");
+      img.className = "brand-tile__logo";
+      img.src = logoSrc;
+      img.alt = brand;
+      img.decoding = "async";
+      img.loading = "lazy";
+      const scale = BRAND_LOGO_SCALES[brand];
+      if (scale) img.style.transform = `scale(${scale})`;
+      img.onerror = () => { img.remove(); };
+      img.onload = () => {
+        mark.classList.add("brand-tile__mark--has-logo");
+        initialSpan.hidden = true;
+      };
+      mark.append(img);
+    }
 
     const name = document.createElement("span");
     name.className = "brand-tile__name";
