@@ -3656,10 +3656,12 @@
 
     if (editorialControls) editorialControls.hidden = !useCarousel;
     if (editorialPrev) {
+      editorialPrev.hidden = !useCarousel;
       editorialPrev.disabled = editorialPageIndex === 0;
       editorialPrev.setAttribute("aria-label", tr("categories.carouselPrev"));
     }
     if (editorialNext) {
+      editorialNext.hidden = !useCarousel;
       editorialNext.disabled = editorialPageIndex >= totalPages - 1;
       editorialNext.setAttribute("aria-label", tr("categories.carouselNext"));
     }

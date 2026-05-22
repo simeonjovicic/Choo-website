@@ -84,11 +84,13 @@
           <h2 id="store-editorial-title" data-i18n="categories.editorialTitle">Asia, by aisle.</h2>
           <p data-i18n="categories.editorialText">11 core aisles, clearly sorted. Tap a tile for what's inside.</p>
         </div>
-        <div class="store-editorial__grid" data-store-editorial-grid aria-label="Store categories"></div>
+        <div class="store-editorial__viewport">
+          <button class="store-editorial__nav store-editorial__nav--side store-editorial__nav--prev" type="button" data-store-editorial-prev aria-label="Previous categories" hidden>←</button>
+          <div class="store-editorial__grid" data-store-editorial-grid aria-label="Store categories"></div>
+          <button class="store-editorial__nav store-editorial__nav--side store-editorial__nav--next" type="button" data-store-editorial-next aria-label="Next categories" hidden>→</button>
+        </div>
         <div class="store-editorial__controls" data-store-editorial-controls hidden>
-          <button class="store-editorial__nav" type="button" data-store-editorial-prev aria-label="Previous categories">←</button>
           <span class="store-editorial__page" data-store-editorial-page aria-live="polite">1 / 1</span>
-          <button class="store-editorial__nav" type="button" data-store-editorial-next aria-label="Next categories">→</button>
         </div>
         <div class="store-editorial__featured">
           <h3 data-i18n="categories.editorialFeatured">Cross-shelf picks</h3>
