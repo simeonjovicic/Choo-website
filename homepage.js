@@ -19,30 +19,20 @@
       "hero.text": "An Asian market on Linke Wienzeile. Pantry staples, noodles, snacks and sauces from across Asia.",
       "hero.cta": "Visit ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Vienna",
-      "categories.eyebrow": "01 - Store categories",
-      "categories.title": "What we keep on the shelves.",
-      "categories.text": "Start with the shelf categories, then use the picks below for dishes, diets and occasions.",
       "categories.tablist": "Store categories",
       "categories.open": "Open {category}",
       "categories.close": "Close category",
       "categories.modalIntro": "Usually on these shelves",
       "categories.itemCount": "{count} groups",
       "categories.brandsLabel": "Brands you'll find",
-      "categories.featuredLabel": "Popular picks",
-      "categories.featuredText": "Shortcuts across several shelves, useful when you shop for a dish, diet or occasion.",
       "categories.featuredAria": "Popular picks",
-      "categories.variantA": "Variant A · Clean & layered",
-      "categories.variantB": "Variant B · Editorial",
       "categories.brandPreview": "{brands} +{count} more",
-      "categories.countriesLabel": "Browse by origin",
-      "categories.countriesText": "Same shelves, sorted by where products come from.",
-      "categories.countriesAria": "Origins",
-      "categories.brandCount": "{count} brands",
-      "categories.openCountry": "Open {country} brands",
       "categories.editorialEyebrow": "01 — Browse the store",
       "categories.editorialTitle": "Asia, by aisle.",
-      "categories.editorialText": "Six shelves, hand-picked. Tap a tile for what's inside.",
+      "categories.editorialText": "11 core aisles, clearly sorted. Tap a tile for what's inside.",
       "categories.editorialFeatured": "Cross-shelf picks",
+      "categories.carouselPrev": "Previous categories",
+      "categories.carouselNext": "Next categories",
       "story.eyebrow": "Our market",
       "story.sectionEyebrow": "02 - Our market",
       "story.title": "Asia, carefully sorted.",
@@ -80,6 +70,8 @@
       "hours.saturday": "Saturday",
       "hours.sunday": "Sunday",
       "hours.closed": "closed",
+      "payments.title": "Accepted payments",
+      "payments.note": "Card, mobile wallet and selected voucher payments accepted in store.",
       "footer.links": "Links",
       "footer.visit": "Visit",
       "footer.hours1": "Mon-Fri 09-20:00",
@@ -159,30 +151,20 @@
       "hero.text": "Asia-Markt an der Linken Wienzeile. Vorrat, Nudeln, Snacks und Saucen aus ganz Asien.",
       "hero.cta": "Besuchen ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Wien",
-      "categories.eyebrow": "01 - Sortiment",
-      "categories.title": "Was bei uns im Regal steht.",
-      "categories.text": "Zuerst die Regalkategorien, darunter passende Abkürzungen für Gerichte, Ernährung und Anlässe.",
       "categories.tablist": "Sortimentskategorien",
       "categories.open": "{category} öffnen",
       "categories.close": "Kategorie schließen",
       "categories.modalIntro": "Meistens in diesem Regal",
       "categories.itemCount": "{count} Produktgruppen",
       "categories.brandsLabel": "Marken bei uns",
-      "categories.featuredLabel": "Beliebte Auswahl",
-      "categories.featuredText": "Abkürzungen über mehrere Regale hinweg, wenn du nach Gericht, Ernährung oder Anlass einkaufst.",
       "categories.featuredAria": "Beliebte Auswahl",
-      "categories.variantA": "Variante A · Klar & dicht",
-      "categories.variantB": "Variante B · Editorial",
       "categories.brandPreview": "{brands} +{count} weitere",
-      "categories.countriesLabel": "Nach Herkunft entdecken",
-      "categories.countriesText": "Dasselbe Sortiment, sortiert nach Herkunftsland.",
-      "categories.countriesAria": "Herkunftsländer",
-      "categories.brandCount": "{count} Marken",
-      "categories.openCountry": "{country}-Marken öffnen",
       "categories.editorialEyebrow": "01 — Im Markt stöbern",
       "categories.editorialTitle": "Asien, regalweise.",
-      "categories.editorialText": "Sechs Regale, handverlesen. Tippe auf eine Kachel für den Inhalt.",
+      "categories.editorialText": "11 Kernbereiche, klar sortiert. Tippe auf eine Kachel für den Inhalt.",
       "categories.editorialFeatured": "Quer durchs Sortiment",
+      "categories.carouselPrev": "Vorherige Kategorien",
+      "categories.carouselNext": "Nächste Kategorien",
       "story.eyebrow": "Unser Markt",
       "story.sectionEyebrow": "02 - Unser Markt",
       "story.title": "Asien, sorgfältig sortiert.",
@@ -220,6 +202,8 @@
       "hours.saturday": "Samstag",
       "hours.sunday": "Sonntag",
       "hours.closed": "geschlossen",
+      "payments.title": "Zahlungsmethoden",
+      "payments.note": "Kartenzahlung, Mobile Wallets und ausgewählte Gutscheinkarten im Store möglich.",
       "footer.links": "Links",
       "footer.visit": "Besuchen",
       "footer.hours1": "Mo-Fr 09-20:00",
@@ -299,30 +283,20 @@
       "hero.text": "位于 Linke Wienzeile 的亚洲市场。这里有来自亚洲各地的主食、面、零食和酱料。",
       "hero.cta": "到店看看 ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 维也纳",
-      "categories.eyebrow": "01 - 商品分类",
-      "categories.title": "货架上有哪些商品。",
-      "categories.text": "先看货架分类，再用下方精选按菜式、饮食方式或场景快速查找。",
       "categories.tablist": "商品分类",
       "categories.open": "打开{category}",
       "categories.close": "关闭分类",
       "categories.modalIntro": "这个货架常见的商品",
       "categories.itemCount": "{count} 个商品组",
       "categories.brandsLabel": "店内品牌",
-      "categories.featuredLabel": "热门选择",
-      "categories.featuredText": "跨多个货架的快捷选择，适合按菜式、饮食方式或场景购物。",
       "categories.featuredAria": "热门选择",
-      "categories.variantA": "版本 A · 简洁分层",
-      "categories.variantB": "版本 B · 编辑视觉",
       "categories.brandPreview": "{brands} 等 +{count}",
-      "categories.countriesLabel": "按产地浏览",
-      "categories.countriesText": "同样的货架，按商品的来源国家排列。",
-      "categories.countriesAria": "产地",
-      "categories.brandCount": "{count} 个品牌",
-      "categories.openCountry": "打开{country}品牌",
       "categories.editorialEyebrow": "01 — 逛逛货架",
       "categories.editorialTitle": "亚洲，按货架陈列。",
-      "categories.editorialText": "六个货架，精心挑选。点击图块查看内容。",
+      "categories.editorialText": "11 个核心区域，清楚分类。点击图块查看内容。",
       "categories.editorialFeatured": "跨货架精选",
+      "categories.carouselPrev": "上一组分类",
+      "categories.carouselNext": "下一组分类",
       "story.eyebrow": "我们的市场",
       "story.sectionEyebrow": "02 - 我们的市场",
       "story.title": "亚洲风味，精心陈列。",
@@ -360,6 +334,8 @@
       "hours.saturday": "周六",
       "hours.sunday": "周日",
       "hours.closed": "休息",
+      "payments.title": "付款方式",
+      "payments.note": "店内支持银行卡、手机钱包和部分餐券卡付款。",
       "footer.links": "链接",
       "footer.visit": "到店",
       "footer.hours1": "周一至周五 09-20:00",
@@ -3045,14 +3021,26 @@
     const sauces = brandList(BRAND_SEEDS.sauces);
     const noodlesRice = brandList(BRAND_SEEDS.noodlesRice);
     const pantry = uniqueBrands([...brandList(BRAND_SEEDS.pantry), ...remainingBrands([instant, snacks, drinks, sauces, noodlesRice])]);
+    const rice = brandList(["TILDA", "ROYAL TIGER", "MALI FLOWER", "KASET", "GOLDEN SAIL", "YUME NISHIKI", "SEKIRYU", "OBENTO", "THAI DANCER", "TRA CHANG", "SIX FORTUNE", "BAMBOO TREE"]);
+    const drinksAlcohol = uniqueBrands([...drinks, ...brandList(["ASAHI", "KIRIN", "SUNTORY", "TTL", "GOLD LEAF"])]);
+    const fresh = brandList(["JOYTOFU", "SOYSPRING", "PULMUONE", "KURATA VEGAN", "BIBIGO", "WANG", "SHIRAKIKU", "ROYAL FAMILY", "LITTLE MOONS", "JONGGA", "SAMLIP", "ALLGROO"]);
+    const frozen = brandList(["BIBIGO", "WANG", "PULMUONE", "AJINOMOTO", "SHIRAKIKU", "SAMLIP", "LITTLE MOONS", "ROYAL FAMILY", "CP"]);
+    const tea = brandList(["ITO EN", "POKKA", "KIRIN", "SANGARIA", "TEA TSUBOICHI", "HISHIWAEN", "TSUBOICHI", "JIADUBAO", "WANG LAO JI", "OISHI", "RANONG TEA", "GOLD KILI", "CHATRAMUNE", "KWANGDONG"]);
+    const tcm = brandList(["KWANGDONG", "JIADUBAO", "WANG LAO JI", "NIM JIOM", "HENG SHOU TANG", "KAKI TIGA", "HEM", "KONBU", "WAKAME", "TRS"]);
 
     return {
       instant,
       snacks,
       drinks,
+      drinksAlcohol,
       sauces,
+      rice,
       noodlesRice,
       pantry,
+      fresh,
+      frozen,
+      tea,
+      tcm,
       chineseClassics: uniqueBrands([...originBrands(["China", "Taiwan"]), ...brandList(["AMOY", "LKK", "HENG SHUN", "SHUITA", "LONGKOU", "SAU TAO", "PATCHUN", "MEE CHUN"])]),
       vegan: brandList(["KURATA VEGAN", "JOYTOFU", "PULMUONE", "SOYSPRING", "KIKKOMAN", "LKK", "HIKARI MISO", "HANAMARUKI", "KONBU", "WAKAME", "LONGKOU", "BAMBOO TREE", "THAI DANCER", "TILDA", "TRS", "SWAD", "ASHOKA", "COCK BRAND", "AROY-D", "CHAOKOH", "SIX FORTUNE", "YUME NISHIKI", "SEKIRYU"]),
       hotPot: brandList(["HAIDILAO", "LITTLE SHEEP", "LJ BROTHER HOTPOT", "LJ BROTHER HOTPOT BASE", "LJ BROTHER", "FLYING GOOSE", "HEALTHY BOY", "PANTAI", "COCK BRAND", "PRB", "ZHONGJING", "CUIHONG", "LIUPO", "SZECHUAN TIAN FU", "BIBIGO", "WANG", "YOPOKKI", "BAMBOO TREE", "LONGKOU", "JOYTOFU"]),
@@ -3068,9 +3056,9 @@
       imageInverted: "assets/categories/instan-inverte.png",
       brands: BRAND_GROUPS.instant,
       copy: {
-        en: { title: "Instant & Ready Meals", items: ["Instant Noodles & Ramen", "Rice Cake Cups"] },
-        de: { title: "Instant & Fertiggerichte", items: ["Instant-Nudeln & Ramen", "Ricecake-Cups"] },
-        zh: { title: "速食与即食餐", items: ["方便面与拉面", "年糕杯"] }
+        en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
+        de: { title: "Instant Nudeln", items: ["Ramen & Cup Noodles", "Koreanische Instantnudeln", "Udon, Pho & Glasnudeln", "Ricecake-Cups & schnelle Bowls"] },
+        zh: { title: "方便面", items: ["拉面与杯面", "韩式方便面", "乌冬、河粉与粉丝", "年糕杯与快捷碗餐"] }
       }
     },
     {
@@ -3079,20 +3067,9 @@
       imageInverted: "assets/categories/snacks-inverte.png",
       brands: BRAND_GROUPS.snacks,
       copy: {
-        en: { title: "Snacks & Sweets", items: ["Candy & Sweets", "Chips & Savory Snacks", "Cookies & Desserts", "Mochi", "Popping Boba & Toppings"] },
-        de: { title: "Snacks & Süßes", items: ["Bonbons & Zuckerln", "Chips & Knabbereien", "Kekse & Desserts", "Mochis", "Popping Boba & Toppings"] },
-        zh: { title: "零食与甜点", items: ["糖果", "薯片与咸味零食", "饼干与甜点", "麻薯", "爆爆珠与配料"] }
-      }
-    },
-    {
-      id: "drinks",
-      image: "assets/categories/drinks.png",
-      imageInverted: "assets/categories/drinks-inverte.png",
-      brands: BRAND_GROUPS.drinks,
-      copy: {
-        en: { title: "Drinks", items: ["Soft Drinks", "Milk Drinks & Coconut Drinks", "Tea & Matcha"] },
-        de: { title: "Getränke", items: ["Softdrinks", "Milchdrinks & Kokosdrinks", "Tee & Matcha"] },
-        zh: { title: "饮品", items: ["汽水与软饮", "奶饮与椰子饮品", "茶与抹茶"] }
+        en: { title: "Snacks & Sweets", items: ["Chips & savory snacks", "Candy, gummies & chocolate", "Cookies, Pocky & wafers", "Jelly, boba & dessert cups"] },
+        de: { title: "Snacks & Süßigkeiten", items: ["Chips & Knabbereien", "Bonbons, Fruchtgummi & Schokolade", "Kekse, Pocky & Waffeln", "Jelly, Boba & Dessertbecher"] },
+        zh: { title: "零食与甜点", items: ["薯片与咸味零食", "糖果、软糖与巧克力", "饼干、Pocky 与威化", "果冻、波霸与甜品杯"] }
       }
     },
     {
@@ -3101,31 +3078,92 @@
       imageInverted: "assets/categories/sauce-inverte.png",
       brands: BRAND_GROUPS.sauces,
       copy: {
-        en: { title: "Sauces & Seasoning", items: ["Spices", "Sauces & Pastes", "Vinegar & Oils"] },
-        de: { title: "Saucen & Gewürze", items: ["Gewürze", "Saucen & Pasten", "Öle & Essig"] },
-        zh: { title: "酱料与调味", items: ["香料", "酱料与调味酱", "醋与油"] }
+        en: { title: "Sauces & Seasoning", items: ["Soy sauce, fish sauce & vinegar", "Chili oil, gochujang & curry pastes", "Sesame oil & cooking oils", "Spices, blends & seasoning pastes"] },
+        de: { title: "Saucen & Gewürze", items: ["Sojasauce, Fischsauce & Essig", "Chiliöl, Gochujang & Currypasten", "Sesamöl & Kochöle", "Gewürze, Mischungen & Würzpasten"] },
+        zh: { title: "酱料与调味", items: ["酱油、鱼露与醋", "辣椒油、韩式辣酱与咖喱酱", "芝麻油与烹调用油", "香料、调味粉与酱料"] }
       }
     },
     {
-      id: "noodles-rice",
+      id: "rice",
       image: "assets/categories/noodles-rice.png",
       imageInverted: "assets/categories/noodle-inverte.png",
-      brands: BRAND_GROUPS.noodlesRice,
+      brands: BRAND_GROUPS.rice,
       copy: {
-        en: { title: "Noodles & Rice", items: ["Noodles", "Basmati Rice", "Jasmine Rice", "Glutinous Rice", "Sushi Rice", "Cooked Rice", "Rice Cakes", "Rice Paper"] },
-        de: { title: "Nudeln & Reis", items: ["Nudeln", "Basmatireis", "Jasminreis", "Klebereis", "Sushireis", "Gekochter Reis", "Reiskuchen", "Reispapier"] },
-        zh: { title: "面与米", items: ["面条", "巴斯马蒂米", "茉莉香米", "糯米", "寿司米", "即食米饭", "年糕", "米纸"] }
+        en: { title: "Rice", items: ["Jasmine rice & basmati rice", "Sushi rice & glutinous rice", "Cooked rice & rice cakes", "Rice paper & rice noodles"] },
+        de: { title: "Reis", items: ["Jasminreis & Basmatireis", "Sushireis & Klebreis", "Gekochter Reis & Reiskuchen", "Reispapier & Reisnudeln"] },
+        zh: { title: "米类", items: ["茉莉香米与巴斯马蒂米", "寿司米与糯米", "即食米饭与年糕", "米纸与米粉"] }
       }
     },
     {
-      id: "pantry",
+      id: "drinks",
+      image: "assets/categories/drinks.png",
+      imageInverted: "assets/categories/drinks-inverte.png",
+      brands: BRAND_GROUPS.drinksAlcohol,
+      copy: {
+        en: { title: "Drinks & Alcohol", items: ["Soft drinks & fruit drinks", "Milk drinks, coffee & bubble tea", "Soju, sake & Asian wine", "Beer & alcohol-free drinks"] },
+        de: { title: "Getränke & Alkohol", items: ["Softdrinks & Fruchtgetränke", "Milchdrinks, Kaffee & Bubble Tea", "Soju, Sake & asiatischer Wein", "Bier & alkoholfreie Drinks"] },
+        zh: { title: "饮品与酒类", items: ["汽水与果味饮料", "奶饮、咖啡与珍珠奶茶", "烧酒、清酒与亚洲酒", "啤酒与无酒精饮品"] }
+      }
+    },
+    {
+      id: "fresh",
+      image: "assets/categories/frish-logo-black.png",
+      brands: BRAND_GROUPS.fresh,
+      copy: {
+        en: { title: "Fresh & Chilled", items: ["Vegetables & herbs", "Tofu & soy products", "Buns, bao & dumpling wrappers", "Mochi & chilled desserts"] },
+        de: { title: "Frisch & Kühlware", items: ["Gemüse & Kräuter", "Tofu & Sojaprodukte", "Buns, Bao & Dumpling-Teig", "Mochi & gekühlte Desserts"] },
+        zh: { title: "新鲜与冷藏", items: ["蔬菜与香草", "豆腐与豆制品", "包子、刈包与饺子皮", "麻薯与冷藏甜点"] }
+      }
+    },
+    {
+      id: "frozen",
+      image: "assets/categories/tk-logo-black.png",
+      brands: BRAND_GROUPS.frozen,
+      copy: {
+        en: { title: "Frozen", items: ["Dumplings & gyoza", "Bao, buns & mochi ice cream", "Fish, seafood & meat", "Frozen vegetables & ready meals"] },
+        de: { title: "Tiefkühl", items: ["Dumplings & Gyoza", "Bao, Buns & Mochi-Eis", "Fisch, Seafood & Fleisch", "Tiefkühlgemüse & Fertiggerichte"] },
+        zh: { title: "冷冻食品", items: ["饺子与煎饺", "包子、馒头与麻薯冰淇淋", "鱼、海鲜与肉类", "冷冻蔬菜与即食餐"] }
+      }
+    },
+    {
+      id: "vegan",
+      image: "assets/categories/vegan-logo-black.png",
+      brands: BRAND_GROUPS.vegan,
+      copy: {
+        en: { title: "Vegan Products", items: ["Tofu, seitan & bean products", "Vegan sauces & pastes", "Plant-based snacks & sweets", "Rice, noodles & cooking basics"] },
+        de: { title: "Vegane Produkte", items: ["Tofu, Seitan & Bohnenprodukte", "Vegane Saucen & Pasten", "Pflanzliche Snacks & Süßigkeiten", "Reis, Nudeln & Kochbasics"] },
+        zh: { title: "纯素产品", items: ["豆腐、面筋与豆制品", "纯素酱料与调味酱", "植物性零食与甜点", "米、面与烹饪基础食材"] }
+      }
+    },
+    {
+      id: "tea",
+      image: "assets/categories/tee-logo-black.png",
+      brands: BRAND_GROUPS.tea,
+      copy: {
+        en: { title: "Tea", items: ["Green tea, jasmine tea & oolong", "Matcha & milk tea", "Herbal and flower teas", "Tea sets & gift teas"] },
+        de: { title: "Tee", items: ["Grüner Tee, Jasmintee & Oolong", "Matcha & Milchtee", "Kräuter- und Blütentees", "Teesets & Geschenktee"] },
+        zh: { title: "茶", items: ["绿茶、茉莉茶与乌龙茶", "抹茶与奶茶", "草本茶与花茶", "茶具与礼盒茶"] }
+      }
+    },
+    {
+      id: "tcm",
+      image: "assets/categories/tcm-logo-black.png",
+      brands: BRAND_GROUPS.tcm,
+      copy: {
+        en: { title: "TCM Products", items: ["Herbal teas & tonics", "Dried ingredients", "Soup and cooking mixes", "Warming drinks & pastes"] },
+        de: { title: "TCM-Produkte", items: ["Kräutertees & Tonics", "Getrocknete Zutaten", "Suppen- und Kochmischungen", "Wärmende Getränke & Pasten"] },
+        zh: { title: "中式养生产品", items: ["草本茶与饮品", "干货食材", "汤料与料理包", "暖饮与膏类产品"] }
+      }
+    },
+    {
+      id: "gifts",
       image: "assets/categories/gifts.png",
       imageInverted: "assets/categories/gitfs-inverte.png",
-      brands: BRAND_GROUPS.pantry,
+      brands: BRAND_GROUPS.gifts,
       copy: {
-        en: { title: "Pantry & Gift Ideas", items: ["Dairy & Coconut Products", "Canned Fish & Meat", "Dried Fruit & Vegetables", "Nori, Wakame & Seaweed", "Spreads & Nut Creams", "Flour", "Cooking Tools & Tableware", "Gift Ideas & Decor"] },
-        de: { title: "Vorrat & Geschenkideen", items: ["Milch- & Kokosprodukte", "Fisch- & Fleischkonserven", "Trockenfrüchte & Gemüse", "Nori, Wakame & Seaweed", "Aufstriche & Nusscreme", "Mehl", "Kochutensilien & Geschirr", "Geschenkideen & Dekor"] },
-        zh: { title: "常备食材与礼品", items: ["奶制品与椰子产品", "鱼肉罐头", "干果与干蔬菜", "海苔、裙带菜与海藻", "抹酱与坚果酱", "面粉", "厨房工具与餐具", "礼品与装饰"] }
+        en: { title: "Gift Sets", items: ["Tea & snack sets", "Character goods & small extras", "Tableware & kitchen tools", "Seasonal gift ideas"] },
+        de: { title: "Geschenksets", items: ["Tee- & Snack-Sets", "Character-Ware & kleine Extras", "Geschirr & Küchenhelfer", "Saisonale Geschenkideen"] },
+        zh: { title: "礼品套装", items: ["茶与零食礼盒", "角色商品与小物", "餐具与厨房工具", "季节礼品灵感"] }
       }
     }
   ];
@@ -3137,44 +3175,24 @@
       copy: {
         en: {
           title: "Chinese Classics",
-          intro: "A shortcut for classic Chinese home cooking, spread across sauces, pantry and noodle shelves.",
+          intro: "A shortcut for classic Chinese home cooking, spread across sauces, rice, fresh and instant shelves.",
           items: ["Light & dark soy sauce", "Black vinegar & chili oil", "Shaoxing wine & sesame oil", "Rice, noodles & dumpling wrappers"]
         },
         de: {
           title: "Chinesische Klassiker",
-          intro: "Eine Abkürzung für klassisch chinesisches Kochen, verteilt über Saucen, Vorrat und Nudeln.",
+          intro: "Eine Abkürzung für klassisch chinesisches Kochen, verteilt über Saucen, Reis, Frischware und Instant.",
           items: ["Helle & dunkle Sojasauce", "Schwarzer Essig & Chiliöl", "Shaoxing-Wein & Sesamöl", "Reis, Nudeln & Dumpling-Teig"]
         },
         zh: {
           title: "中式经典",
-          intro: "适合经典中式家常菜的快捷选择，分布在酱料、常备食材和面类货架。",
+          intro: "适合经典中式家常菜的快捷选择，分布在酱料、米类、冷藏和方便面区域。",
           items: ["生抽与老抽", "黑醋与辣椒油", "绍兴酒与芝麻油", "米、面与饺子皮"]
         }
       }
     },
     {
-      id: "vegan",
-      brands: BRAND_GROUPS.vegan,
-      copy: {
-        en: {
-          title: "Vegan Cooking",
-          intro: "Plant-based basics from several aisles, from tofu to sauces and quick weekday meals.",
-          items: ["Tofu, seitan & bean products", "Mushrooms, bamboo shoots & seaweed", "Coconut milk & curry pastes", "Rice, noodles & vegan sauces"]
-        },
-        de: {
-          title: "Vegan kochen",
-          intro: "Pflanzliche Basics aus mehreren Regalen, von Tofu bis zu Saucen und schnellen Gerichten.",
-          items: ["Tofu, Seitan & Bohnenprodukte", "Pilze, Bambussprossen & Algen", "Kokosmilch & Currypasten", "Reis, Nudeln & vegane Saucen"]
-        },
-        zh: {
-          title: "纯素料理",
-          intro: "来自多个货架的植物性基础食材，从豆腐到酱料和快速餐食。",
-          items: ["豆腐、面筋与豆制品", "蘑菇、笋与海藻", "椰奶与咖喱酱", "米、面与纯素酱料"]
-        }
-      }
-    },
-    {
       id: "hot-pot",
+      image: "assets/categories/hotpot-logo-black.png",
       brands: BRAND_GROUPS.hotPot,
       copy: {
         en: {
@@ -3196,6 +3214,7 @@
     },
     {
       id: "spicy",
+      image: "assets/categories/scharf-logo-black.png",
       brands: BRAND_GROUPS.spicy,
       copy: {
         en: {
@@ -3214,153 +3233,21 @@
           items: ["辣椒脆与辣椒油", "韩式辣酱与泡菜酱", "花椒与香料混合", "辣味拉面与零食"]
         }
       }
-    },
-    {
-      id: "gifts",
-      brands: BRAND_GROUPS.gifts,
-      copy: {
-        en: {
-          title: "Gift Ideas",
-          intro: "Small, easy picks when you want to bring something fun or useful.",
-          items: ["Tea, matcha & sweets", "Cute snacks and character goods", "Tableware & small kitchen tools", "Decor and seasonal specials"]
-        },
-        de: {
-          title: "Geschenkideen",
-          intro: "Kleine, einfache Ideen, wenn du etwas Schönes oder Nützliches mitbringen willst.",
-          items: ["Tee, Matcha & Süßes", "Süße Snacks und Character-Ware", "Geschirr & kleine Küchenhelfer", "Deko und Saisonartikel"]
-        },
-        zh: {
-          title: "礼物灵感",
-          intro: "适合作为小礼物的有趣或实用选择。",
-          items: ["茶、抹茶与甜点", "可爱零食与角色商品", "餐具与小厨房工具", "装饰与季节商品"]
-        }
-      }
     }
   ];
 
   const SVG_NS = "http://www.w3.org/2000/svg";
 
-  const COUNTRY_BROWSE = [
-    {
-      id: "origin-china",
-      originKey: "China",
-      flag: "🇨🇳",
-      brands: BRANDS_BY_ORIGIN.China,
-      copy: {
-        en: { title: "China", short: "China", items: ["Soy & oyster sauce", "Black vinegar & chili oil", "Sichuan pepper & spices", "Rice, noodles & dumplings"] },
-        de: { title: "China", short: "China", items: ["Soja- & Austernsauce", "Schwarzer Essig & Chiliöl", "Sichuanpfeffer & Gewürze", "Reis, Nudeln & Dumplings"] },
-        zh: { title: "中国", short: "中国", items: ["酱油与蚝油", "黑醋与辣椒油", "花椒与香料", "米、面与饺子皮"] }
-      }
-    },
-    {
-      id: "origin-japan",
-      originKey: "Japan",
-      flag: "🇯🇵",
-      brands: BRANDS_BY_ORIGIN.Japan,
-      copy: {
-        en: { title: "Japan", short: "Japan", items: ["Soy sauce, miso & dashi", "Ramen, udon & soba", "Snacks, mochi & sweets", "Matcha, tea & sake"] },
-        de: { title: "Japan", short: "Japan", items: ["Sojasauce, Miso & Dashi", "Ramen, Udon & Soba", "Snacks, Mochi & Süßes", "Matcha, Tee & Sake"] },
-        zh: { title: "日本", short: "日本", items: ["酱油、味噌与高汤", "拉面、乌冬与荞麦面", "零食、麻薯与甜点", "抹茶、茶与清酒"] }
-      }
-    },
-    {
-      id: "origin-korea",
-      originKey: "South Korea",
-      flag: "🇰🇷",
-      brands: BRANDS_BY_ORIGIN["South Korea"],
-      copy: {
-        en: { title: "South Korea", short: "Korea", items: ["Gochujang, kimchi & sauces", "Ramen & tteokbokki", "K-snacks & sweets", "K-drinks & coffee"] },
-        de: { title: "Südkorea", short: "Korea", items: ["Gochujang, Kimchi & Saucen", "Ramen & Tteokbokki", "K-Snacks & Süßes", "K-Drinks & Kaffee"] },
-        zh: { title: "韩国", short: "韩国", items: ["辣酱、泡菜与酱料", "拉面与年糕", "韩式零食与甜点", "韩式饮品与咖啡"] }
-      }
-    },
-    {
-      id: "origin-taiwan",
-      originKey: "Taiwan",
-      flag: "🇹🇼",
-      brands: BRANDS_BY_ORIGIN.Taiwan,
-      copy: {
-        en: { title: "Taiwan", short: "Taiwan", items: ["Bubble tea & boba", "Snacks & rice crackers", "Sauces & pastes", "Instant noodles"] },
-        de: { title: "Taiwan", short: "Taiwan", items: ["Bubble Tea & Boba", "Snacks & Reiscracker", "Saucen & Pasten", "Instant-Nudeln"] },
-        zh: { title: "台湾", short: "台湾", items: ["珍珠奶茶与波霸", "零食与米果", "酱料与酱膏", "方便面"] }
-      }
-    },
-    {
-      id: "origin-thailand",
-      originKey: "Thailand",
-      flag: "🇹🇭",
-      brands: BRANDS_BY_ORIGIN.Thailand,
-      copy: {
-        en: { title: "Thailand", short: "Thailand", items: ["Curry pastes & coconut milk", "Fish sauce & sriracha", "Jasmine rice & noodles", "Thai sweets & snacks"] },
-        de: { title: "Thailand", short: "Thailand", items: ["Currypasten & Kokosmilch", "Fischsauce & Sriracha", "Jasminreis & Nudeln", "Thai-Süßes & Snacks"] },
-        zh: { title: "泰国", short: "泰国", items: ["咖喱酱与椰奶", "鱼露与是拉差", "茉莉香米与面条", "泰式甜点与零食"] }
-      }
-    },
-    {
-      id: "origin-vietnam",
-      originKey: "Vietnam",
-      flag: "🇻🇳",
-      brands: BRANDS_BY_ORIGIN.Vietnam,
-      copy: {
-        en: { title: "Vietnam", short: "Vietnam", items: ["Rice paper & vermicelli", "Pho spices & fish sauce", "Coffee & condensed milk", "Pickles & sauces"] },
-        de: { title: "Vietnam", short: "Vietnam", items: ["Reispapier & Reisnudeln", "Pho-Gewürze & Fischsauce", "Kaffee & Kondensmilch", "Eingelegtes & Saucen"] },
-        zh: { title: "越南", short: "越南", items: ["米纸与河粉", "河粉香料与鱼露", "咖啡与炼乳", "腌菜与酱料"] }
-      }
-    },
-    {
-      id: "origin-indonesia",
-      originKey: "Indonesia",
-      flag: "🇮🇩",
-      brands: BRANDS_BY_ORIGIN.Indonesia,
-      copy: {
-        en: { title: "Indonesia", short: "Indonesia", items: ["Kecap manis & sambal", "Indomie & instant meals", "Spice blends", "Coconut & snacks"] },
-        de: { title: "Indonesien", short: "Indonesien", items: ["Kecap Manis & Sambal", "Indomie & Fertiggerichte", "Gewürzmischungen", "Kokos & Snacks"] },
-        zh: { title: "印度尼西亚", short: "印尼", items: ["甜酱油与参巴酱", "营多面与即食", "香料混合", "椰子与零食"] }
-      }
-    },
-    {
-      id: "origin-malaysia-singapore",
-      originKey: "Malaysia / Singapore",
-      flag: "🇲🇾",
-      brands: BRANDS_BY_ORIGIN["Malaysia / Singapore"],
-      copy: {
-        en: { title: "Malaysia & Singapore", short: "Malaysia & SG", items: ["Curry pastes & laksa", "Hainan & street food kits", "Snacks & drinks", "Sauces & condiments"] },
-        de: { title: "Malaysia & Singapur", short: "Malaysia & SG", items: ["Currypasten & Laksa", "Hainan- & Street-Food-Kits", "Snacks & Getränke", "Saucen & Condiments"] },
-        zh: { title: "马来西亚与新加坡", short: "马新", items: ["咖喱酱与叻沙", "海南风味与街头小食", "零食与饮品", "酱料与调味"] }
-      }
-    },
-    {
-      id: "origin-philippines",
-      originKey: "Philippines",
-      flag: "🇵🇭",
-      brands: BRANDS_BY_ORIGIN.Philippines,
-      copy: {
-        en: { title: "Philippines", short: "Philippines", items: ["Adobo & banana ketchup", "Pancit & instant meals", "Ube sweets & snacks", "Sauces & coconut"] },
-        de: { title: "Philippinen", short: "Philippinen", items: ["Adobo & Bananen-Ketchup", "Pancit & Fertiggerichte", "Ube-Süßes & Snacks", "Saucen & Kokos"] },
-        zh: { title: "菲律宾", short: "菲律宾", items: ["阿斗波与香蕉番茄酱", "炒粉与即食", "紫薯甜点与零食", "酱料与椰子"] }
-      }
-    },
-    {
-      id: "origin-south-asia",
-      originKey: "India / South Asia",
-      flag: "🇮🇳",
-      brands: BRANDS_BY_ORIGIN["India / South Asia"],
-      copy: {
-        en: { title: "India & South Asia", short: "South Asia", items: ["Curry pastes & masalas", "Basmati rice & lentils", "Naan, papad & snacks", "Chutneys & pickles"] },
-        de: { title: "Indien & Südasien", short: "Südasien", items: ["Currypasten & Masalas", "Basmatireis & Linsen", "Naan, Papad & Snacks", "Chutneys & Pickles"] },
-        zh: { title: "印度与南亚", short: "南亚", items: ["咖喱酱与马萨拉", "巴斯马蒂米与扁豆", "馕、papad 与零食", "酸甜酱与腌菜"] }
-      }
-    }
-  ];
-
-  const STORE_SELECTIONS = [...STORE_CATEGORIES, ...STORE_HIGHLIGHTS, ...COUNTRY_BROWSE];
-  const grid = document.querySelector("[data-store-category-grid]");
-  const highlightGrid = document.querySelector("[data-store-highlight-grid]");
-  const originGrid = document.querySelector("[data-store-origin-grid]");
+  const STORE_SELECTIONS = [...STORE_CATEGORIES, ...STORE_HIGHLIGHTS];
   const editorialGrid = document.querySelector("[data-store-editorial-grid]");
+  const editorial = editorialGrid?.closest(".store-editorial");
   const editorialChips = document.querySelector("[data-store-editorial-chips]");
+  const editorialControls = document.querySelector("[data-store-editorial-controls]");
+  const editorialPrev = document.querySelector("[data-store-editorial-prev]");
+  const editorialNext = document.querySelector("[data-store-editorial-next]");
+  const editorialPage = document.querySelector("[data-store-editorial-page]");
   const modal = document.getElementById("store-category-modal");
-  if (!grid || !modal) return;
+  if (!modal || !editorialGrid) return;
 
   const modalIcon = modal.querySelector("[data-store-category-modal-icon]");
   const modalTitle = modal.querySelector("[data-store-category-modal-title]");
@@ -3375,6 +3262,19 @@
   let activeId = null;
   let lastFocus = null;
   let lockedScrollY = 0;
+  let editorialPageIndex = 0;
+  let editorialAutoTimer = 0;
+  let editorialSlideTimer = 0;
+  let editorialAutoPaused = false;
+  let editorialAutoDirection = 1;
+  let editorialWheelLocked = false;
+  let editorialIsAnimating = false;
+  const editorialPageSize = 6;
+  const editorialAutoDelay = 5600;
+  const editorialSlideDuration = 280;
+  const editorialWheelThreshold = 36;
+  const editorialDesktopQuery = window.matchMedia("(min-width: 721px)");
+  const editorialMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function getLang() {
     return window.ChooI18n?.getLanguage?.() || "en";
@@ -3438,12 +3338,39 @@
       appendShape(svg, "path", { d: "M24 23h16l3 27H21l3-27Z" });
       appendShape(svg, "path", { d: "M25 34h14" });
       appendShape(svg, "path", { d: "M30 41h4" });
-    } else if (id === "noodles-rice") {
+    } else if (id === "rice" || id === "noodles-rice") {
       appendShape(svg, "path", { d: "M19 34h26l-4 14H23l-4-14Z" });
       appendShape(svg, "path", { d: "M17 34h30" });
-      appendShape(svg, "path", { d: "M25 28c5 4 9-4 14 0" });
-      appendShape(svg, "path", { d: "M20 20l28-8" });
-      appendShape(svg, "path", { d: "M22 24l28-8" });
+      appendShape(svg, "path", { d: "M25 29c4-3 10-3 14 0" });
+      appendShape(svg, "ellipse", { cx: "25", cy: "22", rx: "3", ry: "6" });
+      appendShape(svg, "ellipse", { cx: "33", cy: "20", rx: "3", ry: "6" });
+      appendShape(svg, "ellipse", { cx: "41", cy: "22", rx: "3", ry: "6" });
+    } else if (id === "fresh") {
+      appendShape(svg, "path", { d: "M18 34h28l-4 16H22l-4-16Z" });
+      appendShape(svg, "path", { d: "M22 34l5-10h10l5 10" });
+      appendShape(svg, "path", { d: "M29 25c-7-7-2-13 7-13 0 9-4 13-7 13Z" });
+      appendShape(svg, "path", { d: "M35 25c5-5 10-5 13-1-5 5-10 6-13 1Z" });
+    } else if (id === "frozen") {
+      appendShape(svg, "path", { d: "M32 13v38" });
+      appendShape(svg, "path", { d: "M16 22l32 20" });
+      appendShape(svg, "path", { d: "M48 22L16 42" });
+      appendShape(svg, "path", { d: "M25 18l7 6 7-6" });
+      appendShape(svg, "path", { d: "M25 46l7-6 7 6" });
+      appendShape(svg, "path", { d: "M18 31l9-2-2-9" });
+      appendShape(svg, "path", { d: "M46 33l-9 2 2 9" });
+    } else if (id === "tea") {
+      appendShape(svg, "path", { d: "M20 31h24v9c0 7-5 11-12 11s-12-4-12-11v-9Z" });
+      appendShape(svg, "path", { d: "M44 34h3c4 0 6 3 5 6-1 4-4 6-8 5" });
+      appendShape(svg, "path", { d: "M19 51h27" });
+      appendShape(svg, "path", { d: "M27 23c-4-4-2-9 5-10 0 6-2 9-5 10Z" });
+      appendShape(svg, "path", { d: "M35 24c1-6 5-9 11-8-2 6-6 9-11 8Z" });
+    } else if (id === "tcm") {
+      appendShape(svg, "path", { d: "M25 17h14" });
+      appendShape(svg, "path", { d: "M27 17v9l-6 7v18h22V33l-6-7v-9" });
+      appendShape(svg, "path", { d: "M24 36h16" });
+      appendShape(svg, "path", { d: "M28 43h8" });
+      appendShape(svg, "path", { d: "M18 20c7 0 11 4 12 10-7 0-11-4-12-10Z" });
+      appendShape(svg, "path", { d: "M46 19c-7 1-11 5-12 11 7-1 11-5 12-11Z" });
     } else if (id === "pantry") {
       appendShape(svg, "path", { d: "M22 22l8-8h14v38H22V22Z" });
       appendShape(svg, "path", { d: "M30 14v38" });
@@ -3509,7 +3436,9 @@
     const src = category.imageInverted || category.image;
     if (src) {
       const image = document.createElement("img");
-      image.className = "category-icon-img category-icon-img--inverted";
+      image.className = category.imageInverted
+        ? "category-icon-img category-icon-img--inverted"
+        : "category-icon-img";
       image.src = src;
       image.alt = "";
       image.decoding = "async";
@@ -3598,109 +3527,99 @@
     return tr("categories.brandPreview", { brands: sample, count: remaining });
   }
 
-  function renderGrid() {
-    grid.textContent = "";
-    grid.setAttribute("aria-label", tr("categories.tablist"));
-
-    STORE_CATEGORIES.forEach((category) => {
-      const copy = getCopy(category);
-      const button = document.createElement("button");
-      const icon = document.createElement("span");
-      const name = document.createElement("span");
-      const sub = document.createElement("span");
-
-      button.type = "button";
-      button.className = "cat";
-      button.dataset.storeCategory = category.id;
-      button.setAttribute("aria-haspopup", "dialog");
-      button.setAttribute("aria-controls", "store-category-modal");
-      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
-
-      icon.className = "cat-icon";
-      icon.append(createCategoryVisual(category));
-
-      name.className = "cat-name";
-      name.textContent = copy.title;
-
-      sub.className = "cat-sub cat-sub--brands";
-      const preview = buildBrandPreview(category.brands, 3);
-      sub.textContent = preview || tr("categories.itemCount", { count: copy.items.length });
-
-      button.append(icon, name, sub);
-      button.addEventListener("click", () => openModal(category.id, button));
-      grid.append(button);
-    });
+  function getEditorialTotalPages() {
+    return Math.max(Math.ceil(STORE_CATEGORIES.length / editorialPageSize), 1);
   }
 
-  function renderOriginGrid() {
-    if (!originGrid) return;
-    originGrid.textContent = "";
-    originGrid.setAttribute("aria-label", tr("categories.countriesAria"));
+  function isEditorialCarouselActive() {
+    return editorialDesktopQuery.matches && STORE_CATEGORIES.length > editorialPageSize;
+  }
 
-    COUNTRY_BROWSE.forEach((country) => {
-      const copy = getCopy(country);
-      const button = document.createElement("button");
-      const flag = document.createElement("span");
-      const name = document.createElement("span");
-      const count = document.createElement("span");
+  function canAnimateEditorialPage() {
+    return isEditorialCarouselActive() && !editorialMotionQuery.matches;
+  }
 
-      button.type = "button";
-      button.className = "origin-chip";
-      button.dataset.storeOrigin = country.id;
-      button.setAttribute("aria-haspopup", "dialog");
-      button.setAttribute("aria-controls", "store-category-modal");
-      button.setAttribute("aria-label", tr("categories.openCountry", { country: copy.title }));
+  function clearEditorialSlideState() {
+    if (editorialSlideTimer) {
+      window.clearTimeout(editorialSlideTimer);
+      editorialSlideTimer = 0;
+    }
+    editorialIsAnimating = false;
+    editorialGrid.classList.remove("is-slide-deck", "is-slide-active");
+    editorialGrid.removeAttribute("data-slide-direction");
+    editorialGrid.style.height = "";
+  }
 
-      flag.className = "origin-chip__flag";
-      flag.textContent = country.flag;
-      flag.setAttribute("aria-hidden", "true");
+  function getEditorialVisibleCategories(pageIndex = editorialPageIndex) {
+    if (!isEditorialCarouselActive()) return STORE_CATEGORIES;
+    const start = pageIndex * editorialPageSize;
+    return STORE_CATEGORIES.slice(start, start + editorialPageSize);
+  }
 
-      name.className = "origin-chip__name";
-      name.textContent = copy.short || copy.title;
+  function createEditorialTile(category) {
+    const copy = getCopy(category);
+    const button = document.createElement("button");
+    const media = document.createElement("span");
+    const body = document.createElement("span");
+    const name = document.createElement("span");
+    const sub = document.createElement("span");
 
-      count.className = "origin-chip__count";
-      count.textContent = tr("categories.brandCount", { count: (country.brands || []).length });
+    button.type = "button";
+    button.className = "tile";
+    button.dataset.storeEditorial = category.id;
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-controls", "store-category-modal");
+    button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
 
-      button.append(flag, name, count);
-      button.addEventListener("click", () => openModal(country.id, button));
-      originGrid.append(button);
+    media.className = "tile__media";
+    media.append(createTileVisual(category));
+
+    body.className = "tile__body";
+    name.className = "tile__name";
+    name.textContent = copy.title;
+
+    sub.className = "tile__sub";
+    sub.textContent = buildBrandPreview(category.brands, 2);
+
+    body.append(name, sub);
+    button.append(media, body);
+    button.addEventListener("click", () => openModal(category.id, button));
+    return button;
+  }
+
+  function createEditorialSlidePage(categories, type) {
+    const page = document.createElement("div");
+    page.className = `store-editorial__slide-page store-editorial__slide-page--${type}`;
+    categories.forEach((category) => {
+      page.append(createEditorialTile(category));
     });
+    return page;
   }
 
   function renderEditorialGrid() {
     if (!editorialGrid) return;
+    clearEditorialSlideState();
     editorialGrid.textContent = "";
     editorialGrid.setAttribute("aria-label", tr("categories.tablist"));
 
-    STORE_CATEGORIES.forEach((category) => {
-      const copy = getCopy(category);
-      const button = document.createElement("button");
-      const media = document.createElement("span");
-      const body = document.createElement("span");
-      const name = document.createElement("span");
-      const sub = document.createElement("span");
+    const useCarousel = isEditorialCarouselActive();
+    const totalPages = useCarousel ? getEditorialTotalPages() : 1;
+    editorialPageIndex = Math.min(editorialPageIndex, totalPages - 1);
+    const visibleCategories = getEditorialVisibleCategories();
 
-      button.type = "button";
-      button.className = "tile";
-      button.dataset.storeEditorial = category.id;
-      button.setAttribute("aria-haspopup", "dialog");
-      button.setAttribute("aria-controls", "store-category-modal");
-      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+    if (editorialControls) editorialControls.hidden = !useCarousel;
+    if (editorialPrev) {
+      editorialPrev.disabled = editorialPageIndex === 0;
+      editorialPrev.setAttribute("aria-label", tr("categories.carouselPrev"));
+    }
+    if (editorialNext) {
+      editorialNext.disabled = editorialPageIndex >= totalPages - 1;
+      editorialNext.setAttribute("aria-label", tr("categories.carouselNext"));
+    }
+    if (editorialPage) editorialPage.textContent = `${editorialPageIndex + 1} / ${totalPages}`;
 
-      media.className = "tile__media";
-      media.append(createTileVisual(category));
-
-      body.className = "tile__body";
-      name.className = "tile__name";
-      name.textContent = copy.title;
-
-      sub.className = "tile__sub";
-      sub.textContent = buildBrandPreview(category.brands, 2);
-
-      body.append(name, sub);
-      button.append(media, body);
-      button.addEventListener("click", () => openModal(category.id, button));
-      editorialGrid.append(button);
+    visibleCategories.forEach((category) => {
+      editorialGrid.append(createEditorialTile(category));
     });
   }
 
@@ -3723,7 +3642,7 @@
       button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
 
       icon.className = "store-highlight__icon";
-      icon.append(createCategoryIcon(highlight.id));
+      icon.append(highlight.image ? createCategoryVisual(highlight) : createCategoryIcon(highlight.id));
 
       name.className = "store-highlight__name";
       name.textContent = copy.title;
@@ -3734,58 +3653,119 @@
     });
   }
 
-  function renderHighlightGrid() {
-    if (!highlightGrid) return;
-    highlightGrid.textContent = "";
-    highlightGrid.setAttribute("aria-label", tr("categories.featuredAria"));
+  function setEditorialPage(nextPage, options = {}) {
+    const { wrap = false, resetAuto = true, animate = true } = options;
+    if (editorialIsAnimating) return;
+    const totalPages = getEditorialTotalPages();
+    const previousPage = editorialPageIndex;
+    const targetPage = wrap
+      ? (nextPage + totalPages) % totalPages
+      : Math.max(0, Math.min(nextPage, totalPages - 1));
+    if (targetPage === previousPage) {
+      if (resetAuto) restartEditorialAuto();
+      return;
+    }
+    const direction = targetPage > previousPage ? "next" : "prev";
+    const useAnimation = animate && canAnimateEditorialPage();
 
-    STORE_HIGHLIGHTS.forEach((highlight) => {
-      const copy = getCopy(highlight);
-      const button = document.createElement("button");
-      const icon = document.createElement("span");
-      const name = document.createElement("span");
+    function updateAutoDirection() {
+      if (targetPage >= totalPages - 1) {
+        editorialAutoDirection = -1;
+      } else if (targetPage <= 0) {
+        editorialAutoDirection = 1;
+      }
+    }
 
-      button.type = "button";
-      button.className = "store-highlight";
-      button.dataset.storeHighlight = highlight.id;
-      button.setAttribute("aria-haspopup", "dialog");
-      button.setAttribute("aria-controls", "store-category-modal");
-      button.setAttribute("aria-label", tr("categories.open", { category: copy.title }));
+    function applyPage() {
+      editorialPageIndex = targetPage;
+      updateAutoDirection();
+      renderEditorialGrid();
+      if (resetAuto) restartEditorialAuto();
+    }
 
-      icon.className = "store-highlight__icon";
-      icon.append(createCategoryIcon(highlight.id));
+    if (!useAnimation) {
+      applyPage();
+      return;
+    }
 
-      name.className = "store-highlight__name";
-      name.textContent = copy.title;
-
-      button.append(icon, name);
-      button.addEventListener("click", () => openModal(highlight.id, button));
-      highlightGrid.append(button);
+    stopEditorialAuto();
+    clearEditorialSlideState();
+    editorialIsAnimating = true;
+    editorialGrid.style.height = `${editorialGrid.offsetHeight}px`;
+    editorialGrid.textContent = "";
+    editorialGrid.dataset.slideDirection = direction;
+    editorialGrid.classList.add("is-slide-deck");
+    editorialGrid.append(
+      createEditorialSlidePage(getEditorialVisibleCategories(previousPage), "current"),
+      createEditorialSlidePage(getEditorialVisibleCategories(targetPage), "incoming")
+    );
+    window.requestAnimationFrame(() => {
+      editorialGrid.classList.add("is-slide-active");
     });
+    editorialSlideTimer = window.setTimeout(applyPage, editorialSlideDuration);
+  }
+
+  function stopEditorialAuto() {
+    if (!editorialAutoTimer) return;
+    window.clearInterval(editorialAutoTimer);
+    editorialAutoTimer = 0;
+  }
+
+  function startEditorialAuto() {
+    stopEditorialAuto();
+    if (!isEditorialCarouselActive() || editorialAutoPaused || !modal.hidden) return;
+    editorialAutoTimer = window.setInterval(() => {
+      if (!isEditorialCarouselActive() || editorialAutoPaused || !modal.hidden) return;
+      const totalPages = getEditorialTotalPages();
+      let nextPage = editorialPageIndex + editorialAutoDirection;
+      if (nextPage >= totalPages) {
+        editorialAutoDirection = -1;
+        nextPage = editorialPageIndex - 1;
+      } else if (nextPage < 0) {
+        editorialAutoDirection = 1;
+        nextPage = editorialPageIndex + 1;
+      }
+      setEditorialPage(nextPage, { resetAuto: false });
+    }, editorialAutoDelay);
+  }
+
+  function restartEditorialAuto() {
+    stopEditorialAuto();
+    startEditorialAuto();
+  }
+
+  function setEditorialAutoPaused(paused) {
+    editorialAutoPaused = paused;
+    if (paused) {
+      stopEditorialAuto();
+    } else {
+      startEditorialAuto();
+    }
+  }
+
+  function handleEditorialWheel(event) {
+    if (!isEditorialCarouselActive() || editorialWheelLocked) return;
+    const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY) && Math.abs(event.deltaX) > editorialWheelThreshold;
+    if (!horizontal) return;
+
+    event.preventDefault();
+    editorialWheelLocked = true;
+    setEditorialPage(editorialPageIndex + (event.deltaX > 0 ? 1 : -1));
+    window.setTimeout(() => {
+      editorialWheelLocked = false;
+    }, 520);
   }
 
   function renderModal() {
     if (!activeId || !modalIcon || !modalTitle || !modalCount || !modalList) return;
     const category = STORE_SELECTIONS.find((entry) => entry.id === activeId) || STORE_CATEGORIES[0];
     const copy = getCopy(category);
-    const isCountry = !!category.originKey;
 
     if (closeButton) closeButton.setAttribute("aria-label", tr("categories.close"));
     modalIcon.textContent = "";
-    if (isCountry) {
-      modalIcon.classList.add("store-category-modal__visual--flag");
-      const flag = document.createElement("span");
-      flag.className = "store-category-modal__flag";
-      flag.textContent = category.flag || "";
-      modalIcon.append(flag);
-    } else {
-      modalIcon.classList.remove("store-category-modal__visual--flag");
-      modalIcon.append(createCategoryVisual(category));
-    }
+    modalIcon.append(createCategoryVisual(category));
     modalTitle.textContent = copy.title;
-    modalCount.textContent = isCountry
-      ? tr("categories.brandCount", { count: (category.brands || []).length })
-      : tr("categories.itemCount", { count: copy.items.length });
+    modalCount.textContent = tr("categories.itemCount", { count: copy.items.length });
     if (modalIntro) modalIntro.textContent = copy.intro || tr("categories.modalIntro");
     modalList.textContent = "";
 
@@ -3798,8 +3778,7 @@
     if (modalBrands && modalBrandsLabel) {
       modalBrands.textContent = "";
       modalBrands.classList.add("brand-tile-grid");
-      const brandLimit = isCountry ? 60 : 5;
-      const brands = (category.brands || []).slice(0, brandLimit);
+      const brands = (category.brands || []).slice(0, 5);
       if (brands.length) {
         modalBrandsLabel.textContent = tr("categories.brandsLabel");
         modalBrandsLabel.hidden = false;
@@ -3847,6 +3826,7 @@
 
   function openModal(id, sourceButton) {
     if (!STORE_SELECTIONS.some((category) => category.id === id)) return;
+    stopEditorialAuto();
     activeId = id;
     lastFocus = sourceButton || document.activeElement;
     renderModal();
@@ -3866,6 +3846,7 @@
       lastFocus.focus();
     }
     lastFocus = null;
+    startEditorialAuto();
   }
 
   closeTargets.forEach((target) => {
@@ -3893,19 +3874,39 @@
     }
   });
 
+  editorialPrev?.addEventListener("click", () => setEditorialPage(editorialPageIndex - 1));
+  editorialNext?.addEventListener("click", () => setEditorialPage(editorialPageIndex + 1));
+  editorialGrid.addEventListener("wheel", handleEditorialWheel, { passive: false });
+  editorial?.addEventListener("mouseenter", () => setEditorialAutoPaused(true));
+  editorial?.addEventListener("mouseleave", () => setEditorialAutoPaused(false));
+  editorial?.addEventListener("focusin", () => setEditorialAutoPaused(true));
+  editorial?.addEventListener("focusout", () => {
+    window.requestAnimationFrame(() => {
+      if (!editorial.contains(document.activeElement)) setEditorialAutoPaused(false);
+    });
+  });
+
+  function handleEditorialViewportChange() {
+    editorialPageIndex = 0;
+    editorialAutoDirection = 1;
+    renderEditorialGrid();
+    restartEditorialAuto();
+  }
+
+  if (typeof editorialDesktopQuery.addEventListener === "function") {
+    editorialDesktopQuery.addEventListener("change", handleEditorialViewportChange);
+  } else if (typeof editorialDesktopQuery.addListener === "function") {
+    editorialDesktopQuery.addListener(handleEditorialViewportChange);
+  }
+
   window.ChooI18n?.onChange(() => {
-    renderGrid();
-    renderHighlightGrid();
-    renderOriginGrid();
     renderEditorialGrid();
     renderEditorialChips();
     if (activeId) renderModal();
   });
-  renderGrid();
-  renderHighlightGrid();
-  renderOriginGrid();
   renderEditorialGrid();
   renderEditorialChips();
+  startEditorialAuto();
 })();
 
 /* ===== Student-band parallax ===== */
@@ -3938,40 +3939,4 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll);
   update();
-})();
-
-/* ===== Variant A/B toggle ===== */
-(function () {
-  function init() {
-    const buttons = document.querySelectorAll("[data-variant-toggle]");
-    if (!buttons.length) return;
-    const sections = document.querySelectorAll(".store-categories[data-variant]");
-
-    function activate(target) {
-      buttons.forEach((btn) => {
-        const on = btn.dataset.variantToggle === target;
-        btn.classList.toggle("variant-switch__btn--on", on);
-        btn.setAttribute("aria-selected", on ? "true" : "false");
-      });
-      sections.forEach((section) => {
-        const on = section.dataset.variant === target;
-        section.classList.toggle("is-active", on);
-        if (on) {
-          section.removeAttribute("hidden");
-        } else {
-          section.setAttribute("hidden", "");
-        }
-      });
-    }
-
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => activate(btn.dataset.variantToggle));
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
-  } else {
-    init();
-  }
 })();
