@@ -3817,7 +3817,12 @@
     document.body.style.right = "";
     document.body.style.left = "";
     document.body.style.width = "";
-    window.scrollTo({ top: targetScrollY, left: 0, behavior: "instant" });
+    try {
+      window.scrollTo(0, targetScrollY);
+    } catch (error) {
+      document.documentElement.scrollTop = targetScrollY;
+      document.body.scrollTop = targetScrollY;
+    }
     lockedScrollY = 0;
     window.requestAnimationFrame(() => {
       html.style.scrollBehavior = previousScrollBehavior;
@@ -3840,7 +3845,18 @@
     if (modal.hidden) return;
     modal.hidden = true;
     modal.setAttribute("aria-hidden", "true");
-    unlockPageScroll();
+    try {
+      unlockPageScroll();
+    } catch (error) {
+      document.documentElement.classList.remove("store-category-modal-open");
+      document.body.classList.remove("store-category-modal-open");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.right = "";
+      document.body.style.left = "";
+      document.body.style.width = "";
+      lockedScrollY = 0;
+    }
     activeId = null;
     if (lastFocus && document.contains(lastFocus)) {
       lastFocus.focus();
@@ -3850,7 +3866,10 @@
   }
 
   closeTargets.forEach((target) => {
-    target.addEventListener("click", closeModal);
+    target.addEventListener("click", (event) => {
+      event.preventDefault();
+      closeModal();
+    });
   });
 
   document.addEventListener("keydown", (event) => {

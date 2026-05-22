@@ -589,6 +589,7 @@ body.menu-open .site-header {
   border: 1px solid currentColor;
   border-radius: 50%;
   opacity: 0.9;
+  overflow: hidden;
 }
 
 .store-highlight__icon .category-icon-svg {
@@ -598,10 +599,11 @@ body.menu-open .site-header {
 }
 
 .store-highlight__icon .category-icon-img {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   filter: none;
   object-fit: contain;
+  transform: scale(1.58);
 }
 
 .store-highlight--editorial:hover .store-highlight__icon .category-icon-img {
@@ -1076,7 +1078,12 @@ body.menu-open .site-header {
 .store-category-modal__visual .category-icon-img {
   width: min(48vw, 299px);
   height: min(48vw, 299px);
-  filter: grayscale(1) contrast(1.08);
+  filter: brightness(0) saturate(0) contrast(1.08);
+}
+
+.store-category-modal .brand-tile__logo {
+  opacity: 0.86;
+  filter: brightness(0) saturate(0) contrast(1.08);
 }
 
 .store-category-modal__content {
