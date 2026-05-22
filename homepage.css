@@ -2837,6 +2837,12 @@ body.store-category-modal-open {
   gap: 10px;
 }
 
+.footer-socials {
+  gap: 14px;
+  padding: 16px 0 18px;
+  border-top: 1px solid rgba(250, 247, 241, 0.15);
+}
+
 .social-icon {
   display: inline-flex;
   width: 34px;
@@ -2892,10 +2898,30 @@ body.store-category-modal-open {
 }
 
 .footer .social-icon {
-  --social-bg: rgba(250, 247, 241, 0.9);
-  --social-border: rgba(250, 247, 241, 0.36);
-  --social-hover-border: rgba(250, 247, 241, 0.92);
-  --social-ring: rgba(250, 247, 241, 0.16);
+  --social-bg: transparent;
+  --social-border: transparent;
+  --social-hover-border: transparent;
+  --social-ring: transparent;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.footer .social-icon:hover {
+  box-shadow: none;
+}
+
+.footer .social-icon img {
+  width: 30px;
+  height: 30px;
+  opacity: 0.72;
+  filter: brightness(0) invert(1);
+}
+
+.footer .social-icon:hover img {
+  opacity: 1;
 }
 
 .visit-socials .social-icon {
@@ -4159,7 +4185,8 @@ body.store-category-modal-open {
 .payment-methods__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 18px 28px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -4167,17 +4194,20 @@ body.store-category-modal-open {
 
 .payment-methods__list li {
   display: inline-flex;
-  min-height: 30px;
+  width: clamp(88px, 8.5vw, 136px);
+  height: 58px;
   align-items: center;
   justify-content: center;
-  padding: 6px 10px;
-  border: 1px solid rgba(23, 23, 23, 0.14);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.54);
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1;
+  padding: 0;
+  overflow: hidden;
+}
+
+.payment-methods__list img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .payment-methods p {
@@ -4186,6 +4216,44 @@ body.store-category-modal-open {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+.footer .payment-methods {
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+}
+
+.footer .payment-methods h3 {
+  color: rgba(250, 247, 241, 0.72);
+  text-align: center;
+}
+
+.footer .payment-methods__list {
+  max-width: min(48vw, 560px);
+  justify-content: center;
+  gap: 4px 10px;
+}
+
+.footer .payment-methods__list li {
+  width: clamp(48px, 4.4vw, 68px);
+  height: clamp(34px, 3.2vw, 46px);
+}
+
+.footer .payment-methods__list img {
+  width: 75%;
+  height: 75%;
+  opacity: 1;
+  filter: none;
+}
+
+.footer .payment-methods p {
+  max-width: none;
+  margin-top: 8px;
+  color: rgba(250, 247, 241, 0.5);
+  text-align: center;
+  font-size: 12px;
 }
 
 .visit__aside {
