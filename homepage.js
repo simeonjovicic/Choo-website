@@ -1908,7 +1908,6 @@
 
   async function loadRecipes(filter = activeFilter) {
     const params = new URLSearchParams({ lang: currentLang() });
-    if (filter && filter !== "all") params.set("tag", filter);
 
     try {
       const response = await fetch(`/api/recipes?${params.toString()}`, {
@@ -2087,17 +2086,18 @@
     const mount = document.querySelector("[data-recipes]");
     if (!mount) return;
 
-    const visible = filter === "all" ? recipes : recipes.filter((recipe) => recipe.tags.includes(filter));
-    mount.innerHTML = visible.map((recipe) => {
-      const originalIndex = recipes.findIndex((item) => item.id === recipe.id) + 1;
+    mount.innerHTML = recipes.map((recipe, index) => {
+      const originalIndex = index + 1;
       const ingredients = recipeIngredients(recipe);
       const inStore = ingredients.filter((ingredient) => ingredient.inStore).length;
       const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
       const imageSrc = recipe.imageUrl || "images/recipe-placeholder.png";
       const imageAlt = recipe.imageAlt || "";
+      const matches = filter === "all" || recipe.tags.includes(filter);
+      const hiddenClass = matches ? "" : " rc--hidden";
 
       return `
-        <button class="rc" type="button" data-recipe="${escapeHtml(recipe.id)}">
+        <button class="rc${hiddenClass}" type="button" data-recipe="${escapeHtml(recipe.id)}" data-recipe-tags="${escapeHtml(recipe.tags.join(","))}">
           <span class="rc__image" aria-hidden="true">
             <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}" width="1448" height="1086" loading="lazy" decoding="async" />
           </span>
@@ -2119,6 +2119,57 @@
 
     if (window.matchMedia("(max-width: 820px)").matches) {
       mount.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }
+
+  let activeRecipeFlip = null;
+
+  function applyRecipeFilter(filter) {
+    const mount = document.querySelector("[data-recipes]");
+    if (!mount) return;
+    const items = Array.from(mount.querySelectorAll(".rc"));
+    if (!items.length) return;
+
+    const FlipPlugin = window.Flip;
+    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const canAnimate = Boolean(FlipPlugin && window.gsap && !reduceMotion);
+
+    if (activeRecipeFlip) {
+      activeRecipeFlip.kill();
+      activeRecipeFlip = null;
+    }
+    if (canAnimate) {
+      window.gsap.killTweensOf(items);
+      window.gsap.set(items, { clearProps: "transform,opacity" });
+    }
+
+    const state = canAnimate ? FlipPlugin.getState(items, { props: "opacity" }) : null;
+
+    items.forEach((item) => {
+      const tags = (item.dataset.recipeTags || "").split(",").filter(Boolean);
+      const matches = filter === "all" || tags.includes(filter);
+      item.classList.toggle("rc--hidden", !matches);
+    });
+
+    if (state) {
+      activeRecipeFlip = FlipPlugin.from(state, {
+        duration: 0.6,
+        ease: "power2.inOut",
+        stagger: 0.025,
+        absoluteOnLeave: true,
+        onEnter: (elements) =>
+          window.gsap.fromTo(
+            elements,
+            { opacity: 0, scale: 0.88 },
+            { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }
+          ),
+        onLeave: (elements) =>
+          window.gsap.to(elements, { opacity: 0, scale: 0.88, duration: 0.4, ease: "power2.in" }),
+        onComplete: () => {
+          activeRecipeFlip = null;
+          window.gsap.set(items, { clearProps: "transform" });
+        },
+      });
     }
   }
 
@@ -2416,7 +2467,7 @@
       document.querySelectorAll("[data-filter]").forEach((item) => {
         item.classList.toggle("filter--on", item === button);
       });
-      loadRecipes(activeFilter);
+      applyRecipeFilter(activeFilter);
     });
 
     document.querySelector("[data-recipes]")?.addEventListener("click", (event) => {
@@ -3045,7 +3096,7 @@
       vegan: brandList(["JOYTOFU", "PULMUONE", "SOYSPRING", "KIKKOMAN", "LKK", "TILDA", "KURATA VEGAN", "HIKARI MISO", "HANAMARUKI", "KONBU", "WAKAME", "LONGKOU", "BAMBOO TREE", "THAI DANCER", "TRS", "SWAD", "ASHOKA", "COCK BRAND", "AROY-D", "CHAOKOH", "SIX FORTUNE", "YUME NISHIKI", "SEKIRYU"]),
       hotPot: brandList(["HAIDILAO", "LITTLE SHEEP", "LJ BROTHER HOTPOT", "LJ BROTHER HOTPOT BASE", "LJ BROTHER", "FLYING GOOSE", "HEALTHY BOY", "PANTAI", "COCK BRAND", "PRB", "ZHONGJING", "CUIHONG", "LIUPO", "SZECHUAN TIAN FU", "BIBIGO", "WANG", "YOPOKKI", "BAMBOO TREE", "LONGKOU", "JOYTOFU"]),
       spicy: brandList(["SAMYANG", "NONGSHIM", "MAMA", "FLYING GOOSE", "WEILONG", "CJ", "CHUNGJUNGONE", "O'FOOD", "OFOOD", "S&B", "SZECHUAN TIAN FU", "CUIHONG", "LIUPO", "CN HUANG FEI HONG", "HOT CHIP", "HAIDILAO", "LITTLE SHEEP", "MAEPRANOM", "PANTAI", "LOBO", "ENCONA", "YUMEI"]),
-      gifts: brandList(["SANRIO", "MEASTY SANRIO", "BANDAI", "POP MART", "TOKYO DESIGN", "DEATH NOTE", "MY HERO ACADEMIA", "HATSUNE MIKU", "JUJUTSU KAISEN", "ATTACK ON TITAN", "JUNJI ITO", "POKEMON", "SAILOR MOON", "BERSERK", "DETECTIVE CONAN", "ABYSTYLE", "ENSKY", "INUYASHA", "FAIRY TAIL", "DR STONE", "HUNTER X HUNTER", "TOILET-BOUND HANAKO-KUN", "HAIKYU", "CHAINSAW MAN", "PUELLA MAGI MADOKA MAGICA", "BT21", "BTS", "BLACK PINK", "SQUID GAME", "PINK FONG", "TOKIMEKI", "POCKY", "KITKAT", "ROYAL FAMILY"])
+      gifts: brandList(["SANRIO", "BANDAI", "TOKYO DESIGN"])
     };
   })();
 
@@ -3469,6 +3520,7 @@
     "CHACHA": "chacha.png",
     "COCK BRAND": "cock-brand.png",
     "FLYING GOOSE": "flyinggoose.png",
+    "HAIDILAO": "haidilao.png",
     "HAOLIYUAN": "haoliyuan.png",
     "HATAKOSEN": "hata.png",
     "HEALTHY BOY": "healthyboybrand.png",
@@ -3480,6 +3532,7 @@
     "KIRIN": "kirinibachi.png",
     "KWANGDONG": "kwangdong.png",
     "KURATA VEGAN": "kurata.png",
+    "LITTLE SHEEP": "little-sheep.png",
     "LKK": "lkk.png",
     "MALI FLOWER": "maliflower.png",
     "MAMA": "mama.png",
@@ -3540,7 +3593,9 @@
     "WEILONG": 1.40,
     "KWANGDONG": 1.24,
     "YULIN": 1.50,
-    "TIGER BALM": 1.40
+    "TIGER BALM": 1.40,
+    "LITTLE SHEEP": 1.60,
+    "HAIDILAO": 1.20
   };
 
   function brandInitials(brand) {
