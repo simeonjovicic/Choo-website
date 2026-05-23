@@ -3473,10 +3473,12 @@
     "HATAKOSEN": "hata.png",
     "HEALTHY BOY": "healthyboybrand.png",
     "ITO EN": "ITOEN.png",
+    "JIADUBAO": "JIADUBAO.png",
     "JOYTOFU": "joytofu.png",
     "KASET": "kaset.png",
     "KIKKOMAN": "kikkoman.png",
     "KIRIN": "kirinibachi.png",
+    "KWANGDONG": "kwangdong.png",
     "KURATA VEGAN": "kurata.png",
     "LKK": "lkk.png",
     "MALI FLOWER": "maliflower.png",
@@ -3535,7 +3537,8 @@
     "TSUBOICHI": 1.20,
     "KURATA VEGAN": 1.40,
     "TOKIMEKI": 1.30,
-    "WEILONG": 1.40
+    "WEILONG": 1.40,
+    "KWANGDONG": 1.15
   };
 
   function brandInitials(brand) {
