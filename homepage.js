@@ -3538,7 +3538,9 @@
     "KURATA VEGAN": 1.40,
     "TOKIMEKI": 1.30,
     "WEILONG": 1.40,
-    "KWANGDONG": 1.15
+    "KWANGDONG": 1.24,
+    "YULIN": 1.50,
+    "TIGER BALM": 1.40
   };
 
   function brandInitials(brand) {
