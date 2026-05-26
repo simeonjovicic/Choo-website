@@ -3105,7 +3105,7 @@
       id: "instant",
       image: "assets/categories/instant.png",
       imageInverted: "assets/categories/instan-inverte.png",
-      cardImage: "instant.jpeg",
+      cardImage: "instant.png",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
@@ -3117,6 +3117,7 @@
       id: "snacks",
       image: "assets/categories/snacks-sweets.png",
       imageInverted: "assets/categories/snacks-inverte.png",
+      cardImage: "snack-sweet.png",
       brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Chips & savory snacks", "Candy, gummies & chocolate", "Cookies, Pocky & wafers", "Jelly, boba & dessert cups"] },
@@ -3128,6 +3129,7 @@
       id: "sauces",
       image: "assets/categories/sauces-seasoning.png",
       imageInverted: "assets/categories/sauce-inverte.png",
+      cardImage: "sauce.png",
       brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Soy sauce, fish sauce & vinegar", "Chili oil, gochujang & curry pastes", "Sesame oil & cooking oils", "Spices, blends & seasoning pastes"] },
@@ -3139,6 +3141,7 @@
       id: "rice",
       image: "assets/categories/noodles-rice.png",
       imageInverted: "assets/categories/noodle-inverte.png",
+      cardImage: "rice.png",
       brands: BRAND_GROUPS.rice,
       copy: {
         en: { title: "Rice", items: ["Jasmine rice & basmati rice", "Sushi rice & glutinous rice", "Cooked rice & rice cakes", "Rice paper & rice noodles"] },
@@ -3150,6 +3153,7 @@
       id: "drinks",
       image: "assets/categories/drinks.png",
       imageInverted: "assets/categories/drinks-inverte.png",
+      cardImage: "drinks.png",
       brands: BRAND_GROUPS.drinksAlcohol,
       copy: {
         en: { title: "Drinks & Alcohol", items: ["Soft drinks & fruit drinks", "Milk drinks, coffee & bubble tea", "Soju, sake & Asian wine", "Beer & alcohol-free drinks"] },
@@ -3190,6 +3194,7 @@
     {
       id: "tea",
       image: "assets/categories/tee-logo-black.png",
+      cardImage: "tee.png",
       brands: BRAND_GROUPS.tea,
       copy: {
         en: { title: "Tea", items: ["Green tea, jasmine tea & oolong", "Matcha & milk tea", "Herbal and flower teas", "Tea sets & gift teas"] },
