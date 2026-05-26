@@ -1,0 +1,19 @@
+{
+  "name": "Choo Foodstore — Asian Supermarket Vienna",
+  "short_name": "Choo Foodstore",
+  "description": "Curated Asian supermarket in Vienna 1060, next to Naschmarkt. Noodles, sauces, snacks, rice, fresh & frozen.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f2e7",
+  "theme_color": "#b74838",
+  "icons": [
+    { "src": "/assets/favicons/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/favicons/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/favicons/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/favicons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ],
+  "categories": ["food", "shopping", "lifestyle"]
+}

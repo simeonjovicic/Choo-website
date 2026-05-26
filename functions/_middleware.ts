@@ -1,4 +1,6 @@
 import { applySecurityHeaders, getAdminPath } from "./_shared/http";
+import { maybeRewriteIndex } from "./_shared/seo-render";
+import { buildSitemapXml, SITEMAP_PATH } from "./_shared/sitemap";
 import type { Env } from "./_shared/types";
 
 async function adminShell(request: Request, env: Env): Promise<Response> {
@@ -25,8 +27,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const adminPath = getAdminPath(context.env);
 
   if (url.pathname === "/robots.txt") {
-    return applySecurityHeaders(new Response(`User-agent: *\nDisallow: ${adminPath}\n`, {
-      headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=300" },
+    const body = `User-agent: *\nDisallow: ${adminPath}\n\nSitemap: https://choo-foodstore.at${SITEMAP_PATH}\n`;
+    return applySecurityHeaders(new Response(body, {
+      headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" },
+    }));
+  }
+
+  if (url.pathname === SITEMAP_PATH) {
+    return applySecurityHeaders(new Response(buildSitemapXml(), {
+      headers: { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" },
     }));
   }
 
@@ -34,5 +43,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return applySecurityHeaders(await adminShell(context.request, context.env));
   }
 
-  return applySecurityHeaders(await context.next());
+  const downstream = await context.next();
+
+  if (
+    context.request.method === "GET" &&
+    (url.pathname === "/" || url.pathname === "/index.html")
+  ) {
+    const rewritten = await maybeRewriteIndex(context.request, downstream);
+    return applySecurityHeaders(rewritten);
+  }
+
+  return applySecurityHeaders(downstream);
 };
