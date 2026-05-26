@@ -3105,7 +3105,7 @@
       id: "instant",
       image: "assets/categories/instant.png",
       imageInverted: "assets/categories/instan-inverte.png",
-      cardImage: "instant.png",
+      cardImage: "assets/categories/covers/instant.png",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
@@ -3117,7 +3117,7 @@
       id: "snacks",
       image: "assets/categories/snacks-sweets.png",
       imageInverted: "assets/categories/snacks-inverte.png",
-      cardImage: "snack-sweet.png",
+      cardImage: "assets/categories/covers/snack-sweet.png",
       brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Chips & savory snacks", "Candy, gummies & chocolate", "Cookies, Pocky & wafers", "Jelly, boba & dessert cups"] },
@@ -3129,7 +3129,7 @@
       id: "sauces",
       image: "assets/categories/sauces-seasoning.png",
       imageInverted: "assets/categories/sauce-inverte.png",
-      cardImage: "sauce.png",
+      cardImage: "assets/categories/covers/sauce.png",
       brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Soy sauce, fish sauce & vinegar", "Chili oil, gochujang & curry pastes", "Sesame oil & cooking oils", "Spices, blends & seasoning pastes"] },
@@ -3141,7 +3141,7 @@
       id: "rice",
       image: "assets/categories/noodles-rice.png",
       imageInverted: "assets/categories/noodle-inverte.png",
-      cardImage: "rice.png",
+      cardImage: "assets/categories/covers/rice.png",
       brands: BRAND_GROUPS.rice,
       copy: {
         en: { title: "Rice", items: ["Jasmine rice & basmati rice", "Sushi rice & glutinous rice", "Cooked rice & rice cakes", "Rice paper & rice noodles"] },
@@ -3153,7 +3153,7 @@
       id: "drinks",
       image: "assets/categories/drinks.png",
       imageInverted: "assets/categories/drinks-inverte.png",
-      cardImage: "drinks.png",
+      cardImage: "assets/categories/covers/drinks.png",
       brands: BRAND_GROUPS.drinksAlcohol,
       copy: {
         en: { title: "Drinks & Alcohol", items: ["Soft drinks & fruit drinks", "Milk drinks, coffee & bubble tea", "Soju, sake & Asian wine", "Beer & alcohol-free drinks"] },
@@ -3164,6 +3164,7 @@
     {
       id: "fresh",
       image: "assets/categories/frish-logo-black.png",
+      cardImage: "assets/categories/covers/cooled.png",
       brands: BRAND_GROUPS.fresh,
       copy: {
         en: { title: "Fresh & Chilled", items: ["Vegetables & herbs", "Tofu & soy products", "Buns, bao & dumpling wrappers", "Mochi & chilled desserts"] },
@@ -3174,6 +3175,7 @@
     {
       id: "frozen",
       image: "assets/categories/tk-logo-black.png",
+      cardImage: "assets/categories/covers/frozen.png",
       brands: BRAND_GROUPS.frozen,
       copy: {
         en: { title: "Frozen", items: ["Dumplings & gyoza", "Bao, buns & mochi ice cream", "Fish, seafood & meat", "Frozen vegetables & ready meals"] },
@@ -3184,6 +3186,7 @@
     {
       id: "vegan",
       image: "assets/categories/vegan-logo-black.png",
+      cardImage: "assets/categories/covers/vegan.png",
       brands: BRAND_GROUPS.vegan,
       copy: {
         en: { title: "Vegan Products", items: ["Tofu, seitan & bean products", "Vegan sauces & pastes", "Plant-based snacks & sweets", "Rice, noodles & cooking basics"] },
@@ -3194,7 +3197,7 @@
     {
       id: "tea",
       image: "assets/categories/tee-logo-black.png",
-      cardImage: "tee.png",
+      cardImage: "assets/categories/covers/tee.png",
       brands: BRAND_GROUPS.tea,
       copy: {
         en: { title: "Tea", items: ["Green tea, jasmine tea & oolong", "Matcha & milk tea", "Herbal and flower teas", "Tea sets & gift teas"] },
@@ -3205,6 +3208,7 @@
     {
       id: "tcm",
       image: "assets/categories/tcm-logo-black.png",
+      cardImage: "assets/categories/covers/tcm.png",
       brands: BRAND_GROUPS.tcm,
       copy: {
         en: { title: "TCM Products", items: ["Herbal teas & tonics", "Cough syrups & throat remedies", "Balms, ointments & topical care", "Warming drinks & medicinal pastes"] },
@@ -3216,6 +3220,7 @@
       id: "gifts",
       image: "assets/categories/gifts.png",
       imageInverted: "assets/categories/gitfs-inverte.png",
+      cardImage: "assets/categories/covers/gift.png",
       brands: BRAND_GROUPS.gifts,
       copy: {
         en: { title: "Gift Sets", items: ["Tea & snack sets", "Character goods & small extras", "Tableware & kitchen tools", "Seasonal gift ideas"] },
