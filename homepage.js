@@ -3105,6 +3105,7 @@
       id: "instant",
       image: "assets/categories/instant.png",
       imageInverted: "assets/categories/instan-inverte.png",
+      cardImage: "instant.jpeg",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
@@ -3712,6 +3713,7 @@
 
     button.type = "button";
     button.className = "tile";
+    if (category.cardImage) button.classList.add("tile--cover");
     button.dataset.storeEditorial = category.id;
     button.setAttribute("aria-haspopup", "dialog");
     button.setAttribute("aria-controls", "store-category-modal");
@@ -3719,6 +3721,19 @@
 
     media.className = "tile__media";
     media.append(createTileVisual(category));
+    if (category.cardImage) {
+      const cover = document.createElement("img");
+      cover.className = "tile__cover";
+      cover.src = category.cardImage;
+      cover.alt = "";
+      cover.decoding = "async";
+      cover.loading = "lazy";
+      cover.onerror = () => {
+        button.classList.remove("tile--cover");
+        cover.remove();
+      };
+      button.append(cover);
+    }
 
     body.className = "tile__body";
     name.className = "tile__name";
