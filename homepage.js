@@ -3106,6 +3106,7 @@
       image: "assets/categories/instant.png",
       imageInverted: "assets/categories/instan-inverte.png",
       cardImage: "assets/categories/covers/instant.png",
+      desktopCardImage: "assets/categories/desktop/instant-desktop.jpeg",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
@@ -3118,6 +3119,7 @@
       image: "assets/categories/snacks-sweets.png",
       imageInverted: "assets/categories/snacks-inverte.png",
       cardImage: "assets/categories/covers/snack-sweet.png",
+      desktopCardImage: "assets/categories/desktop/snack-desktop.jpeg",
       brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Chips & savory snacks", "Candy, gummies & chocolate", "Cookies, Pocky & wafers", "Jelly, boba & dessert cups"] },
@@ -3130,6 +3132,7 @@
       image: "assets/categories/sauces-seasoning.png",
       imageInverted: "assets/categories/sauce-inverte.png",
       cardImage: "assets/categories/covers/sauce.png",
+      desktopCardImage: "assets/categories/desktop/sauce-desktop.jpeg",
       brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Soy sauce, fish sauce & vinegar", "Chili oil, gochujang & curry pastes", "Sesame oil & cooking oils", "Spices, blends & seasoning pastes"] },
@@ -3142,6 +3145,7 @@
       image: "assets/categories/noodles-rice.png",
       imageInverted: "assets/categories/noodle-inverte.png",
       cardImage: "assets/categories/covers/rice.png",
+      desktopCardImage: "assets/categories/desktop/rice-desktop.jpeg",
       brands: BRAND_GROUPS.rice,
       copy: {
         en: { title: "Rice", items: ["Jasmine rice & basmati rice", "Sushi rice & glutinous rice", "Cooked rice & rice cakes", "Rice paper & rice noodles"] },
@@ -3154,6 +3158,7 @@
       image: "assets/categories/drinks.png",
       imageInverted: "assets/categories/drinks-inverte.png",
       cardImage: "assets/categories/covers/drinks.png",
+      desktopCardImage: "assets/categories/desktop/drink-desktop.jpeg",
       brands: BRAND_GROUPS.drinksAlcohol,
       copy: {
         en: { title: "Drinks & Alcohol", items: ["Soft drinks & fruit drinks", "Milk drinks, coffee & bubble tea", "Soju, sake & Asian wine", "Beer & alcohol-free drinks"] },
@@ -3165,6 +3170,7 @@
       id: "fresh",
       image: "assets/categories/frish-logo-black.png",
       cardImage: "assets/categories/covers/cooled.png",
+      desktopCardImage: "assets/categories/desktop/chilled-desktop.jpeg",
       brands: BRAND_GROUPS.fresh,
       copy: {
         en: { title: "Fresh & Chilled", items: ["Vegetables & herbs", "Tofu & soy products", "Buns, bao & dumpling wrappers", "Mochi & chilled desserts"] },
@@ -3176,6 +3182,7 @@
       id: "frozen",
       image: "assets/categories/tk-logo-black.png",
       cardImage: "assets/categories/covers/frozen.png",
+      desktopCardImage: "assets/categories/desktop/frozen-dekstop.jpeg",
       brands: BRAND_GROUPS.frozen,
       copy: {
         en: { title: "Frozen", items: ["Dumplings & gyoza", "Bao, buns & mochi ice cream", "Fish, seafood & meat", "Frozen vegetables & ready meals"] },
@@ -3187,6 +3194,7 @@
       id: "vegan",
       image: "assets/categories/vegan-logo-black.png",
       cardImage: "assets/categories/covers/vegan.png",
+      desktopCardImage: "assets/categories/desktop/vegan-desktop.jpeg",
       brands: BRAND_GROUPS.vegan,
       copy: {
         en: { title: "Vegan Products", items: ["Tofu, seitan & bean products", "Vegan sauces & pastes", "Plant-based snacks & sweets", "Rice, noodles & cooking basics"] },
@@ -3198,6 +3206,7 @@
       id: "tea",
       image: "assets/categories/tee-logo-black.png",
       cardImage: "assets/categories/covers/tee.png",
+      desktopCardImage: "assets/categories/desktop/tea-dekstop.jpeg",
       brands: BRAND_GROUPS.tea,
       copy: {
         en: { title: "Tea", items: ["Green tea, jasmine tea & oolong", "Matcha & milk tea", "Herbal and flower teas", "Tea sets & gift teas"] },
@@ -3209,6 +3218,7 @@
       id: "tcm",
       image: "assets/categories/tcm-logo-black.png",
       cardImage: "assets/categories/covers/tcm.png",
+      desktopCardImage: "assets/categories/desktop/tcm-desktop.jpeg",
       brands: BRAND_GROUPS.tcm,
       copy: {
         en: { title: "TCM Products", items: ["Herbal teas & tonics", "Cough syrups & throat remedies", "Balms, ointments & topical care", "Warming drinks & medicinal pastes"] },
@@ -3221,6 +3231,7 @@
       image: "assets/categories/gifts.png",
       imageInverted: "assets/categories/gitfs-inverte.png",
       cardImage: "assets/categories/covers/gift.png",
+      desktopCardImage: "assets/categories/desktop/gift-desktop.jpeg",
       brands: BRAND_GROUPS.gifts,
       copy: {
         en: { title: "Gift Sets", items: ["Tea & snack sets", "Character goods & small extras", "Tableware & kitchen tools", "Seasonal gift ideas"] },
@@ -3723,7 +3734,7 @@
 
     button.type = "button";
     button.className = "tile";
-    if (category.cardImage) button.classList.add("tile--cover");
+    if (category.cardImage || category.desktopCardImage) button.classList.add("tile--cover");
     button.dataset.storeEditorial = category.id;
     button.setAttribute("aria-haspopup", "dialog");
     button.setAttribute("aria-controls", "store-category-modal");
@@ -3733,16 +3744,28 @@
     media.append(createTileVisual(category));
     if (category.cardImage) {
       const cover = document.createElement("img");
-      cover.className = "tile__cover";
+      cover.className = "tile__cover tile__cover--mobile";
       cover.src = category.cardImage;
       cover.alt = "";
       cover.decoding = "async";
       cover.loading = "lazy";
       cover.onerror = () => {
-        button.classList.remove("tile--cover");
+        if (!category.desktopCardImage) button.classList.remove("tile--cover");
         cover.remove();
       };
       button.append(cover);
+    }
+    if (category.desktopCardImage) {
+      const desktopCover = document.createElement("img");
+      desktopCover.className = "tile__cover tile__cover--desktop";
+      desktopCover.src = category.desktopCardImage;
+      desktopCover.alt = "";
+      desktopCover.decoding = "async";
+      desktopCover.loading = "lazy";
+      desktopCover.onerror = () => {
+        desktopCover.remove();
+      };
+      button.append(desktopCover);
     }
 
     body.className = "tile__body";
