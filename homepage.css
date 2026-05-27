@@ -656,8 +656,13 @@ body.menu-open .site-header {
 }
 
 .store-editorial__head .section-eyebrow {
-  color: var(--accent);
+  margin: 0 0 14px;
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
   text-align: left;
+  text-transform: uppercase;
 }
 
 .store-editorial__head h2 {
@@ -3973,12 +3978,13 @@ body.store-category-modal-open {
 .events .eyebrow,
 .visit .eyebrow {
   display: inline-block;
-  color: var(--accent);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: left;
   text-transform: uppercase;
-  margin-bottom: 8px;
 }
 .events__rail h2,
 .visit__col h2 {

@@ -27,7 +27,7 @@
       "categories.brandsLabel": "Brands you'll find",
       "categories.featuredAria": "Popular picks",
       "categories.brandPreview": "{brands} +{count} more",
-      "categories.editorialEyebrow": "01 — Browse the store",
+      "categories.editorialEyebrow": "01 - Browse the store",
       "categories.editorialTitle": "Asia, by aisle.",
       "categories.editorialText": "11 core aisles, clearly sorted. Tap a tile for what's inside.",
       "categories.editorialFeatured": "Cross-shelf picks",
@@ -74,7 +74,7 @@
       "payments.note": "Card, mobile wallet and selected voucher payments accepted in store.",
       "footer.links": "Links",
       "footer.visit": "Visit",
-      "footer.hours1": "Mon-Fri 09-20:00",
+      "footer.hours1": "Mon-Fri 09-19:00",
       "footer.hours2": "Sat 09-18:00",
       "footer.phone": "Phone: <a href=\"tel:019605678\">01 9605678</a>",
       "footer.text": "Asian supermarket in Vienna's sixth district. Carefully sorted, friendly advice.",
@@ -159,7 +159,7 @@
       "categories.brandsLabel": "Marken bei uns",
       "categories.featuredAria": "Beliebte Auswahl",
       "categories.brandPreview": "{brands} +{count} weitere",
-      "categories.editorialEyebrow": "01 — Im Markt stöbern",
+      "categories.editorialEyebrow": "01 - Im Markt stöbern",
       "categories.editorialTitle": "Asien, regalweise.",
       "categories.editorialText": "11 Kernbereiche, klar sortiert. Tippe auf eine Kachel für den Inhalt.",
       "categories.editorialFeatured": "Quer durchs Sortiment",
@@ -206,7 +206,7 @@
       "payments.note": "Kartenzahlung, Mobile Wallets und ausgewählte Gutscheinkarten im Store möglich.",
       "footer.links": "Links",
       "footer.visit": "Besuchen",
-      "footer.hours1": "Mo-Fr 09-20:00",
+      "footer.hours1": "Mo-Fr 09-19:00",
       "footer.hours2": "Sa 09-18:00",
       "footer.phone": "Telefon: <a href=\"tel:019605678\">01 9605678</a>",
       "footer.text": "Asia-Supermarkt im sechsten Wiener Bezirk. Sorgfältig sortiert, freundlich beraten.",
@@ -291,7 +291,7 @@
       "categories.brandsLabel": "店内品牌",
       "categories.featuredAria": "热门选择",
       "categories.brandPreview": "{brands} 等 +{count}",
-      "categories.editorialEyebrow": "01 — 逛逛货架",
+      "categories.editorialEyebrow": "01 - 逛逛货架",
       "categories.editorialTitle": "亚洲，按货架陈列。",
       "categories.editorialText": "11 个核心区域，清楚分类。点击图块查看内容。",
       "categories.editorialFeatured": "跨货架精选",
@@ -338,7 +338,7 @@
       "payments.note": "店内支持银行卡、手机钱包和部分餐券卡付款。",
       "footer.links": "链接",
       "footer.visit": "到店",
-      "footer.hours1": "周一至周五 09-20:00",
+      "footer.hours1": "周一至周五 09-19:00",
       "footer.hours2": "周六 09-18:00",
       "footer.phone": "电话：<a href=\"tel:019605678\">01 9605678</a>",
       "footer.text": "维也纳第六区的亚洲超市。精心陈列，友好建议。",
@@ -760,9 +760,9 @@
     const currentHour = now.getHours() + now.getMinutes() / 60;
     const isWeekday = day >= 1 && day <= 5;
     const isSaturday = day === 6;
-    const closesAt = isWeekday ? "20:00" : isSaturday ? "18:00" : "";
+    const closesAt = isWeekday ? "19:00" : isSaturday ? "18:00" : "";
     const opensToday = isWeekday || isSaturday;
-    const isOpen = opensToday && currentHour >= 9 && currentHour < (isWeekday ? 20 : 18);
+    const isOpen = opensToday && currentHour >= 9 && currentHour < (isWeekday ? 19 : 18);
 
     if (isOpen) {
       statusText.textContent = tr("status.openUntil", { time: closesAt });
