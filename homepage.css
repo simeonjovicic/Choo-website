@@ -4067,7 +4067,7 @@ body.store-category-modal-open {
   display: inline-block;
   margin: 0 0 14px;
   color: var(--red);
-  font-size: 10px;
+  font-size: 13px !important;
   font-weight: 600;
   letter-spacing: 3px;
   text-align: left;
