@@ -362,8 +362,31 @@
           <a class="btn btn-dark" href="#visit" data-i18n="story.cta">Learn more</a>
         </div>
       </div>
-      <div class="aisle__art" style="border: none; background: transparent; box-shadow: none;">
-        <img src="assets/shelve-c.png" alt="Shelves inside Choo Foodstore Asian supermarket in Vienna 1060 — sauces, instant noodles and pantry staples sorted by aisle" width="1483" height="1061" loading="lazy" decoding="async" style="mix-blend-mode: normal; border-radius: 8px;" />
+      <div class="aisle__art aisle__art--video">
+        <video
+          class="aisle__video"
+          data-aisle-video
+          src="assets/video/intro.mp4"
+          poster="assets/video/intro-poster.jpg"
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          disablepictureinpicture
+          preload="auto"
+          aria-label="Choo Foodstore Asian supermarket intro video"
+        ></video>
+        <button class="aisle__video-mute" type="button" data-aisle-video-mute aria-pressed="false" data-i18n-aria-label="aisle.unmute" aria-label="Unmute video">
+          <svg class="aisle__video-mute-icon aisle__video-mute-icon--muted" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/>
+            <path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+          <svg class="aisle__video-mute-icon aisle__video-mute-icon--unmuted" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor"/>
+            <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8 8 0 0 1 0 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+        </button>
       </div>
     </section>
 

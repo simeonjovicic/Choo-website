@@ -42,6 +42,8 @@
       "aisle.eyebrow": "02 - Inside the shop",
       "aisle.title": "Tap a shelf.<br /><em>It's stocked.</em>",
       "aisle.text": "Three aisles, low ceiling, paper lanterns. We carry around 1,200 lines - pantry deep on sauces, noodles and rice, with a steady rotation of regional snacks. Tap the illustration to find a section.",
+      "aisle.unmute": "Unmute video",
+      "aisle.mute": "Mute video",
       "recipes.eyebrow": "03 - From the kitchen",
       "recipes.title": "Recipes from our shelves.",
       "recipes.text": "Dishes you can finish on a weekday - most of the pantry is on our shelves.",
@@ -178,6 +180,8 @@
       "aisle.eyebrow": "02 - Im Markt",
       "aisle.title": "Tippe ein Regal an.<br /><em>Es ist voll.</em>",
       "aisle.text": "Drei Gänge, niedrige Decke, Papierlaternen. Wir führen rund 1.200 Artikel - tief sortiert bei Saucen, Nudeln und Reis, mit wechselnden regionalen Snacks. Tippe auf die Illustration, um einen Bereich zu entdecken.",
+      "aisle.unmute": "Ton einschalten",
+      "aisle.mute": "Stummschalten",
       "recipes.eyebrow": "03 - Aus der Küche",
       "recipes.title": "Rezepte aus unseren Regalen.",
       "recipes.text": "Gerichte, die du auch unter der Woche kochen kannst - fast alles dafür steht bei uns im Regal.",
@@ -314,6 +318,8 @@
       "aisle.eyebrow": "02 - 店内",
       "aisle.title": "点一下货架。<br /><em>货很足。</em>",
       "aisle.text": "三条过道、低矮天花和纸灯笼。我们约有 1,200 种商品，酱料、面和米类很齐全，也会持续更换地区零食。点按插图探索不同区域。",
+      "aisle.unmute": "开启声音",
+      "aisle.mute": "静音",
       "recipes.eyebrow": "03 - 来自厨房",
       "recipes.title": "来自货架的食谱。",
       "recipes.text": "工作日也能完成的菜，大部分食材都能在我们的货架上找到。",
@@ -964,9 +970,53 @@
   setupHotspots();
   setupCinematicPanels();
   setupDeliveryFab();
+  setupAisleVideo();
   applyHeroImage();
   updateScrollEffects();
   updateOpeningStatus();
+
+  function setupAisleVideo() {
+    const video = document.querySelector("[data-aisle-video]");
+    const button = document.querySelector("[data-aisle-video-mute]");
+    if (!video || !button) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    function tryPlay() {
+      const promise = video.play?.();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {
+          video.muted = true;
+          video.play?.().catch(() => {});
+        });
+      }
+    }
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener("loadeddata", tryPlay, { once: true });
+      video.addEventListener("canplay", tryPlay, { once: true });
+    }
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && video.paused) tryPlay();
+    });
+
+    function setMuted(muted) {
+      video.muted = muted;
+      button.setAttribute("aria-pressed", muted ? "false" : "true");
+      if (video.paused) tryPlay();
+    }
+
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setMuted(!video.muted);
+    });
+    video.addEventListener("click", () => {
+      setMuted(!video.muted);
+    });
+  }
 
   function setupDeliveryFab() {
     const root = document.querySelector("[data-delivery-fab]");
