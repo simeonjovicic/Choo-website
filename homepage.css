@@ -4333,6 +4333,7 @@ body.has-scrolled .delivery-fab__toggle {
     padding: 12px 16px;
     font-size: 11px;
     letter-spacing: 1.4px;
+  }
 }
 
 body.recipe-open .delivery-fab,
