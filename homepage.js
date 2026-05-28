@@ -66,6 +66,10 @@
       "visit.eyebrow": "05 - Find us",
       "visit.title": "Linke Wienzeile 54<br /><em>1060 Vienna.</em>",
       "visit.contact": "<strong>Address:</strong> Linke Wienzeile 54, 1060 Vienna<br /><strong>Phone:</strong> <a href=\"tel:019605678\">01 9605678</a>",
+      "delivery.fab": "Order delivery",
+      "delivery.fabToggle": "Order delivery via Wolt or foodora",
+      "delivery.wolt": "Order on Wolt",
+      "delivery.foodora": "Order on foodora",
       "hours.weekdays": "Mon - Fri",
       "hours.saturday": "Saturday",
       "hours.sunday": "Sunday",
@@ -198,6 +202,10 @@
       "visit.eyebrow": "05 - Find us",
       "visit.title": "Linke Wienzeile 54<br /><em>1060 Wien.</em>",
       "visit.contact": "<strong>Adresse:</strong> Linke Wienzeile 54, 1060 Wien<br /><strong>Telefon:</strong> <a href=\"tel:019605678\">01 9605678</a>",
+      "delivery.fab": "Liefern lassen",
+      "delivery.fabToggle": "Bestellen über Wolt oder foodora",
+      "delivery.wolt": "Auf Wolt bestellen",
+      "delivery.foodora": "Auf foodora bestellen",
       "hours.weekdays": "Mo - Fr",
       "hours.saturday": "Samstag",
       "hours.sunday": "Sonntag",
@@ -330,6 +338,10 @@
       "visit.eyebrow": "05 - 找到我们",
       "visit.title": "Linke Wienzeile 54<br /><em>1060 维也纳。</em>",
       "visit.contact": "<strong>地址：</strong>Linke Wienzeile 54, 1060 维也纳<br /><strong>电话：</strong><a href=\"tel:019605678\">01 9605678</a>",
+      "delivery.fab": "外送下单",
+      "delivery.fabToggle": "通过 Wolt 或 foodora 下单",
+      "delivery.wolt": "在 Wolt 下单",
+      "delivery.foodora": "在 foodora 下单",
       "hours.weekdays": "周一至周五",
       "hours.saturday": "周六",
       "hours.sunday": "周日",
@@ -951,9 +963,45 @@
   setupLogoLoader();
   setupHotspots();
   setupCinematicPanels();
+  setupDeliveryFab();
   applyHeroImage();
   updateScrollEffects();
   updateOpeningStatus();
+
+  function setupDeliveryFab() {
+    const root = document.querySelector("[data-delivery-fab]");
+    if (!root) return;
+    const toggle = root.querySelector("[data-delivery-fab-toggle]");
+    const menu = root.querySelector("[data-delivery-fab-menu]");
+    if (!toggle || !menu) return;
+
+    function close() {
+      menu.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+    }
+    function open() {
+      menu.hidden = false;
+      toggle.setAttribute("aria-expanded", "true");
+    }
+
+    toggle.addEventListener("click", () => {
+      menu.hidden ? open() : close();
+    });
+    document.addEventListener("click", (event) => {
+      if (menu.hidden) return;
+      if (root.contains(event.target)) return;
+      close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !menu.hidden) {
+        close();
+        toggle.focus();
+      }
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => close());
+    });
+  }
 })();
 
 /* ===== Recipes — from test34 ===== */
@@ -971,8 +1019,8 @@
         { name: "Doubanjiang (broad-bean paste)", inStore: true, aisle: "Sauces" },
         { name: "1 tsp Sichuan peppercorns", inStore: true, aisle: "Spices" },
         { name: "150g ground pork", inStore: false },
-        { name: "2 scallions", inStore: false },
-        { name: "Garlic + ginger", inStore: false },
+        { name: "2 scallions", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Garlic + ginger", inStore: true, aisle: "Fresh / fridge" },
         { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "Cornstarch slurry", inStore: true, aisle: "Pantry" },
       ],
@@ -999,7 +1047,7 @@
         { name: "1 tbsp light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "Sui mi ya cai (preserved mustard)", inStore: true, aisle: "Pantry" },
         { name: "100g ground pork", inStore: false },
-        { name: "Scallions", inStore: false },
+        { name: "Scallions", inStore: true, aisle: "Fresh / fridge" },
       ],
       steps: [
         "Whisk sauce: sesame paste, chili oil, vinegar, soy, splash of noodle water.",
@@ -1016,11 +1064,11 @@
       serves: 2,
       blurb: "Two ingredients, big flavour. Glossy, garlicky, ready in minutes.",
       ingredients: [
-        { name: "4 heads baby bok choy", inStore: false },
+        { name: "4 heads baby bok choy", inStore: true, aisle: "Fresh / fridge" },
         { name: "6 dried shiitake", inStore: true, aisle: "Pantry" },
         { name: "Vegetarian oyster (mushroom) sauce", inStore: true, aisle: "Sauces" },
         { name: "1 tbsp Shaoxing wine", inStore: true, aisle: "Pantry" },
-        { name: "4 cloves garlic", inStore: false },
+        { name: "4 cloves garlic", inStore: true, aisle: "Fresh / fridge" },
         { name: "Cornstarch", inStore: true, aisle: "Pantry" },
         { name: "Sesame oil", inStore: true, aisle: "Sauces" },
       ],
@@ -1041,8 +1089,8 @@
       blurb: "Day-old jasmine rice, hot wok, three ingredients done right.",
       ingredients: [
         { name: "400g day-old jasmine rice", inStore: true, aisle: "Pantry" },
-        { name: "3 eggs", inStore: false },
-        { name: "4 scallions", inStore: false },
+        { name: "3 eggs", inStore: true, aisle: "Fresh / fridge" },
+        { name: "4 scallions", inStore: true, aisle: "Fresh / fridge" },
         { name: "Light soy sauce", inStore: true, aisle: "Sauces" },
         { name: "White pepper", inStore: true, aisle: "Spices" },
         { name: "Sesame oil", inStore: true, aisle: "Sauces" },
@@ -1115,11 +1163,11 @@
       serves: 2,
       blurb: "Steamed eggplant with garlic, spring onion, sesame and a spicy Ma-La sauce.",
       ingredients: [
-        { name: "2 eggplants, trimmed and cut into 5 cm strips", inStore: false },
+        { name: "2 eggplants, trimmed and cut into 5 cm strips", inStore: true, aisle: "Fresh / fridge" },
         { name: "1 tbsp sesame seeds", inStore: true, aisle: "Pantry" },
         { name: "2 tbsp oil", inStore: false },
-        { name: "3 garlic cloves, crushed", inStore: false },
-        { name: "1 spring onion, finely chopped", inStore: false },
+        { name: "3 garlic cloves, crushed", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1 spring onion, finely chopped", inStore: true, aisle: "Fresh / fridge" },
         { name: "Sauce: 2 tbsp Lee Kum Kee soy sauce with shallot aroma", inStore: true, aisle: "Sauces" },
         { name: "Sauce: Lee Kum Kee Red Ma-La Chili Sauce", inStore: true, aisle: "Sauces" },
       ],
@@ -1142,8 +1190,8 @@
         { name: "12-15 tiger prawns with shell", inStore: false },
         { name: "1 nest vermicelli glass noodles", inStore: true, aisle: "Noodles" },
         { name: "2 tbsp vegetable oil", inStore: false },
-        { name: "2 garlic cloves, finely chopped", inStore: false },
-        { name: "1 spring onion, finely chopped", inStore: false },
+        { name: "2 garlic cloves, finely chopped", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1 spring onion, finely chopped", inStore: true, aisle: "Fresh / fridge" },
         { name: "Sauce: 1/2 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1/2 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
@@ -1166,11 +1214,11 @@
       blurb: "Chicken thigh fillets baked with honey, lime, garlic and light soy sauce.",
       ingredients: [
         { name: "500g chicken thigh fillets", inStore: false },
-        { name: "1 handful coriander or spring onions, chopped", inStore: false },
+        { name: "1 handful coriander or spring onions, chopped", inStore: true, aisle: "Fresh / fridge" },
         { name: "Marinade: 2 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Marinade: 2 tbsp honey", inStore: false },
         { name: "Marinade: 2 tbsp fresh lime juice", inStore: false },
-        { name: "Marinade: 2 garlic cloves, crushed", inStore: false },
+        { name: "Marinade: 2 garlic cloves, crushed", inStore: true, aisle: "Fresh / fridge" },
         { name: "Marinade: 1/2 tsp ground black pepper", inStore: true, aisle: "Spices" },
       ],
       steps: [
@@ -1190,9 +1238,9 @@
       blurb: "Soft Chinese cabbage leaves wrapped around pork, carrot and water chestnut filling.",
       ingredients: [
         { name: "300g minced pork", inStore: false },
-        { name: "Chinese cabbage leaves", inStore: false },
+        { name: "Chinese cabbage leaves", inStore: true, aisle: "Fresh / fridge" },
         { name: "40g water chestnuts, finely diced", inStore: true, aisle: "Pantry" },
-        { name: "1 carrot, finely diced", inStore: false },
+        { name: "1 carrot, finely diced", inStore: true, aisle: "Fresh / fridge" },
         { name: "Marinade: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
         { name: "Marinade: 1 tbsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Marinade: 1 tbsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
@@ -1228,8 +1276,8 @@
         { name: "1 tsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
         { name: "1 pinch ground white pepper", inStore: true, aisle: "Spices" },
         { name: "1 tsp water", inStore: false },
-        { name: "1 bunch pak choi, thinly sliced", inStore: false },
-        { name: "2 spring onions, finely chopped", inStore: false },
+        { name: "1 bunch pak choi, thinly sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "2 spring onions, finely chopped", inStore: true, aisle: "Fresh / fridge" },
         { name: "Sauce: 1 tbsp Lee Kum Kee Black Bean Garlic Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tsp sugar", inStore: false },
@@ -1255,9 +1303,9 @@
       blurb: "Sweet corn, carrot, peas and pine nuts with mushroom seasoning and sesame oil.",
       ingredients: [
         { name: "1 small can sweet corn, drained", inStore: true, aisle: "Pantry" },
-        { name: "Carrots, diced", inStore: false },
-        { name: "Frozen peas", inStore: false },
-        { name: "Pine nuts", inStore: false },
+        { name: "Carrots, diced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Frozen peas", inStore: true, aisle: "Freezer" },
+        { name: "Pine nuts", inStore: true, aisle: "Pantry" },
         { name: "1 tsp cooking oil", inStore: false },
         { name: "Seasoning: 1 tbsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
         { name: "Seasoning: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
@@ -1282,9 +1330,9 @@
       blurb: "Firm tofu, cucumber, lettuce and tomatoes with roasted sesame dressing.",
       ingredients: [
         { name: "200g firm tofu, drained and diced", inStore: true, aisle: "Fresh / fridge" },
-        { name: "1 cucumber, sliced", inStore: false },
-        { name: "4-6 lettuce leaves, torn into bite-sized pieces", inStore: false },
-        { name: "200g cherry tomatoes, halved", inStore: false },
+        { name: "1 cucumber, sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "4-6 lettuce leaves, torn into bite-sized pieces", inStore: true, aisle: "Fresh / fridge" },
+        { name: "200g cherry tomatoes, halved", inStore: true, aisle: "Fresh / fridge" },
         { name: "Dressing: 3 tbsp Lee Kum Kee Roasted Sesame Dressing", inStore: true, aisle: "Sauces" },
       ],
       steps: [
@@ -1303,11 +1351,11 @@
       ingredients: [
         { name: "8 pieces Vietnamese rice paper", inStore: true, aisle: "Pantry" },
         { name: "16 cooked king prawns", inStore: false },
-        { name: "100g ripe mango, sliced", inStore: false },
-        { name: "80g cucumber, julienned", inStore: false },
-        { name: "80g mild lettuce", inStore: false },
+        { name: "100g ripe mango, sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "80g cucumber, julienned", inStore: true, aisle: "Fresh / fridge" },
+        { name: "80g mild lettuce", inStore: true, aisle: "Fresh / fridge" },
         { name: "16 mint leaves", inStore: false },
-        { name: "1 red chili, julienned, optional", inStore: false },
+        { name: "1 red chili, julienned, optional", inStore: true, aisle: "Fresh / fridge" },
         { name: "Dip: 2 tbsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
         { name: "Dip: 1 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Dip: 1 tsp Lee Kum Kee Pure Sesame Oil", inStore: true, aisle: "Sauces" },
@@ -1331,11 +1379,11 @@
         { name: "250g cooked rice", inStore: true, aisle: "Rice" },
         { name: "200g raw salmon, sashimi quality, diced", inStore: false },
         { name: "2 tbsp edamame, blanched", inStore: true, aisle: "Freezer" },
-        { name: "1 small cucumber, cut into sticks", inStore: false },
-        { name: "1/2 carrot, grated", inStore: false },
-        { name: "1/2 avocado, diced", inStore: false },
+        { name: "1 small cucumber, cut into sticks", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1/2 carrot, grated", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1/2 avocado, diced", inStore: true, aisle: "Fresh / fridge" },
         { name: "2 tbsp kimchi, optional", inStore: true, aisle: "Fresh / fridge" },
-        { name: "Sauce: 1 spring onion, finely sliced", inStore: false },
+        { name: "Sauce: 1 spring onion, finely sliced", inStore: true, aisle: "Fresh / fridge" },
         { name: "Sauce: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tbsp Lee Kum Kee Chilli Garlic Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tsp Lee Kum Kee Dumpling Sauce", inStore: true, aisle: "Sauces" },
@@ -1360,9 +1408,9 @@
       blurb: "Egg noodles topped with chicken, vegetables and Lee Kum Kee peanut sauce.",
       ingredients: [
         { name: "300g cooked egg noodles", inStore: true, aisle: "Noodles" },
-        { name: "1 medium carrot, julienned", inStore: false },
-        { name: "100g bean sprouts, blanched", inStore: false },
-        { name: "1 cucumber, sliced", inStore: false },
+        { name: "1 medium carrot, julienned", inStore: true, aisle: "Fresh / fridge" },
+        { name: "100g bean sprouts, blanched", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1 cucumber, sliced", inStore: true, aisle: "Fresh / fridge" },
         { name: "400g cooked chicken, shredded", inStore: false },
         { name: "4 tbsp Lee Kum Kee Peanut Sauce", inStore: true, aisle: "Sauces" },
       ],
@@ -1382,7 +1430,7 @@
       blurb: "King prawns and asparagus finished with sesame dressing with wasabi aroma.",
       ingredients: [
         { name: "180g raw peeled king prawns", inStore: false },
-        { name: "110g thin green asparagus, cut into 4 cm pieces", inStore: false },
+        { name: "110g thin green asparagus, cut into 4 cm pieces", inStore: true, aisle: "Fresh / fridge" },
         { name: "1 tbsp light olive oil", inStore: false },
         { name: "1 tbsp Lee Kum Kee Sesame Dressing with Wasabi Aroma", inStore: true, aisle: "Sauces" },
         { name: "Garnish: lime wedges", inStore: false },
@@ -1405,9 +1453,9 @@
       blurb: "Lotus root, onion, pepper and carrot in a light mushroom-soy dressing.",
       ingredients: [
         { name: "200g lotus root, thinly sliced", inStore: true, aisle: "Fresh / fridge" },
-        { name: "20g red onion, thinly sliced", inStore: false },
-        { name: "20g yellow or red bell pepper, sliced", inStore: false },
-        { name: "20g carrot, julienned", inStore: false },
+        { name: "20g red onion, thinly sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "20g yellow or red bell pepper, sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "20g carrot, julienned", inStore: true, aisle: "Fresh / fridge" },
         { name: "Sauce: 1 tbsp Lee Kum Kee Premium Mushroom Seasoning Powder", inStore: true, aisle: "Pantry" },
         { name: "Sauce: 2 tsp Lee Kum Kee Premium Light Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Sauce: 1 tsp lemon juice", inStore: false },
@@ -1429,7 +1477,7 @@
       ingredients: [
         { name: "350g chicken breast, cut into small pieces", inStore: false },
         { name: "400g spaghetti", inStore: false },
-        { name: "1 onion, grated", inStore: false },
+        { name: "1 onion, grated", inStore: true, aisle: "Fresh / fridge" },
         { name: "15 fresh basil leaves, torn", inStore: false },
         { name: "1 pinch ground black pepper", inStore: true, aisle: "Spices" },
         { name: "1 tbsp oil", inStore: false },
@@ -1455,9 +1503,9 @@
       blurb: "Creamy risotto with mushrooms, asparagus and umami mushroom bouillon.",
       ingredients: [
         { name: "300g risotto rice", inStore: false },
-        { name: "200g mushrooms, sliced", inStore: false },
-        { name: "120g asparagus, peeled and halved", inStore: false },
-        { name: "1 onion, chopped", inStore: false },
+        { name: "200g mushrooms, sliced", inStore: true, aisle: "Fresh / fridge" },
+        { name: "120g asparagus, peeled and halved", inStore: true, aisle: "Fresh / fridge" },
+        { name: "1 onion, chopped", inStore: true, aisle: "Fresh / fridge" },
         { name: "50g vegan parmesan, grated", inStore: false },
         { name: "1 tbsp mixed herbs", inStore: true, aisle: "Spices" },
         { name: "2 tbsp olive oil", inStore: false },
@@ -1487,7 +1535,7 @@
         { name: "2 bowls cooked rice", inStore: true, aisle: "Rice" },
         { name: "1 packet Lee Kum Kee Seafood Bouillon", inStore: true, aisle: "Pantry" },
         { name: "1 liter hot water", inStore: false },
-        { name: "Chopped spring onion and coriander, optional", inStore: false },
+        { name: "Chopped spring onion and coriander, optional", inStore: true, aisle: "Fresh / fridge" },
         { name: "Optional dip: 2 tbsp Lee Kum Kee Premium Soy Sauce", inStore: true, aisle: "Sauces" },
         { name: "Optional dip: 1 tsp Lee Kum Kee Seasoned Rice Vinegar", inStore: true, aisle: "Sauces" },
         { name: "Optional dip: 1 tsp Lee Kum Kee Chiu Chow Chili Oil", inStore: true, aisle: "Sauces" },
@@ -1510,9 +1558,9 @@
       ingredients: [
         { name: "400g sea bass or cod fillet", inStore: false },
         { name: "100g enoki mushrooms", inStore: true, aisle: "Fresh / fridge" },
-        { name: "3 tomatoes", inStore: false },
-        { name: "Coriander for garnish, optional", inStore: false },
-        { name: "Marinade: 1 egg", inStore: false },
+        { name: "3 tomatoes", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Coriander for garnish, optional", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Marinade: 1 egg", inStore: true, aisle: "Fresh / fridge" },
         { name: "Marinade: 2 tbsp corn starch", inStore: true, aisle: "Pantry" },
         { name: "Marinade: 1 tsp salt", inStore: false },
         { name: "Marinade: 1 tsp cooking wine", inStore: true, aisle: "Pantry" },
@@ -1539,8 +1587,8 @@
       ingredients: [
         { name: "400g cooked rice noodles or 200g raw rice noodles", inStore: true, aisle: "Noodles" },
         { name: "200g chicken breast, cut into pieces", inStore: false },
-        { name: "60g carrot, grated", inStore: false },
-        { name: "40g onion, grated", inStore: false },
+        { name: "60g carrot, grated", inStore: true, aisle: "Fresh / fridge" },
+        { name: "40g onion, grated", inStore: true, aisle: "Fresh / fridge" },
         { name: "60g baby corn, halved", inStore: true, aisle: "Pantry" },
         { name: "1 tbsp oil", inStore: false },
         { name: "Marinade: 1 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
@@ -1620,8 +1668,8 @@
       ingredients: [
         { name: "2 tbsp Lee Kum Kee Premium Oyster Sauce", inStore: true, aisle: "Sauces" },
         { name: "2 tbsp ketchup", inStore: false },
-        { name: "1 tbsp fresh tomato, finely chopped", inStore: false },
-        { name: "Fresh herbs, for example coriander, spring onion or basil", inStore: false },
+        { name: "1 tbsp fresh tomato, finely chopped", inStore: true, aisle: "Fresh / fridge" },
+        { name: "Fresh herbs, for example coriander, spring onion or basil", inStore: true, aisle: "Fresh / fridge" },
       ],
       steps: ["Mix everything together."],
     },
@@ -1638,7 +1686,7 @@
         { name: "1 tbsp peanut oil", inStore: false },
         { name: "1 tsp sesame seeds", inStore: true, aisle: "Pantry" },
         { name: "3 tbsp soup or hot water", inStore: false },
-        { name: "2 tbsp spring onion and coriander, finely chopped", inStore: false },
+        { name: "2 tbsp spring onion and coriander, finely chopped", inStore: true, aisle: "Fresh / fridge" },
       ],
       steps: ["Mix everything together until creamy."],
     },

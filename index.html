@@ -522,6 +522,27 @@
     </section>
   </main>
 
+  <div class="delivery-fab" data-delivery-fab aria-label="Order delivery">
+    <button class="delivery-fab__toggle" type="button" data-delivery-fab-toggle aria-expanded="false" aria-controls="delivery-fab-menu" data-i18n-aria-label="delivery.fabToggle" aria-label="Order delivery">
+      <svg class="delivery-fab__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M3 7h11l3 4h4v6h-2a2 2 0 1 1-4 0H10a2 2 0 1 1-4 0H3V7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="8" cy="17" r="1.6" fill="currentColor"/>
+        <circle cx="17" cy="17" r="1.6" fill="currentColor"/>
+      </svg>
+      <span class="delivery-fab__label" data-i18n="delivery.fab">Order delivery</span>
+    </button>
+    <div class="delivery-fab__menu" id="delivery-fab-menu" data-delivery-fab-menu hidden>
+      <a class="delivery-fab__item delivery-fab__item--wolt" href="https://wolt.com/en/aut/vienna/venue/choo-foodstore" target="_blank" rel="noopener">
+        <img src="assets/social/wolt-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+        <span data-i18n="delivery.wolt">Order on Wolt</span>
+      </a>
+      <a class="delivery-fab__item delivery-fab__item--foodora" href="https://www.foodora.at/en/shop/axa9/choo-asia-foodstore/category/7a3f1dd1-6577-413a-8c28-1b4f69385221" target="_blank" rel="noopener">
+        <img src="assets/social/foodora-logo.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+        <span data-i18n="delivery.foodora">Order on foodora</span>
+      </a>
+    </div>
+  </div>
+
   <div class="recipe-view" data-recipe-view aria-hidden="true"></div>
 
   <footer class="footer">
