@@ -55,6 +55,18 @@
       "events.eyebrow": "04 - Chinese calendar",
       "events.title": "Chinese festivals and holidays in 2026.",
       "events.text": "See the next dates first, then browse month by month.",
+      "fresh.eyebrow": "Fresh in store",
+      "fresh.title": "Fresh this week.",
+      "fresh.text": "Baked daily and delivered on a fixed rhythm — plan your visit.",
+      "fresh.buns.title": "Steamed buns",
+      "fresh.buns.text": "Fresh every morning, straight from the steamer.",
+      "fresh.buns.stamp": "Daily",
+      "fresh.mochi.title": "Mochi, toast & pastries",
+      "fresh.mochi.text": "Baked fresh twice a week — Mondays and Thursdays.",
+      "fresh.mochi.stamp": "Mon · Thu",
+      "fresh.veg.title": "Fresh vegetables",
+      "fresh.veg.text": "Delivered straight to the store on Mondays and Thursdays.",
+      "fresh.veg.stamp": "Mon · Thu",
       "student.eyebrow": "Exclusive for students",
       "student.title": "Student discount",
       "student.stamp": "Off",
@@ -193,6 +205,18 @@
       "events.eyebrow": "04 - Chinesischer Kalender",
       "events.title": "Chinesische Feste und Feiertage 2026.",
       "events.text": "Zuerst siehst du die nächsten Termine; danach kannst du dich Monat für Monat durchklicken.",
+      "fresh.eyebrow": "Frisch im Markt",
+      "fresh.title": "Diese Woche frisch.",
+      "fresh.text": "Täglich frisch gebacken und nach festem Rhythmus geliefert — plane deinen Besuch.",
+      "fresh.buns.title": "Dampfgegarte Buns",
+      "fresh.buns.text": "Jeden Morgen frisch aus dem Dampfgarer.",
+      "fresh.buns.stamp": "Täglich",
+      "fresh.mochi.title": "Mochi, Toast & Gebäck",
+      "fresh.mochi.text": "Zweimal pro Woche frisch — montags und donnerstags.",
+      "fresh.mochi.stamp": "Mo · Do",
+      "fresh.veg.title": "Frisches Gemüse",
+      "fresh.veg.text": "Wird montags und donnerstags direkt in den Markt geliefert.",
+      "fresh.veg.stamp": "Mo · Do",
       "student.eyebrow": "Exklusiv für Studierende",
       "student.title": "Studentenrabatt",
       "student.stamp": "Rabatt",
@@ -331,6 +355,18 @@
       "events.eyebrow": "04 - 中国日历",
       "events.title": "2026年传统节日。",
       "events.text": "先显示最近的日期，也可以按月份浏览。",
+      "fresh.eyebrow": "店内新鲜",
+      "fresh.title": "本周新鲜。",
+      "fresh.text": "每日现蒸现烤，按固定节奏配送 — 安排你的到店时间。",
+      "fresh.buns.title": "鲜蒸包子",
+      "fresh.buns.text": "每天清晨现蒸出炉。",
+      "fresh.buns.stamp": "每天",
+      "fresh.mochi.title": "麻薯、吐司与糕点",
+      "fresh.mochi.text": "每周两次新鲜烘焙 — 周一与周四。",
+      "fresh.mochi.stamp": "周一·周四",
+      "fresh.veg.title": "新鲜蔬菜",
+      "fresh.veg.text": "周一和周四直送到店。",
+      "fresh.veg.stamp": "周一·周四",
       "student.eyebrow": "学生专属",
       "student.title": "学生折扣",
       "student.stamp": "优惠",
@@ -4254,3 +4290,92 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
+/* Fresh — mobile carousel auto-advance */
+(() => {
+  const carousel = document.querySelector("[data-fresh-carousel]");
+  if (!carousel) return;
+  const track = carousel.querySelector("[data-fresh-track]");
+  const bar = carousel.querySelector("[data-fresh-progress-bar]");
+  const dots = [...carousel.querySelectorAll("[data-fresh-dot]")];
+  if (!track) return;
+  const cards = [...track.children];
+  if (cards.length < 2) return;
+
+  const DURATION = 10000;
+  const mq = window.matchMedia("(max-width: 880px)");
+  let index = 0;
+  let timer = null;
+  let inView = false;
+
+  function setIndex(i) {
+    index = ((i % cards.length) + cards.length) % cards.length;
+    track.style.setProperty("--fresh-i", String(index));
+    dots.forEach((dot, di) => {
+      const on = di === index;
+      dot.classList.toggle("is-on", on);
+      dot.setAttribute("aria-selected", on ? "true" : "false");
+    });
+  }
+
+  function clearProgress() {
+    if (!bar) return;
+    bar.style.transition = "none";
+    bar.style.width = "0%";
+  }
+
+  function runProgress() {
+    if (!bar) return;
+    bar.style.transition = "none";
+    bar.style.width = "0%";
+    // force reflow so the new transition picks up the 0% start
+    void bar.offsetWidth;
+    bar.style.transition = `width ${DURATION}ms linear`;
+    bar.style.width = "100%";
+  }
+
+  function start() {
+    stop();
+    if (!mq.matches || !inView) return;
+    runProgress();
+    timer = window.setTimeout(() => {
+      setIndex(index + 1);
+      start();
+    }, DURATION);
+  }
+
+  function stop() {
+    if (timer) { window.clearTimeout(timer); timer = null; }
+    clearProgress();
+  }
+
+  dots.forEach((dot, di) => {
+    dot.addEventListener("click", () => {
+      setIndex(di);
+      start();
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      inView = e.isIntersecting;
+      if (inView) start();
+      else stop();
+    }
+  }, { threshold: 0.35 });
+  io.observe(carousel);
+
+  const onMQ = () => {
+    if (mq.matches) {
+      track.style.setProperty("--fresh-i", String(index));
+      if (inView) start();
+    } else {
+      stop();
+      track.style.removeProperty("--fresh-i");
+    }
+  };
+  if (typeof mq.addEventListener === "function") mq.addEventListener("change", onMQ);
+  else if (typeof mq.addListener === "function") mq.addListener(onMQ);
+  onMQ();
+})();
+

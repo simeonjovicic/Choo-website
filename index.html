@@ -314,6 +314,53 @@
 
     </section>
 
+    <section class="fresh" id="fresh" aria-labelledby="fresh-title">
+      <div class="fresh__head">
+        <p class="section-eyebrow" data-i18n="fresh.eyebrow">Fresh in store</p>
+        <h2 id="fresh-title" data-i18n="fresh.title">Fresh this week.</h2>
+        <p data-i18n="fresh.text">Baked daily and delivered on a fixed rhythm — plan your visit.</p>
+      </div>
+
+      <div class="fresh__carousel" data-fresh-carousel>
+        <div class="fresh__progress" aria-hidden="true">
+          <span class="fresh__progress-bar" data-fresh-progress-bar></span>
+        </div>
+        <div class="fresh__viewport">
+          <ul class="fresh-cards" role="list" data-fresh-track>
+            <li class="fresh-card">
+              <span class="fresh-card__icon fresh-card__icon--bold fresh-card__icon--pulse" aria-hidden="true">
+                <img src="assets/fresh/buns.png" alt="" width="120" height="120" loading="lazy" decoding="async" />
+              </span>
+              <span class="fresh-card__stamp" data-i18n="fresh.buns.stamp">Daily</span>
+              <h3 data-i18n="fresh.buns.title">Steamed buns</h3>
+              <p data-i18n="fresh.buns.text">Fresh every morning, straight from the steamer.</p>
+            </li>
+            <li class="fresh-card">
+              <span class="fresh-card__icon fresh-card__icon--bold fresh-card__icon--pulse" aria-hidden="true">
+                <img src="assets/fresh/mochi.png" alt="" width="120" height="120" loading="lazy" decoding="async" />
+              </span>
+              <span class="fresh-card__stamp" data-i18n="fresh.mochi.stamp">Mon · Thu</span>
+              <h3 data-i18n="fresh.mochi.title">Mochi, toast & pastries</h3>
+              <p data-i18n="fresh.mochi.text">Baked fresh twice a week — Mondays and Thursdays.</p>
+            </li>
+            <li class="fresh-card">
+              <span class="fresh-card__icon fresh-card__icon--pulse" aria-hidden="true">
+                <img src="assets/fresh/vegetable.png" alt="" width="120" height="120" loading="lazy" decoding="async" />
+              </span>
+              <span class="fresh-card__stamp" data-i18n="fresh.veg.stamp">Mon · Thu</span>
+              <h3 data-i18n="fresh.veg.title">Fresh vegetables</h3>
+              <p data-i18n="fresh.veg.text">Delivered straight to the store on Mondays and Thursdays.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="fresh__dots" role="tablist" aria-label="Fresh products">
+          <button class="fresh__dot is-on" type="button" role="tab" aria-selected="true" data-fresh-dot="0" aria-label="Show steamed buns"></button>
+          <button class="fresh__dot" type="button" role="tab" aria-selected="false" data-fresh-dot="1" aria-label="Show mochi, toast and pastries"></button>
+          <button class="fresh__dot" type="button" role="tab" aria-selected="false" data-fresh-dot="2" aria-label="Show fresh vegetables"></button>
+        </div>
+      </div>
+    </section>
+
     <section class="cat-row store-categories store-categories--editorial" id="laender" aria-labelledby="store-editorial-title">
       <div class="store-editorial">
         <div class="store-editorial__head">
@@ -389,8 +436,6 @@
         </button>
       </div>
     </section>
-
-
 
     <section class="recipes" id="recipes">
       <div class="recipes__head">
