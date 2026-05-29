@@ -1019,7 +1019,19 @@
     video.muted = true;
     video.defaultMuted = true;
 
+    let sourceLoaded = false;
+
+    function ensureSource() {
+      if (sourceLoaded) return;
+      const src = video.dataset.src;
+      if (!src) return;
+      video.src = src;
+      video.load?.();
+      sourceLoaded = true;
+    }
+
     function tryPlay() {
+      ensureSource();
       const promise = video.play?.();
       if (promise && typeof promise.catch === "function") {
         promise.catch(() => {
@@ -1029,14 +1041,29 @@
       }
     }
 
-    if (video.readyState >= 2) {
-      tryPlay();
+    video.addEventListener("loadeddata", () => {
+      const p = video.play?.();
+      p && typeof p.catch === "function" && p.catch(() => {});
+    }, { once: true });
+
+    // Lazy-load video when the section enters the viewport
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            tryPlay();
+            io.disconnect();
+            break;
+          }
+        }
+      }, { rootMargin: "200px 0px" });
+      io.observe(video);
     } else {
-      video.addEventListener("loadeddata", tryPlay, { once: true });
-      video.addEventListener("canplay", tryPlay, { once: true });
+      tryPlay();
     }
+
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden && video.paused) tryPlay();
+      if (!document.hidden && sourceLoaded && video.paused) tryPlay();
     });
 
     function setMuted(muted) {

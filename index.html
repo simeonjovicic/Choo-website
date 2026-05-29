@@ -61,7 +61,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.google.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600;700&amp;family=Noto+Serif+SC:wght@400;500;600&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet" /></noscript>
   <link rel="preload" as="image" type="image/webp" href="images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.webp" media="(min-width: 701px)" fetchpriority="high" />
   <link rel="preload" as="image" type="image/webp" href="images/create_the_mobile_optimized_version,_202605072005.webp" media="(max-width: 700px)" fetchpriority="high" />
   <link rel="preload" as="image" href="fortnite.svg" />
@@ -416,15 +417,14 @@
         <video
           class="aisle__video"
           data-aisle-video
-          src="assets/video/intro.mp4"
+          data-src="assets/video/intro.mp4"
           poster="assets/video/intro-poster.webp"
           muted
-          autoplay
           loop
           playsinline
           webkit-playsinline
           disablepictureinpicture
-          preload="auto"
+          preload="none"
           aria-label="Choo Foodstore Asian supermarket intro video"
         ></video>
         <button class="aisle__video-mute" type="button" data-aisle-video-mute aria-pressed="false" data-i18n-aria-label="aisle.unmute" aria-label="Unmute video">
