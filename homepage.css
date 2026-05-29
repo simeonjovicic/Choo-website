@@ -606,7 +606,7 @@ body.menu-open .site-header {
   transform: scale(1.58);
 }
 
-.store-highlight__icon .category-icon-img[src$="-logo-black.png"] {
+.store-highlight__icon .category-icon-img[src$="-logo-black.webp"] {
   filter: invert(1);
 }
 
@@ -614,7 +614,7 @@ body.menu-open .site-header {
   filter: invert(1);
 }
 
-.store-highlight--editorial:hover .store-highlight__icon .category-icon-img[src$="-logo-black.png"] {
+.store-highlight--editorial:hover .store-highlight__icon .category-icon-img[src$="-logo-black.webp"] {
   filter: none;
 }
 
@@ -912,7 +912,7 @@ body.menu-open .site-header {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.tile__media .category-icon-img[src$="-logo-black.png"] {
+.tile__media .category-icon-img[src$="-logo-black.webp"] {
   filter: invert(1);
 }
 
@@ -2812,7 +2812,7 @@ body.store-category-modal-open {
   left: 0;
   right: 0;
   height: 150%;
-  background: url("images/lotus_BG.png") right center / cover no-repeat;
+  background: url("images/lotus_BG.webp") right center / cover no-repeat;
   transform: translate3d(0, 0, 0);
   will-change: transform;
   z-index: 0;
@@ -5492,6 +5492,13 @@ body.menu-open .delivery-fab {
   }
   .fresh__viewport {
     touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .fresh__viewport img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
   }
   .fresh-cards {
     display: flex;

@@ -240,7 +240,7 @@ export function buildRecipeJsonLd(): string {
     "@type": "Recipe",
     "name": r.name,
     "description": r.blurb,
-    "image": "https://choo-foodstore.at/images/recipe-placeholder.png",
+    "image": "https://choo-foodstore.at/images/recipe-placeholder.webp",
     "author": { "@type": "Organization", "name": "Choo Foodstore" },
     "recipeCuisine": "Asian",
     "publisher": { "@id": "https://choo-foodstore.at/#org" },

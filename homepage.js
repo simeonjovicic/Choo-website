@@ -540,8 +540,8 @@
   };
 
   const heroSlide = {
-    src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.jpeg",
-    mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.jpeg",
+    src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.webp",
+    mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.webp",
     alt: "Choo Foodstore Eingang",
     mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
   };
@@ -2225,7 +2225,7 @@
       const ingredients = recipeIngredients(recipe);
       const inStore = ingredients.filter((ingredient) => ingredient.inStore).length;
       const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
-      const imageSrc = recipe.imageUrl || "images/recipe-placeholder.png";
+      const imageSrc = recipe.imageUrl || "images/recipe-placeholder.webp";
       const imageAlt = recipe.imageAlt || "";
       const matches = filter === "all" || recipe.tags.includes(filter);
       const hiddenClass = matches ? "" : " rc--hidden";
@@ -2360,7 +2360,7 @@
     }).join("");
     const tags = recipe.tags.map((tag) => `<span class="tag tag--${escapeHtml(tag)}">${escapeHtml(tagLabel(tag))}</span>`).join("");
     const nutrition = computeNutrition(recipe);
-    const imageSrc = recipe.imageUrl || "images/recipe-placeholder.png";
+    const imageSrc = recipe.imageUrl || "images/recipe-placeholder.webp";
     const imageAlt = recipe.imageAlt || recipeName(recipe);
 
     const markup = `
@@ -3237,10 +3237,10 @@
   const STORE_CATEGORIES = [
     {
       id: "instant",
-      image: "assets/categories/instant.png",
-      imageInverted: "assets/categories/instan-inverte.png",
-      cardImage: "assets/categories/covers/instant.png",
-      desktopCardImage: "assets/categories/desktop/instant-desktop.jpeg",
+      image: "assets/categories/instant.webp",
+      imageInverted: "assets/categories/instan-inverte.webp",
+      cardImage: "assets/categories/covers/instant.webp",
+      desktopCardImage: "assets/categories/desktop/instant-desktop.webp",
       brands: BRAND_GROUPS.instant,
       copy: {
         en: { title: "Instant Noodles", items: ["Ramen & cup noodles", "Korean instant noodles", "Udon, pho & glass noodles", "Rice cake cups & quick bowls"] },
@@ -3250,10 +3250,10 @@
     },
     {
       id: "snacks",
-      image: "assets/categories/snacks-sweets.png",
-      imageInverted: "assets/categories/snacks-inverte.png",
-      cardImage: "assets/categories/covers/snack-sweet.png",
-      desktopCardImage: "assets/categories/desktop/snack-desktop.jpeg",
+      image: "assets/categories/snacks-sweets.webp",
+      imageInverted: "assets/categories/snacks-inverte.webp",
+      cardImage: "assets/categories/covers/snack-sweet.webp",
+      desktopCardImage: "assets/categories/desktop/snack-desktop.webp",
       brands: BRAND_GROUPS.snacks,
       copy: {
         en: { title: "Snacks & Sweets", items: ["Chips & savory snacks", "Candy, gummies & chocolate", "Cookies, Pocky & wafers", "Jelly, boba & dessert cups"] },
@@ -3263,10 +3263,10 @@
     },
     {
       id: "sauces",
-      image: "assets/categories/sauces-seasoning.png",
-      imageInverted: "assets/categories/sauce-inverte.png",
-      cardImage: "assets/categories/covers/sauce.png",
-      desktopCardImage: "assets/categories/desktop/sauce-desktop.jpeg",
+      image: "assets/categories/sauces-seasoning.webp",
+      imageInverted: "assets/categories/sauce-inverte.webp",
+      cardImage: "assets/categories/covers/sauce.webp",
+      desktopCardImage: "assets/categories/desktop/sauce-desktop.webp",
       brands: BRAND_GROUPS.sauces,
       copy: {
         en: { title: "Sauces & Seasoning", items: ["Soy sauce, fish sauce & vinegar", "Chili oil, gochujang & curry pastes", "Sesame oil & cooking oils", "Spices, blends & seasoning pastes"] },
@@ -3276,10 +3276,10 @@
     },
     {
       id: "rice",
-      image: "assets/categories/noodles-rice.png",
-      imageInverted: "assets/categories/noodle-inverte.png",
-      cardImage: "assets/categories/covers/rice.png",
-      desktopCardImage: "assets/categories/desktop/rice-desktop.jpeg",
+      image: "assets/categories/noodles-rice.webp",
+      imageInverted: "assets/categories/noodle-inverte.webp",
+      cardImage: "assets/categories/covers/rice.webp",
+      desktopCardImage: "assets/categories/desktop/rice-desktop.webp",
       brands: BRAND_GROUPS.rice,
       copy: {
         en: { title: "Rice", items: ["Jasmine rice & basmati rice", "Sushi rice & glutinous rice", "Cooked rice & rice cakes", "Rice paper & rice noodles"] },
@@ -3289,10 +3289,10 @@
     },
     {
       id: "drinks",
-      image: "assets/categories/drinks.png",
-      imageInverted: "assets/categories/drinks-inverte.png",
-      cardImage: "assets/categories/covers/drinks.png",
-      desktopCardImage: "assets/categories/desktop/drink-desktop.jpeg",
+      image: "assets/categories/drinks.webp",
+      imageInverted: "assets/categories/drinks-inverte.webp",
+      cardImage: "assets/categories/covers/drinks.webp",
+      desktopCardImage: "assets/categories/desktop/drink-desktop.webp",
       brands: BRAND_GROUPS.drinksAlcohol,
       copy: {
         en: { title: "Drinks & Alcohol", items: ["Soft drinks & fruit drinks", "Milk drinks, coffee & bubble tea", "Soju, sake & Asian wine", "Beer & alcohol-free drinks"] },
@@ -3302,9 +3302,9 @@
     },
     {
       id: "fresh",
-      image: "assets/categories/frish-logo-black.png",
-      cardImage: "assets/categories/covers/cooled.png",
-      desktopCardImage: "assets/categories/desktop/chilled-desktop.jpeg",
+      image: "assets/categories/frish-logo-black.webp",
+      cardImage: "assets/categories/covers/cooled.webp",
+      desktopCardImage: "assets/categories/desktop/chilled-desktop.webp",
       brands: BRAND_GROUPS.fresh,
       copy: {
         en: { title: "Fresh & Chilled", items: ["Vegetables & herbs", "Tofu & soy products", "Buns, bao & dumpling wrappers", "Mochi & chilled desserts"] },
@@ -3314,9 +3314,9 @@
     },
     {
       id: "frozen",
-      image: "assets/categories/tk-logo-black.png",
-      cardImage: "assets/categories/covers/frozen.png",
-      desktopCardImage: "assets/categories/desktop/frozen-dekstop.jpeg",
+      image: "assets/categories/tk-logo-black.webp",
+      cardImage: "assets/categories/covers/frozen.webp",
+      desktopCardImage: "assets/categories/desktop/frozen-dekstop.webp",
       brands: BRAND_GROUPS.frozen,
       copy: {
         en: { title: "Frozen", items: ["Dumplings & gyoza", "Bao, buns & mochi ice cream", "Fish, seafood & meat", "Frozen vegetables & ready meals"] },
@@ -3326,9 +3326,9 @@
     },
     {
       id: "vegan",
-      image: "assets/categories/vegan-logo-black.png",
-      cardImage: "assets/categories/covers/vegan.png",
-      desktopCardImage: "assets/categories/desktop/vegan-desktop.jpeg",
+      image: "assets/categories/vegan-logo-black.webp",
+      cardImage: "assets/categories/covers/vegan.webp",
+      desktopCardImage: "assets/categories/desktop/vegan-desktop.webp",
       brands: BRAND_GROUPS.vegan,
       copy: {
         en: { title: "Vegan Products", items: ["Tofu, seitan & bean products", "Vegan sauces & pastes", "Plant-based snacks & sweets", "Rice, noodles & cooking basics"] },
@@ -3338,9 +3338,9 @@
     },
     {
       id: "tea",
-      image: "assets/categories/tee-logo-black.png",
-      cardImage: "assets/categories/covers/tee.png",
-      desktopCardImage: "assets/categories/desktop/tea-dekstop.jpeg",
+      image: "assets/categories/tee-logo-black.webp",
+      cardImage: "assets/categories/covers/tee.webp",
+      desktopCardImage: "assets/categories/desktop/tea-dekstop.webp",
       brands: BRAND_GROUPS.tea,
       copy: {
         en: { title: "Tea", items: ["Green tea, jasmine tea & oolong", "Matcha & milk tea", "Herbal and flower teas", "Tea sets & gift teas"] },
@@ -3350,9 +3350,9 @@
     },
     {
       id: "tcm",
-      image: "assets/categories/tcm-logo-black.png",
-      cardImage: "assets/categories/covers/tcm.png",
-      desktopCardImage: "assets/categories/desktop/tcm-desktop.jpeg",
+      image: "assets/categories/tcm-logo-black.webp",
+      cardImage: "assets/categories/covers/tcm.webp",
+      desktopCardImage: "assets/categories/desktop/tcm-desktop.webp",
       brands: BRAND_GROUPS.tcm,
       copy: {
         en: { title: "TCM Products", items: ["Herbal teas & tonics", "Cough syrups & throat remedies", "Balms, ointments & topical care", "Warming drinks & medicinal pastes"] },
@@ -3362,10 +3362,10 @@
     },
     {
       id: "gifts",
-      image: "assets/categories/gifts.png",
-      imageInverted: "assets/categories/gitfs-inverte.png",
-      cardImage: "assets/categories/covers/gift.png",
-      desktopCardImage: "assets/categories/desktop/gift-desktop.jpeg",
+      image: "assets/categories/gifts.webp",
+      imageInverted: "assets/categories/gitfs-inverte.webp",
+      cardImage: "assets/categories/covers/gift.webp",
+      desktopCardImage: "assets/categories/desktop/gift-desktop.webp",
       brands: BRAND_GROUPS.gifts,
       copy: {
         en: { title: "Gift Sets", items: ["Tea & snack sets", "Character goods & small extras", "Tableware & kitchen tools", "Seasonal gift ideas"] },
@@ -3399,7 +3399,7 @@
     },
     {
       id: "hot-pot",
-      image: "assets/categories/hotpot-logo-black.png",
+      image: "assets/categories/hotpot-logo-black.webp",
       brands: BRAND_GROUPS.hotPot,
       copy: {
         en: {
@@ -3421,7 +3421,7 @@
     },
     {
       id: "spicy",
-      image: "assets/categories/scharf-logo-black.png",
+      image: "assets/categories/scharf-logo-black.webp",
       brands: BRAND_GROUPS.spicy,
       copy: {
         en: {
@@ -3670,55 +3670,55 @@
   }
 
   const BRAND_LOGO_FILES = {
-    "AHG": "AHG.png",
-    "AJINOMOTO": "ajinomot.png",
-    "BANDAI": "bandai.svg.png",
-    "BIBIGO": "bibigo.png",
-    "CHACHA": "chacha.png",
-    "COCK BRAND": "cock-brand.png",
-    "DAOXIANGCUN": "Daoxiangcun.png",
-    "FLYING GOOSE": "flyinggoose.png",
-    "GOLDEN TURTLE": "Golden-Turtle.png",
-    "HAIDILAO": "haidilao.png",
-    "HAOLIYUAN": "haoliyuan.png",
-    "HAOXIANGNI": "haoxiangni.png",
-    "HATAKOSEN": "hata.png",
-    "HEALTHY BOY": "healthyboybrand.png",
-    "ITO EN": "ITOEN.png",
-    "JIADUBAO": "JIADUBAO.png",
-    "JOYTOFU": "joytofu.png",
-    "KASET": "kaset.png",
-    "KIKKOMAN": "kikkoman.png",
-    "KIRIN": "kirinibachi.png",
-    "KWANGDONG": "kwangdong.png",
-    "KURATA VEGAN": "kurata.png",
-    "LITTLE SHEEP": "little-sheep.png",
-    "LKK": "lkk.png",
-    "MALI FLOWER": "maliflower.png",
-    "MAMA": "mama.png",
-    "NIN JIOM": "nin-jiom.png",
-    "NISSIN": "nissin-logo.png",
-    "NONGSHIM": "nongshim.png",
-    "OTTOGI": "ottogi.png",
-    "POCKY": "pocky.png",
-    "POKKA": "pokka.png",
-    "PULMUONE": "pulmuone.png",
-    "ROYAL TIGER": "royaltiger.png",
-    "SAMYANG": "samyang.png",
-    "SANRIO": "Sanrio.png",
-    "SANGARIA": "sangaria.png",
-    "SHIRAKIKU": "shirakiku.png",
-    "SOYSPRING": "soyspring.png",
-    "TEANNAGOO": "teannagoo.png",
-    "TILDA": "tilda.png",
-    "TOKIMEKI": "tokimeki.png",
-    "TOKYO DESIGN": "tokoyo-design.png",
-    "TSUBOICHI": "tsubochi.png",
-    "TEA TSUBOICHI": "tsubochi.png",
-    "WANG": "wang.png",
-    "WEILONG": "weilong.png",
-    "YULIN": "yulin.png",
-    "TIGER BALM": "tiger-balm.png"
+    "AHG": "AHG.webp",
+    "AJINOMOTO": "ajinomot.webp",
+    "BANDAI": "bandai.svg.webp",
+    "BIBIGO": "bibigo.webp",
+    "CHACHA": "chacha.webp",
+    "COCK BRAND": "cock-brand.webp",
+    "DAOXIANGCUN": "Daoxiangcun.webp",
+    "FLYING GOOSE": "flyinggoose.webp",
+    "GOLDEN TURTLE": "Golden-Turtle.webp",
+    "HAIDILAO": "haidilao.webp",
+    "HAOLIYUAN": "haoliyuan.webp",
+    "HAOXIANGNI": "haoxiangni.webp",
+    "HATAKOSEN": "hata.webp",
+    "HEALTHY BOY": "healthyboybrand.webp",
+    "ITO EN": "ITOEN.webp",
+    "JIADUBAO": "JIADUBAO.webp",
+    "JOYTOFU": "joytofu.webp",
+    "KASET": "kaset.webp",
+    "KIKKOMAN": "kikkoman.webp",
+    "KIRIN": "kirinibachi.webp",
+    "KWANGDONG": "kwangdong.webp",
+    "KURATA VEGAN": "kurata.webp",
+    "LITTLE SHEEP": "little-sheep.webp",
+    "LKK": "lkk.webp",
+    "MALI FLOWER": "maliflower.webp",
+    "MAMA": "mama.webp",
+    "NIN JIOM": "nin-jiom.webp",
+    "NISSIN": "nissin-logo.webp",
+    "NONGSHIM": "nongshim.webp",
+    "OTTOGI": "ottogi.webp",
+    "POCKY": "pocky.webp",
+    "POKKA": "pokka.webp",
+    "PULMUONE": "pulmuone.webp",
+    "ROYAL TIGER": "royaltiger.webp",
+    "SAMYANG": "samyang.webp",
+    "SANRIO": "Sanrio.webp",
+    "SANGARIA": "sangaria.webp",
+    "SHIRAKIKU": "shirakiku.webp",
+    "SOYSPRING": "soyspring.webp",
+    "TEANNAGOO": "teannagoo.webp",
+    "TILDA": "tilda.webp",
+    "TOKIMEKI": "tokimeki.webp",
+    "TOKYO DESIGN": "tokoyo-design.webp",
+    "TSUBOICHI": "tsubochi.webp",
+    "TEA TSUBOICHI": "tsubochi.webp",
+    "WANG": "wang.webp",
+    "WEILONG": "weilong.webp",
+    "YULIN": "yulin.webp",
+    "TIGER BALM": "tiger-balm.webp"
   };
 
   function brandLogoSrc(brand) {
@@ -4356,9 +4356,9 @@
     });
   });
 
-  /* Touch swipe (mobile only) */
+  /* Swipe (pointer events — touch + mouse drag) */
   const viewport = carousel.querySelector(".fresh__viewport") || carousel;
-  let touchId = null;
+  let pointerId = null;
   let startX = 0;
   let startY = 0;
   let dx = 0;
@@ -4366,12 +4366,14 @@
   let dragging = false;
 
   function endDrag(commit) {
-    if (!dragging && touchId === null) return;
+    if (pointerId === null) return;
+    try { viewport.releasePointerCapture(pointerId); } catch (_) {}
+    pointerId = null;
+    const wasDragging = dragging;
     dragging = false;
-    touchId = null;
     track.classList.remove("is-dragging");
     track.style.removeProperty("--fresh-drag");
-    if (commit) {
+    if (commit && wasDragging) {
       const w = viewport.clientWidth || track.clientWidth || 1;
       const threshold = Math.max(40, w * 0.18);
       if (dx <= -threshold) setIndex(index + 1);
@@ -4381,31 +4383,28 @@
     if (mq.matches && inView) start();
   }
 
-  viewport.addEventListener("touchstart", (event) => {
-    if (!mq.matches || touchId !== null) return;
-    const t = event.changedTouches[0];
-    touchId = t.identifier;
-    startX = t.clientX;
-    startY = t.clientY;
+  viewport.addEventListener("pointerdown", (event) => {
+    if (!mq.matches || pointerId !== null) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
     dx = 0;
     axisLocked = false;
     dragging = false;
     stop();
-  }, { passive: true });
+    try { viewport.setPointerCapture(event.pointerId); } catch (_) {}
+  });
 
-  viewport.addEventListener("touchmove", (event) => {
-    if (touchId === null) return;
-    const t = [...event.changedTouches].find((tt) => tt.identifier === touchId);
-    if (!t) return;
-    const ddx = t.clientX - startX;
-    const ddy = t.clientY - startY;
+  viewport.addEventListener("pointermove", (event) => {
+    if (pointerId !== event.pointerId) return;
+    const ddx = event.clientX - startX;
+    const ddy = event.clientY - startY;
     if (!axisLocked) {
       if (Math.abs(ddx) < 6 && Math.abs(ddy) < 6) return;
       axisLocked = true;
       if (Math.abs(ddy) > Math.abs(ddx)) {
-        // Vertical scroll — bail out, let the page scroll
-        touchId = null;
-        if (mq.matches && inView) start();
+        endDrag(false);
         return;
       }
       dragging = true;
@@ -4415,18 +4414,10 @@
     if (event.cancelable) event.preventDefault();
     dx = ddx;
     track.style.setProperty("--fresh-drag", `${dx}px`);
-  }, { passive: false });
-
-  viewport.addEventListener("touchend", (event) => {
-    if (touchId === null) return;
-    const ended = [...event.changedTouches].some((tt) => tt.identifier === touchId);
-    if (!ended) return;
-    endDrag(dragging);
   });
 
-  viewport.addEventListener("touchcancel", () => {
-    endDrag(false);
-  });
+  viewport.addEventListener("pointerup", () => endDrag(true));
+  viewport.addEventListener("pointercancel", () => endDrag(false));
 
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) {

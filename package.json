@@ -8,11 +8,14 @@
     "typecheck": "tsc --noEmit",
     "hash-password": "tsx scripts/hash-password.ts",
     "dev:pages": "wrangler pages dev .",
-    "cf:types": "wrangler types --env-interface CloudflareBindings"
+    "cf:types": "wrangler types --env-interface CloudflareBindings",
+    "build:assets": "esbuild homepage.css --minify --outfile=homepage.min.css && esbuild homepage.js --minify --outfile=homepage.min.js",
+    "optimize:images": "bash scripts/optimize-images.sh"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260516.1",
     "@types/node": "^24.10.0",
+    "esbuild": "^0.28.0",
     "miniflare": "^4.20260515.0",
     "tsx": "^4.20.0",
     "typescript": "^5.9.0",
