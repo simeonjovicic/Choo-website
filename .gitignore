@@ -6,3 +6,6 @@ dist/
 coverage/
 originals/
 .marken-originals-backup/
+
+# Video source files (encoded versions live in assets/video/)
+*.mov
