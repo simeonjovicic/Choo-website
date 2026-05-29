@@ -4356,6 +4356,78 @@
     });
   });
 
+  /* Touch swipe (mobile only) */
+  const viewport = carousel.querySelector(".fresh__viewport") || carousel;
+  let touchId = null;
+  let startX = 0;
+  let startY = 0;
+  let dx = 0;
+  let axisLocked = false;
+  let dragging = false;
+
+  function endDrag(commit) {
+    if (!dragging && touchId === null) return;
+    dragging = false;
+    touchId = null;
+    track.classList.remove("is-dragging");
+    track.style.removeProperty("--fresh-drag");
+    if (commit) {
+      const w = viewport.clientWidth || track.clientWidth || 1;
+      const threshold = Math.max(40, w * 0.18);
+      if (dx <= -threshold) setIndex(index + 1);
+      else if (dx >= threshold) setIndex(index - 1);
+    }
+    dx = 0;
+    if (mq.matches && inView) start();
+  }
+
+  viewport.addEventListener("touchstart", (event) => {
+    if (!mq.matches || touchId !== null) return;
+    const t = event.changedTouches[0];
+    touchId = t.identifier;
+    startX = t.clientX;
+    startY = t.clientY;
+    dx = 0;
+    axisLocked = false;
+    dragging = false;
+    stop();
+  }, { passive: true });
+
+  viewport.addEventListener("touchmove", (event) => {
+    if (touchId === null) return;
+    const t = [...event.changedTouches].find((tt) => tt.identifier === touchId);
+    if (!t) return;
+    const ddx = t.clientX - startX;
+    const ddy = t.clientY - startY;
+    if (!axisLocked) {
+      if (Math.abs(ddx) < 6 && Math.abs(ddy) < 6) return;
+      axisLocked = true;
+      if (Math.abs(ddy) > Math.abs(ddx)) {
+        // Vertical scroll — bail out, let the page scroll
+        touchId = null;
+        if (mq.matches && inView) start();
+        return;
+      }
+      dragging = true;
+      track.classList.add("is-dragging");
+    }
+    if (!dragging) return;
+    if (event.cancelable) event.preventDefault();
+    dx = ddx;
+    track.style.setProperty("--fresh-drag", `${dx}px`);
+  }, { passive: false });
+
+  viewport.addEventListener("touchend", (event) => {
+    if (touchId === null) return;
+    const ended = [...event.changedTouches].some((tt) => tt.identifier === touchId);
+    if (!ended) return;
+    endDrag(dragging);
+  });
+
+  viewport.addEventListener("touchcancel", () => {
+    endDrag(false);
+  });
+
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) {
       inView = e.isIntersecting;

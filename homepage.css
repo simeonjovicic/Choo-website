@@ -5330,15 +5330,16 @@ body.menu-open .delivery-fab {
   transition: width 0.45s cubic-bezier(.2,.7,.2,1), opacity 0.3s ease;
 }
 
-.fresh-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px rgba(22, 22, 22, 0.09);
-  border-color: rgba(22, 22, 22, 0.12);
-}
-
-.fresh-card:hover::after {
-  width: 86%;
-  opacity: 1;
+@media (hover: hover) {
+  .fresh-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px rgba(22, 22, 22, 0.09);
+    border-color: rgba(22, 22, 22, 0.12);
+  }
+  .fresh-card:hover::after {
+    width: 86%;
+    opacity: 1;
+  }
 }
 
 .fresh-card > * {
@@ -5399,8 +5400,10 @@ body.menu-open .delivery-fab {
   color: #161616;
 }
 
-.fresh-card:hover .fresh-card__icon img {
-  transform: scale(1.05) rotate(-2deg);
+@media (hover: hover) {
+  .fresh-card:hover .fresh-card__icon img {
+    transform: scale(1.05) rotate(-2deg);
+  }
 }
 
 /* Gentle pulse */
@@ -5422,8 +5425,10 @@ body.menu-open .delivery-fab {
   animation-delay: 2.2s;
 }
 
-.fresh-card:hover .fresh-card__icon--pulse img {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .fresh-card:hover .fresh-card__icon--pulse img {
+    animation-play-state: paused;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -5448,10 +5453,12 @@ body.menu-open .delivery-fab {
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.fresh-card:hover .fresh-card__stamp {
-  background: #b73a2a;
-  color: var(--paper-3);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .fresh-card:hover .fresh-card__stamp {
+    background: #b73a2a;
+    color: var(--paper-3);
+    transform: translateY(-1px);
+  }
 }
 
 .fresh-card h3 {
@@ -5483,13 +5490,19 @@ body.menu-open .delivery-fab {
   .fresh__dots {
     display: flex;
   }
+  .fresh__viewport {
+    touch-action: pan-y;
+  }
   .fresh-cards {
     display: flex;
     grid-template-columns: none;
     gap: 0;
-    transform: translateX(calc(var(--fresh-i, 0) * -100%));
+    transform: translate3d(calc(var(--fresh-i, 0) * -100% + var(--fresh-drag, 0px)), 0, 0);
     transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
     will-change: transform;
+  }
+  .fresh-cards.is-dragging {
+    transition: none;
   }
   .fresh-card {
     flex: 0 0 100%;
