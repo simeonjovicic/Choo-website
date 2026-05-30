@@ -2815,6 +2815,8 @@ body.store-category-modal-open {
   background: url("images/lotus_BG.webp") right center / cover no-repeat;
   transform: translate3d(0, 0, 0);
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   z-index: 0;
   pointer-events: none;
 }

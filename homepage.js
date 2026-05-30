@@ -4293,7 +4293,7 @@
   if (!band || !bg) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const strength = 0.35;
+  const strength = 0.18;
   let ticking = false;
 
   function update() {
@@ -4303,7 +4303,9 @@
     if (rect.bottom < -200 || rect.top > viewportH + 200) return;
     const center = rect.top + rect.height / 2;
     const delta = center - viewportH / 2;
-    const offset = -delta * strength;
+    const maxTravel = rect.height * 0.15;
+    const raw = -delta * strength;
+    const offset = Math.max(-maxTravel, Math.min(maxTravel, raw));
     bg.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
   }
 
@@ -4317,6 +4319,7 @@
   window.addEventListener("resize", onScroll);
   update();
 })();
+
 
 /* Fresh — mobile carousel auto-advance */
 (() => {
