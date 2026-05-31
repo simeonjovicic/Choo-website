@@ -390,6 +390,24 @@ body.menu-open .site-header {
   will-change: transform, opacity;
 }
 
+.hero-classic-content .hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: var(--paper);
+}
+
+.hero-classic-content .hero-brand-logo {
+  height: clamp(36px, 3.96vw, 50px);
+  width: auto;
+  filter: brightness(0);
+}
+
 .hero-classic-content .hero-eyebrow {
   display: block;
   color: rgba(250, 247, 241, 0.86);
