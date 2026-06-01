@@ -15,7 +15,7 @@
       "nav.events": "Calendar",
       "nav.visit": "Find us",
       "hero.eyebrow": "Asian supermarket · Vienna 1060",
-      "hero.title": "Snacks, sauces & staples.",
+      "hero.title": "Snacks, Sauces and Staples.",
       "hero.text": "Asian supermarket on Linke Wienzeile, next to the Naschmarkt in Vienna 1060. Pantry staples, instant noodles, snacks, sauces and fresh goods from across Asia.",
       "hero.cta": "Visit ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Vienna",
@@ -165,7 +165,7 @@
       "nav.events": "Kalender",
       "nav.visit": "Finde uns",
       "hero.eyebrow": "Asia-Supermarkt · Wien 1060",
-      "hero.title": "Snacks, Saucen & Basics.",
+      "hero.title": "Snacks, Saucen und Basics.",
       "hero.text": "Asia-Supermarkt an der Linken Wienzeile, direkt am Naschmarkt in Wien 1060. Vorrat, Instantnudeln, Snacks, Saucen und Frischware aus ganz Asien.",
       "hero.cta": "Besuchen ↗",
       "hero.address": "Linke Wienzeile 54 · 1060 Wien",
@@ -458,7 +458,7 @@
   const interpolate = (value, params = {}) => String(value).replace(/\{(\w+)\}/g, (_match, key) => params[key] ?? "");
   const getStoredLang = () => {
     const stored = window.localStorage?.getItem("choo-language");
-    return LANGS.includes(stored) ? stored : "en";
+    return LANGS.includes(stored) ? stored : "de";
   };
   let currentLang = getStoredLang();
 
@@ -467,7 +467,7 @@
   }
 
   function applyLanguage(lang = currentLang) {
-    currentLang = LANGS.includes(lang) ? lang : "en";
+    currentLang = LANGS.includes(lang) ? lang : "de";
     window.localStorage?.setItem("choo-language", currentLang);
     document.documentElement.lang = HTML_LANG[currentLang];
     document.title = t("meta.title");
@@ -540,7 +540,7 @@
   };
 
   const heroSlide = {
-    src: "images/WhatsApp%20Image%202026-05-07%20at%2019.39.46.webp",
+    src: "images/HERO_BG.png",
     mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.webp",
     alt: "Choo Foodstore Eingang",
     mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
