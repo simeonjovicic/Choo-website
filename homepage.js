@@ -541,7 +541,7 @@
 
   const heroSlide = {
     src: "images/HERO_BG.png",
-    mobileSrc: "images/create_the_mobile_optimized_version,_202605072005.webp",
+    mobileSrc: "images/HERO_BG-Mobile.png",
     alt: "Choo Foodstore Eingang",
     mobileAlt: "Mobile Hero Ansicht des Choo Foodstore",
   };

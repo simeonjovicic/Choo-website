@@ -3755,7 +3755,11 @@ body.store-category-modal-open {
   }
 
   .hero-classic-content h1 {
-    font-size: clamp(36px, 10vw, 44px);
+    font-size: clamp(48px, 12vw, 60px);
+  }
+
+  .hero-classic-text {
+    font-size: 14px;
   }
 
   .hero-eyebrow {
