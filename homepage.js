@@ -1114,6 +1114,17 @@
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => close());
     });
+
+    const footer = document.querySelector(".footer");
+    if (footer && "IntersectionObserver" in window) {
+      const footerObserver = new IntersectionObserver((entries) => {
+        const footerVisible = entries.some((entry) => entry.isIntersecting);
+        root.classList.toggle("delivery-fab--footer-visible", footerVisible);
+        root.inert = footerVisible;
+        if (footerVisible) close();
+      });
+      footerObserver.observe(footer);
+    }
   }
 })();
 
@@ -4471,4 +4482,3 @@
   else if (typeof mq.addListener === "function") mq.addListener(onMQ);
   onMQ();
 })();
-

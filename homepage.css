@@ -4219,6 +4219,16 @@ body.has-scrolled .delivery-fab > * {
   pointer-events: auto;
 }
 
+body.has-scrolled .delivery-fab.delivery-fab--footer-visible {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(28px) scale(0.92);
+}
+
+body.has-scrolled .delivery-fab.delivery-fab--footer-visible > * {
+  pointer-events: none;
+}
+
 body.has-scrolled .delivery-fab__toggle {
   animation: deliveryFabPulse 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
